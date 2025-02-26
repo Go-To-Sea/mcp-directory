@@ -16,11 +16,11 @@ export default function () {
 
 ## Introduction and Acceptance of Terms
 
-Welcome to **MCP** (mcp.so), a platform dedicated to providing a marketplace for Model Context Protocol (MCP) servers. Our service enables developers and organizations to discover, share, and manage MCP servers that connect AI assistants with various data sources. By accessing or using our service, you agree to be bound by these Terms of Service.
+Welcome to **MCP** (mcp.ad), a platform dedicated to providing a marketplace for Model Context Protocol (MCP) servers. Our service enables developers and organizations to discover, share, and manage MCP servers that connect AI assistants with various data sources. By accessing or using our service, you agree to be bound by these Terms of Service.
 
 ## Use of the Service
 
-MCP.so provides a platform where users can:
+mcp.ad provides a platform where users can:
 - Browse and discover MCP server implementations
 - Share and publish their own MCP servers
 - Access documentation and implementation guides
@@ -38,9 +38,9 @@ You agree to use the service in accordance with all applicable laws and regulati
 
 ## Content and Intellectual Property Rights
 
-1. **Platform Rights**: The MCP.so platform, including its interface, features, and functionality, is protected under copyright law. MCP.so retains all rights to the platform infrastructure.
+1. **Platform Rights**: The mcp.ad platform, including its interface, features, and functionality, is protected under copyright law. mcp.ad retains all rights to the platform infrastructure.
 
-2. **User Content**: You retain your rights to any MCP servers you publish. By publishing, you grant MCP.so a license to host and distribute your content through our platform.
+2. **User Content**: You retain your rights to any MCP servers you publish. By publishing, you grant mcp.ad a license to host and distribute your content through our platform.
 
 3. **Open Source**: We encourage open-source contributions while respecting individual licensing choices.
 
@@ -68,7 +68,7 @@ For complete details, see our [Privacy Policy](/privacy-policy).
 ## Service Availability and Support
 
 - The service is provided "as is" and "as available"
-- Support is available via support@mcp.so
+- Support is available via support@mcp.ad
 - We maintain a public status page for service availability
 - We may modify or discontinue features with notice
 
@@ -92,11 +92,11 @@ We reserve the right to suspend or terminate accounts that:
 
 ## Disclaimer of Warranties
 
-THE SERVICE IS PROVIDED "AS IS" WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES. MCP.SO DISCLAIMS ALL WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+THE SERVICE IS PROVIDED "AS IS" WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES. mcp.ad DISCLAIMS ALL WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
 
 ## Limitation of Liability
 
-TO THE MAXIMUM EXTENT PERMITTED BY LAW, MCP.SO SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE SERVICE OR ANY MCP SERVERS PUBLISHED THROUGH THE SERVICE.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, mcp.ad SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE SERVICE OR ANY MCP SERVERS PUBLISHED THROUGH THE SERVICE.
 
 ## Changes to Terms
 
@@ -104,15 +104,15 @@ We may update these terms at any time. Continued use of the service after change
 
 ## Governing Law
 
-These terms shall be governed by and construed in accordance with the laws of the jurisdiction where MCP.so operates, without regard to conflict of law principles.
+These terms shall be governed by and construed in accordance with the laws of the jurisdiction where mcp.ad operates, without regard to conflict of law principles.
 
 ## Contact Information
 
-For questions about these terms, please contact us at [support@mcp.so](mailto:support@mcp.so).
+For questions about these terms, please contact us at [support@mcp.ad](mailto:support@mcp.ad).
 
 ---
 
-By using MCP.so, you acknowledge that you have read and agree to these Terms of Service.
+By using mcp.ad, you acknowledge that you have read and agree to these Terms of Service.
 `;
 
   return (

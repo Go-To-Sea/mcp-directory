@@ -37,7 +37,7 @@ export default function ({
 
   return (
     <a
-      href="https://github.com/chatmcp/mcp-directory?utm_source=mcp.so"
+      href="https://github.com/chatmcp/mcp-directory?utm_source=mcp.ad"
       target="_blank"
       className="hidden md:flex w-64 mx-auto items-center border border-primary rounded-lg px-6 py-1.5 ml-4 cursor-pointer"
     >

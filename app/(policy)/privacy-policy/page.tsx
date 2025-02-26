@@ -16,7 +16,7 @@ export default function () {
 
 ## Introduction
 
-Welcome to mcp.so, a third-party Model Context Protocol (MCP) servers store. We value your privacy and are committed to protecting your personal information. This privacy policy explains how we collect, use, and safeguard your information when you use our MCP server hosting and distribution services.
+Welcome to mcp.ad, a third-party Model Context Protocol (MCP) servers store. We value your privacy and are committed to protecting your personal information. This privacy policy explains how we collect, use, and safeguard your information when you use our MCP server hosting and distribution services.
 
 ## Information Collection and Use
 
@@ -57,7 +57,7 @@ You have the right to:
 
 If you have questions about this privacy policy or our privacy practices, please contact us at:
 
-**Email**: [support@mcp.so](mailto:support@mcp.so)
+**Email**: [support@mcp.ad](mailto:support@mcp.ad)
 
 ## Updates to This Policy
 

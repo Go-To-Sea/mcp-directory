@@ -70,11 +70,11 @@
         "description": "Yes, security is built into the MCP protocol. Servers control their own resources, there's no need to share API keys with LLM providers, and the system maintains clear boundaries. Each server manages its own authentication and access control."
       },
       {
-        "title": "What is mcp.so?",
-        "description": "mcp.so is a community-driven platform that collects and organizes third-party MCP Servers. It serves as a central directory where users can discover, share, and learn about various MCP Servers available for AI applications."
+        "title": "What is mcp.ad?",
+        "description": "mcp.ad is a community-driven platform that collects and organizes third-party MCP Servers. It serves as a central directory where users can discover, share, and learn about various MCP Servers available for AI applications."
       },
       {
-        "title": "How can I submit my MCP Server to mcp.so?",
+        "title": "How can I submit my MCP Server to mcp.ad?",
         "description": "You can submit your MCP Server by creating a new issue in our GitHub repository. Click the 'Submit' button in the navigation bar or visit our GitHub issues page directly. Please provide details about your server including its name, description, features, and connection information."
       }
     ]
@@ -83,12 +83,12 @@
     "brand": {
       "title": "MCP Servers",
       "description": "The largest collection of MCP Servers, featuring Awesome MCP Servers and Claude MCP integration.",
-      "domain": "https://mcp.so"
+      "domain": "https://mcp.ad"
     },
     "copyright": {
-      "owner": "mcp.so",
+      "owner": "mcp.ad",
       "text": "All rights reserved",
-      "url": "https://mcp.so",
+      "url": "https://mcp.ad",
       "target": "_blank"
     },
     "nav": {
@@ -173,8 +173,8 @@
     "social": {
       "items": {
         "email": {
-          "title": "support@mcp.so",
-          "url": "mailto:support@mcp.so"
+          "title": "support@mcp.ad",
+          "url": "mailto:support@mcp.ad"
         }
       }
     }

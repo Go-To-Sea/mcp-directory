@@ -2,7 +2,7 @@
 
 a directory for Awesome MCP Servers.
 
-live preview: [https://mcp.so](https://mcp.so)
+live preview: [https://mcp.ad](https://mcp.ad)
 
 ![preview](./preview.png)
 
