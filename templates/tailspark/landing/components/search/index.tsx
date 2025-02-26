@@ -50,19 +50,15 @@ export default ({ query }: Props) => {
     }
   }, [query]);
 
-  // 开启这段代码会报错，，具体作用需要在看哈，为了能调试先注释
-//   在组件挂载时，监听 Next.js 的路由变化事件。
-// 每次路由变化完成后，重新启用输入框（通过将 inputDisabled 设置为 false）。
-// 在组件卸载时，移除监听器，避免内存泄漏。
-  // useEffect(() => {
-  //   const handleRouteChange = () => {
-  //     setInputDisabled(false); // Re-enable input after route change
-  //   };
-  //   router.events.on('routeChangeComplete', handleRouteChange);
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouteChange);
-  //   };
-  // }, []);
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setInputDisabled(false); // Re-enable input after route change
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
 
   return (
     <section className="relative mt-4 md:mt-8">
