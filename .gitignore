@@ -45,3 +45,5 @@ wrangler.toml
 .vscode
 
 app/api/update-sitemaps
+
+.github
