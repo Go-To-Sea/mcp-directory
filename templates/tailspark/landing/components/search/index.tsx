@@ -22,7 +22,7 @@ export default ({ query }: Props) => {
     setContent(e.target.value);
   };
 
-  const handleInputKeydown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleInputKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === "Enter" && !e.shiftKey) {
       if (e.keyCode !== 229) {
         e.preventDefault();
@@ -51,14 +51,9 @@ export default ({ query }: Props) => {
   }, [query]);
 
   useEffect(() => {
-    const handleRouteChange = () => {
-      setInputDisabled(false); // Re-enable input after route change
-    };
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, []);
+    // 在每次路由变化后重置输入状态
+    setInputDisabled(false);
+  }, [router]);
 
   return (
     <section className="relative mt-4 md:mt-8">
