@@ -18,21 +18,6 @@
           "title": "Categories",
           "url": "/categories",
           "target": "_self"
-        },
-        {
-          "title": "Submit",
-          "url": "https://github.com/chatmcp/mcp-directory/issues/1",
-          "target": "_blank"
-        },
-        {
-          "title": "Telegram",
-          "url": "https://t.me/+N0gv4O9SXio2YWU1",
-          "target": "_blank"
-        },
-        {
-          "title": "Discord",
-          "url": "https://discord.gg/RsYPRrnyqg",
-          "target": "_blank"
         }
       ]
     }
