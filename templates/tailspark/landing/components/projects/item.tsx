@@ -1,48 +1,64 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import Link from "next/link";
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-03 00:34:41
+ */
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-02 10:55:20
+ */
+"use client"
+
+import { Star } from "lucide-react"
 import { Project } from "@/types/project";
-import StarIcon from "../../assets/imgs/star.svg";
-import Stars from "../stars";
-import moment from "moment";
 
 export default ({ project }: { project: Project }) => {
   return (
-    <Link
-      href={
-        project.target === "_blank"
-          ? project.url || ""
-          : `/server/${project.name}`
-      }
-      target={project.target || "_self"}
-    >
-      <div className="mb-6 gap-6 overflow-hidden rounded-2xl border border-solid border-[#7e7e7e] bg-white p-8 text-left">
-        <div className="mb-4 flex flex-row">
-          {project.avatar_url && (
-            <LazyLoadImage
-              src={project.avatar_url}
-              placeholderSrc={`/logo.png`}
-              alt={project.title}
-              className="mr-4 inline-block h-16 w-16 object-cover rounded-full"
-            />
-          )}
-          <div className="flex flex-col">
-            <p className="text-base font-semibold">{project.title}</p>
-            <p className="text-sm text-[#636262]">{project.author_name}</p>
+    <div className="flex flex-col cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-4 shadow-lg hover:shadow-xl transition-shadow">
+      <div className="flex justify-between items-start mb-3">
+        <div className="flex items-center">
+          <div className={`w-10 h-10  rounded-md flex items-center justify-center mr-3`}>
+            <img src={project.avatar_url || "/logo.png"} alt={project.name} className="w-6 h-6" />
+          </div>
+          <div>
+            <h3 className="font-medium">{project.name}</h3>
+            {project.author_name && <p className="text-sm text-gray-500">by {project.author_name}</p>}
           </div>
         </div>
-        <p className="mb-4 text-sm text-[#636262] line-clamp-3">
-          {project.description}
-        </p>
-
-        <div className="flex items-center">
-          {true && <Stars />}
-          <div className="flex-1"></div>
-
-          <p className="text-slate-500 text-sm">
-            {moment(project.created_at).fromNow()}
-          </p>
-        </div>
+          <Star className="fill-yellow-400" size={15} />
       </div>
-    </Link>
-  );
-};
+
+      <p className="text-sm text-gray-600 mb-3 line-clamp-2">{project.description}</p>
+
+      <div className="flex flex-wrap gap-2">
+        {/* {tags.map((tag, index) => (
+          <span key={index} className="inline-flex items-center px-2 py-1 rounded-md bg-gray-100 text-xs text-gray-800">
+            # {tag}
+          </span>
+        ))} */}
+
+        <a href="#" className="ml-auto">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  )
+}

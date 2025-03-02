@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-27 01:18:39
  * @LastEditors: rendc
- * @LastEditTime: 2025-02-27 01:19:57
+ * @LastEditTime: 2025-03-03 00:23:18
  */
 import "./assets/style.css";
 
@@ -19,7 +19,7 @@ export default function ({
   page: Page;
 }>) {
   return (
-    <main>
+    <main className=" bg-background text-foreground">
       {page.header && <Header header={page.header} />}
       {children}
       {/* {page.footer && <Footer footer={page.footer} />} */}

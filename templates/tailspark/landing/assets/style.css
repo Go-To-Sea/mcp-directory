@@ -4,6 +4,7 @@
 
 :root {
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+  --muted-foreground: 16 5% 40%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,13 +31,13 @@ body {
 }
 
 .text-primary {
-  color: #2752f4;
+  color: #d85a2c;
 }
 
 .bg-primary {
-  background-color: #2752f4;
+  background-color: #d85a2c;
 }
 
 .border-primary {
-  border-color: #2752f4;
+  border-color: #d85a2c;
 }

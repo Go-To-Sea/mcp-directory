@@ -1,8 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-
-import { Section } from "@/types/landing";
 import { useState } from "react";
 
 export default function ({ section }: { section: Section }) {
@@ -13,51 +11,27 @@ export default function ({ section }: { section: Section }) {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8">
-      <h2 className="text-5xl font-bold text-center mb-8">{section.title}</h2>
-      <p className="text-center text-2xl mb-8">{section.description}</p>
-
-      <div className="space-y-4">
-        {section?.items?.map((faq, index) => (
-          <div
-            key={index}
-            className="border border-[#7e7e7e] rounded-lg overflow-hidden"
-          >
-            <button
-              className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50"
-              onClick={() => toggleFAQ(index)}
-            >
-              <span className="font-medium text-gray-900">{faq.title}</span>
-              <svg
-                className={`w-5 h-5 transform transition-transform duration-200 ${
-                  activeIndex === index ? "rotate-180" : ""
-                }`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-
-            <AnimatePresence>
-              {activeIndex === index && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="px-6 py-4 bg-gray-50"
-                >
-                  <p className="text-gray-600">{faq.description}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+    <div className="container mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
+      <div className="text-center">
+        <h2 className="mt-4 text-4xl font-semibold">{section.title}</h2>
+        <p className="mt-6 font-medium text-muted-foreground">
+          {section.description}
+        </p>
+      </div>
+      <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
+        {section?.items?.map((item, index) => (
+          <div className="flex gap-4" key={index}>
+            <span className="flex size-6 shrink-0 items-center justify-center rounded border  border-primary font-mono text-xs text-primary">
+              {index + 1}
+            </span>
+            <div>
+              <div className="mb-2 flex items-center justify-between">
+                <h3 className="font-semibold">{item.title}</h3>
+              </div>
+              <p className="text-md text-muted-foreground">
+                {item.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>

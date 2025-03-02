@@ -23,8 +23,9 @@
     }
   },
   "hero": {
-    "title": "Find Awesome MCP Servers",
-    "description": " MCP Servers Stored"
+    "title": "Discover ",
+    "title2": "MCP Servers",
+    "description": " Find the best MCP servers for your needs."
   },
   "faq": {
     "title": "FAQ",

@@ -65,8 +65,8 @@ export default ({ query }: Props) => {
         >
           <input
             type="text"
-            className="text-sm md:text-md flex-1 px-4 py-3 border-2 border-primary bg-white rounded-lg disabled:border-gray-300 disabled:text-gray-300"
-            placeholder="keyword to search"
+            className="text-sm rounded-[0.5rem] dark:bg-[#1c1817] md:text-md flex-1 px-4  py-3 border-2 border-primary focus:border-primary focus:ring-primary  disabled:border-gray-300 disabled:text-gray-300"
+            placeholder="Search with keywords"
             ref={inputRef}
             value={content}
             disabled={inputDisabled}

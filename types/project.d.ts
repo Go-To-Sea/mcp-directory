@@ -19,3 +19,9 @@ export interface Project {
   summary?: string;
   img_url?: string;
 }
+
+export interface ClassMenus {
+  name: string;   // 分类名称
+  count: number;  // 分类数量
+  href: string;   // 分类链接
+}

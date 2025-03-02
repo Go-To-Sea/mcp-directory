@@ -28,9 +28,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground dark:bg-[#1c1817] dark:text-[#e7e5e4]` }
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider
+            >{children}</ThemeProvider>
       </body>
     </html>
   );
