@@ -41,7 +41,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
   };
 
   return (
-    <header className="mx-auto w-full max-w-7xl px-4 md:px-8 mt-4 md:mt-1">
+    <header className="mx-auto w-full max-w-7xl px-4 md:px-8 mt-4 md:mt-1 ">
       <div className="flex items-center">
         <div className="flex items-center">
           <p className="text-lg md:text-1xl font-medium">

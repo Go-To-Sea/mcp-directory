@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-04 02:00:22
+ * @LastEditTime: 2025-03-04 02:41:12
  */
 /*
  * @Description: 
@@ -27,18 +27,18 @@ export default ({ project }: { project: Project }) => {
   };
   return (
     
-    <div onClick={()=>handleClick(project.url)} className="mb-6 gap-6 cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-4 shadow-lg hover:shadow-xl transition-shadow">
-      <div className="flex justify-between items-start mb-3">
-        <div className="flex items-center">
+    <div onClick={()=>handleClick(project.url)} className="mb-6 h-50  cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-4 shadow-lg hover:shadow-xl transition-shadow">
+      <div className="flex justify-between items-start ">
+        <div className="flex start-center overflow-hidden">
           <div className={`  rounded-md flex items-center justify-center mr-3`}>
-            <img src={project.author_avatar_url  || "/logo.png"} alt={project.name} className="w-6 h-6" />
+            <img src={project.author_avatar_url  || "/logo.png"} alt={project.name} className="min-w-8 w-8 h-8" />
           </div>
           <div>
-            <h3 className="font-medium">{project.name}</h3>
+            <h3 className="font-medium ">{project.name}</h3>
             {project.author_name && <p className="text-sm text-gray-500">by {project.author_name}</p>}
           </div>
         </div>
-          <Star className="fill-yellow-400" size={15} />
+          <Star className="fill-yellow-400 m-w-15" size={15} />
       </div>
 
       <p className="text-sm text-gray-600 mb-3 line-clamp-2">{project.description}</p>

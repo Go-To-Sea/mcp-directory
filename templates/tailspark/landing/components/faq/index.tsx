@@ -21,19 +21,44 @@ export default function ({ section }: { section: Section }) {
       </div>
       <div className="mx-auto mt-14 grid gap-8 md:grid-cols-2 md:gap-12">
         {section?.items?.map((item, index) => (
-          <div className="flex gap-4" key={index}>
-            <span className="flex size-6 shrink-0 items-center justify-center rounded border  border-primary font-mono text-xs text-primary">
-              {index + 1}
-            </span>
-            <div>
-              <div className="mb-2 flex items-center justify-between">
-                <h3 className="font-semibold">{item.title}</h3>
+          <motion.div
+            key={index}
+            className="border-b border-muted last:border-b-0"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex gap-4 py-4">
+              <span className="flex size-6 shrink-0 items-center justify-center rounded border border-primary font-mono text-xs text-primary">
+                {index + 1}
+              </span>
+              <div className="flex-1">
+                <div className="mb-2 flex items-center justify-between">
+                  <h3 className="font-semibold">{item.title}</h3>
+                  <button
+                    className="text-primary"
+                    onClick={() => toggleFAQ(index)}
+                  >
+                    {activeIndex === index ? "Close" : "Open"}
+                  </button>
+                </div>
+                <AnimatePresence>
+                  {activeIndex === index && (
+                    <motion.p
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-md text-muted-foreground"
+                    >
+                      {item.description}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
               </div>
-              <p className="text-md text-muted-foreground">
-                {item.description}
-              </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
