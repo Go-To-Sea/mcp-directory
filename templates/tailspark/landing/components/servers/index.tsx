@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-04 00:22:24
+ * @LastEditTime: 2025-03-04 02:03:18
  */
 import Faq from "../../components/faq";
 import Hero from "../../components/hero";
@@ -29,7 +29,7 @@ export default function ({
       <div className="mb-10">
         <Search />
       </div>
-      <Projects projects={projects} showMenus="{true}"/>
+      <Projects projects={projects} showMenus={true}/>
     </div>
   );
 }

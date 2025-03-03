@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-04 00:35:26
+ * @LastEditTime: 2025-03-04 02:00:22
  */
 /*
  * @Description: 
@@ -22,7 +22,7 @@ import { usePathname, useRouter } from "next/navigation"
 export default ({ project }: { project: Project }) => {
   const pathname = usePathname()
   const router = useRouter()
-  const handleClick = (url) => {
+  const handleClick = (url:string | undefined) => {
     window.open(url,'_blank')
   };
   return (
