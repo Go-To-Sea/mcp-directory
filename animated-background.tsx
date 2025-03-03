@@ -37,6 +37,7 @@ const AnimatedBackground: React.FC = () => {
       speedY: number
 
       constructor() {
+        if (!canvas) throw new Error('Canvas is not initialized')
         this.x = Math.random() * canvas.width
         this.y = Math.random() * canvas.height
         this.size = Math.random() * 5 + 1
@@ -45,6 +46,7 @@ const AnimatedBackground: React.FC = () => {
       }
 
       update() {
+        if (!canvas) return
         this.x += this.speedX
         this.y += this.speedY
 
@@ -56,6 +58,7 @@ const AnimatedBackground: React.FC = () => {
       }
 
       draw() {
+        if (!ctx) return
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
         ctx.fillStyle = "rgba(255, 255, 255, 0.8)"

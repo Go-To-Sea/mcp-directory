@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import type { Section } from "@/types/landing";
 
 export default function ({ section }: { section: Section }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

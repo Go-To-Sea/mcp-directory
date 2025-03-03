@@ -20,8 +20,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@/components/*": ["components/*"],
-      "@/components/ui/*": ["components/ui/*"]
+      "@/components/*": ["./components/*"],
+      "@/components/ui/*": ["./components/ui/*"]
     },
     "types": ["tailwindcss","react"]  // 添加这一行
   },

@@ -61,7 +61,14 @@ export interface Hero {
   show_proof?: boolean;
 }
 
-export interface Section extends Item {}
+export interface Section extends Item {
+  title: string;
+  description: string;
+  items?: {
+    title: string;
+    description: string;
+  }[];
+}
 
 export interface Contact {
   [key: string]: Item[];
