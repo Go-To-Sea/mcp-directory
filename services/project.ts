@@ -20,6 +20,10 @@ export function parseProject(project: Project): Project | undefined {
       return;
     }
 
+    if (!project.type) {
+      return;
+    }
+
     if (!project.url.startsWith("https://github.com")) {
       return;
     }

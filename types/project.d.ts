@@ -2,6 +2,7 @@ export interface Project {
   uuid?: string;
   name?: string;
   title: string;
+  type: string;
   description?: string;
   avatar_url?: string;
   created_at?: string;

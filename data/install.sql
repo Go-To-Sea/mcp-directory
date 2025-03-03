@@ -18,6 +18,7 @@ CREATE TABLE projects (
     uuid VARCHAR(255) UNIQUE NOT NULL,
     name VARCHAR(255) UNIQUE NOT NULL,
     title VARCHAR(255) NOT NULL,
+    type VARCHAR(255)  NOT NULL,
     description TEXT,
     avatar_url VARCHAR(255),
     created_at timestamptz,
