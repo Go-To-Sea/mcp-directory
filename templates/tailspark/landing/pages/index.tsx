@@ -34,7 +34,7 @@ export default function ({
           <p className="text-lg text-white mb-8 px-20 mt-10">
             Here, we provide a comprehensive suite of tools designed specifically for the Multi-Purpose Computing Platform (MCP). Whether you are a developer, a designer, or just looking for efficient solutions, our tools are tailored to enhance your productivity and streamline your workflow. Explore our collection and unlock the full potential of your MCP environment.
           </p>
-          <a href="#222" className="p-5 pt-2 pb-2 mt-8 bg-[#d85a2c80] text-[#efeeee]">Explore Now</a>
+          <a href="#222" className="p-5 pt-2 pb-2 mt-8 bg-[#d85a2c80] text-[#e5e5e5]">Explore Now</a>
         </div>
       </div>
       {/* 现有页面内容 */}
