@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-04 00:22:33
+ */
 import { Category } from "@/types/category";
 import Crumb from "./crumb";
 import Link from "next/link";
@@ -7,9 +14,11 @@ import Projects from "../projects";
 export default function ({
   categories,
   projects,
+  showSearch
 }: {
   categories: Category[];
   projects: Project[];
+  showSearch: Boolean
 }) {
   return (
     <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">

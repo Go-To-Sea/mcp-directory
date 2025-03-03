@@ -10,14 +10,17 @@ export default {
   ],
   theme: {
   	extend: {
+		keyframes: {
+		  },
+		  animation: {
+			'fade-out': 'fade-out 2s ease-in-out',
+		  },
   		colors: {
 			background: {
 				DEFAULT: "hsl(var(--background))",
-				dark: "#1c1817", // 暗黑模式下的背景颜色设置为黑色
 			  },
 			  foreground: {
 				DEFAULT: "hsl(var(--foreground))",
-				dark: "#ffffff", // 暗黑模式下的文字颜色设置为白色
 			  },
   			card: {
   				DEFAULT: 'hsl(var(--card))',

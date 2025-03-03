@@ -14,11 +14,7 @@
     },
     "nav": {
       "items": [
-        {
-          "title": "Categories",
-          "url": "/categories",
-          "target": "_self"
-        }
+       
       ]
     }
   },

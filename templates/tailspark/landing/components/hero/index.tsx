@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-03 00:16:21
+ * @LastEditTime: 2025-03-04 00:39:41
  */
 import BgStar from "../../assets/imgs/bgstar.svg";
 import Buttons from "./buttons";
@@ -16,7 +16,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         <div className="mx-auto w-full max-w-4xl text-center ">
         <a href="/servers" className="dark:bg-[#000] mx-auto mb-3 inline-flex items-center gap-3 rounded-full border border-primary  px-2 py-1 text-sm">
           <span className="inline-flex items-center  text-white rounded-full border-primary px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2  bg-primary text-primary-foreground">
-            1536
+            {count}
           </span>
           <span className="dark:text-[#fff]">mcp servers stored</span>
         </a>
@@ -24,7 +24,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-4xl font-bold md:text-5xl mr-5">
               {hero.title}
             </h1>
-            <h1 className="text-primary  leading-tight text-4xl font-bold md:text-5xl">
+            <h1 className="text-primary  leading-tight text-4xl font-bold md:text-5xl ">
               {hero.title2}
             </h1>
           </div>

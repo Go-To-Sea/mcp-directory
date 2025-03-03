@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-03 00:34:41
+ * @LastEditTime: 2025-03-04 00:35:26
  */
 /*
  * @Description: 
@@ -16,14 +16,22 @@
 
 import { Star } from "lucide-react"
 import { Project } from "@/types/project";
+import { usePathname, useRouter } from "next/navigation"
+
 
 export default ({ project }: { project: Project }) => {
+  const pathname = usePathname()
+  const router = useRouter()
+  const handleClick = (url) => {
+    window.open(url,'_blank')
+  };
   return (
-    <div className="flex flex-col cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-4 shadow-lg hover:shadow-xl transition-shadow">
+    
+    <div onClick={()=>handleClick(project.url)} className="mb-6 gap-6 cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-4 shadow-lg hover:shadow-xl transition-shadow">
       <div className="flex justify-between items-start mb-3">
         <div className="flex items-center">
-          <div className={`w-10 h-10  rounded-md flex items-center justify-center mr-3`}>
-            <img src={project.avatar_url || "/logo.png"} alt={project.name} className="w-6 h-6" />
+          <div className={`  rounded-md flex items-center justify-center mr-3`}>
+            <img src={project.author_avatar_url  || "/logo.png"} alt={project.name} className="w-6 h-6" />
           </div>
           <div>
             <h3 className="font-medium">{project.name}</h3>

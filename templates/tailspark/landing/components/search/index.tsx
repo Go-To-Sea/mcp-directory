@@ -1,75 +1,69 @@
-"use client";
+"use client"
 
-import {
-  ChangeEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { useRouter } from "next/navigation";
+import type React from "react"
+
+import { type ChangeEvent, useEffect, useRef, useState, useCallback } from "react"
+import { useRouter } from "next/navigation"
 
 interface Props {
-  query?: string;
+  query?: string
 }
 
-export default ({ query }: Props) => {
-  const router = useRouter();
-  const [inputDisabled, setInputDisabled] = useState(false);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const [content, setContent] = useState("");
+export default function Search({ query }: Props) {
+  const router = useRouter()
+  const [content, setContent] = useState("")
+  const inputRef = useRef<HTMLInputElement | null>(null)
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setContent(e.target.value);
-  };
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setContent(e.target.value)
+  }, [])
 
-  const handleInputKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === "Enter" && !e.shiftKey) {
-      if (e.keyCode !== 229) {
-        e.preventDefault();
-        handleSubmit("", content);
+  const handleInputKeydown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault()
+        handleSubmit(content)
       }
-    }
-  };
+    },
+    [content],
+  )
 
-  const handleSubmit = async (keyword: string, question: string) => {
-    try {
-      const url = `?q=${encodeURIComponent(question)}`;
-      console.log("query url", url);
-      await router.push(url);
-      setInputDisabled(true); // Disable input after navigation
-    } catch (e) {
-      console.log("search failed: ", e);
-      setInputDisabled(false);
-    }
-  };
+  const handleSubmit = useCallback(
+    async (question: string) => {
+      if (!question.trim()) return
+      try {
+        const url = `?q=${encodeURIComponent(question)}`
+        console.log("query url", url)
+        await router.push(url)
+      } catch (e) {
+        console.error("search failed: ", e)
+      }
+    },
+    [router],
+  )
 
   useEffect(() => {
     if (query) {
-      setContent(query);
-      setInputDisabled(false);
+      setContent(query)
     }
-  }, [query]);
-
-  useEffect(() => {
-    // 在每次路由变化后重置输入状态
-    setInputDisabled(false);
-  }, [router]);
+  }, [query])
 
   return (
-    <section className="relative mt-4 md:mt-8">
+    <section className="relative mt-4 md:mt-8 mb-6">
       <div className="mx-auto w-full max-w-2xl px-6 text-center">
         <form
-          method="POST"
-          action="/gpts/search"
+          onSubmit={(e) => {
+            e.preventDefault()
+            handleSubmit(content)
+          }}
           className="flex items-center relative"
         >
           <input
             type="text"
-            className="text-sm rounded-[0.5rem] dark:bg-[#1c1817] md:text-md flex-1 px-4  py-3 border-2 border-primary focus:border-primary focus:ring-primary  disabled:border-gray-300 disabled:text-gray-300"
-            placeholder="Search with keywords"
+            className="text-sm rounded-[0.5rem] dark:bg-[#1c1817] md:text-md flex-1 px-4 py-3 border-2 border-primary focus:border-primary focus:ring-primary hover:border-primary-focus"
+            placeholder="搜索关键词..."
             ref={inputRef}
             value={content}
-            disabled={inputDisabled}
             onChange={handleInputChange}
             onKeyDown={handleInputKeydown}
           />
@@ -86,7 +80,7 @@ export default ({ query }: Props) => {
             className="absolute right-4 cursor-pointer"
             onClick={() => {
               if (content) {
-                handleSubmit("", content);
+                handleSubmit(content)
               }
             }}
           >
@@ -96,5 +90,6 @@ export default ({ query }: Props) => {
         </form>
       </div>
     </section>
-  );
-};
+  )
+}
+
