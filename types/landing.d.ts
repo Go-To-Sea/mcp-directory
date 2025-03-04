@@ -46,6 +46,7 @@ export interface Header {
 export interface Hero {
   title?: string;
   title2?: string;
+  title3?: string;
   description?: string;
   image?: Image;
   video?: Video;

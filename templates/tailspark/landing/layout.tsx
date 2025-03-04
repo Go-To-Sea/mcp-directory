@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-27 01:18:39
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-04 02:44:51
+ * @LastEditTime: 2025-03-05 02:17:17
  */
 import "./assets/style.css";
 
@@ -16,7 +16,7 @@ export default function ({
   page,
 }: Readonly<{
   children: React.ReactNode;
-  page: Page;
+  page:any;
 }>) {
   return (
     <main className=" bg-background text-foreground">

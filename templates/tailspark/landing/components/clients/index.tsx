@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-03 23:25:51
+ * @LastEditTime: 2025-03-05 02:16:22
  */
 import Faq from "../../components/faq";
 import Hero from "../../components/hero";
@@ -18,7 +18,7 @@ export default function ({
   projects,
   projectsCount,
 }: {
-  page: Page;
+  page: any;
   projects: Project[];
   projectsCount: number;
 }) {
@@ -29,7 +29,7 @@ export default function ({
       <div className="mb-10">
         <Search />
       </div>
-      <Projects projects={projects} />
+      <Projects projects={projects} projectType={'client'}/>
     </div>
   );
 }

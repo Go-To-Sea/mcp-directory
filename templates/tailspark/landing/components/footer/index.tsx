@@ -1,75 +1,91 @@
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-05 02:14:20
+ */
 "use client";
 
 import { Footer, Item } from "@/types/landing";
+import { Mail, Github, Twitter } from "lucide-react";
+import Link from "next/link";
 
-export default ({ footer }: { footer: Footer }) => {
+export default ({ footer }: { footer?: Footer }) => {
   return (
-    <footer className="block">
-      <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24">
-        <div className="flex flex-row justify-between max-[767px]:flex-col max-[767px]:items-start">
-          <div className="max-[767px]: w-full max-w-[560px] max-[991px]:mr-4 max-[991px]:flex-initial">
-            <p className="text-lg md:text-3xl font-normal md:leading-relaxed">
-              {footer?.brand?.description}
-            </p>
-          </div>
-          <div className="max-[767px]: max-[991px]:ml-4 max-[991px]:flex-none max-[767px]:mt-8">
-            <div className="mb-4 flex max-w-[272px] items-start justify-start">
-              <p className="text-[#636262] max-[479px]:text-sm">Contact</p>
+    <footer className="bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-800">
+      <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* 品牌区域 */}
+          <div className="md:col-span-2">
+            <div className="flex items-center mb-6">
+              <img src="/logo.png" alt="Logo" className="h-8 w-auto mr-3" />
+              <span className="text-xl font-bold">MCP.ad</span>
             </div>
-            <div className="mb-4 flex max-w-[272px] items-start justify-start">
-              <img
-                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/6358f6e24e55dd49a541fd06_EnvelopeSimple-3.svg"
-                alt="image"
-                className="mr-3 inline-block"
-              />
-              <a
-                className="text-primary max-[479px]:text-sm"
-                href={footer?.social?.items?.email?.url}
-                target={footer?.social?.items?.email?.target}
-              >
-                {footer?.social?.items?.email?.title}
+            <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
+              {footer?.brand?.description || "Find and explore the best Model Context Protocol (MCP) servers for your AI applications."}
+            </p>
+            <div className="flex space-x-4">
+              <a href="javascript:;" className="text-gray-600 hover:text-primary transition-colors">
+                <Github className="h-5 w-5" />
+              </a>
+              <a href="javascript:;" className="text-gray-600 hover:text-primary transition-colors">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="javascript:;" className="text-gray-600 hover:text-primary transition-colors">
+                <Mail className="h-5 w-5" />
               </a>
             </div>
           </div>
-        </div>
-        <div className="mb-14 mt-16 w-full [border-bottom:1.7px_solid_rgb(0,_0,_0)]"></div>
-        <div className="flex flex-row justify-between max-[991px]:items-center max-[767px]:flex-col max-[767px]:items-start max-[479px]:flex-col-reverse">
+
+          {/* 导航链接 */}
           {footer?.nav?.items?.map((item: Item, idx: number) => {
             return (
-              <div
-                className="max-[991px]: text-left font-semibold max-[991px]:py-1 max-[479px]:mb-4"
-                key={idx}
-              >
-                <p>{item?.title}</p>
-                {item?.children?.map((child: Item, iidx: number) => {
-                  return (
-                    <p key={iidx}>
-                      <a
-                        href={child?.url}
-                        className="inline-block py-1.5 font-normal text-[#276EF1] transition hover:text-[#276EF1]"
-                        target={child?.target}
-                      >
-                        {child?.title}
-                      </a>
-                    </p>
-                  );
-                })}
+              <div key={idx} className="mt-8 md:mt-0">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-4">{item?.title}</h3>
+                <ul className="space-y-3">
+                  {item?.children?.map((child: Item, iidx: number) => {
+                    return (
+                      <li key={iidx}>
+                        <Link 
+                          href={child?.url || "#"} 
+                          className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                          target={child?.target}
+                        >
+                          {child?.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             );
           })}
+        </div>
 
-          <div className="max-[991px]:flex-none">
-            <p className="text-[#636262] max-[479px]:text-sm pb-8">
-              ©{" "}
-              <a
-                className="text-primary"
-                href={footer?.copyright?.url}
-                target={footer?.copyright?.target}
-              >
-                {footer?.copyright?.owner}
-              </a>{" "}
-              {footer?.copyright?.text}
-            </p>
+        {/* 分隔线 */}
+        <div className="h-px w-full bg-gray-200 dark:bg-gray-800 mb-6"></div>
+
+        {/* 版权信息 */}
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
+            © {new Date().getFullYear()}{" "}
+            <a
+              className="text-primary hover:underline"
+              href={footer?.copyright?.url}
+              target={footer?.copyright?.target}
+            >
+              {footer?.copyright?.owner || "MCP Directory"}
+            </a>{" "}
+            {footer?.copyright?.text || "All rights reserved."}
+          </p>
+          <div className="flex space-x-6">
+            <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 text-sm hover:text-primary transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-service" className="text-gray-500 dark:text-gray-400 text-sm hover:text-primary transition-colors">
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>

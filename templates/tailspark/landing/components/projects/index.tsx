@@ -3,37 +3,112 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-04 02:46:03
+ * @LastEditTime: 2025-03-05 00:41:42
  */
-"use client";
+"use client"
 
-import { Project } from "@/types/project";
-import ProjectItem from "./item";
-import ClassMenus from "./classMenus";
+import { Project } from "@/types/project"
+import ProjectItem from "./item"
+import Link from "next/link"
+import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 
-export default (props: {
-  projects: Project[];
-  loading?: boolean;
-  showMenus?: boolean;
+export default ({
+  projects,
+  loading,
+  viewType,
+  projectType
+}: {
+  projects: Project[]
+  loading?: boolean
+  viewType?: 'default' | 'class',
+  projectType?: 'server' | 'client',
 }) => {
+    let filterProjects: Project[] = []
+    if(projectType) {
+      filterProjects = projects.filter(p => p.type === projectType )
+    }
+  if (viewType === 'class') {
+    const servers = projects.filter(p => p.type === 'server')
+    const clients = projects.filter(p => p.type === 'client')
+
+    return (
+      <section className="relative space-y-12">
+        <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
+          {/* Servers Section */}
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex flex-col">
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-3xl font-bold text-gray-900 dark:text-white"
+                >
+                  MCP Servers
+                </motion.h2>
+                <div className="h-1 w-20 bg-primary mt-2 rounded-full"></div>
+              </div>
+              <Link 
+                href="/servers"
+                className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-2 text-sm font-medium"
+              >
+                View All Servers
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+              </Link>
+            </div>
+            <div className="grid grid-cols-4 gap-6">
+              {servers.slice(0, 4).map((item: Project, idx: number) => (
+                <ProjectItem key={idx} project={item} />
+              ))}
+            </div>
+          </div>
+
+          {/* Clients Section */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex flex-col">
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-3xl font-bold text-gray-900 dark:text-white"
+                >
+                  MCP Clients
+                </motion.h2>
+                <div className="h-1 w-20 bg-primary mt-2 rounded-full"></div>
+              </div>
+              <Link 
+                href="/clients"
+                className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-2 text-sm font-medium"
+              >
+                View All Clients
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+              </Link>
+            </div>
+            <div className="grid grid-cols-4 gap-6">
+              {clients.slice(0, 4).map((item: Project, idx: number) => (
+                <ProjectItem key={idx} project={item} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+  // 默认视图
   return (
     <section className="relative">
-      <div className="mx-auto max-w-7xl  py-4 md:px-4 md:py-4 lg:py-4 ">
-      {props.showMenus && <ClassMenus />}
-        {!props.loading ? (
-          <div className="flex flex-wrap justify-between gap-2 md:gap-2 ">
-            {props.projects.map((item: Project, idx: number) => {
-              return (
-                <div key={idx} className="w-full md:w-1/2  lg:w-1/5">
-                  <ProjectItem project={item} />
-                </div>
-              );
-            })}
+      <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
+        {!loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(projectType ? filterProjects : projects).map((item: Project, idx: number) => (
+              <ProjectItem key={idx} project={item} />
+            ))}
           </div>
         ) : (
           <div className="mx-auto text-center">Loading data...</div>
         )}
       </div>
     </section>
-  );
-};
+  )
+}
+
