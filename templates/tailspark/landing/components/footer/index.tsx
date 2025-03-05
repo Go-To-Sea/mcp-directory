@@ -3,7 +3,14 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-05 02:14:20
+ * @LastEditTime: 2025-03-06 01:43:09
+ */
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-06 00:54:52
  */
 "use client";
 
@@ -32,7 +39,7 @@ export default ({ footer }: { footer?: Footer }) => {
               <a href="javascript:;" className="text-gray-600 hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="javascript:;" className="text-gray-600 hover:text-primary transition-colors">
+              <a href="mailto:support@mcp.ad" className="text-gray-600 hover:text-primary transition-colors">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -75,7 +82,7 @@ export default ({ footer }: { footer?: Footer }) => {
               href={footer?.copyright?.url}
               target={footer?.copyright?.target}
             >
-              {footer?.copyright?.owner || "MCP Directory"}
+              {footer?.copyright?.owner || "MCP.ad"}
             </a>{" "}
             {footer?.copyright?.text || "All rights reserved."}
           </p>

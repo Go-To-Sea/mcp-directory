@@ -125,11 +125,10 @@ export async function getFeaturedProjects(
     .eq("is_featured", true)
     .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: false })
-    .order("created_at", { ascending: false })
+    // .order("created_at", { ascending: false })
     .range((page - 1) * limit, page * limit - 1);
-
   if (error) return [];
-
+  console.log('getFeaturedProjects.data====',data);
   return data;
 }
 

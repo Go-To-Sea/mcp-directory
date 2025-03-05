@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-02 17:03:27
+ * @LastEditTime: 2025-03-06 01:11:45
  */
 import Markdown from "@/components/markdown";
 import { MdOutlineHome } from "react-icons/md";
@@ -78,7 +78,7 @@ Last updated: December 6, 2024`;
         {/* <img className="w-10 h-10 mx-4 my-4" src="/logo.png" /> */}
       </a>
       <div className="max-w-3xl mx-auto leading-loose pt-4 pb-8 px-8">
-        {/* <Markdown content={content} /> */}
+        <Markdown content={content} />
       </div>
     </div>
   );

@@ -71,21 +71,26 @@ export default function ({
 
       {/* 欢迎和介绍词 - 只在首次访问时显示 */}
       {showIntro && (
-        <div className="mx-auto max-w-7xl animate-fade-out delay-3000 duration-2000 mt-12 pt-80 pb-80 to-[#eaab9480]/50 w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-transparent">
+        <div className="mx-auto max-w-7xl animate-fade-out delay-3000 duration-2000 w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-[#eaab9480]/50 px-4">
           <div className="text-center">
             {/* 渐变标题 */}
-            <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d85a2c80] to-[#f36f3f80] mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d85a2c80] to-[#f36f3f80] mb-4">
               Welcome to the MCP Tools Station!
             </h1>
-            <p className="text-lg text-white mb-8 px-20 mt-10">
+            <p className="text-base sm:text-lg text-white mb-8 px-4 sm:px-8 md:px-20 mt-6 sm:mt-10">
               Here, we provide a comprehensive suite of tools designed specifically for the Multi-Purpose Computing
               Platform (MCP). Whether you are a developer, a designer, or just looking for efficient solutions, our
               tools are tailored to enhance your productivity and streamline your workflow. Explore our collection and
               unlock the full potential of your MCP environment.
             </p>
             <button
-              onClick={handleClick}
-              className="p-5 pt-2 pb-2 mt-8 bg-[#d85a2c80] text-[#e5e5e5] hover:bg-[#d85a2c] transition-colors"
+              onClick={() => {
+                const searchSection = document.getElementById("222");
+                if (searchSection) {
+                  searchSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="px-6 py-3 mt-6 bg-[#d85a2c80] text-[#e5e5e5] hover:bg-[#d85a2c] transition-colors rounded-md"
             >
               Explore Now
             </button>
