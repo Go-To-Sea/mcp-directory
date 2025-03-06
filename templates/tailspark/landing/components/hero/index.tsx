@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-06 01:21:32
+ * @LastEditTime: 2025-03-07 00:55:56
  */
 "use client";
 
@@ -21,7 +21,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         return (
           <div className="flex flex-col sm:flex-row items-center">
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-0 sm:mr-3 md:mr-5">
-              Find
+              Discover
             </h1>
             <h1 className="text-primary leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
               MCP Servers
@@ -32,7 +32,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         return (
           <div className="flex flex-col sm:flex-row items-center">
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-0 sm:mr-3 md:mr-5">
-              Find
+              Discover
             </h1>
             <h1 className="text-primary leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
               MCP Clients

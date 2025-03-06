@@ -25,7 +25,7 @@ export async function generateMetadata() {
   };
 }
 
-const projectsCount = await getProjectsCount();
+const projectsCount = await getProjectsCount('server');
 
 export default async function () {
   const categories = await getCategories(1, 100);

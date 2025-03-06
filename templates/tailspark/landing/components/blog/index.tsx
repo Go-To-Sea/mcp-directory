@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:06:33
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-05 01:14:26
+ * @LastEditTime: 2025-03-07 01:28:28
  */
 "use client"
 
@@ -33,7 +33,8 @@ export default function Blog() {
             transition={{ delay: 0.2 }}
             className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
-            探索 MCP 的最新动态、技术文章和使用指南
+            {/* 探索 MCP 的最新动态、技术文章和使用指南 */}
+            Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP
           </motion.p>
         </div>
 
@@ -72,11 +73,11 @@ export default function Blog() {
                 </h2>
                 
                 <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
-                  我们很高兴地宣布 MCP 工具站推出了一系列新功能，包括更强大的搜索功能、优化的用户界面以及全新的开发者工具集成...
+                  We are pleased to announce the launch of a range of new features on the MCP tool site, including more powerful search capabilities, an optimized user interface, and brand-new developer tool integrations...
                 </p>
                 
                 <div className="flex items-center text-primary font-medium">
-                  阅读更多
+                  Read more
                   <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-2 transition-transform" />
                 </div>
               </div>

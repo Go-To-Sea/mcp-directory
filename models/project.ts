@@ -65,12 +65,18 @@ export async function getProjects(
   return data;
 }
 
-export async function getProjectsCount(): Promise<number> {
+export async function getProjectsCount(type?: 'server' | 'client'): Promise<number> {
   const supabase = getSupabaseClient();
-  const { data, error } = await supabase
+  let query = supabase
     .from("projects")
     .select("count")
     .eq("status", ProjectStatus.Created);
+
+  if (type) {
+    query = query.eq('type', type);
+  }
+
+  const { data, error } = await query;
 
   if (error) return 0;
 

@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-06 01:11:45
+ * @LastEditTime: 2025-03-07 00:53:01
  */
 import Markdown from "@/components/markdown";
 import { MdOutlineHome } from "react-icons/md";
@@ -70,7 +70,7 @@ If you have questions about this privacy policy or our privacy practices, please
 
 We may update this privacy policy periodically. Any changes will be posted on this page with an updated effective date. Your continued use of our services after such modifications constitutes your acknowledgment of the modified policy.
 
-Last updated: December 6, 2024`;
+Last updated: March  5, 2025`;
   return (
     <div>
       <a className="text-base-content cursor-pointer" href="/">

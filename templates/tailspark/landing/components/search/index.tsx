@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-07 00:55:07
+ */
 "use client"
 
 import type React from "react"
@@ -61,7 +68,7 @@ export default function Search({ query }: Props) {
           <input
             type="text"
             className="text-sm rounded-[0.5rem] dark:bg-[#1c1817] md:text-md flex-1 px-4 py-3 border-2 border-primary focus:border-primary focus:ring-primary hover:border-primary-focus"
-            placeholder="搜索关键词..."
+            placeholder="search with keywords"
             ref={inputRef}
             value={content}
             onChange={handleInputChange}
