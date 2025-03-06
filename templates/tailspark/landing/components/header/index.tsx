@@ -53,10 +53,10 @@ export default function HeaderComponent({ header }: { header: Header }) {
             >
               <img
                 src={header?.brand?.avatar?.src || "/logo.png"}
-                alt="MCP.so"
+                alt="MCP.ad"
                 className="w-8 h-8 rounded border-slate-300 shadow-lg mr-2"
               />
-              <span className="block">MCP.so</span>
+              <span className="block">MCP.ad</span>
             </button>
           </div>
           {/* 移动端菜单按钮 */}
