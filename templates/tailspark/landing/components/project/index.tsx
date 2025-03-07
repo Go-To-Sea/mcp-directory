@@ -18,7 +18,9 @@ export default ({
   project: Project;
   more_projects?: Project[];
 }) => {
-  const tagsArr = project.tags ? project.tags.split(",") : [];
+  const tagsArr = project.tags 
+    ? (typeof project.tags === 'string' ? project.tags.split(",") : project.tags)
+    : [];
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">

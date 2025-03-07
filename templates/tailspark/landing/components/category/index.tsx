@@ -25,7 +25,7 @@ export default function ({
       </div>
 
       <div className="w-full text-center">
-        {projects && <Projects projects={projects} />}
+        {projects && <Projects projects={projects} classMenus={[]} />}
       </div>
     </div>
   );

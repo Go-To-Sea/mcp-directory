@@ -42,43 +42,45 @@ export default function HeaderComponent({ header }: { header: Header }) {
   };
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 bg-background border-b border-gray-200 dark:border-gray-800">
+    <header className="sticky top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200/80 dark:border-gray-800/80 backdrop-blur-sm">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <button
-              className="flex items-center py-3 px-2 text-primary font-bold"
+              className="flex items-center py-3 px-2 text-primary font-bold hover:opacity-80 transition-opacity"
               onClick={() => handleNavigation("/")}
             >
               <img
                 src={header?.brand?.avatar?.src || "/logo.png"}
                 alt="MCP.ad"
-                className="w-8 h-8 rounded border-slate-300 shadow-lg mr-2"
+                className="w-8 h-8 rounded mr-2"
               />
               <span className="block">MCP.ad</span>
             </button>
           </div>
+
           {/* 移动端菜单按钮 */}
           <div className="md:hidden">
             <Button
               variant="ghost"
-              className="p-2"
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <BsList className="h-6 w-6" />
+              <BsList className="h-5 w-5" />
             </Button>
           </div>
-          {/* 桌面端导航 - 保持原样 */}
-          <div className="hidden md:flex items-center justify-end flex-1 space-x-4">
+
+          {/* 桌面端导航 */}
+          <div className="hidden md:flex items-center justify-end flex-1 space-x-2">
             <Button
               variant="ghost"
-              className={`text-slate-700 dark:text-white hover:text-primary ${
-                pathname === "/servers" ? "text-primary" : ""
+              className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors ${
+                pathname === "/servers" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
               }`}
               onClick={() => handleNavigation("/servers")}
             >
-              <GrCloudComputer className="mr-2" />
+              <GrCloudComputer className="mr-2 h-4 w-4" />
               Servers
             </Button>
             <Button
@@ -127,72 +129,86 @@ export default function HeaderComponent({ header }: { header: Header }) {
       </div>
       {/* 移动端菜单弹出层 */}
       {isMenuOpen && (
-        <div className="md:hidden fixed right-0 top-16 w-1/2 z-50 bg-background border-l border-b border-gray-200 dark:border-gray-800 shadow-lg animate-slide-left">
-          <div className="flex flex-col py-2">
-            {/* 导航链接 */}
-            <Button
-              variant="ghost"
-              className={`w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 ${
-                pathname === "/servers" ? "text-primary" : ""
-              }`}
-              onClick={() => {
-                handleNavigation("/servers");
-                setIsMenuOpen(false);
-              }}
-            >
-              <GrCloudComputer className="mr-3 h-5 w-5" />
-              Servers
-            </Button>
-            <Button
-              variant="ghost"
-              className={`w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 ${
-                pathname === "/clients" ? "text-primary" : ""
-              }`}
-              onClick={() => {
-                handleNavigation("/clients");
-                setIsMenuOpen(false);
-              }}
-            >
-              <GrAction className="mr-3 h-5 w-5" />
-              Clients
-            </Button>
-            <Button
-              variant="ghost"
-              className={`w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 ${
-                pathname === "/blog" ? "text-primary" : ""
-              }`}
-              onClick={() => {
-                handleNavigation("/blog");
-                setIsMenuOpen(false);
-              }}
-            >
-              <BsList className="mr-3 h-5 w-5" />
-              Blog
-            </Button>
-            <div className="h-px bg-gray-200 dark:bg-gray-700 my-2" />
-            <Button
-              variant="ghost"
-              className="w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Sign In
-            </Button>
-            <Button
-              variant="ghost"
-              className="w-full justify-start py-4 px-6 text-base font-medium text-primary hover:bg-gray-50 dark:hover:bg-gray-800"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Submit
-            </Button>
+        <div className="md:hidden fixed inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm z-40" onClick={() => setIsMenuOpen(false)}>
+          <div 
+            className="fixed right-0 top-16 w-64 min-h-[calc(100vh-4rem)] bg-white dark:bg-gray-900 shadow-xl animate-slide-left" 
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex flex-col h-full">
+              <div className="flex-1 py-4">
+                <Button
+                  variant="ghost"
+                  className={`w-full justify-start px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                    pathname === "/servers" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
+                  }`}
+                  onClick={() => {
+                    handleNavigation("/servers");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  <GrCloudComputer className="mr-3 h-4 w-4" />
+                  Servers
+                </Button>
+                <Button
+                  variant="ghost"
+                  className={`w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 ${
+                    pathname === "/clients" ? "text-primary" : ""
+                  }`}
+                  onClick={() => {
+                    handleNavigation("/clients");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  <GrAction className="mr-3 h-5 w-5" />
+                  Clients
+                </Button>
+                <Button
+                  variant="ghost"
+                  className={`w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 ${
+                    pathname === "/blog" ? "text-primary" : ""
+                  }`}
+                  onClick={() => {
+                    handleNavigation("/blog");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  <BsList className="mr-3 h-5 w-5" />
+                  Blog
+                </Button>
+                <div className="h-px bg-gray-200 dark:bg-gray-700 my-2" />
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Sign In
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start py-4 px-6 text-base font-medium text-primary hover:bg-gray-50 dark:hover:bg-gray-800"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Submit
+                </Button>
+              </div>
+              <div className="border-t border-gray-200 dark:border-gray-800 p-4 space-y-2">
+                <Button
+                  variant="outline"
+                  className="w-full justify-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Login
+                </Button>
+                <Button
+                  variant="default"
+                  className="w-full justify-center bg-primary hover:bg-primary/90"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Submit
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
-      <header className="sticky top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-        {/* ... 其他代码保持不变 ... */}
-      </header>
-      {isMenuOpen && (
-        <div className="md:hidden fixed right-0 top-16 w-1/2 z-50 bg-white dark:bg-gray-900 border-l border-b border-gray-200 dark:border-gray-800 shadow-lg animate-slide-left">
-          {/* ... 其他代码保持不变 ... */}
         </div>
       )}
     </header>

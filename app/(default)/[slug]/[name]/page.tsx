@@ -15,8 +15,8 @@ export async function generateMetadata({
   const project = await findProjectByName(name);
 
   return {
-    title: `${project?.title || "-"} | ${pagejson?.metadata?.title}`,
-    description: `Find Awesome MCP Server ${project?.title || "-"}: ${
+    title: `${project?.name || "-"} | ${pagejson?.metadata?.title}`,  // 使用 name 替代 title
+    description: `Find Awesome MCP Server ${project?.name || "-"}: ${
       project?.description || "-"
     }`,
     alternates: {

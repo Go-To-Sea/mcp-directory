@@ -1,4 +1,5 @@
 export interface Project {
+  github_url: string | undefined;
   uuid?: string;
   name?: string;
   title: string;

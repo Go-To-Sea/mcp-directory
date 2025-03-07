@@ -2,33 +2,39 @@
  * @Description: 
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
- * @LastEditors: rendc
- * @LastEditTime: 2025-03-06 00:41:59
+ * @LastEditors: YourName
+ * @LastEditTime: 2025-03-07 13:11:39
  */
 "use client"
 
-import { Project } from "@/types/project"
+
+import { Project, ClassMenus } from "@/types/project"  // 添加 ClassMenus 导入
+import ClassMenusComponent from "./classMenus"  // 保持导入名称
 import ProjectItem from "./item"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { usePathname } from 'next/navigation'
 
 export default ({
   projects,
   loading,
   viewType,
-  projectType
+  projectType,
+  classMenus
 }: {
   projects: Project[]
   loading?: boolean
   viewType?: 'default' | 'class',
   projectType?: 'server' | 'client',
+  classMenus?: ClassMenus[]
 }) => {
+    const pathname = usePathname()
     let filterProjects: Project[] = []
     if(projectType) {
       filterProjects = projects.filter(p => p.type === projectType )
     }
-    
+    console.log('classMenus========',classMenus)
   if (viewType === 'class') {
     const servers = projects.filter(p => p.type === 'server')
     const clients = projects.filter(p => p.type === 'client')
@@ -99,6 +105,7 @@ export default ({
   // 默认视图
   return (
     <section className="relative">
+      {pathname === '/servers' && <ClassMenusComponent classMenus={classMenus} />}
       <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
         {!loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

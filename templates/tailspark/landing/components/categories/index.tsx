@@ -52,12 +52,11 @@ export default function ({
             );
           })}
       </div>
-
       <div className="w-full text-center">
-        <h2 className="mx-auto font-bold text-3xl mt-16 mb-4">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
           Featured MCP Servers
         </h2>
-        {projects && <Projects projects={projects} />}
+        {projects && <Projects projects={projects} classMenus={[]} />}
       </div>
     </div>
   );

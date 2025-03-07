@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
- * @LastEditors: rendc
- * @LastEditTime: 2025-03-04 22:55:39
+ * @LastEditors: YourName
+ * @LastEditTime: 2025-03-07 12:57:44
  */
 "use client"
 
@@ -13,21 +13,58 @@ import { Star, ExternalLink } from "lucide-react"
 import type { Project } from "@/types/project"
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { usePathname, useRouter } from 'next/navigation'
 
-export default ({ project }: { project: Project }) => {
+interface ProjectItemProps {
+  project: Project;
+}
+
+const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
+  const pathname = usePathname()
+  const router = useRouter()
   const [isHovered, setIsHovered] = useState(false)
   const [isStarred, setIsStarred] = useState(false)
-
-  const handleClick = (url: string | undefined) => {
-    if (url) window.open(url, "_blank")
-  }
-
+  
   const handleStarClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     setIsStarred(!isStarred)
-    // Here you would typically save this to user preferences
   }
-
+  const handleProjectClick = () => {
+    // 修改为与路由结构匹配的路径
+    const detailPath = `/project/${encodeURIComponent(project.name || '')}`  // 添加空字符串作为默认值，处理 undefined 情况
+    router.push(detailPath)
+  }
+  // 合并两个 handleLinkClick 函数的功能
+  // const handleLinkClick = (e: React.MouseEvent) => {
+  //   e.stopPropagation()
+  //   if (project.url) {
+  //     window.open(project.url, "_blank")
+  //   }
+  // }
+ 
+  
+  // Move renderTags function inside the component
+  const renderTags = (tags: string | string[]) => {
+    const tagArray = typeof tags === 'string' ? tags.split(',') : tags;
+    return (
+      <div className="flex items-center gap-1 overflow-hidden">
+        {tagArray.slice(0, 2).map((tag, index) => (
+          <span
+            key={index}
+            className="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/10 text-[10px] sm:text-xs text-primary whitespace-nowrap"
+          >
+            #{tag.trim()}
+          </span>
+        ))}
+        {tagArray.length > 2 && (
+          <span className="text-[10px] sm:text-xs text-gray-500 whitespace-nowrap">
+            +{tagArray.length - 2}
+          </span>
+        )}
+      </div>
+    );
+  };
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -37,27 +74,31 @@ export default ({ project }: { project: Project }) => {
         y: -5,
         transition: { duration: 0.2 },
       }}
-      className="mb-2 h-[180px] cursor-pointer  bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-5 shadow-md hover:shadow-xl transition-all duration-300"
-      onClick={() => handleClick(project.url)}
+      className="mb-2 h-[160px] sm:h-[180px] cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-3 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300"
+      onClick={handleProjectClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex justify-between items-start mb-3">
+      <div className="flex justify-between items-start mb-2 sm:mb-3">
         <div className="flex items-start overflow-hidden max-w-[85%]">
-          <div className="rounded-md flex items-center justify-center mr-3 min-w-[32px]">
+          <div className="rounded-md flex items-center justify-center mr-2 sm:mr-3 min-w-[24px] sm:min-w-[32px]">
             <motion.img
               src={project.author_avatar_url || "/logo.png"}
               alt={project.name}
-              className="w-8 h-8 rounded-md object-cover"
+              className="w-6 h-6 sm:w-8 sm:h-8 rounded-md object-cover"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.2 }}
             />
           </div>
           <div className="overflow-hidden">
-            <h3 className="font-medium text-base line-clamp-1 hover:text-primary transition-colors duration-200">
+            <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
               {project.name}
             </h3>
-            {project.author_name && <p className="text-xs text-gray-500 mt-1">by {project.author_name}</p>}
+            {project.author_name && (
+              <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">
+                by {project.author_name}
+              </p>
+            )}
           </div>
         </div>
         <motion.button
@@ -73,19 +114,13 @@ export default ({ project }: { project: Project }) => {
         </motion.button>
       </div>
 
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 h-[40px]">{project.description}</p>
+      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-4 line-clamp-2 h-[32px] sm:h-[40px]">
+        {project.description}
+      </p>
 
       <div className="flex items-center justify-between mt-auto">
-        <div className="flex flex-wrap gap-2">
-          {/* {project.tags &&
-            project.tags.slice(0, 2).map((tag, index) => (
-              <span
-                key={index}
-                className="inline-flex items-center px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-200"
-              >
-                # {tag}
-              </span>
-            ))} */}
+        <div className="overflow-hidden">
+          {project.tags && renderTags(project.tags)}
         </div>
 
         <motion.div
@@ -94,13 +129,16 @@ export default ({ project }: { project: Project }) => {
             opacity: isHovered ? 1 : 0.7,
           }}
           transition={{ duration: 0.2 }}
-          className="flex items-center text-xs text-primary gap-1"
+          className="flex items-center text-[10px] sm:text-xs text-primary gap-1 flex-shrink-0 ml-2"
+          onClick={handleProjectClick}
         >
-          <span className="hidden sm:inline">View Project</span>
-          <ExternalLink size={14} />
+          <span className="hidden sm:inline">View Details</span>
+          <ExternalLink size={12} className="sm:w-4 sm:h-4" />
         </motion.div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
+
+export default ProjectItem;
 

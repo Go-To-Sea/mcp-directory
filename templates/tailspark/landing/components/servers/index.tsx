@@ -11,16 +11,19 @@ import { Page } from "@/types/landing";
 import { Project } from "@/types/project";
 import Projects from "../../components/projects";
 import Search from "../../components/search";
+import { ClassMenus } from "@/types/project";
 
 import FooterInfo from "../../components/footerInfo";
 export default function ({
   page,
   projects,
   projectsCount,
+  classMenus
 }: {
   page: any;
   projects: Project[];
   projectsCount: number;
+  classMenus: ClassMenus[]
 }) {
   return (
     <div>
@@ -29,7 +32,7 @@ export default function ({
       <div className="mb-10">
         <Search />
       </div>
-      <Projects projects={projects} projectType={'server'}/>
+      <Projects projects={projects} projectType={'server'} classMenus={classMenus}/>
     </div>
   );
 }

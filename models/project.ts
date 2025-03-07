@@ -42,7 +42,20 @@ export async function findProjectByName(
     .single();
 
   if (!data) return undefined;
+  return data;
+}
 
+export async function getProjectByName(name: string): Promise<Project | null> {
+  const supabase = getSupabaseClient();
+  
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .eq("name", name)
+    .eq("status", ProjectStatus.Created)
+    .single();
+
+  if (error || !data) return null;
   return data;
 }
 
@@ -179,6 +192,32 @@ export async function getProjectsWithKeyword(
   return data;
 }
 
+export async function getProjectsWithTag(
+  tag: string,
+  page: number,
+  limit: number
+): Promise<Project[]> {
+  const supabase = getSupabaseClient();
+
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .ilike("tags", `%${tag}%`) // 使用 ilike 进行模糊匹配，确保能匹配逗号分隔的字符串
+    .eq("status", ProjectStatus.Created)
+    .order("sort", { ascending: false })
+    .order("created_at", { ascending: false })
+    .range((page - 1) * limit, page * limit - 1);
+
+  if (error) return [];
+
+  // 进一步过滤，确保完全匹配（避免部分匹配的问题）
+  return data.filter(project => {
+    if (!project.tags) return false;
+    const tagArray = project.tags.split(',').map((t: string) => t.trim());
+    return tagArray.includes(tag);
+  });
+}
+
 export async function getProjectsWithoutSummary(
   page: number,
   limit: number
@@ -214,4 +253,31 @@ export async function updateProject(uuid: string, project: Partial<Project>) {
   if (error) throw error;
 
   return data;
+}
+
+// 添加 getAllProjectTags 方法的导出
+export async function getAllProjectTags(): Promise<{ [key: string]: number }> {
+  const supabase = getSupabaseClient();
+  
+  // 获取所有项目的 tags
+  const { data, error } = await supabase
+    .from("projects")
+    .select("tags")
+    .eq("status", ProjectStatus.Created)
+    .not("tags", "is", null);
+
+  if (error || !data) return {};
+
+  // 统计标签数量
+  return data.reduce((acc: { [key: string]: number }, project) => {
+    if (project.tags) {
+      const tagArray = project.tags.split(',').map((tag: string) => tag.trim());
+      tagArray.forEach((tag: string) => {
+        if (tag) {
+          acc[tag] = (acc[tag] || 0) + 1;
+        }
+      });
+    }
+    return acc;
+  }, {});
 }
