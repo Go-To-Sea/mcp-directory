@@ -73,10 +73,22 @@ export default function ({
       {showIntro && (
         <div className="mx-auto max-w-7xl animate-fade-out delay-3000 duration-2000 w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-[#732befe6]/50 px-4">
           <div className="text-center">
-            {/* 渐变标题 */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8d54f0e6] to-[#732befe6] mb-4">
               Welcome to the MCP Tools Station!
             </h1>
+            
+            {/* 添加工具站数量展示 */}
+            <div className="mb-6">
+              <div className="wiggle">
+                <span className="text-2xl font-bold text-primary">
+                  {projectsCount}
+                </span>
+                <span className="text-xl text-gray-600 dark:text-gray-300 ml-2">
+                  MCP Tools Available - The Most Comprehensive Collection
+                </span>
+              </div>
+            </div>
+
             <p className="text-base sm:text-lg text-[#898989] dark:text-white mb-8 px-4 sm:px-8 md:px-20 mt-6 sm:mt-10">
               Here, we provide a comprehensive suite of tools designed specifically for the Multi-Purpose Computing
               Platform (MCP). Whether you are a developer, a designer, or just looking for efficient solutions, our
