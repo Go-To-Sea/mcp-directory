@@ -23,7 +23,7 @@
       "@/components/*": ["./components/*"],
       "@/components/ui/*": ["./components/ui/*"]
     },
-    "types": ["tailwindcss","react"]  // 添加这一行
+    "types": ["tailwindcss","react"]
   },
   "include": [
     "next-env.d.ts",

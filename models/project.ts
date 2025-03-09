@@ -216,8 +216,8 @@ export async function getProjectsWithTag(
   return data.filter((project: Project) => {
     if (!project.tags) return false;
     
-    const projectTags: string[] = project.tags
-      ?.split(',') || []
+    const projectTags: string[] = (typeof project.tags === 'string' ? project.tags.split(',') : project.tags || [])
+      typeof project.tags === 'string' ? project.tags.split(',') : project.tags || []
       .map((t: string) => t.trim().toLowerCase())
       .flatMap((t: string) => t.split(',').map((st: string) => st.trim()));
 
@@ -285,8 +285,8 @@ export async function getAllProjectTags(type?: 'server' | 'client'): Promise<{ [
       // 处理可能的多层嵌套分割
       const tagArray = project.tags
         .split(',')
-        .map(tag => tag.trim().toLowerCase()) // 统一转换为小写
-        .filter(tag => tag); // 过滤空标签
+        .map((tag: string) => tag.trim().toLowerCase()) // 统一转换为小写
+        .filter((tag: any)  => tag); // 过滤空标签
 
       tagArray.forEach((tag: string) => {
         const normalizedTag = tag.trim();

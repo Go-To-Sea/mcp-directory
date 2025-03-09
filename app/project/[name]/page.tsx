@@ -13,7 +13,7 @@ import pageJson from "@/pagejson/en.json";
 import type { Project } from "@/types/project";
 import ProjectContent from "../components/ProjectContent";
 import type { Metadata, ResolvingMetadata } from 'next';
-import Header from "../../../templates/tailspark/landing/components/Header";
+import Header from "@/templates/tailspark/landing/components/header";
 
 export const runtime = "edge";
 
@@ -52,7 +52,7 @@ async function getSimilarProjects(currentProject: Project, limit: number = 10): 
       project.uuid !== currentProject.uuid
     )
     .slice(0, limit); // 只取前10条
-    
+    console.log('similarProjects:',allProjects, similarProjects);
   return similarProjects;
 }
 

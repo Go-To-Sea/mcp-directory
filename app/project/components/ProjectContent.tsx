@@ -2,22 +2,60 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { ExternalLink, Github } from "lucide-react"
+import Link from "next/link"  // 添加 Link 导入
+import { ExternalLink, Github, ChevronRight, Home, ArrowLeft } from "lucide-react"  // 添加图标
 import type { Project } from "@/types/project"
 import Markdown from "@/components/markdown";
 import Header from "../../../templates/tailspark/landing/components/header";
 // 导入 ProjectItem 组件
 import ProjectItem from "../../../templates/tailspark/landing/components/projects/item";
+import { useRouter } from "next/navigation"
 
 interface ProjectContentProps {
   project: Project;
   tags: string[];
   similarProjects?: Project[]; // 添加相似项目参数
 }
-
 export default function ProjectContent({ project, tags, similarProjects = [] }: ProjectContentProps) {
+  const router = useRouter();
+
   return (
     <div className="relative w-full overflow-hidden">
+      {/* 修改面包屑导航 */}
+      <div className="flex justify-between items-center mb-6">
+        {/* 移动端返回按钮 */}
+        <button 
+          onClick={() => router.back()}
+          className="md:hidden flex items-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+        >
+          <ArrowLeft size={16} className="mr-1" />
+          <span>Back</span>
+        </button>
+
+        {/* 桌面端面包屑 */}
+        <nav className="hidden md:flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+          <Link href="/" className="flex items-center hover:text-primary transition-colors">
+            <Home size={16} className="mr-1" />
+            <span>Home</span>
+          </Link>
+          <ChevronRight size={14} />
+          <Link 
+            href="/projects" 
+            className="hover:text-primary transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              router.back();
+            }}
+          >
+            goBack
+          </Link>
+          <ChevronRight size={14} />
+          <span className="text-gray-900 dark:text-gray-200 truncate max-w-[200px]">
+            {project.name}
+          </span>
+        </nav>
+      </div>
+
       {/* 动态背景装饰元素 */}
       <motion.div 
         className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-200/10 to-purple-300/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/3 pointer-events-none"

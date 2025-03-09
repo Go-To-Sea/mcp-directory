@@ -17,7 +17,16 @@ import { useRouter } from 'next/navigation' // 添加路由导入
 import { useAuth, SignInButton } from '@clerk/nextjs' // 添加 Clerk 的 auth 钩子和登录按钮
 
 // 自定义Toast组件
-const Toast = ({ message, description, type, onClose }) => {
+// Toast组件的属性接口定义
+interface ToastProps {
+  message: string;  // Toast消息内容
+  description?: string;  // 可选的详细描述
+  type: 'success' | 'error';  // Toast类型，只能是success或error
+  onClose: () => void;  // 关闭Toast的回调函数
+}
+
+
+const Toast = ({ message, description, type, onClose }: ToastProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -74,11 +83,12 @@ type FormValues = z.infer<typeof formSchema>;
 export default function SubmitForm() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toastInfo, setToastInfo] = useState(null);
-  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false); // 添加登录弹窗状态
-  const router = useRouter(); // 添加路由钩子
-  const { isSignedIn } = useAuth(); // 使用 Clerk 的 useAuth 钩子检查登录状态
+  const [toastInfo, setToastInfo] = useState<ToastProps | null>(null);
+  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
+  const router = useRouter();
+  const { isSignedIn } = useAuth();
   
+  // 修改这里的类型断言方式
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -92,8 +102,8 @@ export default function SubmitForm() {
   // 获取当前选择的类型
   const selectedType = form.watch("type");
   
-  const showToast = (message, description, type) => {
-    setToastInfo({ message, description, type });
+  const showToast = (message: string, description: string, type: 'success' | 'error') => {
+    setToastInfo({ message, description, type, onClose: () => setToastInfo(null) });
     
     // 3秒后自动关闭
     setTimeout(() => {
@@ -149,7 +159,7 @@ export default function SubmitForm() {
       } catch (error) {
         
         // 检查是否是唯一约束错误
-        if (error.code === '23505' && error.message?.includes('projects_name_key')) {
+        if ((error as any).code === '23505' && (error as any).message?.includes('projects_name_key')) {
           // 项目名称已存在错误
           showToast("Failed", `项目名称 "${form.getValues().name}" 已存在，请使用其他名称`, "error");
           // 聚焦到名称输入框
