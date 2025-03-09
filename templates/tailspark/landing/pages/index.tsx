@@ -102,7 +102,7 @@ export default function ({
                   searchSection.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="px-6 py-3 mt-6 bg-[#ab80f5e6] text-[#e5e5e5] hover:bg-[#8d54f0e6] transition-colors rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              className="px-6 py-3 mt-6 bg-[#ab80f5e6] text-[#e5e5e5] hover:bg-[#8d54f0e6] rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
             >
               Explore Now
             </button>
