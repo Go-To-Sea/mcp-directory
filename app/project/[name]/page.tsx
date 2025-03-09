@@ -1,8 +1,8 @@
 /*
  * @Author: YourName
  * @Date: 2025-03-07 10:00:55
- * @LastEditTime: 2025-03-07 11:22:52
- * @LastEditors: YourName
+ * @LastEditTime: 2025-03-09 16:53:43
+ * @LastEditors: rendc
  * @Description: 
  * @FilePath: \mcp-directory\app\project\[name]\page.tsx
  * 版权声明
@@ -13,6 +13,7 @@ import pageJson from "@/pagejson/en.json";
 import type { Project } from "@/types/project";
 import ProjectContent from "../components/ProjectContent";
 import type { Metadata, ResolvingMetadata } from 'next';
+import Header from "../../../templates/tailspark/landing/components/Header";
 
 export const runtime = "edge";
 
@@ -51,6 +52,7 @@ export default async function ProjectDetail({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <Header header={{}}/>
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <ProjectContent project={project} tags={tags || []} />
       </div>

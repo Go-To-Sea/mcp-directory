@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-03 22:45:57
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-09 12:34:40
+ * @LastEditTime: 2025-03-09 16:28:37
  */
 import Clients from "@/templates/tailspark/landing/components/clients";
 import { getCategories } from "@/models/category";
@@ -43,9 +43,9 @@ export default async function ({
   console.log('allTags raw data:', allTags);
   
   if (tag) {
-    projects = await getProjectsWithTag(tag as string, 1, 100,'client');
+    projects = await getProjectsWithTag(tag as string, 1, 500,'client');
   } else if (q) {
-    projects = await getProjectsWithKeyword(q as string, 1, 100);
+    projects = await getProjectsWithKeyword(q as string, 1, 500);
   } else {
     projects = await getFeaturedProjects(1, 100);
   }

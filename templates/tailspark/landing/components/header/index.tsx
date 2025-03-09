@@ -15,7 +15,7 @@ import {
   UserButton,
   ClerkProvider
 } from '@clerk/nextjs'
-export default function HeaderComponent({ header  }: { header: Header }) {
+export default function HeaderComponent({ header }: { header: Header }) {
   const pathname = usePathname();
   const router = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -129,6 +129,7 @@ export default function HeaderComponent({ header  }: { header: Header }) {
             </Button>
           </SignInButton>
         </SignedOut>
+
         <Button
           className="dark:text-white rounded bg-gray-50 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-700"
           onClick={toggleTheme}

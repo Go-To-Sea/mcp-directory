@@ -50,9 +50,9 @@ export default async function ({
   
   // 获取筛选后的项目列表
   if (tag) {
-    projects = await getProjectsWithTag(tag as string, 1, 100,'server');
+    projects = await getProjectsWithTag(tag as string, 1, 500,'server');
   } else if (q) {
-    projects = await getProjectsWithKeyword(q as string, 1, 100);
+    projects = await getProjectsWithKeyword(q as string, 1, 500);
   } else {
     projects = await getFeaturedProjects(1, 100);
   }

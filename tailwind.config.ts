@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-09 15:53:08
+ */
 import type { Config } from "tailwindcss";
 
 export default {
@@ -71,5 +78,6 @@ export default {
   plugins: [
 	require("tailwindcss-animate"),
 	require('@tailwindcss/typography'),
+	require('tailwind-scrollbar'),
 ],
 } satisfies Config;

@@ -37,7 +37,7 @@ export default function ProjectContent({ project, tags }: ProjectContentProps) {
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
               {project.name}
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
+            <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -118,7 +118,10 @@ export default function ProjectContent({ project, tags }: ProjectContentProps) {
             <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white hover:text-primary transition-colors duration-200">
               About
             </h2>
-            <Markdown content={project.content || '正在更新中'} />
+            <div 
+              className="prose dark:prose-invert max-w-none"
+              dangerouslySetInnerHTML={{ __html: project.content || 'Continuous updates...' }} 
+            />
           </div>
         </motion.div>
 
@@ -132,7 +135,7 @@ export default function ProjectContent({ project, tags }: ProjectContentProps) {
           {/* 参考资料卡片 */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300 min-h-[400px]">
             <h2 className="text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200">
-              相关推荐
+              Related Resources
             </h2>
             <div className="text-gray-500 dark:text-gray-400">
               

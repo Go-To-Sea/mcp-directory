@@ -17,13 +17,24 @@ export default (props: {
   const searchParams = useSearchParams();
   const currentTag = searchParams.get('tag');
   const [isExpanded, setIsExpanded] = useState(false);
+  
+  const handleExpandToggle = () => {
+    if (isExpanded) {
+      // 收起时，将标签区域滚动到顶部
+      const tagsContainer = document.getElementById('tags-container');
+      if (tagsContainer) {
+        tagsContainer.scrollTop = 0;
+      }
+    }
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div className="max-w-full md:max-w-7xl mx-auto px-4 py-4 md:px-8 md:py-4 lg:py-4">
       <div className="flex items-center gap-4 mb-2">
         <div className="flex items-center gap-4">
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={handleExpandToggle}
             className="flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
             {isExpanded ? (
@@ -44,9 +55,11 @@ export default (props: {
         </div>
       </div>
       
-      <div className={`flex flex-wrap gap-2 transition-all duration-300 ${
-        isExpanded ? 'max-h-[1000px]' : 'max-h-[126px]'
-      } overflow-hidden`}>
+      <div id="tags-container" className={`flex flex-wrap gap-2 transition-all duration-300 ${
+        isExpanded 
+          ? 'max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent' 
+          : 'max-h-[126px] overflow-hidden'
+      }`}>
         {categories.map((category, index) => (
           <Link 
             href={category.href} 

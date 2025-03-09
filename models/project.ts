@@ -217,7 +217,7 @@ export async function getProjectsWithTag(
     if (!project.tags) return false;
     
     const projectTags: string[] = project.tags
-      ? (Array.isArray(project.tags) ? project.tags : project.tags.split(',')) : []
+      ?.split(',') || []
       .map((t: string) => t.trim().toLowerCase())
       .flatMap((t: string) => t.split(',').map((st: string) => st.trim()));
 
@@ -262,7 +262,6 @@ export async function updateProject(uuid: string, project: Partial<Project>) {
 
   return data;
 }
-// 修改返回类型定义
 export async function getAllProjectTags(type?: 'server' | 'client'): Promise<{ [key: string]: { name: string; count: number; type: string } }> {
   const supabase = getSupabaseClient();
   
@@ -280,27 +279,33 @@ export async function getAllProjectTags(type?: 'server' | 'client'): Promise<{ [
 
   if (error || !data) return {};
 
-  // 先收集所有标签数据
+  // 修改标签处理逻辑
   const tagsMap = data.reduce((acc: { [key: string]: { name: string; count: number; type: string } }, project) => {
     if (project.tags) {
-      const tagArray = project.tags.split(',').map((tag: string) => tag.trim());
+      // 处理可能的多层嵌套分割
+      const tagArray = project.tags
+        .split(',')
+        .map(tag => tag.trim().toLowerCase()) // 统一转换为小写
+        .filter(tag => tag); // 过滤空标签
+
       tagArray.forEach((tag: string) => {
-        if (tag) {
-          if (!acc[tag]) {
-            acc[tag] = { 
-              name: tag,
+        const normalizedTag = tag.trim();
+        if (normalizedTag) {
+          if (!acc[normalizedTag]) {
+            acc[normalizedTag] = { 
+              name: normalizedTag,
               count: 0, 
               type: project.type || '' 
             };
           }
-          acc[tag].count += 1;
+          acc[normalizedTag].count += 1;
         }
       });
     }
     return acc;
   }, {});
 
-  // 将对象转换为数组并排序
+  // 排序逻辑保持不变
   const sortedTags = Object.entries(tagsMap)
     .sort(([, a], [, b]) => b.count - a.count)
     .reduce((acc, [key, value]) => {
