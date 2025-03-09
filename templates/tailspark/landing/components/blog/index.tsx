@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:06:33
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-09 13:20:38
+ * @LastEditTime: 2025-03-09 21:54:38
  */
 "use client"
 
@@ -13,7 +13,7 @@ import Link from "next/link"
 
 export default function Blog() {
   return (
-    <div className="relative py-16">
+    <div className="relative pb-16 pt-6">
       {/* 背景装饰 */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50/50 dark:to-gray-900/50" />
       
@@ -23,7 +23,7 @@ export default function Blog() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 py-2 leading-relaxed"
           >
             MCP Blog
           </motion.h1>
@@ -66,9 +66,8 @@ export default function Blog() {
                     3 min read
                   </span>
                 </div>
-                
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary transition-colors">
-                Introducing the Model Context Protocol
+                <h2 className="text-2xl font-bold text-gray-600 dark:text-white mb-4 group-hover:text-primary transition-colors">
+                  Introducing the Model Context Protocol
                 </h2>
                 
                 <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">

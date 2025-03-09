@@ -9,6 +9,7 @@ import "./assets/style.css";
 
 import Footer from "./components/footer";
 import Header from "./components/header";
+import BackToTop from "./components/backToTop/backToTop";
 import { Page } from "@/types/landing";
 
 export default function ({
@@ -19,12 +20,13 @@ export default function ({
   page:any;
 }>) {
   return (
-    <main className=" bg-background text-foreground">
+    <main className="bg-background text-foreground">
       <div className="border-b-2">
         {page.header && <Header header={page.header} />}
       </div>
       {children}
       {/* {page.footer && <Footer footer={page.footer} />} */}
+      <BackToTop />
     </main>
   );
 }
