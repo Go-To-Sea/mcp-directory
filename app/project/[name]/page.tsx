@@ -8,7 +8,7 @@
  * 版权声明
  */
 import { notFound } from "next/navigation";
-import { getProjectByName, getProjects } from "@/models/project";
+import { getProjectById, getProjectByName, getProjects } from "@/models/project";
 import pageJson from "@/pagejson/en.json";
 import type { Project } from "@/types/project";
 import ProjectContent from "../components/ProjectContent";
@@ -23,19 +23,31 @@ interface Props {
 }
 
 export async function generateMetadata(
-  { params }: Props,
+  { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const resolvedParams = await params;
-  const project = await getProjectByName(resolvedParams.name);
+  const resolvedSearchParams = await searchParams;
+  const id = resolvedSearchParams?.id;
+  
+  let project;
+  if (typeof id === 'string') {
+    project = await getProjectById(parseInt(id));
+  } else {
+    // 只解码 URL，保持下划线不变
+    const decodedName = decodeURIComponent(resolvedParams.name);
+    project = await getProjectByName(decodedName);
+  }
   
   if (!project) return {};
   
+  // 生成 canonical URL 时进行编码
+  const canonicalName = encodeURIComponent(project.name);
   return {
     title: `${project.name} | ${pageJson?.metadata?.title}`,
     description: project.description,
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/servers/${resolvedParams.name}`,
+      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/servers/${canonicalName}`,
     },
   };
 }
@@ -56,17 +68,25 @@ async function getSimilarProjects(currentProject: Project, limit: number = 10): 
   return similarProjects;
 }
 
-export default async function ProjectDetail({ params }: Props) {
+export default async function ProjectDetail({ params, searchParams }: Props) {
   const resolvedParams = await params;
-  const project = await getProjectByName(resolvedParams.name);
+  const resolvedSearchParams = await searchParams;
+  const id = resolvedSearchParams?.id;
+  
+  let project;
+  if (typeof id === 'string') {
+    project = await getProjectById(parseInt(id));
+  } else {
+    // 只解码 URL，保持下划线不变
+    const decodedName = decodeURIComponent(resolvedParams.name);
+    project = await getProjectByName(decodedName);
+  }
   
   if (!project) {
     notFound();
   }
 
-  // 获取相同类型的项目
   const similarProjects = await getSimilarProjects(project);
-  
   const tags = typeof project.tags === 'string' ? project.tags.split(',') : project.tags;
 
   return (
@@ -76,7 +96,7 @@ export default async function ProjectDetail({ params }: Props) {
         <ProjectContent 
           project={project} 
           tags={tags || []} 
-          similarProjects={similarProjects} // 传递相似项目到组件
+          similarProjects={similarProjects}
         />
       </div>
     </div>

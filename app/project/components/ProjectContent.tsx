@@ -1,4 +1,4 @@
-'use client'
+'use client'  // 确保这行代码在文件最顶部
 
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -11,13 +11,28 @@ import Header from "../../../templates/tailspark/landing/components/header";
 import ProjectItem from "../../../templates/tailspark/landing/components/projects/item";
 import { useRouter } from "next/navigation"
 
+// 在文件顶部添加 Tailwind 样式导入
+import '@/styles/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
+
 interface ProjectContentProps {
   project: Project;
   tags: string[];
   similarProjects?: Project[]; // 添加相似项目参数
 }
+// 添加 useEffect 来处理客户端渲染
+import { useEffect, useState } from 'react'
+
 export default function ProjectContent({ project, tags, similarProjects = [] }: ProjectContentProps) {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // 或者返回一个加载状态
+  }
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -56,19 +71,6 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
         </nav>
       </div>
 
-      {/* 动态背景装饰元素 */}
-      <motion.div 
-        className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-200/10 to-purple-300/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/3 pointer-events-none"
-        animate={{
-          x: ["-50%", "-45%", "-50%"],
-          y: ["-30%", "-35%", "-30%"],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
       
       {/* <Header header={{}}></Header> */}
       {/* 项目头部信息 - 融合了作者信息 */}

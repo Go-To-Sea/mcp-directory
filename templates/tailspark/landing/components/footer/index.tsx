@@ -46,28 +46,28 @@ export default ({ footer }: { footer?: Footer }) => {
           </div>
 
           {/* 导航链接 */}
-          {footer?.nav?.items?.map((item: Item, idx: number) => {
-            return (
+          <div className="grid grid-cols-2 md:grid-cols-3 col-span-2 gap-8">
+            {footer?.nav?.items?.map((item: Item, idx: number) => (
               <div key={idx} className="mt-8 md:mt-0">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-4">{item?.title}</h3>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
+                  {item?.title || ''}
+                </h3>
                 <ul className="space-y-3">
-                  {item?.children?.map((child: Item, iidx: number) => {
-                    return (
-                      <li key={iidx}>
-                        <Link 
-                          href={child?.url || "#"} 
-                          className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
-                          target={child?.target}
-                        >
-                          {child?.title}
-                        </Link>
-                      </li>
-                    );
-                  })}
+                  {item?.children?.map((child: Item, iidx: number) => (
+                    <li key={iidx}>
+                      <Link 
+                        href={child?.url || "#"} 
+                        className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                        target={child?.target || '_blank'}
+                      >
+                        {child?.title || ''}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
         {/* 分隔线 */}

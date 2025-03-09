@@ -14,7 +14,7 @@
     },
     "nav": {
       "items": [
-       
+        
       ]
     }
   },
@@ -78,21 +78,7 @@
     },
     "nav": {
       "items": [
-        {
-          "title": "About",
-          "children": [
-            {
-              "title": "Privacy Policy",
-              "url": "/privacy-policy",
-              "target": "_blank"
-            },
-            {
-              "title": "Terms of Service",
-              "url": "/terms-of-service",
-              "target": "_blank"
-            }
-          ]
-        },
+        
         {
           "title": "Resources",
           "children": [
@@ -116,27 +102,22 @@
         {
           "title": "Community",
           "children": [
-            {
-              "title": "Model Context Protocol",
-              "url": "https://www.anthropic.com/news/model-context-protocol",
-              "target": "_blank"
-            },
-            {
-              "title": "MCP Starter Guide",
-              "url": "https://modelcontextprotocol.io/introduction",
-              "target": "_blank"
-            },
-            {
-              "title": "Claude MCP Servers",
-              "url": "https://github.com/modelcontextprotocol/servers",
-              "target": "_blank"
-            }
+          
           ]
         },
         {
           "title": "Friends",
           "children": [
-            
+            {
+              "title": "animateoldphotos",
+              "url": "https://animateoldphotos.org/",
+              "target": "_blank"
+            },
+            {
+              "title": "imagedescriber",
+              "url": "https://imagedescriber.app/",
+              "target": "_blank"
+            }
           ]
         }
       ]

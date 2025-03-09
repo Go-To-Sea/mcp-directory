@@ -3,11 +3,13 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-09 13:19:58
+ * @LastEditTime: 2025-03-09 23:45:00
  */
 import { ThemeProvider } from "@/providers/theme";
 import localFont from "next/font/local";
 import FooterInfo from "../templates/tailspark/landing/components/footer";
+import { Page } from "@/types/landing";
+import pagejson from "@/pagejson/en.json";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,10 +25,13 @@ import {
   ClerkProvider,
 } from '@clerk/nextjs'
 import NextTopLoader from 'nextjs-toploader'
+import '@/styles/globals.css'
 export default function RootLayout({
   children,
+  page,
 }: Readonly<{
   children: React.ReactNode;
+  page:any;
 }>) {
   return (
       <html lang="en">
@@ -44,7 +49,7 @@ export default function RootLayout({
            <NextTopLoader />
           <ThemeProvider
               >{children}</ThemeProvider>
-          <FooterInfo/>
+          <FooterInfo footer={pagejson.footer} />
         </body>
       </html>
   );
