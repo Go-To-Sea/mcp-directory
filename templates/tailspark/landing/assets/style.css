@@ -31,13 +31,14 @@ body {
 }
 
 .text-primary {
-  color: #d85a2c;
+  color: #8d54f0e6;
 }
 
 .bg-primary {
-  background-color: #d85a2c;
+  background-color: #8d54f0e6;
 }
 
 .border-primary {
-  border-color: #d85a2c;
+  /* border-color: #d85a2c; */
+  border-color: #8d54f0e6;
 }

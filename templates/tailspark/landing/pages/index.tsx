@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-09 11:01:36
+ * @LastEditTime: 2025-03-09 15:02:56
  */
 "use client"
 
@@ -71,10 +71,10 @@ export default function ({
 
       {/* 欢迎和介绍词 - 只在首次访问时显示 */}
       {showIntro && (
-        <div className="mx-auto max-w-7xl animate-fade-out delay-3000 duration-2000 w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-[#eaab9480]/50 px-4">
+        <div className="mx-auto max-w-7xl animate-fade-out delay-3000 duration-2000 w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-[#732befe6]/50 px-4">
           <div className="text-center">
             {/* 渐变标题 */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d85a2c80] to-[#f36f3f80] mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8d54f0e6] to-[#732befe6] mb-4">
               Welcome to the MCP Tools Station!
             </h1>
             <p className="text-base sm:text-lg text-[#898989] dark:text-white mb-8 px-4 sm:px-8 md:px-20 mt-6 sm:mt-10">
@@ -90,7 +90,7 @@ export default function ({
                   searchSection.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="px-6 py-3 mt-6 bg-[#d85a2c80] text-[#e5e5e5] hover:bg-[#d85a2c] transition-colors rounded-md"
+              className="px-6 py-3 mt-6 bg-[#ab80f5e6] text-[#e5e5e5] hover:bg-[#8d54f0e6] transition-colors rounded-md"
             >
               Explore Now
             </button>
@@ -104,7 +104,7 @@ export default function ({
         <Search />
         <Projects viewType={'class'} projects={projects} />
         {page.faq && <Faq section={page.faq} />}
-        <FooterInfo />
+        {/* <FooterInfo /> */}
       </div>
     </div>
   )
