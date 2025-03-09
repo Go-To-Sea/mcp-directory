@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-05 02:16:22
+ * @LastEditTime: 2025-03-09 13:11:56
  */
 import Faq from "../../components/faq";
 import Hero from "../../components/hero";
@@ -11,16 +11,18 @@ import { Page } from "@/types/landing";
 import { Project } from "@/types/project";
 import Projects from "../../components/projects";
 import Search from "../../components/search";
+import { ClassMenus } from "@/types/project";
 
-import FooterInfo from "../../components/footerInfo";
 export default function ({
   page,
   projects,
   projectsCount,
+  classMenus
 }: {
   page: any;
   projects: Project[];
   projectsCount: number;
+  classMenus: ClassMenus[]
 }) {
   return (
     <div>
@@ -29,7 +31,7 @@ export default function ({
       <div className="mb-10">
         <Search />
       </div>
-      <Projects projects={projects} projectType={'client'}/>
+      <Projects projects={projects} projectType={'client'} classMenus={classMenus}/>
     </div>
   );
 }

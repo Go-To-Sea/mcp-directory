@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-05 02:18:12
+ * @LastEditTime: 2025-03-09 13:21:53
  */
 import Faq from "../../components/faq";
 import Hero from "../../components/hero";
@@ -13,7 +13,6 @@ import Projects from "../../components/projects";
 import Search from "../../components/search";
 import { ClassMenus } from "@/types/project";
 
-import FooterInfo from "../../components/footerInfo";
 export default function ({
   page,
   projects,

@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-05 02:13:04
+ * @LastEditTime: 2025-03-09 11:01:36
  */
 "use client"
 
@@ -77,7 +77,7 @@ export default function ({
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#d85a2c80] to-[#f36f3f80] mb-4">
               Welcome to the MCP Tools Station!
             </h1>
-            <p className="text-base sm:text-lg text-white mb-8 px-4 sm:px-8 md:px-20 mt-6 sm:mt-10">
+            <p className="text-base sm:text-lg text-[#898989] dark:text-white mb-8 px-4 sm:px-8 md:px-20 mt-6 sm:mt-10">
               Here, we provide a comprehensive suite of tools designed specifically for the Multi-Purpose Computing
               Platform (MCP). Whether you are a developer, a designer, or just looking for efficient solutions, our
               tools are tailored to enhance your productivity and streamline your workflow. Explore our collection and

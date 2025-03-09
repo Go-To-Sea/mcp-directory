@@ -45,26 +45,31 @@ export default async function ({
   let projects: Project[] = [];
   
   // 获取所有项目的标签统计
-  const allTags = await getAllProjectTags();
+  const allTags = await getAllProjectTags('server');
+  console.log('allTags raw data:', allTags); // 添加调试日志
   
   // 获取筛选后的项目列表
   if (tag) {
-    projects = await getProjectsWithTag(tag as string, 1, 100);
+    projects = await getProjectsWithTag(tag as string, 1, 100,'server');
   } else if (q) {
     projects = await getProjectsWithKeyword(q as string, 1, 100);
   } else {
     projects = await getFeaturedProjects(1, 100);
   }
-
-  // 转换为 ClassMenus 组件需要的格式
-  const classMenus: ClassMenus[] = Object.entries(allTags)
-    .filter(([name]) => name.length > 0)
-    .map(([name, count]) => ({
-      name,
-      count,
-      href: `/servers?tag=${encodeURIComponent(name)}`
-    }));
-
+  // 确保 allTags 存在且是一个对象
+  const classMenus: ClassMenus[] = allTags ? 
+    Object.entries(allTags)
+      .filter(([_, tagData]) => {
+        console.log('filtering tagData:', tagData); // 添加调试日志
+        return tagData && tagData.type === 'server' && tagData.name;
+      })
+      .map(([_, tagData]) => ({
+        name: tagData.name,
+        count: tagData.count,
+        href: `/servers?tag=${encodeURIComponent(tagData.name)}`
+      }))
+    : [];
+  console.log('final classMenus:', classMenus); // 添加调试日志
   return (
     <Servers 
       page={pageJson} 

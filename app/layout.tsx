@@ -1,5 +1,13 @@
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-09 13:19:58
+ */
 import { ThemeProvider } from "@/providers/theme";
 import localFont from "next/font/local";
+import FooterInfo from "../templates/tailspark/landing/components/footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -11,28 +19,33 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
+import NextTopLoader from 'nextjs-toploader'
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
-        />
-        <meta name="google-adsense-account" content="ca-pub-2123767634383915" />
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground dark:bg-[#1c1817] dark:text-[#e7e5e4]` }
-      >
-        <ThemeProvider
-            >{children}</ThemeProvider>
-      </body>
-    </html>
+      <html lang="en">
+        <head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
+          />
+          <meta name="google-adsense-account" content="ca-pub-2123767634383915" />
+          <link rel="icon" href="/favicon.ico" />
+        </head>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground dark:bg-[#1c1817] dark:text-[#e7e5e4]` }
+        >
+           <NextTopLoader />
+          <ThemeProvider
+              >{children}</ThemeProvider>
+          <FooterInfo/>
+        </body>
+      </html>
   );
 }

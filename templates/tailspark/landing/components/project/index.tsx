@@ -23,10 +23,10 @@ export default ({
     : [];
 
   return (
-    <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
+    <div className="mx-auto min-height-[200px] max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
       <Crumb category={category} project={project} />
 
-      <div className="mx-auto w-full max-w-7xl py-8 md:py-8 lg:py-8">
+      <div className="mx-auto w-full max-w-7xl py-8 md:py-8 lg:py-8 bg-white dark:bg-gray-900 rounded-lg shadow-sm">
         <div className="grid gap-12 sm:gap-20 lg:grid-cols-2 mt-8">
           <div className="flex flex-col items-start gap-2">
             <h1 className="text-4xl font-bold md:text-6xl">{project.title}</h1>
@@ -96,13 +96,13 @@ export default ({
       </div>
 
       {project.summary && (
-        <div className="w-full md:max-w-7xl mx-auto px-8 py-4 mt-16 text-left border border-gray-200 rounded-lg">
+        <div className="w-full md:max-w-7xl mx-auto px-8 py-4 mt-16 text-left border border-gray-200 rounded-lg bg-white dark:bg-gray-900">
           <Markdown content={project.summary || ""} />
         </div>
       )}
 
-      <div className="w-full text-center">
-        <p className="mx-auto font-bold text-3xl mt-16 mb-4">View More</p>
+      <div className="w-full text-center bg-white dark:bg-gray-900 rounded-lg shadow-sm p-6 mt-16">
+        <p className="mx-auto font-bold text-3xl mb-4">View More</p>
         {more_projects && <Projects projects={more_projects} />}
       </div>
     </div>

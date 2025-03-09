@@ -4,6 +4,8 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { ExternalLink, Github } from "lucide-react"
 import type { Project } from "@/types/project"
+import Markdown from "@/components/markdown";
+import Header from "../../../templates/tailspark/landing/components/header";
 
 interface ProjectContentProps {
   project: Project;
@@ -13,6 +15,7 @@ interface ProjectContentProps {
 export default function ProjectContent({ project, tags }: ProjectContentProps) {
   return (
     <>
+      {/* <Header header={{}}></Header> */}
       {/* 项目头部信息 */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -110,15 +113,12 @@ export default function ProjectContent({ project, tags }: ProjectContentProps) {
               </>
             )}
           </div>
-
-          {/* 主要内容区 */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
+{/* 主要内容区 */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300 min-h-[400px]">
             <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white hover:text-primary transition-colors duration-200">
               About
             </h2>
-            <div className="prose dark:prose-invert max-w-none">
-              {project.content || project.description}
-            </div>
+            <Markdown content={project.content || '正在更新中'} />
           </div>
         </motion.div>
 
@@ -129,7 +129,15 @@ export default function ProjectContent({ project, tags }: ProjectContentProps) {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="hidden md:block space-y-6"
         >
-          {/* 作者信息卡片内容保持不变 */}
+          {/* 参考资料卡片 */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300 min-h-[400px]">
+            <h2 className="text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200">
+              相关推荐
+            </h2>
+            <div className="text-gray-500 dark:text-gray-400">
+              
+            </div>
+          </div>
         </motion.div>
       </div>
     </>

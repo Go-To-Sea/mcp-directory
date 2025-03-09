@@ -42,7 +42,7 @@ export async function generateMetadata(
 export default async function ProjectDetail({ params }: Props) {
   const resolvedParams = await params;
   const project = await getProjectByName(resolvedParams.name);
-
+  console.log('project===========',project);
   if (!project) {
     notFound();
   }

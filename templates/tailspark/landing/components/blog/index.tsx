@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:06:33
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-07 01:28:28
+ * @LastEditTime: 2025-03-09 13:20:38
  */
 "use client"
 
@@ -55,12 +55,11 @@ export default function Blog() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
               <div className="p-8">
                 <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                   <span className="flex items-center gap-1">
                     <Calendar size={16} />
-                    2024年11月25日
+                    November 25, 2024
                   </span>
                   <span className="flex items-center gap-1">
                     <Clock size={16} />

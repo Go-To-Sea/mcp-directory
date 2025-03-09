@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-07 00:55:56
+ * @LastEditTime: 2025-03-09 11:09:41
  */
 "use client";
 
@@ -14,6 +14,17 @@ import { usePathname } from 'next/navigation';
 
 export default ({ hero, count }: { hero: Hero; count?: number }) => {
   const pathname = usePathname();
+
+  const getStoredText = () => {
+    switch (pathname) {
+      case '/servers':
+        return "mcp servers stored";
+      case '/clients':
+        return "mcp clients stored";
+      default:
+        return "MCP Servers in list";
+    }
+  };
 
   const renderTitles = () => {
     switch (pathname) {
@@ -53,15 +64,26 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
     }
   };
 
+  const getStoredLink = () => {
+    switch (pathname) {
+      case '/servers':
+        return "/servers";
+      case '/clients':
+        return "/clients";
+      default:
+        return "/";
+    }
+  };
+
   return (
     <section className="relatve">
       <div className="mx-auto w-full max-w-7xl px-4 mt-10 md:mt-14">
         <div className="mx-auto w-full text-center">
-          <a href="mailto:support@mcp.ad" className="dark:bg-[#000] mx-auto mb-3 inline-flex items-center gap-3 rounded-full border border-primary px-2 py-1 text-sm">
+          <a href={getStoredLink()} className="dark:bg-[#000] mx-auto mb-3 inline-flex items-center gap-3 rounded-full border border-primary px-2 py-1 text-sm">
             <span className="inline-flex items-center text-white rounded-full border-primary px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-primary text-primary-foreground">
               {count}
             </span>
-            <span className="dark:text-[#fff]">mcp servers stored</span>
+            <span className="dark:text-[#fff]">{getStoredText()}</span>
           </a>
           <div className="flex items-center justify-center mt-3">
             {renderTitles()}

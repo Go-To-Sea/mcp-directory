@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:19:54
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-05 01:22:15
+ * @LastEditTime: 2025-03-09 10:10:51
  */
 "use client"
 
@@ -29,7 +29,7 @@ export default function BlogPost() {
             className="inline-flex items-center text-primary hover:text-primary/80 mb-12 group"
           >
             <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            返回博客列表
+            Back to Blog
           </Link>
         </motion.div>
 
@@ -50,7 +50,7 @@ export default function BlogPost() {
           <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400 mb-8 border-b border-gray-200 dark:border-gray-800 pb-8">
             <span className="flex items-center gap-2">
               <Calendar size={16} className="text-primary" />
-              2024年11月25日
+              November 25, 2024
             </span>
             <span className="flex items-center gap-2">
               <Clock size={16} className="text-primary" />

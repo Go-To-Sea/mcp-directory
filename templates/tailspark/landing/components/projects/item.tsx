@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
- * @LastEditors: YourName
- * @LastEditTime: 2025-03-07 12:57:44
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-09 13:50:37
  */
 "use client"
 
@@ -51,7 +51,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
         {tagArray.slice(0, 2).map((tag, index) => (
           <span
             key={index}
-            className="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/10 text-[10px] sm:text-xs text-primary whitespace-nowrap"
+            className="inline-flex items-center px-1 py-0.5 rounded-full bg-primary/10 text-[10px] sm:text-xs text-primary whitespace-nowrap"
           >
             #{tag.trim()}
           </span>

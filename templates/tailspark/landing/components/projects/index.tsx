@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
- * @LastEditors: YourName
- * @LastEditTime: 2025-03-07 13:11:39
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-09 13:14:52
  */
 "use client"
 
@@ -41,7 +41,7 @@ export default ({
     
 
     return (
-      <section className="relative space-y-12">
+      <section className="relative space-y-12 " >
         <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
           {/* Servers Section */}
           <div className="mb-16">
@@ -105,7 +105,7 @@ export default ({
   // 默认视图
   return (
     <section className="relative">
-      {pathname === '/servers' && <ClassMenusComponent classMenus={classMenus} />}
+      {(pathname === '/servers' || pathname === '/clients') && <ClassMenusComponent classMenus={classMenus} />}
       <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
         {!loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

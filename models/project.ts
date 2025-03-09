@@ -195,29 +195,37 @@ export async function getProjectsWithKeyword(
 export async function getProjectsWithTag(
   tag: string,
   page: number,
-  limit: number
+  limit: number,
+  type?: 'server' | 'client'
 ): Promise<Project[]> {
   const supabase = getSupabaseClient();
 
   const { data, error } = await supabase
     .from("projects")
     .select("*")
-    .ilike("tags", `%${tag}%`) // 使用 ilike 进行模糊匹配，确保能匹配逗号分隔的字符串
+    .eq("type", type)
+    .ilike("tags", `%${tag}%`)
     .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: false })
     .order("created_at", { ascending: false })
     .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
-
-  // 进一步过滤，确保完全匹配（避免部分匹配的问题）
-  return data.filter(project => {
+  
+  // 修改过滤逻辑，添加类型声明
+  return data.filter((project: Project) => {
     if (!project.tags) return false;
-    const tagArray = project.tags.split(',').map((t: string) => t.trim());
-    return tagArray.includes(tag);
+    
+    const projectTags: string[] = project.tags
+      ? (Array.isArray(project.tags) ? project.tags : project.tags.split(',')) : []
+      .map((t: string) => t.trim().toLowerCase())
+      .flatMap((t: string) => t.split(',').map((st: string) => st.trim()));
+
+    const searchTag: string = tag.toLowerCase();
+    
+    return projectTags.some((t: string) => t === searchTag || t.includes(searchTag));
   });
 }
-
 export async function getProjectsWithoutSummary(
   page: number,
   limit: number
@@ -254,30 +262,51 @@ export async function updateProject(uuid: string, project: Partial<Project>) {
 
   return data;
 }
-
-// 添加 getAllProjectTags 方法的导出
-export async function getAllProjectTags(): Promise<{ [key: string]: number }> {
+// 修改返回类型定义
+export async function getAllProjectTags(type?: 'server' | 'client'): Promise<{ [key: string]: { name: string; count: number; type: string } }> {
   const supabase = getSupabaseClient();
   
-  // 获取所有项目的 tags
-  const { data, error } = await supabase
+  let query = supabase
     .from("projects")
-    .select("tags")
+    .select("tags, type")
     .eq("status", ProjectStatus.Created)
     .not("tags", "is", null);
 
+  if (type) {
+    query = query.eq('type', type);
+  }
+
+  const { data, error } = await query;
+
   if (error || !data) return {};
 
-  // 统计标签数量
-  return data.reduce((acc: { [key: string]: number }, project) => {
+  // 先收集所有标签数据
+  const tagsMap = data.reduce((acc: { [key: string]: { name: string; count: number; type: string } }, project) => {
     if (project.tags) {
       const tagArray = project.tags.split(',').map((tag: string) => tag.trim());
       tagArray.forEach((tag: string) => {
         if (tag) {
-          acc[tag] = (acc[tag] || 0) + 1;
+          if (!acc[tag]) {
+            acc[tag] = { 
+              name: tag,
+              count: 0, 
+              type: project.type || '' 
+            };
+          }
+          acc[tag].count += 1;
         }
       });
     }
     return acc;
   }, {});
+
+  // 将对象转换为数组并排序
+  const sortedTags = Object.entries(tagsMap)
+    .sort(([, a], [, b]) => b.count - a.count)
+    .reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {} as { [key: string]: { name: string; count: number; type: string } });
+
+  return sortedTags;
 }
