@@ -34,7 +34,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-0 sm:mr-3 md:mr-5">
               Discover
             </h1>
-            <h1 className="text-primary leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+            <h1 className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
               MCP Servers
             </h1>
           </div>
@@ -45,7 +45,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-0 sm:mr-3 md:mr-5">
               Discover
             </h1>
-            <h1 className="text-primary leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+            <h1 className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
               MCP Clients
             </h1>
           </div>
@@ -56,7 +56,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-0 sm:mr-3 md:mr-5">
               Find Awesome
             </h1>
-            <h1 className="text-primary leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+            <h1 className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
               MCP Servers and Clients
             </h1>
           </div>

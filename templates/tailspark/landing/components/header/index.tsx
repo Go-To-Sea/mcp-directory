@@ -15,6 +15,8 @@ import {
   UserButton,
   ClerkProvider
 } from '@clerk/nextjs'
+// 添加导入
+import SubmitForm from "./submitModal";
 export default function HeaderComponent({ header }: { header: Header }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -113,12 +115,13 @@ export default function HeaderComponent({ header }: { header: Header }) {
         </Button>
       </div>
       <div className="flex items-center space-x-2">
-        <Button
+        {/* <Button
           variant="default"
           className="bg-primary hover:bg-primary/90 text-white"
         >
           Submit
-        </Button>
+        </Button> */}
+        <SubmitForm />
         <SignedOut>
           <SignInButton>
             <Button
@@ -206,15 +209,6 @@ export default function HeaderComponent({ header }: { header: Header }) {
                           Login
                         </Button>
                       </SignInButton>
-                      <SignUpButton>
-                        <Button
-                          variant="default"
-                          className="w-full justify-center bg-primary hover:bg-primary/90"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          Submit
-                        </Button>
-                      </SignUpButton>
                     </SignedOut>
                     <SignedIn>
                       <div className="flex justify-center">

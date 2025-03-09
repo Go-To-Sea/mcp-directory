@@ -27,20 +27,20 @@ export default ({ footer }: { footer?: Footer }) => {
           <div className="md:col-span-2">
             <div className="flex items-center mb-6">
               <img src="/logo.png" alt="Logo" className="h-8 w-auto mr-3" />
-              <span className="text-xl font-bold">MCP.ad</span>
+              <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">MCP.ad</span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
               {footer?.brand?.description || "Find and explore the best Model Context Protocol (MCP) servers for your AI applications."}
             </p>
             <div className="flex space-x-4">
-              <a href="javascript:;" className="text-gray-600 hover:text-primary transition-colors">
-                <Github className="h-5 w-5" />
+              <a href="javascript:;" className="p-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-600/10 hover:from-blue-500/20 hover:to-purple-600/20 transition-all">
+                <Github className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               </a>
-              <a href="javascript:;" className="text-gray-600 hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
+              <a href="javascript:;" className="p-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-600/10 hover:from-blue-500/20 hover:to-purple-600/20 transition-all">
+                <Twitter className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               </a>
-              <a href="mailto:support@mcp.ad" className="text-gray-600 hover:text-primary transition-colors">
-                <Mail className="h-5 w-5" />
+              <a href="mailto:support@mcp.ad" className="p-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-600/10 hover:from-blue-500/20 hover:to-purple-600/20 transition-all">
+                <Mail className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               </a>
             </div>
           </div>

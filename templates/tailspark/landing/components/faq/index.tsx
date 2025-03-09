@@ -6,16 +6,22 @@ import type { Section } from "@/types/landing"
 import { Plus, Minus } from "lucide-react"
 
 export default function ({ section }: { section?: Section }) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  // 修改为数组，用于存储多个激活的索引
+  const [activeIndices, setActiveIndices] = useState<number[]>([])
 
   const toggleFAQ = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index)
+    // 切换逻辑：如果索引已存在则移除，否则添加
+    setActiveIndices(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index) 
+        : [...prev, index]
+    )
   }
 
   return (
     <div className="container mx-auto max-w-6xl px-5 py-8 md:px-10 md:py-12 lg:py-16">
       <div className="text-center mb-12">
-        <h2 className="text-2xl md:text-3xl font-bold  bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+        <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
           {section?.title}
         </h2>
         <p className="mt-1 font-medium text-muted-foreground max-w-xl mx-auto">{section?.description}</p>
@@ -32,7 +38,7 @@ export default function ({ section }: { section?: Section }) {
           >
             <motion.div
               className={`p-5 cursor-pointer rounded-xl transition-all duration-300 ${
-                activeIndex === index ? "bg-primary/5 shadow-sm" : "hover:bg-gray-50 dark:hover:bg-gray-900/30"
+                activeIndices.includes(index) ? "bg-primary/5 shadow-sm" : "hover:bg-gray-50 dark:hover:bg-gray-900/30"
               }`}
               onClick={() => toggleFAQ(index)}
               layout
@@ -43,7 +49,7 @@ export default function ({ section }: { section?: Section }) {
                     initial={{ scale: 1 }}
                     whileHover={{ scale: 1.1 }}
                     className={`flex size-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
-                      activeIndex === index
+                      activeIndices.includes(index)
                         ? "bg-primary text-white"
                         : "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
                     }`}
@@ -52,7 +58,7 @@ export default function ({ section }: { section?: Section }) {
                   </motion.div>
                   <h3
                     className={`font-medium text-lg transition-colors duration-300 ${
-                      activeIndex === index ? "text-primary" : ""
+                      activeIndices.includes(index) ? "text-primary" : ""
                     }`}
                   >
                     {item.title}
@@ -62,17 +68,17 @@ export default function ({ section }: { section?: Section }) {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className={`flex items-center justify-center h-8 w-8 rounded-full transition-colors duration-300 ${
-                    activeIndex === index
+                    activeIndices.includes(index)
                       ? "bg-primary text-white"
                       : "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
                   }`}
                 >
-                  {activeIndex === index ? <Minus size={16} /> : <Plus size={16} />}
+                  {activeIndices.includes(index) ? <Minus size={16} /> : <Plus size={16} />}
                 </motion.div>
               </div>
 
               <AnimatePresence>
-                {activeIndex === index && (
+                {activeIndices.includes(index) && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{
