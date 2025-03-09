@@ -7,6 +7,7 @@
  */
 import "./assets/style.css";
 
+
 import Footer from "./components/footer";
 import Header from "./components/header";
 import BackToTop from "./components/backToTop/backToTop";
