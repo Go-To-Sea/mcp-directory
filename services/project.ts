@@ -3,6 +3,7 @@ import {
   findProjectByName,
   insertProject,
   updateProject,
+  getProjectById as getProjectByIdFromDB,
 } from "@/models/project";
 
 import { ChatCompletionCreateParamsNonStreaming } from "openai/resources/index.mjs";
@@ -206,5 +207,15 @@ export async function saveProject(
   } catch (e) {
     console.error("save project failed: ", e);
     throw e;
+  }
+}
+
+export async function getProjectById(id: number): Promise<Project | null> {
+  try {
+    const project = await getProjectByIdFromDB(id);
+    return project;
+  } catch (e) {
+    console.error("get project by id failed: ", e);
+    return null;
   }
 }
