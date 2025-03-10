@@ -16,22 +16,59 @@ const transporter = nodemailer.createTransport({
 
 // 获取所有用户
 async function getAllUsers() {
-  // 模拟一个用户数据，替代实际的Clerk API调用
-  const users = [
-    {
-      id: 'mock_user_id',
-      username: 'MockUser',
-      primaryEmailAddressId: 'mock_email_id',
-      emailAddresses: [
-        {
-          id: 'mock_email_id',
-          emailAddress: '276904521@qq.com'
-        }
-      ]
+  try {
+    const response = await fetch('https://api.clerk.dev/v1/users', {
+      headers: {
+        Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
+      },
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch users');
     }
-  ];
-  
-  return users;
+    
+    const data = await response.json();
+    console.log('API返回的原始用户数据:', data);
+    
+    // 确保返回的数据格式正确
+    // 假设API返回的数据是一个包含用户列表的对象
+    const users = Array.isArray(data) ? data : (data.data || []);
+    
+    // 处理每个用户，确保数据结构一致
+    return users.map((user: { 
+      id: string;
+      username?: string;
+      first_name?: string;
+      primary_email_address_id?: string;
+      primaryEmailAddressId?: string;
+      email_addresses?: Array<{
+        id: string;
+        email_address?: string;
+        emailAddress?: string;
+      }>;
+      emailAddresses?: Array<{
+        id: string;
+        email_address?: string;
+        emailAddress?: string;
+      }>;
+    }) => {
+      // 确保用户有emailAddresses属性
+      const emailAddresses = user.email_addresses || user.emailAddresses || [];
+      return {
+        id: user.id,
+        username: user.username || user.first_name || 'User',
+        primaryEmailAddressId: user.primary_email_address_id || user.primaryEmailAddressId,
+        emailAddresses: emailAddresses.map(email => ({
+          id: email.id,
+          emailAddress: email.email_address || email.emailAddress
+        }))
+      };
+    });
+  } catch (error) {
+    console.error('获取用户数据时出错:', error);
+    // 出错时返回空数组，避免整个流程中断
+    return [];
+  }
 }
 
 // 从数据库获取项目信息
@@ -123,17 +160,35 @@ export async function GET(request: Request) {
     const projectInfo = await getProjectInfo(projectId);
     const allUsers = await getAllUsers();
     
+    // 添加日志记录用户数量
+    console.log(`准备发送邮件给${allUsers.length}个用户`);
+    
     for (const user of allUsers) {
-      const primaryEmail = user.emailAddresses.find(
-        (email: { id: string }) => email.id === user.primaryEmailAddressId
-      );
-
-      if (primaryEmail) {
-        await sendProjectEmail(
-          primaryEmail.emailAddress,
-          user.username || "User",
-          projectInfo
+      try {
+        // 检查用户是否有emailAddresses属性
+        if (!user.emailAddresses || !Array.isArray(user.emailAddresses)) {
+          console.warn(`用户 ${user.id} 没有有效的emailAddresses属性，跳过`);
+          continue;
+        }
+        
+        const primaryEmail = user.emailAddresses.find(
+          (email: { id: string }) => email && email.id === user.primaryEmailAddressId
         );
+
+        if (primaryEmail && primaryEmail.emailAddress) {
+          console.log(`正在发送邮件给用户: ${user.username || "User"} <${primaryEmail.emailAddress}>`);
+          await sendProjectEmail(
+            primaryEmail.emailAddress,
+            user.username || "User",
+            projectInfo
+          );
+        } else {
+          console.warn(`用户 ${user.id} 没有主要邮箱地址，跳过`);
+        }
+      } catch (error) {
+        console.error(`处理用户 ${user.id} 时出错:`, error);
+        // 继续处理下一个用户，不中断整个流程
+        continue;
       }
     }
 
