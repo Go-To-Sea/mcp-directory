@@ -28,10 +28,8 @@ import NextTopLoader from 'nextjs-toploader'
 import '@/styles/globals.css'
 export default function RootLayout({
   children,
-  page,
 }: Readonly<{
   children: React.ReactNode;
-  page:any;
 }>) {
   return (
       <html lang="en">
