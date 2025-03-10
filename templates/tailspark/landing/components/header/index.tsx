@@ -134,7 +134,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
         </SignedOut>
 
         <Button
-          className="dark:text-white rounded bg-gray-50 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-700"
+          className="dark:text-white text-[#000] rounded bg-gray-50 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-700"
           onClick={toggleTheme}
         >
           {isDarkMode ? <BsSun size={18} /> : <BsMoon size={18} />}

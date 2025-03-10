@@ -204,10 +204,10 @@ export default function SubmitForm() {
         <DialogContent className="sm:max-w-[400px] !rounded-2xl border-0 shadow-xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
-              登录提示
+              Sign In Required
             </DialogTitle>
             <p className="text-gray-600 dark:text-gray-400 mt-2">
-              您需要先登录才能提交项目
+              Please sign in to submit your project
             </p>
           </DialogHeader>
           <motion.div
@@ -241,7 +241,7 @@ export default function SubmitForm() {
                   type="button"
                   className="!rounded border-gray-300 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800 transition-all"
                 >
-                  取消
+                  Cancel
                 </Button>
                 <SignInButton mode="modal">
                   <Button 
@@ -249,7 +249,7 @@ export default function SubmitForm() {
                     className="!rounded bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all"
                     onClick={() => setIsLoginDialogOpen(false)}
                   >
-                    立即登录
+                    Sign In
                   </Button>
                 </SignInButton>
               </motion.div>
@@ -405,10 +405,10 @@ export default function SubmitForm() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        提交中...
+                        Submitting...
                       </div>
                     ) : (
-                      '提交项目'
+                      'Submit Project'
                     )}
                   </Button>
                 </motion.div>

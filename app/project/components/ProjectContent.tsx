@@ -12,7 +12,7 @@ import ProjectItem from "../../../templates/tailspark/landing/components/project
 import { useRouter } from "next/navigation"
 
 // 在文件顶部添加 Tailwind 样式导入
-import '@/styles/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
+import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
 
 interface ProjectContentProps {
   project: Project;

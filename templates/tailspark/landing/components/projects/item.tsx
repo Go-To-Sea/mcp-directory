@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-09 13:50:37
+ * @LastEditTime: 2025-03-10 23:10:07
  */
 "use client"
 
@@ -47,14 +47,30 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   const renderTags = (tags: string | string[]) => {
     const tagArray = typeof tags === 'string' ? tags.split(',') : tags;
     return (
-      <div className="flex items-center gap-1 overflow-hidden">
+      <div className="flex flex-wrap items-center gap-1 overflow-hidden max-w-full">
         {tagArray.slice(0, 2).map((tag, index) => (
-          <span
+          <motion.span
             key={index}
-            className="inline-flex items-center px-1 py-0.5 rounded-full bg-primary/10 text-[10px] sm:text-xs text-primary whitespace-nowrap"
+            className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap transition-all overflow-hidden"
+            style={{
+              background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
+              border: "1px solid transparent",
+              borderRadius: "9999px",
+              backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05)), linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))",
+              backgroundOrigin: "border-box",
+              backgroundClip: "padding-box, border-box"
+            }}
+        
           >
-            #{tag.trim()}
-          </span>
+            <span 
+              className="bg-clip-text text-transparent whitespace-nowrap" 
+              style={{
+                backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
+              }}
+            >
+              #{tag.trim()}
+            </span>
+          </motion.span>
         ))}
         {tagArray.length > 2 && (
           <span className="text-[10px] sm:text-xs text-gray-500 whitespace-nowrap">
