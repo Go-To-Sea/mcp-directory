@@ -37,38 +37,26 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
   return (
     <div className="relative w-full overflow-hidden">
       {/* 修改面包屑导航 */}
-      <div className="flex justify-between items-center mb-6">
-        {/* 移动端返回按钮 */}
-        <button 
-          onClick={() => router.back()}
-          className="md:hidden flex items-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
+      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+        <Link href="/" className="flex items-center hover:text-primary transition-colors">
+          <Home size={16} className="mr-1" />
+          <span>Home</span>
+        </Link>
+        <ChevronRight size={14} />
+        <Link 
+          href="/projects" 
+          className="hover:text-primary transition-colors"
+          onClick={(e) => {
+            e.preventDefault();
+            router.back();
+          }}
         >
-          <ArrowLeft size={16} className="mr-1" />
-          <span>Back</span>
-        </button>
-
-        {/* 桌面端面包屑 */}
-        <nav className="hidden md:flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-          <Link href="/" className="flex items-center hover:text-primary transition-colors">
-            <Home size={16} className="mr-1" />
-            <span>Home</span>
-          </Link>
-          <ChevronRight size={14} />
-          <Link 
-            href="/projects" 
-            className="hover:text-primary transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              router.back();
-            }}
-          >
-            goBack
-          </Link>
-          <ChevronRight size={14} />
-          <span className="text-gray-900 dark:text-gray-200 truncate max-w-[200px]">
-            {project.name}
-          </span>
-        </nav>
+          goBack
+        </Link>
+        <ChevronRight size={14} />
+        <span className="text-gray-900 dark:text-gray-200 truncate max-w-[200px]">
+          {project.name}
+        </span>
       </div>
 
       
@@ -225,34 +213,41 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
           </div>
         </motion.div>
 
-        {/* 桌面端右侧区域 */}
+        {/* 移动端和桌面端都显示的推荐区域 */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="hidden md:block space-y-6 h-full"
+          className="space-y-6 h-full"
         >
-          {/* 相似项目推荐区域 */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300 h-full overflow-hidden">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200 flex items-center">
-              <span className="w-1.5 h-6 bg-gradient-to-b from-purple-500 to-blue-600 rounded-full mr-2.5 inline-block"></span>
-              Similar {project.type === 'server' ? 'Servers' : 'Clients'}
-            </h2>
-            
-            {similarProjects.length > 0 ? (
-              <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
-                {similarProjects.slice(0, 5).map((similarProject) => (
-                  <div key={similarProject.uuid} className="transform scale-95 origin-top">
-                    <ProjectItem project={similarProject} />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-gray-500 dark:text-gray-400 text-center py-4">
-                No similar {project.type === 'server' ? 'servers' : 'clients'} found
-              </div>
-            )}
-          </div>
+          {/* 推荐区域部分 */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="space-y-6 h-full"
+          >
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow duration-300 h-full overflow-hidden">
+              <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200 flex items-center">
+                <span className="w-1.5 h-6 bg-gradient-to-b from-purple-500 to-blue-600 rounded-full mr-2.5 inline-block"></span>
+                Similar {project.type === 'server' ? 'Servers' : 'Clients'}
+              </h2>
+              
+              {similarProjects.length > 0 ? (
+                <div className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                  {similarProjects.slice(0, 5).map((similarProject) => (
+                    <div key={similarProject.uuid} className="transform scale-95 origin-top">
+                      <ProjectItem project={similarProject} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-gray-500 dark:text-gray-400 text-center py-4 text-sm sm:text-base">
+                  No similar {project.type === 'server' ? 'servers' : 'clients'} found
+                </div>
+              )}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>

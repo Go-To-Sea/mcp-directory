@@ -71,29 +71,28 @@ export default function ({
 
       {/* 欢迎和介绍词 - 只在首次访问时显示 */}
       {showIntro && (
-        <div className="mx-auto max-w-7xl animate-fade-out delay-3000 duration-2000 w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-[#732befe6]/50 px-4 rounded-b-[50px]">
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 animate-gradient-x">
+        <div className="mx-auto max-w-7xl animate-fade-out delay-3000 duration-2000 w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-[#732befe6]/50 px-4 rounded-b-[50px] py-10 sm:py-0">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 animate-gradient-x">
               Welcome to the MCP Tools Station!
             </h1>
             
             {/* 添加工具站数量展示 */}
-            <div className="mb-6">
-              <div className="wiggle">
-                <span className="text-2xl font-bold text-primary">
+            <div className="mb-4 sm:mb-6">
+              <div>
+                <span className="text-xl sm:text-2xl font-bold text-primary">
                   {projectsCount}
                 </span>
-                <span className="text-xl text-gray-600 dark:text-gray-300 ml-2">
+                <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2">
                   MCP Tools Available - The Most Comprehensive Collection
                 </span>
               </div>
             </div>
 
-            <p className="text-base sm:text-lg text-[#898989] dark:text-white mb-8 px-4 sm:px-8 md:px-20 mt-6 sm:mt-10">
+            <p className="text-sm sm:text-base md:text-lg text-[#898989] dark:text-white mb-6 sm:mb-8 px-2 sm:px-8 md:px-20 mt-4 sm:mt-6">
               Here, we provide a comprehensive suite of tools designed specifically for the Multi-Purpose Computing
               Platform (MCP). Whether you are a developer, a designer, or just looking for efficient solutions, our
-              tools are tailored to enhance your productivity and streamline your workflow. Explore our collection and
-              unlock the full potential of your MCP environment.
+              tools are tailored to enhance your productivity and streamline your workflow.
             </p>
             <button
               onClick={() => {
@@ -102,7 +101,7 @@ export default function ({
                   searchSection.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="px-6 py-3 mt-6 bg-[#ab80f5e6] text-[#e5e5e5] hover:bg-[#8d54f0e6] rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              className="px-4 sm:px-6 py-2 sm:py-3 mt-4 sm:mt-6 bg-[#ab80f5e6] text-[#e5e5e5] hover:bg-[#8d54f0e6] rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-sm sm:text-base"
             >
               Explore Now
             </button>

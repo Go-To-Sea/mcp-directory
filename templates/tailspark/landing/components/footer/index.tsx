@@ -33,12 +33,12 @@ export default ({ footer }: { footer?: Footer }) => {
               {footer?.brand?.description || "Find and explore the best Model Context Protocol (MCP) servers for your AI applications."}
             </p>
             <div className="flex space-x-4">
-              <a href="javascript:;" className="p-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-600/10 hover:from-blue-500/20 hover:to-purple-600/20 transition-all">
+              {/* <a href="javascript:;" className="p-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-600/10 hover:from-blue-500/20 hover:to-purple-600/20 transition-all">
                 <Github className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               </a>
               <a href="javascript:;" className="p-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-600/10 hover:from-blue-500/20 hover:to-purple-600/20 transition-all">
                 <Twitter className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-              </a>
+              </a> */}
               <a href="mailto:support@mcp.ad" className="p-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-600/10 hover:from-blue-500/20 hover:to-purple-600/20 transition-all">
                 <Mail className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               </a>

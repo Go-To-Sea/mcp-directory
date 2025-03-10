@@ -44,17 +44,42 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
  
   
   // Move renderTags function inside the component
+  // 修改 renderTags 函数
   const renderTags = (tags: string | string[]) => {
     const tagArray = typeof tags === 'string' ? tags.split(',') : tags;
     return (
-      <div className="flex items-center gap-1 overflow-hidden">
+      <div className="flex flex-wrap gap-1.5">
         {tagArray.slice(0, 2).map((tag, index) => (
-          <span
+          <motion.span
             key={index}
-            className="inline-flex items-center px-1 py-0.5 rounded-full bg-primary/10 text-[10px] sm:text-xs text-primary whitespace-nowrap"
+            className="relative inline-flex items-center px-2.5 py-0.5 text-xs rounded-full overflow-hidden"
+            style={{
+              background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
+            }}
+            whileHover={{
+              background: "linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1))",
+            }}
           >
-            #{tag.trim()}
-          </span>
+            <span 
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: "linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))",
+                content: '""',
+                padding: "1px",
+                WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                WebkitMaskComposite: "xor",
+                maskComposite: "exclude",
+              }}
+            />
+            <span 
+              className="relative bg-clip-text text-transparent" 
+              style={{
+                backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
+              }}
+            >
+              {tag.trim()}
+            </span>
+          </motion.span>
         ))}
         {tagArray.length > 2 && (
           <span className="text-[10px] sm:text-xs text-gray-500 whitespace-nowrap">

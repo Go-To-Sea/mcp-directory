@@ -171,31 +171,37 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     </Button>
                     <Button
                       variant="ghost"
-                      className={`w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 ${
-                        pathname === "/clients" ? "text-primary" : ""
+                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                        pathname === "/clients" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
                       onClick={() => {
                         handleNavigation("/clients");
                         setIsMenuOpen(false);
                       }}
                     >
-                      <GrAction className="mr-3 h-5 w-5" />
+                      <GrAction className="mr-3 h-4 w-4" />
                       Clients
                     </Button>
                     <Button
                       variant="ghost"
-                      className={`w-full justify-start py-4 px-6 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 ${
-                        pathname === "/blog" ? "text-primary" : ""
+                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                        pathname === "/blog" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
                       onClick={() => {
                         handleNavigation("/blog");
                         setIsMenuOpen(false);
                       }}
                     >
-                      <BsList className="mr-3 h-5 w-5" />
+                      <BsList className="mr-3 h-4 w-4" />
                       Blog
                     </Button>
                     
+                    {/* Submit 按钮 */}
+                    <div className="px-6 py-3">
+                      <div className="w-full">
+                        <SubmitForm />
+                      </div>
+                    </div>
                   </div>
                   {/* 移动端菜单底部登录按钮 */}
                   <div className="border-t border-gray-200 dark:border-gray-800 p-4 space-y-2">
