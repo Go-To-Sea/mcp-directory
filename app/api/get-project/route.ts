@@ -49,6 +49,31 @@ async function getReadmeContent(owner: string, repo_name: string, headers: any) 
     }
 }
 
+function extract_tags_from_text(type: string, text: string | null): string[] {
+    if (!text) {
+        return [];
+    }
+    
+    // 常见的 Minecraft 服务器相关关键词
+    const keywords = [
+        "minecraft", type, "plugin", "mod", "mcp", "forge", "spigot",
+        "bukkit", "paper", "velocity", "proxy", "bungee", "waterfall", 
+        "fabric", "multiplayer", "smp", "gamemode", "survival", "creative",
+        "pvp", "pve", "economy", "permissions", "anti-cheat", "modpack"
+    ];
+    
+    const tags: string[] = [];
+    const text_lower = text.toLowerCase();
+    
+    for (const keyword of keywords) {
+        if (text_lower.includes(keyword)) {
+            tags.push(keyword);
+        }
+    }
+    
+    return tags;
+}
+
 async function getRepoData(url: string, type: string) {
     // 从 URL 中提取 owner 和 repo_name
     const urlParts = url.replace('https://github.com/', '').split('/');
@@ -95,6 +120,37 @@ async function getRepoData(url: string, type: string) {
             content: readme_content,
             img_url: ""
         };
+
+        // 动态获取标签
+        let tags: string[] = [];
+        
+        // 1. 从仓库主题获取标签
+        if (repo.topics && Array.isArray(repo.topics)) {
+            tags.push(...repo.topics);
+        }
+        
+        // 2. 从描述和README中提取关键词作为标签
+        tags.push(...extract_tags_from_text(type, repo.description));
+        tags.push(...extract_tags_from_text(type, readme_content));
+        
+        // 确保至少有基本标签
+        if (tags.length === 0) {
+            tags = ["MCP", type];
+        }
+        
+        // 移除重复项，保留唯一标签
+        tags = Array.from(new Set(tags));
+        
+        // 将标签列表转换为逗号分隔的字符串
+        (repo_data as any).tags = tags.join(",");
+        
+        // 尝试从README中提取图片URL
+        if (readme_content) {
+            const img_matches = readme_content.match(/!\[.*?\]\((https?:\/\/\S+)\)/);
+            if (img_matches && img_matches[1]) {
+                repo_data.img_url = img_matches[1];  // 使用第一个找到的图片URL
+            }
+        }
 
         // 仅当有描述时添加描述字段
         // 添加描述和摘要字段
