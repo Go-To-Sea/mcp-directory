@@ -76,7 +76,7 @@ async function getRepoData(url: string, type: string) {
         const readme_content = await getReadmeContent(owner, repo_name, headers);
 
         // 构建返回数据
-        return {
+        const repo_data = {
             uuid: uuidv4(),
             name: repo.name,
             title: repo.name.replace(/-/g, " ").replace(/_/g, " ").split(" ").map((word: string) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" "),
@@ -95,6 +95,16 @@ async function getRepoData(url: string, type: string) {
             content: readme_content,
             img_url: ""
         };
+
+        // 仅当有描述时添加描述字段
+        // 添加描述和摘要字段
+        const repoDataWithDesc = {
+            ...repo_data,
+            description: repo.description || "",
+            summary: repo.description || ""
+        };
+
+        return repoDataWithDesc;
     } catch (error) {
         console.error('获取仓库数据失败:', error);
         throw error;
