@@ -139,7 +139,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
         >
           {isDarkMode ? <BsSun size={18} /> : <BsMoon size={18} />}
         </Button>
-        <Dropdown />
+        {/* <Dropdown /> */}
         <SignedIn>
           <UserButton />
         </SignedIn>
