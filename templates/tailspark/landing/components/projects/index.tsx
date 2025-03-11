@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-09 13:14:52
+ * @LastEditTime: 2025-03-11 22:55:06
  */
 "use client"
 
@@ -65,7 +65,7 @@ export default ({
               </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {servers.slice(0, 4).map((item: Project, idx: number) => (
+              {servers.slice(0, 8).map((item: Project, idx: number) => (
                 <ProjectItem key={idx} project={item} />
               ))}
             </div>
@@ -93,7 +93,7 @@ export default ({
               </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {clients.slice(0, 4).map((item: Project, idx: number) => (
+              {clients.slice(0, 8).map((item: Project, idx: number) => (
                 <ProjectItem key={idx} project={item} />
               ))}
             </div>
