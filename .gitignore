@@ -49,3 +49,5 @@ app/api/update-sitemaps
 .github
 .env
 .env.local
+.env
+.env.local
