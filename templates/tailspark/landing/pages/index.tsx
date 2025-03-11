@@ -94,11 +94,17 @@ export default function ({
             {/* 添加工具站数量展示 */}
             <div className="mb-4 sm:mb-6">
               <div>
-                <span className="text-xl sm:text-2xl font-bold text-primary">
+                <span className="text-xl sm:text-2xl font-bold text-primary inline-block animate-bounce">
                   {projectsCount}
                 </span>
-                <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2">
-                  MCP Tools Available - The Most Comprehensive Collection
+                <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block animate-bounce [animation-delay:200ms]">
+                  MCP Tools Available
+                </span>
+                <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block ">
+                -
+                </span>
+                <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block animate-bounce [animation-delay:400ms]">
+                  The Most Comprehensive Collection
                 </span>
               </div>
             </div>

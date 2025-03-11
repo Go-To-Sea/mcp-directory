@@ -194,6 +194,7 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
 
       {/* 项目详细信息 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 max-w-full">
+        {/* 左侧内容区域保持不变 */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -213,41 +214,35 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
           </div>
         </motion.div>
 
-        {/* 移动端和桌面端都显示的推荐区域 */}
+        {/* 右侧推荐区域 - 修改样式 */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="space-y-6 h-full"
+          className="h-full flex flex-col"
         >
-          {/* 推荐区域部分 */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="space-y-6 h-full"
-          >
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow duration-300 h-full overflow-hidden">
-              <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200 flex items-center">
-                <span className="w-1.5 h-6 bg-gradient-to-b from-purple-500 to-blue-600 rounded-full mr-2.5 inline-block"></span>
-                Similar {project.type === 'server' ? 'Servers' : 'Clients'}
-              </h2>
-              
-              {similarProjects.length > 0 ? (
-                <div className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
-                  {similarProjects.slice(0, 5).map((similarProject) => (
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow duration-300 flex-1 flex flex-col">
+            <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200 flex items-center flex-shrink-0">
+              <span className="w-1.5 h-6 bg-gradient-to-b from-purple-500 to-blue-600 rounded-full mr-2.5 inline-block"></span>
+              Similar {project.type === 'server' ? 'Servers' : 'Clients'}
+            </h2>
+            
+            {similarProjects.length > 0 ? (
+              <div className="flex-1 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                <div className="space-y-3 sm:space-y-4">
+                  {similarProjects.map((similarProject) => (
                     <div key={similarProject.uuid} className="transform scale-95 origin-top">
                       <ProjectItem project={similarProject} />
                     </div>
                   ))}
                 </div>
-              ) : (
-                <div className="text-gray-500 dark:text-gray-400 text-center py-4 text-sm sm:text-base">
-                  No similar {project.type === 'server' ? 'servers' : 'clients'} found
-                </div>
-              )}
-            </div>
-          </motion.div>
+              </div>
+            ) : (
+              <div className="flex-1 flex items-center justify-center text-gray-500 dark:text-gray-400 text-sm sm:text-base">
+                No similar {project.type === 'server' ? 'servers' : 'clients'} found
+              </div>
+            )}
+          </div>
         </motion.div>
       </div>
     </div>

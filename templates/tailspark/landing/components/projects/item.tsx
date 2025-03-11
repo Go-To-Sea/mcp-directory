@@ -48,11 +48,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   const renderTags = (tags: string | string[]) => {
     const tagArray = typeof tags === 'string' ? tags.split(',') : tags;
     return (
-      <div className="flex flex-wrap items-center gap-1 overflow-hidden max-w-full">
-        {tagArray.slice(0, 2).map((tag, index) => (
+      <div className="flex items-center gap-1 overflow-hidden whitespace-nowrap">
+        {/* 第一个标签 - 不限制宽度 */}
+        {tagArray.length > 0 && (
           <motion.span
-            key={index}
-            className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap transition-all overflow-hidden"
+            key={0}
+            className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap transition-all"
             style={{
               background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
               border: "1px solid transparent",
@@ -61,7 +62,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
               backgroundOrigin: "border-box",
               backgroundClip: "padding-box, border-box"
             }}
-        
           >
             <span 
               className="bg-clip-text text-transparent whitespace-nowrap" 
@@ -69,12 +69,40 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                 backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
               }}
             >
-              #{tag.trim()}
+              #{tagArray[0].trim()}
             </span>
           </motion.span>
-        ))}
+        )}
+        
+        {/* 第二个标签 - 可以被截断 */}
+        <div className="overflow-hidden">
+          {tagArray.slice(1, 2).map((tag, index) => (
+            <motion.span
+              key={index + 1}
+              className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap transition-all overflow-hidden"
+              style={{
+                background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
+                border: "1px solid transparent",
+                borderRadius: "9999px",
+                backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05)), linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))",
+                backgroundOrigin: "border-box",
+                backgroundClip: "padding-box, border-box"
+              }}
+            >
+              <span 
+                className="bg-clip-text text-transparent whitespace-nowrap" 
+                style={{
+                  backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
+                }}
+              >
+                #{tag.trim()}
+              </span>
+            </motion.span>
+          ))}
+        </div>
+        
         {tagArray.length > 2 && (
-          <span className="text-[10px] sm:text-xs text-gray-500 whitespace-nowrap">
+          <span className="text-[10px] sm:text-xs text-gray-500 flex-shrink-0">
             +{tagArray.length - 2}
           </span>
         )}

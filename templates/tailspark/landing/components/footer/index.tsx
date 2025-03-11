@@ -20,7 +20,7 @@ import Link from "next/link";
 
 export default ({ footer }: { footer?: Footer }) => {
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-800">
+    <footer className="relative z-100 bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-800">
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* 品牌区域 */}

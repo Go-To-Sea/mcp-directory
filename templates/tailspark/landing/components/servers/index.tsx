@@ -37,7 +37,7 @@ export default function ({
         <div className="mb-10">
           <Search />
         </div>
-        <Projects projects={projects} projectType={'server'} classMenus={classMenus}/>
+        <Projects projects={projects}  projectType={'server'} classMenus={classMenus}/>
       </div>
     </div>
   );

@@ -72,7 +72,7 @@ export default async function ProjectDetail({ params, searchParams }: Props) {
   const resolvedParams = await params;
   const resolvedSearchParams = await searchParams;
   const id = resolvedSearchParams?.id;
-  
+  console.log('resolvedSearchParams.id:',id);
   let project;
   if (typeof id === 'string') {
     project = await getProjectById(parseInt(id));
