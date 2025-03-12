@@ -12,7 +12,7 @@ import * as z from "zod"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { v4 as uuidv4 } from 'uuid';
-import { insertProject } from "@/models/project";
+import { insertProject,findMaxSort } from "@/models/project";
 import { useRouter } from 'next/navigation' // 添加路由导入
 import { useAuth, SignInButton } from '@clerk/nextjs' // 添加 Clerk 的 auth 钩子和登录按钮
 
@@ -72,8 +72,8 @@ const Toast = ({ message, description, type, onClose }: ToastProps) => {
 
 // 修改 formSchema，添加 type 字段
 const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  description: z.string().min(10, "Description must be at least 10 characters"),
+  // name: z.string().min(2, "Name must be at least 2 characters"),
+  // description: z.string().min(10, "Description must be at least 10 characters"),
   githubUrl: z.string().url("Please enter a valid URL").regex(/^https:\/\/github\.com\//, "GitHub URL must start with https://github.com/"),
   type: z.enum(["server", "client"]), // 添加类型选择
 });
@@ -92,8 +92,8 @@ export default function SubmitForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      description: "",
+      // name: "",
+      // description: "",
       githubUrl: "",
       type: "server", // 默认为server类型
     },
@@ -121,24 +121,19 @@ export default function SubmitForm() {
       setIsDialogOpen(true);
     }
   };
-  
+
   const onSubmit = async (values: FormValues) => {
       try {
         setIsSubmitting(true);
-        
-        // 不再添加随机后缀
-        const projectData = {
-          uuid: uuidv4(),
-          name: values.name,
-          title: values.name,
-          description: values.description,
-          url: values.githubUrl,
-          type: values.type, // 使用表单中选择的类型
-          status: 'created',
-          tags: `mcp,${values.type}`,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        };
+        // 获取最新的项目数据
+        const response = await fetch(`/api/get-project?type=${encodeURIComponent(values.type)}&url=${encodeURIComponent(values.githubUrl)}`);
+
+        const responseData = await response.json();
+        if (!response.ok) {
+          throw new Error('获取项目信息失败');
+        }
+        const projectData = responseData.data;
+        projectData.sort = await findMaxSort();
         
         // 插入项目数据
         const result = await insertProject(projectData);
@@ -152,7 +147,7 @@ export default function SubmitForm() {
         
         // 延迟一小段时间后跳转到详情页
         setTimeout(() => {
-          const detailPath = `/project/${encodeURIComponent(values.name)}`;
+          const detailPath = `/project/${encodeURIComponent(projectData.name)}`;
           router.push(detailPath);
         }, 500);
         
@@ -161,12 +156,12 @@ export default function SubmitForm() {
         // 检查是否是唯一约束错误
         if ((error as any).code === '23505' && (error as any).message?.includes('projects_name_key')) {
           // 项目名称已存在错误
-          showToast("Failed", `项目名称 "${form.getValues().name}" 已存在，请使用其他名称`, "error");
+          showToast("Failed", `项目已存在，请更换Github地址`, "error");
           // 聚焦到名称输入框
-          form.setError('name', { 
-            type: 'manual', 
-            message: '项目名称已存在，请使用其他名称' 
-          });
+          // form.setError('', { 
+          //   type: 'manual', 
+          //   message: '项目名称已存在，请使用其他名称' 
+          // });
         } else {
           // 其他错误
           showToast("Failed", "提交失败，请稍后重试", "error");
@@ -316,7 +311,7 @@ export default function SubmitForm() {
                 </motion.div>
                 
                 {/* 项目名称字段 */}
-                <motion.div
+                {/* <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 }}
@@ -338,9 +333,9 @@ export default function SubmitForm() {
                       </FormItem>
                     )}
                   />
-                </motion.div>
+                </motion.div> */}
                 
-                <motion.div
+                {/* <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.15 }}
@@ -362,7 +357,7 @@ export default function SubmitForm() {
                       </FormItem>
                     )}
                   />
-                </motion.div>
+                </motion.div> */}
                 
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}

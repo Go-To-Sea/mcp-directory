@@ -30,6 +30,19 @@ export async function findProjectByUuid(
   return data;
 }
 
+export async function findMaxSort(): Promise<number> {
+  const supabase = getSupabaseClient();
+  const { data, error } = await supabase
+    .from("projects")
+    .select("sort")
+    .order("sort", { ascending: false })
+    .limit(1)
+    .single();
+
+  if (!data || !data.sort) return 0;
+  return data.sort + 1;
+}
+
 export async function findProjectByName(
   name: string
 ): Promise<Project | undefined> {
@@ -157,7 +170,7 @@ export async function getFeaturedProjects(
     .select("*")
     .eq("is_featured", true)
     .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: false })
+    .order("sort", { ascending: true })
     // .order("created_at", { ascending: false })
     .range((page - 1) * limit, page * limit - 1);
   if (error) return [];
