@@ -36,7 +36,7 @@ export async function getCategories(
     .from("categories")
     .select("*")
     .eq("status", "created")
-    .order("created_at", { ascending: false })
+    .order("created_at", { ascending: true })
     .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
