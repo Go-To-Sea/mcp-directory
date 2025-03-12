@@ -74,7 +74,7 @@ export async function findMaxSort(): Promise<number> {
   const { data, error } = await supabase
     .from("projects")
     .select("sort")
-    .order("sort", { ascending: false })
+    .order("sort", { ascending: true })
     .limit(1)
     .single();
 
@@ -135,8 +135,8 @@ export async function getProjects(
     .from("projects")
     .select("*")
     .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: false })
-    .order("created_at", { ascending: false })
+    .order("sort", { ascending: true })
+    // .order("created_at", { ascending: true })
     .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
@@ -189,8 +189,8 @@ export async function getProjectsByCategory(
     .select("*")
     .eq("category", category)
     .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: false })
-    .order("created_at", { ascending: false })
+    .order("sort", { ascending: true })
+    // .order("created_at", { ascending: true })
     .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
@@ -210,7 +210,7 @@ export async function getFeaturedProjects(
     .eq("is_featured", true)
     .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
-    // .order("created_at", { ascending: false })
+    // .order("created_at", { ascending: true })
     .range((page - 1) * limit, page * limit - 1);
   if (error) return [];
   console.log('getFeaturedProjects.data====',data);
@@ -226,8 +226,8 @@ export async function getRandomProjects(
     .from("projects")
     .select("*")
     .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: false })
-    .order("created_at", { ascending: false })
+    .order("sort", { ascending: true })
+    // .order("created_at", { ascending: true })
     .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
@@ -249,8 +249,8 @@ export async function getProjectsWithKeyword(
       `name.ilike.%${keyword}%,title.ilike.%${keyword}%,description.ilike.%${keyword}%`
     )
     .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: false })
-    .order("created_at", { ascending: false })
+    .order("sort", { ascending: true })
+    // .order("created_at", { ascending: true })
     .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
@@ -272,8 +272,8 @@ export async function getProjectsWithTag(
     .eq("type", type)
     .ilike("tags", `%${tag}%`)
     .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: false })
-    .order("created_at", { ascending: false })
+    .order("sort", { ascending: true })
+    // .order("created_at", { ascending: true })
     .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
