@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { TextDecoder } from 'util';
+import MarkdownIt from 'markdown-it';
 import { v4 as uuidv4 } from 'uuid';
 
 // 加载 .env 文件
@@ -36,9 +37,23 @@ async function getReadmeContent(owner: string, repo_name: string, headers: any) 
         if (response.ok) {
             const data = await response.json();
             const readme_content = data.content;
-            // 使用 Buffer 进行 base64 解码
+            // 使用 Buffer 解码 Base64 内容
             const decoded = Buffer.from(readme_content, 'base64');
-            return new TextDecoder().decode(decoded);
+
+            // 将解码后的内容转换为文本
+            const markdown_content = new TextDecoder('utf-8', { fatal: true }).decode(decoded);
+
+            // 使用 markdown-it 解析 Markdown
+            //const md = new MarkdownIt();
+            const md = new MarkdownIt({
+                html: true,         // 允许 HTML 解析
+                linkify: true,      // 自动解析链接
+                typographer: false,  // 启用排版功能
+            });
+            
+            const formatted_content = md.render(markdown_content);  // 转换为 HTML 格式
+
+            return formatted_content;  // 返回 HTML 内容
         } else {
             console.log(`无法获取 README 文件: ${response.status}`);
             return null;
