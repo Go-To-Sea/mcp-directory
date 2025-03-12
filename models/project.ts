@@ -8,7 +8,46 @@ export enum ProjectStatus {
 
 export async function insertProject(project: Project) {
   const supabase = getSupabaseClient();
-  const { data, error } = await supabase.from("projects").insert(project);
+  
+  // 先查询是否存在相同 URL 的项目
+  const { data: existingProject } = await supabase
+    .from("projects")
+    .select("uuid")
+    .eq("url", project.url)
+    .maybeSingle();  // 使用 maybeSingle 替代 single
+
+  // 如果存在相同 URL 的项目，则更新
+  if (existingProject?.uuid) {
+    const updateData = {
+      name: project.name,
+      title: project.title,
+      description: project.description,
+      content: project.content,
+      img_url: project.img_url,
+      tags: project.tags,
+      type: project.type,
+      url: project.url,
+      github_url: project.github_url,
+      author_name: project.author_name,
+      author_avatar_url: project.author_avatar_url,
+      status: project.status
+    };
+
+    const { data, error } = await supabase
+      .from("projects")
+      .update(updateData)
+      .eq("uuid", existingProject.uuid)
+      .select()  // 添加 select() 来返回更新后的数据
+
+    if (error) throw error;
+    return data;
+  }
+  
+  // 不存在则执行插入操作
+  const { data, error } = await supabase
+    .from("projects")
+    .insert(project)
+    .select();  // 添加 select() 来返回插入的数据
 
   if (error) throw error;
   return data;

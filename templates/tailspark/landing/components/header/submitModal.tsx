@@ -129,16 +129,21 @@ export default function SubmitForm() {
         const response = await fetch(`/api/get-project?type=${encodeURIComponent(values.type)}&url=${encodeURIComponent(values.githubUrl)}`);
 
         const responseData = await response.json();
+        
         if (!response.ok) {
           throw new Error('获取项目信息失败');
         }
         const projectData = responseData.data;
-        projectData.sort = await findMaxSort();
-        
+        if(projectData.url){
+          delete projectData.sort
+        }else {
+          projectData.sort = await findMaxSort();
+        }
         // 插入项目数据
         const result = await insertProject(projectData);
+        console.log('获取详情成功=========',result)
         
-        // 先关闭弹窗
+        // 先关闭/rest/v1/projects弹窗
         setIsDialogOpen(false);
         form.reset();
         
@@ -154,7 +159,7 @@ export default function SubmitForm() {
       } catch (error) {
         
         // 检查是否是唯一约束错误
-        if ((error as any).code === '23505' && (error as any).message?.includes('projects_name_key')) {
+        if ((error as any).code === '23505' && (error as any)?.message?.includes('projects_name_key')) {
           // 项目名称已存在错误
           showToast("Failed", `项目已存在，请更换Github地址`, "error");
           // 聚焦到名称输入框
