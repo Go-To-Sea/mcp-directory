@@ -5,12 +5,11 @@ import Image from "next/image"
 import Link from "next/link"  // 添加 Link 导入
 import { ExternalLink, Github, ChevronRight, Home, ArrowLeft } from "lucide-react"  // 添加图标
 import type { Project } from "@/types/project"
-import Markdown from "@/components/markdown";
 import Header from "../../../templates/tailspark/landing/components/header";
 // 导入 ProjectItem 组件
 import ProjectItem from "../../../templates/tailspark/landing/components/projects/item";
 import { useRouter } from "next/navigation"
-
+import Markdown from "@/components/markdown"
 // 在文件顶部添加 Tailwind 样式导入
 import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
 
@@ -28,10 +27,31 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    
+    // 添加图片加载失败处理
+    const handleImageError = (e: Event) => {
+      const img = e.target as HTMLImageElement;
+      if (img.src.includes('/master/')) {
+        img.src = img.src.replace('/master/', '/main/');
+      }
+    };
+
+    // 为所有富文本中的图片添加错误处理
+    const images = document.querySelectorAll('.prose img');
+    images.forEach(img => {
+      img.addEventListener('error', handleImageError);
+    });
+
+    // 清理函数
+    return () => {
+      images.forEach(img => {
+        img.removeEventListener('error', handleImageError);
+      });
+    };
+  }, [project.content]); // 当内容变化时重新添加监听器
 
   if (!mounted) {
-    return null; // 或者返回一个加载状态
+    return null;
   }
 
   return (
@@ -191,7 +211,6 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
           </div>
         </div>
       </motion.div>
-
       {/* 项目详细信息 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 max-w-full">
         {/* 左侧内容区域保持不变 */}
@@ -211,6 +230,7 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
               className="prose dark:prose-invert max-w-none flex-1 overflow-auto"
               dangerouslySetInnerHTML={{ __html: project.content || 'Continuous updates...' }} 
             />
+            {/* <Markdown content={project.content || 'Continuous updates...' } /> */}
           </div>
         </motion.div>
 

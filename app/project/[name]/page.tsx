@@ -1,7 +1,7 @@
 /*
  * @Author: YourName
  * @Date: 2025-03-07 10:00:55
- * @LastEditTime: 2025-03-09 16:53:43
+ * @LastEditTime: 2025-03-13 00:16:00
  * @LastEditors: rendc
  * @Description: 
  * @FilePath: \mcp-directory\app\project\[name]\page.tsx
@@ -88,7 +88,22 @@ export default async function ProjectDetail({ params, searchParams }: Props) {
 
   const similarProjects = await getSimilarProjects(project);
   const tags = typeof project.tags === 'string' ? project.tags.split(',') : project.tags;
-
+  
+  // 处理 GitHub 仓库 URL，移除查询参数
+  const baseUrl = project.url?.split('?')[0];
+  
+  // 处理富文本中的相对路径图片
+  if (project.content && baseUrl) {
+    project.content = project.content.replace(
+      /<img[^>]+src=["']\.\/([^"']+)["'][^>]*>/g,
+      (match, relativePath) => {
+        return match.replace(`./`+relativePath, `https://raw.githubusercontent.com/${project.author_name}/${project.name}/master/${relativePath}`);
+      }
+    );
+  }
+  
+  project.content = `<div>${project.content}</div>`;
+  
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header header={{}}/>
