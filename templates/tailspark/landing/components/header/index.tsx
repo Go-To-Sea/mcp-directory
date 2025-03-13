@@ -6,6 +6,9 @@ import type { Header, Item } from "@/types/landing";
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 import Dropdown from "./dropdown";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { motion, AnimatePresence } from "framer-motion"
+
 import { useEffect, useState } from "react";
 import {
   SignInButton,
@@ -22,17 +25,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
   const router = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
+  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -48,6 +41,11 @@ export default function HeaderComponent({ header }: { header: Header }) {
   const handleNavigation = (path: string) => {
     // 根据您的项目结构调整路径
     router.push(`${path}`);
+  };
+
+  const handleSubmitClick = (e: React.MouseEvent) => {
+   
+      router.push('/submit');
   };
 
   return (
@@ -83,45 +81,66 @@ export default function HeaderComponent({ header }: { header: Header }) {
     {/* 桌面端导航 */}
     <div className="hidden md:flex items-center justify-between flex-1 space-x-2">
       <div className="flex items-center space-x-2">
-        <Button
-          variant="ghost"
-          className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors ${
+        <a
+          href="/servers"
+          className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
             pathname === "/servers" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
           }`}
-          onClick={() => handleNavigation("/servers")}
         >
           <GrCloudComputer className="mr-2 h-4 w-4" />
           Servers
-        </Button>
-        <Button
-          variant="ghost"
-          className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors ${
+        </a>
+        <a
+          href="/clients"
+          className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
             pathname === "/clients" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
           }`}
-          onClick={() => handleNavigation("/clients")}
         >
           <GrAction className="mr-2 h-4 w-4" />
           Clients
-        </Button>
-        <Button
-          variant="ghost"
-          className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors ${
+        </a>
+        <a
+          href="/blog"
+          className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
             pathname === "/blog" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
           }`}
-          onClick={() => handleNavigation("/blog")}
         >
           <BsList className="mr-2 h-4 w-4" />
           Blog
-        </Button>
+        </a>
       </div>
       <div className="flex items-center space-x-2">
-        {/* <Button
-          variant="default"
-          className="bg-primary hover:bg-primary/90 text-white"
+        <a 
+          href="/submit"
+          className="inline-block"
+          onClick={handleSubmitClick}
         >
-          Submit
-        </Button> */}
-        <SubmitForm />
+          <Button
+            variant="default"
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
+          >
+            Submit
+          </Button>
+        </a>
+
+        {/* 删除这部分重复的代码 */}
+        {/* <div className="px-6 py-3">
+          <div className="w-full">
+            <a 
+              href="/submit"
+              className="block w-full"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Button
+                variant="default"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full"
+              >
+                Submit
+              </Button>
+            </a>
+          </div>
+        </div> */}
+
         <SignedOut>
           <SignInButton>
             <Button
@@ -156,50 +175,46 @@ export default function HeaderComponent({ header }: { header: Header }) {
               >
                 <div className="flex flex-col h-full">
                   <div className="flex-1 py-4">
-                    <Button
-                      variant="ghost"
-                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                    <a
+                      href="/servers"
+                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/servers" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
-                      onClick={() => {
-                        handleNavigation("/servers");
-                        setIsMenuOpen(false);
-                      }}
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       <GrCloudComputer className="mr-3 h-4 w-4" />
                       Servers
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                    </a>
+                    <a
+                      href="/clients"
+                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/clients" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
-                      onClick={() => {
-                        handleNavigation("/clients");
-                        setIsMenuOpen(false);
-                      }}
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       <GrAction className="mr-3 h-4 w-4" />
                       Clients
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                    </a>
+                    <a
+                      href="/blog"
+                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/blog" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
-                      onClick={() => {
-                        handleNavigation("/blog");
-                        setIsMenuOpen(false);
-                      }}
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       <BsList className="mr-3 h-4 w-4" />
                       Blog
-                    </Button>
+                    </a>
                     
                     {/* Submit 按钮 */}
                     <div className="px-6 py-3">
                       <div className="w-full">
-                        <SubmitForm />
+                        <Button
+                          variant="default"
+                          className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
+                        >
+                          Submit
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -227,6 +242,67 @@ export default function HeaderComponent({ header }: { header: Header }) {
             </div>
           )}
         </header>
+
+        {/* 登录提示弹窗 */}
+<Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
+  <DialogContent className="sm:max-w-[400px] !rounded-2xl border-0 shadow-xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+    <DialogHeader>
+      <DialogTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+        Sign In Required
+      </DialogTitle>
+      <p className="text-gray-600 dark:text-gray-400 mt-2">
+        Please sign in to submit your project
+      </p>
+    </DialogHeader>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="mt-6 flex flex-col items-center">
+        <motion.div 
+          className="w-full flex justify-center mb-4"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1 }}
+        >
+          <div className="p-3 rounded-full bg-blue-50 dark:bg-blue-900/30">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+        </motion.div>
+        <motion.div 
+          className="flex justify-center space-x-3 pt-4 w-full"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <Button 
+            variant="outline" 
+            onClick={() => setIsLoginDialogOpen(false)}
+            type="button"
+            className="!rounded border-gray-300 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800 transition-all"
+          >
+            Cancel
+          </Button>
+          <SignInButton mode="modal">
+            <Button 
+              type="button"
+              className="!rounded bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all"
+              onClick={() => setIsLoginDialogOpen(false)}
+            >
+              Sign In
+            </Button>
+          </SignInButton>
+        </motion.div>
+      </div>
+    </motion.div>
+  </DialogContent>
+</Dialog>
     </ClerkProvider>
   );
 }
+
+

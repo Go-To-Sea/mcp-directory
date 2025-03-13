@@ -61,7 +61,7 @@ export async function findProjectByUuid(
     .from("projects")
     .select("*")
     .eq("uuid", uuid)
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .single();
 
   if (!data) return undefined;
@@ -90,7 +90,7 @@ export async function findProjectByName(
     .from("projects")
     .select("*")
     .eq("name", name)
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .single();
 
   if (!data) return undefined;
@@ -104,7 +104,7 @@ export async function getProjectByName(name: string): Promise<Project | null> {
     .from("projects")
     .select("*")
     .eq("name", name)
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .single();
 
   if (error || !data) return null;
@@ -118,7 +118,7 @@ export async function getProjectById(id: number): Promise<Project | null> {
     .from("projects")
     .select("*")
     .eq("id", id)
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .single();
 
   if (error || !data) return null;
@@ -134,10 +134,10 @@ export async function getProjects(
   const { data, error } = await supabase
     .from("projects")
     .select("*")
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
     // .order("created_at", { ascending: true })
-    .range((page - 1) * limit, page * limit - 1);
+    // .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
 
@@ -149,7 +149,7 @@ export async function getProjectsCount(type?: 'server' | 'client'): Promise<numb
   let query = supabase
     .from("projects")
     .select("count")
-    .eq("status", ProjectStatus.Created);
+    // .eq("status", ProjectStatus.Created);
 
   if (type) {
     query = query.eq('type', type);
@@ -170,7 +170,7 @@ export async function getProjectsCountByCategory(
     .from("projects")
     .select("count")
     .eq("category", category)
-    .eq("status", ProjectStatus.Created);
+    // .eq("status", ProjectStatus.Created);
 
   if (error) return 0;
 
@@ -188,10 +188,10 @@ export async function getProjectsByCategory(
     .from("projects")
     .select("*")
     .eq("category", category)
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
     // .order("created_at", { ascending: true })
-    .range((page - 1) * limit, page * limit - 1);
+    // .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
 
@@ -207,11 +207,11 @@ export async function getFeaturedProjects(
   const { data, error } = await supabase
     .from("projects")
     .select("*")
-    .eq("is_featured", true)
-    .eq("status", ProjectStatus.Created)
+    // .eq("is_featured", true) //TODO
+    // .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
     // .order("created_at", { ascending: true })
-    .range((page - 1) * limit, page * limit - 1);
+    // .range((page - 1) * limit, page * limit - 1);
   if (error) return [];
   console.log('getFeaturedProjects.data====',data);
   return data;
@@ -225,10 +225,10 @@ export async function getRandomProjects(
   const { data, error } = await supabase
     .from("projects")
     .select("*")
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
     // .order("created_at", { ascending: true })
-    .range((page - 1) * limit, page * limit - 1);
+    // .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
 
@@ -248,10 +248,10 @@ export async function getProjectsWithKeyword(
     .or(
       `name.ilike.%${keyword}%,title.ilike.%${keyword}%,description.ilike.%${keyword}%`
     )
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
     // .order("created_at", { ascending: true })
-    .range((page - 1) * limit, page * limit - 1);
+    // .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
 
@@ -271,10 +271,10 @@ export async function getProjectsWithTag(
     .select("*")
     .eq("type", type)
     .ilike("tags", `%${tag}%`)
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
     // .order("created_at", { ascending: true })
-    .range((page - 1) * limit, page * limit - 1);
+    // .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
   
@@ -309,8 +309,8 @@ export async function getProjectsWithoutSummary(
     .from("projects")
     .select("*")
     .is("summary", null)
-    .eq("status", ProjectStatus.Created)
-    .range((page - 1) * limit, page * limit - 1);
+    // .eq("status", ProjectStatus.Created)
+    // .range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
 
@@ -334,7 +334,7 @@ export async function getAllProjectTags(type?: 'server' | 'client'): Promise<{ [
   let query = supabase
     .from("projects")
     .select("tags, type")
-    .eq("status", ProjectStatus.Created)
+    // .eq("status", ProjectStatus.Created)
     .not("tags", "is", null);
 
   if (type) {

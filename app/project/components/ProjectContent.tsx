@@ -10,6 +10,8 @@ import Header from "../../../templates/tailspark/landing/components/header";
 import ProjectItem from "../../../templates/tailspark/landing/components/projects/item";
 import { useRouter } from "next/navigation"
 import Markdown from "@/components/markdown"
+import BackToTop from "../../../templates/tailspark/landing/components/backToTop/backToTop";
+
 // 在文件顶部添加 Tailwind 样式导入
 import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
 
@@ -56,6 +58,7 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
 
   return (
     <div className="relative w-full overflow-hidden">
+      <BackToTop/>
       {/* 修改面包屑导航 */}
       <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
         <Link href="/" className="flex items-center hover:text-primary transition-colors">
@@ -244,7 +247,8 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow duration-300 flex-1 flex flex-col">
             <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200 flex items-center flex-shrink-0">
               <span className="w-1.5 h-6 bg-gradient-to-b from-purple-500 to-blue-600 rounded-full mr-2.5 inline-block"></span>
-              Similar {project.type === 'server' ? 'Servers' : 'Clients'}
+              recommend MCP 
+              {/* {project.type === 'server' ? 'Servers' : 'Clients'} */}
             </h2>
             
             {similarProjects.length > 0 ? (

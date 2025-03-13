@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-11 22:43:22
+ * @LastEditTime: 2025-03-13 23:49:13
  */
 "use client"
 
@@ -119,9 +119,7 @@ export default function ({
             </div>
 
             <p className="text-sm sm:text-base md:text-lg text-[#898989] dark:text-white mb-6 sm:mb-8 px-2 sm:px-8 md:px-20 mt-4 sm:mt-6">
-              Here, we provide a comprehensive suite of tools designed specifically for the Multi-Purpose Computing
-              Platform (MCP). Whether you are a developer, a designer, or just looking for efficient solutions, our
-              tools are tailored to enhance your productivity and streamline your workflow.
+              MCP（Model Context Protocol）Tool Navigation Station —— the most comprehensive tool library in the network, one-stop aggregation, intelligent classification by scenario/function, accurate access to the required tools, point and use, efficient opening of MCP usage journey. 
             </p>
             <button
               onClick={() => {

@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-06 01:43:09
+ * @LastEditTime: 2025-03-14 00:04:20
  */
 /*
  * @Description: 
@@ -27,7 +27,7 @@ export default ({ footer }: { footer?: Footer }) => {
           <div className="md:col-span-2">
             <div className="flex items-center mb-6">
               <img src="/logo.png" alt="Logo" className="h-8 w-auto mr-3" />
-              <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">MCP.ad</span>
+              <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"><a href="https://mcp.ad">MCP.ad</a></span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
               {footer?.brand?.description || "Find and explore the best Model Context Protocol (MCP) servers for your AI applications."}

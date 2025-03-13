@@ -47,39 +47,20 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   // 修改 renderTags 函数
   const renderTags = (tags: string | string[]) => {
     const tagArray = typeof tags === 'string' ? tags.split(',') : tags;
+    const basePath = pathname.split('?')[0]; // 获取当前路径的基础部分
+
     return (
       <div className="flex items-center gap-1 overflow-hidden whitespace-nowrap">
-        {/* 第一个标签 - 不限制宽度 */}
+        {/* 第一个标签 */}
         {tagArray.length > 0 && (
           <motion.span
             key={0}
-            className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap transition-all"
-            style={{
-              background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
-              border: "1px solid transparent",
-              borderRadius: "9999px",
-              backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05)), linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))",
-              backgroundOrigin: "border-box",
-              backgroundClip: "padding-box, border-box"
-            }}
+            className="inline-flex items-center transition-all"
           >
-            <span 
-              className="bg-clip-text text-transparent whitespace-nowrap" 
-              style={{
-                backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
-              }}
-            >
-              #{tagArray[0].trim()}
-            </span>
-          </motion.span>
-        )}
-        
-        {/* 第二个标签 - 可以被截断 */}
-        <div className="overflow-hidden">
-          {tagArray.slice(1, 2).map((tag, index) => (
-            <motion.span
-              key={index + 1}
-              className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap transition-all overflow-hidden"
+            <a
+              href={`${basePath}?tag=${encodeURIComponent(tagArray[0].trim())}`}
+              onClick={(e) => e.stopPropagation()} // 防止触发父元素的点击事件
+              className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap"
               style={{
                 background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
                 border: "1px solid transparent",
@@ -95,8 +76,41 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                   backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
                 }}
               >
-                #{tag.trim()}
+                #{tagArray[0].trim()}
               </span>
+            </a>
+          </motion.span>
+        )}
+        
+        {/* 第二个标签 */}
+        <div className="overflow-hidden">
+          {tagArray.slice(1, 2).map((tag, index) => (
+            <motion.span
+              key={index + 1}
+              className="inline-flex items-center transition-all overflow-hidden"
+            >
+              <a
+                href={`${basePath}?tag=${encodeURIComponent(tag.trim())}`}
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap"
+                style={{
+                  background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
+                  border: "1px solid transparent",
+                  borderRadius: "9999px",
+                  backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05)), linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))",
+                  backgroundOrigin: "border-box",
+                  backgroundClip: "padding-box, border-box"
+                }}
+              >
+                <span 
+                  className="bg-clip-text text-transparent whitespace-nowrap" 
+                  style={{
+                    backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
+                  }}
+                >
+                  #{tag.trim()}
+                </span>
+              </a>
             </motion.span>
           ))}
         </div>

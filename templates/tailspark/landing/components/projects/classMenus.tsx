@@ -16,7 +16,7 @@ export default (props: {
   const categories = props.classMenus || [];
   const searchParams = useSearchParams();
   const currentTag = searchParams.get('tag');
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   
   const handleExpandToggle = () => {
     if (isExpanded) {
