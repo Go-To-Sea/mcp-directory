@@ -1,6 +1,6 @@
-## MCP Directory
+## MCP Integration
 
-a directory for Awesome MCP Servers.
+Discover MCP Servers and Clients for Claude Integration
 
 live preview: [https://mcp.ad](https://mcp.ad)
 
