@@ -126,6 +126,9 @@ export default function SubmitForm({
         }else {
           projectData.sort = await findMaxSort();
         }
+        projectData.user_submit = true
+        projectData.submit_time = Date.now()
+
         // Insert project data
         const result = await insertProject(projectData);
         console.log('Project details fetched successfully:', result)

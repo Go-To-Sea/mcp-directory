@@ -38,7 +38,9 @@ export async function insertProject(project: Project) {
       author_name: processedProject.author_name,
       author_avatar_url: processedProject.author_avatar_url,
       status: processedProject.status,
-      updated_at: processedProject.updated_at
+      updated_at: processedProject.updated_at,
+      user_submit:true,
+      submit_time:Date.now()
     };
 
     const { data, error } = await supabase
