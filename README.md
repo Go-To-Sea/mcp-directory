@@ -4,7 +4,7 @@ Discover MCP Servers and Clients for Claude Integration
 
 live preview: [https://mcp.ad](https://mcp.ad)
 
-![preview](./preview.png)
+![preview](./MCP-Servers.png)
 
 ## Quick Start
 
