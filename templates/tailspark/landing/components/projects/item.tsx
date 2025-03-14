@@ -176,6 +176,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
             />
           </motion.button>
         </div>
+        
   
         <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-4 line-clamp-2 h-[32px] sm:h-[40px]">
           {project.description}
