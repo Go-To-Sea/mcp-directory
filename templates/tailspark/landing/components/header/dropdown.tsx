@@ -5,6 +5,7 @@ import { Languages, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
+import { usePathname, useRouter } from "next/navigation" // 添加路由导入
 
 type Language = {
   code: string
@@ -23,9 +24,21 @@ const languages: Language[] = [
     name: "Chinese",
     nativeName: "中文",
   },
+  {
+    code: "ja",
+    name: "Japanese",
+    nativeName: "日本語",
+  },
+  {
+    code: "ko",
+    name: "Korean",
+    nativeName: "한국어",
+  },
 ]
 
 export default function LanguageSelector() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(languages[0])
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -33,9 +46,28 @@ export default function LanguageSelector() {
   const handleLanguageChange = (language: Language) => {
     setSelectedLanguage(language)
     setIsOpen(false)
-    // Here you would typically implement the actual language change logic
-    console.log(`Language changed to: ${language.name}`)
+
+    // 处理路径切换
+    let newPath = pathname
+    // 移除现有的语言前缀（如果存在）
+    const pathWithoutLang = pathname.replace(/^\/(en|zh|ja|ko)/, '')
+    
+    // 添加新的语言前缀（除了英语）
+    if (language.code !== 'en') {
+      newPath = `/${language.code}${pathWithoutLang}`
+    } else {
+      newPath = pathWithoutLang
+    }
+    
+    router.push(newPath)
   }
+
+  // 初始化时根据当前路径设置语言
+  useEffect(() => {
+    const langPrefix = pathname.match(/^\/(en|zh|ja|ko)/)
+    const currentLang = languages.find(lang => langPrefix?.[1] === lang.code) || languages[0]
+    setSelectedLanguage(currentLang)
+  }, [pathname])
 
   // Close dropdown when clicking outside
   useEffect(() => {

@@ -54,9 +54,9 @@ export default function HeaderComponent({ header }: { header: Header }) {
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <div className="flex-shrink-0">
-                <button
+                <a 
                   className="flex items-center py-3 px-2 text-primary font-bold hover:opacity-80 transition-opacity"
-                  onClick={() => handleNavigation("/")}
+                  href="https://mcp.ad"
                 >
                   <img
                     src={header?.brand?.avatar?.src || "/logo.png"}
@@ -64,7 +64,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     className="w-8 h-8 rounded mr-2"
                   />
                   <span className="block">MCP.ad</span>
-                </button>
+                </a>
               </div>
 
               {/* 移动端菜单按钮 */}
@@ -122,7 +122,6 @@ export default function HeaderComponent({ header }: { header: Header }) {
           </Button>
         </a>
 
-
         <SignedOut>
           <SignInButton>
             <Button
@@ -140,7 +139,10 @@ export default function HeaderComponent({ header }: { header: Header }) {
         >
           {isDarkMode ? <BsSun size={18} /> : <BsMoon size={18} />}
         </Button>
+        
+        {/* 启用语言切换下拉菜单 */}
         {/* <Dropdown /> */}
+        
         <SignedIn>
           <UserButton />
         </SignedIn>
