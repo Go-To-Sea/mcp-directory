@@ -48,7 +48,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   // 修改 renderTags 函数
   const renderTags = (tags: string | string[]) => {
     const tagArray = typeof tags === 'string' ? tags.split(',') : tags;
-    const basePath = pathname.split('?')[0]; // 获取当前路径的基础部分
+    const basePath = pathname.split('?')[0];
 
     return (
       <div className="flex items-center gap-1 overflow-hidden whitespace-nowrap">
@@ -58,9 +58,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
             key={0}
             className="inline-flex items-center transition-all"
           >
-            <a
+            <Link
               href={`${basePath}?tag=${encodeURIComponent(tagArray[0].trim())}`}
-              onClick={(e) => e.stopPropagation()} // 防止触发父元素的点击事件
+              onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap"
               style={{
                 background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
@@ -79,7 +79,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
               >
                 #{tagArray[0].trim()}
               </span>
-            </a>
+            </Link>
           </motion.span>
         )}
         
@@ -90,7 +90,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
               key={index + 1}
               className="inline-flex items-center transition-all overflow-hidden"
             >
-              <a
+              <Link
                 href={`${basePath}?tag=${encodeURIComponent(tag.trim())}`}
                 onClick={(e) => e.stopPropagation()}
                 className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap"
@@ -111,7 +111,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                 >
                   #{tag.trim()}
                 </span>
-              </a>
+              </Link>
             </motion.span>
           ))}
         </div>

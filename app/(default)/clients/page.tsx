@@ -47,7 +47,7 @@ export default async function ({
   } else if (q) {
     projects = await getProjectsWithKeyword(q as string, 1, 500);
   } else {
-    projects = await getFeaturedProjects(1, 100);
+    projects = await getFeaturedProjects(1, 500);
   }
   const projectsCount = await getProjectsCount('client');
   // 转换为 ClassMenus 组件需要的格式，只处理 client 类型的标签

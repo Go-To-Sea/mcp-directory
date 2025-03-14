@@ -211,7 +211,7 @@ export async function getFeaturedProjects(
     // .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
     // .order("created_at", { ascending: true })
-    // .range((page - 1) * limit, page * limit - 1);
+    .range((page - 1) * limit, page * limit - 1);
   if (error) return [];
   console.log('getFeaturedProjects.data====',data);
   return data;

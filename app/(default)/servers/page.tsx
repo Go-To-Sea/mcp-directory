@@ -54,7 +54,7 @@ export default async function ({
   } else if (q) {
     projects = await getProjectsWithKeyword(q as string, 1, 500);
   } else {
-    projects = await getFeaturedProjects(1, 100);
+    projects = await getFeaturedProjects(1, 500);
   }
   // 确保 allTags 存在且是一个对象
   const classMenus: ClassMenus[] = allTags ? 
