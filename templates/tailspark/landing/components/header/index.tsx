@@ -19,7 +19,6 @@ import {
   ClerkProvider
 } from '@clerk/nextjs'
 // 添加导入
-import SubmitForm from "./submitModal";
 export default function HeaderComponent({ header }: { header: Header }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -55,9 +54,9 @@ export default function HeaderComponent({ header }: { header: Header }) {
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <div className="flex-shrink-0">
-                <button
+                <a 
                   className="flex items-center py-3 px-2 text-primary font-bold hover:opacity-80 transition-opacity"
-                  onClick={() => handleNavigation("/")}
+                  href="https://mcp.ad"
                 >
                   <img
                     src={header?.brand?.avatar?.src || "/logo.png"}
@@ -65,7 +64,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     className="w-8 h-8 rounded mr-2"
                   />
                   <span className="block">MCP.ad</span>
-                </button>
+                </a>
               </div>
 
               {/* 移动端菜单按钮 */}
@@ -123,24 +122,6 @@ export default function HeaderComponent({ header }: { header: Header }) {
           </Button>
         </a>
 
-        {/* 删除这部分重复的代码 */}
-        {/* <div className="px-6 py-3">
-          <div className="w-full">
-            <a 
-              href="/submit"
-              className="block w-full"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <Button
-                variant="default"
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full"
-              >
-                Submit
-              </Button>
-            </a>
-          </div>
-        </div> */}
-
         <SignedOut>
           <SignInButton>
             <Button
@@ -158,7 +139,10 @@ export default function HeaderComponent({ header }: { header: Header }) {
         >
           {isDarkMode ? <BsSun size={18} /> : <BsMoon size={18} />}
         </Button>
+        
+        {/* 启用语言切换下拉菜单 */}
         {/* <Dropdown /> */}
+        
         <SignedIn>
           <UserButton />
         </SignedIn>
@@ -209,12 +193,22 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     {/* Submit 按钮 */}
                     <div className="px-6 py-3">
                       <div className="w-full">
-                        <Button
-                          variant="default"
-                          className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
+                        <a 
+                          href="/submit"
+                          className="block w-full"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleSubmitClick(e);
+                            setIsMenuOpen(false);
+                          }}
                         >
-                          Submit
-                        </Button>
+                          <Button
+                            variant="default"
+                            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
+                          >
+                            Submit
+                          </Button>
+                        </a>
                       </div>
                     </div>
                   </div>

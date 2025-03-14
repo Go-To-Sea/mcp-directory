@@ -1,17 +1,17 @@
-## MCP Directory
+## MCP Integration
 
-a directory for Awesome MCP Servers.
+Discover MCP Servers and Clients for Claude Integration
 
 live preview: [https://mcp.ad](https://mcp.ad)
 
-![preview](./preview.png)
+![preview](./MCP-Servers.png)
 
 ## Quick Start
 
 1. clone the repo
 
 ```bash
-git clone https://github.com/chatmcp/mcp-directory.git
+git clone https://github.com/Go-To-Sea/mcp-directory.git
 cd mcp-directory
 ```
 
@@ -52,11 +52,10 @@ open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Community
 
-- [MCP Server Telegram](https://t.me/+N0gv4O9SXio2YWU1)
-- [MCP Server Discord](https://discord.gg/RsYPRrnyqg)
+- [MCP Server Telegram]()
+- [MCP Server Discord]()
 
 ## About the author
 
-- [idoubi](https://bento.me/idoubi)
-- [Follow me on Twitter](https://x.com/idoubi)
-- [Buy me a coffee](https://www.buymeacoffee.com/idoubi)
+- [Follow me on Twitter](https://x.com/huangds87)
+- [Buy me a coffee](https://www.buymeacoffee.com/huangds)
