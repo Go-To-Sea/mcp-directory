@@ -126,22 +126,22 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   };
   
   return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      whileHover={{
+        y: -5,
+        transition: { duration: 0.2 },
+      }}
+      className="mb-2 h-[160px] sm:h-[180px] cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-3 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
     <Link 
       href={`/project/${encodeURIComponent(project.name || '')}`}
       className="block"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        whileHover={{
-          y: -5,
-          transition: { duration: 0.2 },
-        }}
-        className="mb-2 h-[160px] sm:h-[180px] cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-3 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
         <div className="flex justify-between items-start mb-2 sm:mb-3">
           <div className="flex items-start overflow-hidden max-w-[85%]">
             <div className="rounded-md flex items-center justify-center mr-2 sm:mr-3 min-w-[24px] sm:min-w-[32px]">
@@ -199,8 +199,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
             <ExternalLink size={12} className="sm:w-4 sm:h-4" />
           </motion.div>
         </div>
-      </motion.div>
     </Link>
+      </motion.div>
   );
 };
 
