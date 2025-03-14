@@ -20,6 +20,8 @@ export interface Project {
   sort?: number;            // 添加排序属性
   img_url?: string;      // 添加图片 URL 属性
   avatar_url?: string;   // 添加头像 URL 属性
+  user_submit?: boolean;     // 是否是用户提交
+  submit_time?: string;  // 提交时间
 }
 
 export interface ClassMenus {

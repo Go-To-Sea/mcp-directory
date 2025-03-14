@@ -30,7 +30,9 @@ export async function insertProject(project: Project) {
       github_url: project.github_url,
       author_name: project.author_name,
       author_avatar_url: project.author_avatar_url,
-      status: project.status
+      status: project.status,
+      user_submit:true,
+      submit_time:Date.now()
     };
 
     const { data, error } = await supabase
