@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "MCP Servers",
-    "description": "The largest collection of MCP Servers, including Awesome MCP Servers and Claude MCP integration. Search and discover MCP servers to enhance your AI capabilities.",
-    "keywords": "MCP Servers, Awesome MCP Servers, Claude MCP, Model Context Protocol"
+    "title": "Discover MCP Servers and Clients for Claude Integration",
+    "description": "Explore a vast collection of MCP servers and clients at MCP.ad, your ultimate resource for Model Context Protocol integrations! Search and discover MCP servers to enhance your AI capabilities.",
+    "keywords": "MCP Servers, Model Context Protocol, MCP Clients, Claude integration, AI servers, Gmail MCP server, server listing, MCP resources"
   },
   "header": {
     "brand": {
@@ -103,13 +103,8 @@
           "title": "Links",
           "children": [
             {
-              "title": "animateoldphotos",
-              "url": "https://animateoldphotos.org/",
-              "target": "_blank"
-            },
-            {
-              "title": "imagedescriber",
-              "url": "https://imagedescriber.app/",
+              "title": "NameFuture",
+              "url": "https://naming.mcp.ad",
               "target": "_blank"
             }
           ]
