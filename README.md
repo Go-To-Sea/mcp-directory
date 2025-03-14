@@ -57,6 +57,5 @@ open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## About the author
 
--
 - [Follow me on Twitter](https://x.com/huangds87)
-- [Buy me a coffee](https://www.buymeacoffee.com/hds1987070w)
+- [Buy me a coffee](https://www.buymeacoffee.com/huangds)
