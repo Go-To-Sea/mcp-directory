@@ -1,6 +1,6 @@
 "use client";
 
-import SubmitForm from "@/templates/tailspark/landing/components/header/submitModal";
+import SubmitForm from "@/templates/tailspark/landing/components/submit/index";
 import { useEffect, useState } from "react";
 import { getFeaturedProjects } from "@/models/project";
 
@@ -22,10 +22,13 @@ export default function SubmitPage() {
 
   return (
     <div className="relative overflow-hidden">
+      {/* 添加顶部安全间距，特别是在移动端 */}
+      <div className="pt-6 sm:pt-10 md:pt-12"></div>
 
-      <div className="mx-auto  w-full min-h-[50vh] flex flex-col items-center justify-center px-4">
+      <div className="mx-auto w-full min-h-[50vh] flex flex-col items-center justify-center px-4">
         <div className="text-center">
-          <div className="flex justify-center mb-6 mt-[-90px]">
+          {/* 调整移动端的负边距，使用响应式类 */}
+          <div className="flex justify-center mb-6 mt-[20px] sm:mt-[-30px] md:mt-[-60px] lg:mt-[-90px]">
             <div className="relative z-20">
               <a 
                 target="_blank" 
@@ -52,8 +55,8 @@ export default function SubmitPage() {
         </div>
       </div>
 
-      {/* 原有的表单部分 */}
-      <div className="" style={{marginTop:'-150px',paddingBottom:'70px'}}>
+      {/* 原有的表单部分 - 调整移动端的边距 */}
+      <div className="" style={{marginTop:'-100px',paddingBottom:'70px'}}>
         <div className="w-full ">
           <SubmitForm projects={projects}/>
         </div>

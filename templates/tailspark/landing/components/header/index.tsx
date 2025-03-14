@@ -19,7 +19,6 @@ import {
   ClerkProvider
 } from '@clerk/nextjs'
 // 添加导入
-import SubmitForm from "./submitModal";
 export default function HeaderComponent({ header }: { header: Header }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -124,22 +123,27 @@ export default function HeaderComponent({ header }: { header: Header }) {
         </a>
 
         {/* 删除这部分重复的代码 */}
-        {/* <div className="px-6 py-3">
-          <div className="w-full">
-            <a 
-              href="/submit"
-              className="block w-full"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <Button
-                variant="default"
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full"
+        {/* Submit 按钮 */}
+          <div className="px-6 py-3">
+            <div className="w-full">
+              <a 
+                href="/submit"
+                className="block w-full"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSubmitClick(e);
+                  setIsMenuOpen(false);
+                }}
               >
-                Submit
-              </Button>
-            </a>
+                <Button
+                  variant="default"
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
+                >
+                  Submit
+                </Button>
+              </a>
+            </div>
           </div>
-        </div> */}
 
         <SignedOut>
           <SignInButton>
@@ -209,12 +213,22 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     {/* Submit 按钮 */}
                     <div className="px-6 py-3">
                       <div className="w-full">
-                        <Button
-                          variant="default"
-                          className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
+                        <a 
+                          href="/submit"
+                          className="block w-full"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleSubmitClick(e);
+                            setIsMenuOpen(false);
+                          }}
                         >
-                          Submit
-                        </Button>
+                          <Button
+                            variant="default"
+                            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
+                          >
+                            Submit
+                          </Button>
+                        </a>
                       </div>
                     </div>
                   </div>
