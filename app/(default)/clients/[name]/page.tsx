@@ -1,7 +1,7 @@
 /*
  * @Author: YourName
  * @Date: 2025-03-07 10:00:55
- * @LastEditTime: 2025-03-13 00:16:00
+ * @LastEditTime: 2025-03-14 23:21:08
  * @LastEditors: rendc
  * @Description: 
  * @FilePath: \mcp-directory\app\project\[name]\page.tsx
@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 import { getProjectById, getProjectByName, getProjects } from "@/models/project";
 import pageJson from "@/pagejson/en.json";
 import type { Project } from "@/types/project";
-import ProjectContent from "../components/ProjectContent";
+import ProjectContent from "@/templates/tailspark/landing/components/project/detail";
 import type { Metadata, ResolvingMetadata } from 'next';
 import Header from "@/templates/tailspark/landing/components/header";
 
@@ -47,7 +47,7 @@ export async function generateMetadata(
     title: `${project.name} | ${pageJson?.metadata?.title}`,
     description: project.description,
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/servers/${canonicalName}`,
+      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/clients/${canonicalName}`,
     },
   };
 }

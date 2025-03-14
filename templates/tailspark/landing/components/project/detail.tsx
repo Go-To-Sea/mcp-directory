@@ -5,12 +5,12 @@ import Image from "next/image"
 import Link from "next/link"  // 添加 Link 导入
 import { ExternalLink, Github, ChevronRight, Home, ArrowLeft } from "lucide-react"  // 添加图标
 import type { Project } from "@/types/project"
-import Header from "../../../templates/tailspark/landing/components/header";
+import Header from "../header";
 // 导入 ProjectItem 组件
-import ProjectItem from "../../../templates/tailspark/landing/components/projects/item";
+import ProjectItem from "../projects/item";
 import { useRouter } from "next/navigation"
 import Markdown from "@/components/markdown"
-import BackToTop from "../../../templates/tailspark/landing/components/backToTop/backToTop";
+import BackToTop from "../backToTop/backToTop";
 
 // 在文件顶部添加 Tailwind 样式导入
 import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
