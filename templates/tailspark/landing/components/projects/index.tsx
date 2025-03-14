@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-11 22:55:06
+ * @LastEditTime: 2025-03-15 00:18:52
  */
 "use client"
 
@@ -66,7 +66,7 @@ export default ({
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {servers.slice(0, 8).map((item: Project, idx: number) => (
-                <ProjectItem key={idx} project={item} />
+                <ProjectItem key={idx} project={item} pathPrefix={'/servers'}/>
               ))}
             </div>
           </div>
@@ -94,7 +94,7 @@ export default ({
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {clients.slice(0, 8).map((item: Project, idx: number) => (
-                <ProjectItem key={idx} project={item} />
+                <ProjectItem key={idx} project={item} pathPrefix={'/clients'}/>
               ))}
             </div>
           </div>

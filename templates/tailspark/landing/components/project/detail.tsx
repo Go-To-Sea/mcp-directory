@@ -18,12 +18,13 @@ import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwi
 interface ProjectContentProps {
   project: Project;
   tags: string[];
+  pathPrefix: string;
   similarProjects?: Project[]; // 添加相似项目参数
 }
 // 添加 useEffect 来处理客户端渲染
 import { useEffect, useState } from 'react'
 
-export default function ProjectContent({ project, tags, similarProjects = [] }: ProjectContentProps) {
+export default function ProjectContent({ project, tags, similarProjects = [],pathPrefix}: ProjectContentProps) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
@@ -67,14 +68,14 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
         </Link>
         <ChevronRight size={14} />
         <Link 
-          href="/projects" 
+          href={pathPrefix}
           className="hover:text-primary transition-colors"
           onClick={(e) => {
             e.preventDefault();
             router.back();
           }}
         >
-          goBack
+          {project.type+'s'}
         </Link>
         <ChevronRight size={14} />
         <span className="text-gray-900 dark:text-gray-200 truncate max-w-[200px]">
@@ -256,7 +257,7 @@ export default function ProjectContent({ project, tags, similarProjects = [] }: 
                 <div className="space-y-3 sm:space-y-4">
                   {similarProjects.map((similarProject) => (
                     <div key={similarProject.uuid} className="transform scale-95 origin-top">
-                      <ProjectItem project={similarProject} />
+                      <ProjectItem project={similarProject} pathPrefix={pathPrefix}/>
                     </div>
                   ))}
                 </div>

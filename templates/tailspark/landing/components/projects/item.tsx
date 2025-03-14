@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-11 01:01:10
+ * @LastEditTime: 2025-03-15 00:23:23
  */
 "use client"
 
@@ -18,14 +18,18 @@ import Link from 'next/link'  // 添加这行导入
 
 interface ProjectItemProps {
   project: Project;
+  pathPrefix?: string; // 添加可选的路径前缀参数
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
+const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
   const pathname = usePathname()
   const router = useRouter()
   const [isHovered, setIsHovered] = useState(false)
   const [isStarred, setIsStarred] = useState(false)
-  
+
+  // 获取基础路径
+  const basePath = pathPrefix || '/'+project.type+'s';
+
   const handleStarClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     setIsStarred(!isStarred)
@@ -49,7 +53,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   const renderTags = (tags: string | string[]) => {
     const tagArray = typeof tags === 'string' ? tags.split(',') : tags;
     const basePath = pathname.split('?')[0];
-
+    
     return (
       <div className="flex items-center gap-1 overflow-hidden whitespace-nowrap">
         {/* 第一个标签 */}
@@ -126,6 +130,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   };
   
   return (
+      // ... existing code ...
+    <Link 
+      href={`${basePath}/${encodeURIComponent(project.name || '')}`}
+      className="block"
+    >
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -137,10 +146,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
       className="mb-2 h-[160px] sm:h-[180px] cursor-pointer bg-background rounded-xl border border-gray-300 dark:border-gray-700 p-3 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-    >
-    <Link 
-      href={`/project/${encodeURIComponent(project.name || '')}`}
-      className="block"
     >
         <div className="flex justify-between items-start mb-2 sm:mb-3">
           <div className="flex items-start overflow-hidden max-w-[85%]">
@@ -186,7 +191,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
           <div className="overflow-hidden">
             {project.tags && renderTags(project.tags)}
           </div>
-  
+              
           <motion.div
             animate={{
               x: isHovered ? 0 : 5,
@@ -194,14 +199,13 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
             }}
             transition={{ duration: 0.2 }}
             className="flex items-center text-[10px] sm:text-xs text-primary gap-1 flex-shrink-0 ml-2"
-            onClick={handleProjectClick}
           >
             <span className="hidden sm:inline">View Details</span>
             <ExternalLink size={12} className="sm:w-4 sm:h-4" />
           </motion.div>
         </div>
-    </Link>
       </motion.div>
+    </Link>
   );
 };
 
