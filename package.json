@@ -38,6 +38,7 @@
     "markdown-it": "^14.1.0",
     "moment": "^2.30.1",
     "next": "15.0.4",
+    "next-sitemap": "^4.2.3",
     "next-themes": "^0.4.4",
     "nextjs-toploader": "^3.7.15",
     "nodemailer": "^6.10.0",
@@ -72,4 +73,3 @@
     "vercel": "39.1.1"
   }
 }
-

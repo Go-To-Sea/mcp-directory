@@ -15,11 +15,9 @@ import {
     getProjectsCount,
     getProjectsWithKeyword,
     getProjectsWithTag,
-    getAllProjectTags,  // 添加到现有的导入列表中
+    getAllProjectTags,
 } from "@/models/project";
 
-// 删除之前单独的导入语句
-// import { getAllProjectTags } from "@/models/project";
 export const runtime = "edge";
 
 export async function generateMetadata() {
@@ -32,11 +30,8 @@ export async function generateMetadata() {
   };
 }
 
-const projectsCount = await getProjectsCount('server');
-
-// 添加新的导入
-
-export default async function ({
+// 移除顶层 await
+export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -44,9 +39,12 @@ export default async function ({
   const { q, tag } = await searchParams;
   let projects: Project[] = [];
   
+  // 将 projectsCount 移到组件内部
+  const projectsCount = await getProjectsCount('server');
+  
   // 获取所有项目的标签统计
   const allTags = await getAllProjectTags('server');
-  console.log('allTags raw data:', allTags); // 添加调试日志
+  console.log('allTags raw data:', allTags);
   
   // 获取筛选后的项目列表
   if (tag) {
