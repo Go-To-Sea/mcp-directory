@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://mcp.ad',
-  generateRobotsTxt: true,
+  generateRobotsTxt: false,
   outDir: './public',
   
   // 添加 App Router 支持

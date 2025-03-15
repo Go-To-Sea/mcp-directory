@@ -1,9 +1,21 @@
-# *
-User-agent: *
-Allow: /
+# 全局规则设置
+User-agent: *           # 适用于所有搜索引擎爬虫
+Disallow: /            # 默认禁止爬取所有内容
 
-# Host
-Host: https://mcp.ad
+# 允许访问特定目录
+Allow: /blog           # 允许爬取博客页面
+Allow: /category       # 允许爬取分类页面
+Allow: /clients        # 允许爬取客户端页面
+Allow: /servers        # 允许爬取服务器页面
+Allow: /terms-of-service  # 允许爬取服务条款
+Allow: /privacy-policy    # 允许爬取隐私政策
 
-# Sitemaps
-Sitemap: https://mcp.ad/sitemap.xml
+# 禁止访问特定文件和目录
+Disallow: /_next/     # 禁止爬取 Next.js 系统文件
+Disallow: /api/       # 禁止爬取 API 路径
+
+# 网站主域名声明
+Host: https://mcp.ad    # 指定网站的规范域名，避免重复收录
+
+# 站点地图位置
+Sitemap: https://mcp.ad/sitemap.xml    # 指定站点地图的位置，帮助搜索引擎发现网站内容
