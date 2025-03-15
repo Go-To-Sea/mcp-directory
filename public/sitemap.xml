@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>https://mcp.ad/sitemap_index_1.xml</loc>
-  </sitemap>
-   <sitemap>
-    <loc>https://mcp.ad/sitemap_categories_1.xml</loc>
-  </sitemap>
-  <sitemap>
-    <loc>https://mcp.ad/sitemap_projects_1.xml</loc>
-  </sitemap>
+<sitemap><loc>https://mcp.ad/sitemap-0.xml</loc></sitemap>
 </sitemapindex>
