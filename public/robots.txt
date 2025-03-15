@@ -2,6 +2,9 @@
 User-agent: *           # 适用于所有搜索引擎爬虫
 Allow: /               # 允许爬取所有内容
 
+# 禁止访问特定文件和目录
+Disallow: /_next/     # 禁止爬取 Next.js 系统文件
+Disallow: /api/       # 禁止爬取 API 路径
 
 # 网站主域名声明
 Host: https://mcp.ad    # 指定网站的规范域名，避免重复收录
