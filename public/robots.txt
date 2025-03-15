@@ -1,11 +1,9 @@
-# 全局规则设置
-User-agent: *           # 适用于所有搜索引擎爬虫
-Allow: /               # 允许爬取网站根目录下的内容
-Disallow: /api/        # 禁止爬取 API 接口目录，保护接口安全
-Disallow: /fonts/      # 禁止爬取字体文件目录，保护字体资源
+# *
+User-agent: *
+Allow: /
 
-# 网站主域名声明
-Host: https://mcp.ad    # 指定网站的规范域名，避免重复收录
+# Host
+Host: https://mcp.ad
 
-# 站点地图位置
-Sitemap: https://mcp.ad/sitemap.xml    # 指定站点地图的位置，帮助搜索引擎发现网站内容
+# Sitemaps
+Sitemap: https://mcp.ad/sitemap.xml
