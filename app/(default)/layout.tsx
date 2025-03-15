@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/`,
   },
+  // 添加 Google AdSense meta 标签
+  other: {
+    'name="google-adsense-account"': 'ca-pub-9486334752310533',
+  },
 };
 
 export default function ({
@@ -16,5 +20,7 @@ export default function ({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <LandingLayout page={pagejson}>{children}</LandingLayout>;
+  return <>
+    <LandingLayout page={pagejson}>{children}</LandingLayout>;
+  </> 
 }
