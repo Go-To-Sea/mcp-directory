@@ -127,7 +127,7 @@ async function getRepoData(url: string, type: string) {
             type: type,
             created_at: repo.created_at,
             updated_at: repo.updated_at,
-            status: "created",
+            status: "active",
             category: type == 'server' ? "other_projects_alphabetical_order" : 'mcp_clients_other',
             is_featured: false,
             sort: 0,

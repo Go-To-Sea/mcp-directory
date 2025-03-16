@@ -196,10 +196,10 @@ export async function saveProject(
     project.uuid = genUuid();
     project.created_at = created_at;
     project.updated_at = created_at;
-    project.status = ProjectStatus.Created;
+    project.status = ProjectStatus.Active;
     project.target = "_self";
     project.is_featured = true;
-    project.sort = 1;
+    //project.sort = 1;
 
     await insertProject(project);
 
