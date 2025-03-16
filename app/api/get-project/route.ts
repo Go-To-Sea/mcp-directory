@@ -128,7 +128,7 @@ async function getRepoData(url: string, type: string) {
             created_at: repo.created_at,
             updated_at: repo.updated_at,
             status: "created",
-            category: "",
+            category: "other_projects_alphabetical_order",
             is_featured: false,
             sort: 0,
             target: "_self",
