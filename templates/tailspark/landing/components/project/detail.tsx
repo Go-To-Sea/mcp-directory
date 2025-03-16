@@ -38,13 +38,18 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
         img.src = img.src.replace('/master/', '/main/');
       }
     };
-
+  
+    // 处理富文本中的 h1 标签
+    if (project.content) {
+      project.content = project.content.replace(/<h1/g, '<h3').replace(/<\/h1>/g, '</h3>');
+    }
+  
     // 为所有富文本中的图片添加错误处理
     const images = document.querySelectorAll('.prose img');
     images.forEach(img => {
       img.addEventListener('error', handleImageError);
     });
-
+  
     // 清理函数
     return () => {
       images.forEach(img => {

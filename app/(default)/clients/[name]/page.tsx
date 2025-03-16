@@ -1,7 +1,7 @@
 /*
  * @Author: YourName
  * @Date: 2025-03-07 10:00:55
- * @LastEditTime: 2025-03-14 23:21:08
+ * @LastEditTime: 2025-03-16 18:39:52
  * @LastEditors: rendc
  * @Description: 
  * @FilePath: \mcp-directory\app\project\[name]\page.tsx
@@ -44,11 +44,12 @@ export async function generateMetadata(
   // 生成 canonical URL 时进行编码
   const canonicalName = encodeURIComponent(project.name);
   return {
-    title: `${project.name} | ${pageJson?.metadata?.title}`,
+    title: `Discover MCP Clients For ${project.name} | ${pageJson?.metadata?.title}`,
     description: project.description,
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/clients/${canonicalName}`,
     },
+    keywords: `${project.name} MCP Client, Model Context Protocol Integration, ${project.name} AI Tools, Claude Integration, MCP Client Solutions, ${project.type || ''} Tools`,
   };
 }
 

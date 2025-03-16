@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: rendc
  * @Date: 2025-03-03 23:28:13
- * @LastEditors: YourName
- * @LastEditTime: 2025-03-07 09:03:22
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-16 18:14:58
  */
 import Servers from "@/templates/tailspark/landing/components/servers";
 import { getCategories } from "@/models/category";
@@ -22,8 +22,8 @@ export const runtime = "edge";
 
 export async function generateMetadata() {
   return {
-    title: `MCP Server Categories | ${pageJson?.metadata?.title}`,
-    description: `Find Awesome MCP Server categories for your needs`,
+    title: `Discover MCP Servers | ${pageJson?.metadata?.title}`,
+    description: `Find the best MCP servers for your needs.`,
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/servers`,
     },

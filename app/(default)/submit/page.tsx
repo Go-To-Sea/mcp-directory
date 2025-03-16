@@ -1,24 +1,27 @@
-"use client";
-
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-03-14 00:17:45
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-16 18:54:48
+ */
+// 移除 "use client" 指令
 import SubmitForm from "@/templates/tailspark/landing/components/submit/index";
-import { useEffect, useState } from "react";
 import { getFeaturedProjects } from "@/models/project";
+import pageJson from "@/pagejson/en.json";
+export async function generateMetadata() {
+  return {
+    title: `MCP Server&Client Submit | ${pageJson?.metadata?.title}`,
+    description: `Share your MCP Server or Client with the global developer community. Join the largest Model Context Protocol ecosystem and help shape the future of AI integration.`,
+    keywords: "MCP Server, MCP Client, Model Context Protocol, Claude Integration, AI Tools, Developer Community, Submit MCP, MCP Ecosystem",
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/categories`,
+    },
+  };
+}
 
+// 客户端组件
 export default function SubmitPage() {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const data = await getFeaturedProjects(1, 100);
-        setProjects(data as any);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      }
-    };
-
-    fetchProjects();
-  }, []);
 
   return (
     <div className="relative overflow-hidden">
@@ -49,16 +52,16 @@ export default function SubmitPage() {
             Submit Your MCP Project
           </h1>
           
-          <p className="text-sm sm:text-base md:text-lg text-[#898989] dark:text-white mb-6 sm:mb-8 px-2 sm:px-8 md:px-20">
+          <h2 className="text-sm sm:text-base md:text-lg text-[#898989] dark:text-white mb-6 sm:mb-8 px-2 sm:px-8 md:px-20">
             Join our growing community of MCP tools. Share your project with developers worldwide and help shape the future of MCP ecosystem.
-          </p>
+          </h2>
         </div>
       </div>
 
       {/* 原有的表单部分 - 调整移动端的边距 */}
       <div className="" style={{marginTop:'-100px',paddingBottom:'70px'}}>
         <div className="w-full ">
-          <SubmitForm projects={projects}/>
+          <SubmitForm />
         </div>
       </div>
     </div>

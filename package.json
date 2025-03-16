@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "watch": "next dev --turbopack",
-    "build": "next build && next-sitemap",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "pages:build": "npx @cloudflare/next-on-pages",

@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-09 11:09:41
+ * @LastEditTime: 2025-03-16 16:47:00
  */
 "use client";
 
@@ -30,35 +30,44 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
     switch (pathname) {
       case '/servers':
         return (
-          <div className="flex flex-col sm:flex-row items-center">
-            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-0 sm:mr-3 md:mr-5">
+          <div className="flex flex-col items-center w-full">
+            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Discover
+              <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                MCP Servers
+              </span>
             </h1>
-            <h1 className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-              MCP Servers
-            </h1>
+            <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
+              Find the best MCP servers for your needs.
+            </h2>
           </div>
         );
       case '/clients':
         return (
-          <div className="flex flex-col sm:flex-row items-center">
-            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-0 sm:mr-3 md:mr-5">
+          <div className="flex flex-col items-center w-full">
+            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Discover
+              <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                MCP Clients
+              </span>
             </h1>
-            <h1 className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-              MCP Clients
-            </h1>
+            <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
+              Find the best MCP clients for your needs.
+            </h2>
           </div>
         );
       default:
         return (
-          <div className="flex flex-col sm:flex-row items-center">
-            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-0 sm:mr-3 md:mr-5">
+          <div className="flex flex-col items-center w-full">
+            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Find Awesome
+              <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                MCP Servers and Clients
+              </span>
             </h1>
-            <h1 className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-              MCP Servers and Clients
-            </h1>
+            <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
+              The largest collection of MCP Servers.
+            </h2>
           </div>
         );
     }
@@ -88,10 +97,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
           <div className="flex items-center justify-center mt-3">
             {renderTitles()}
           </div>
-          <h2 className="mt-5 mx-auto max-w-3xl text-muted-foreground lg:text-xl">
-            {/* <span className="text-primary font-bold">{count}</span>{" "} */}
-            {/* {hero.description} */}
-          </h2>
+         
         </div>
       </div>
       <Buttons />

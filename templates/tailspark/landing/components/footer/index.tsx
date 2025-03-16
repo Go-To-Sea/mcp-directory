@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-14 00:04:20
+ * @LastEditTime: 2025-03-16 16:57:17
  */
 /*
  * @Description: 
@@ -75,7 +75,7 @@ export default ({ footer }: { footer?: Footer }) => {
 
         {/* 版权信息 */}
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
+          <h3 className="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()}{" "}
             <a
               className="text-primary hover:underline"
@@ -85,13 +85,13 @@ export default ({ footer }: { footer?: Footer }) => {
               {footer?.copyright?.owner || "MCP.ad"}
             </a>{" "}
             {footer?.copyright?.text || "All rights reserved."}
-          </p>
+          </h3>
           <div className="flex space-x-6">
             <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 text-sm hover:text-primary transition-colors">
-              Privacy Policy
+              <h3>Privacy Policy</h3>
             </Link>
             <Link href="/terms-of-service" className="text-gray-500 dark:text-gray-400 text-sm hover:text-primary transition-colors">
-              Terms of Service
+              <h3>Terms of Service</h3>
             </Link>
           </div>
         </div>

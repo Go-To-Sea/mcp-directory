@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-15 00:23:23
+ * @LastEditTime: 2025-03-16 16:28:28
  */
 "use client"
 
@@ -159,9 +159,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
               />
             </div>
             <div className="overflow-hidden">
-              <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
+              <h4 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
                 {project.name}
-              </h3>
+              </h4>
               {project.author_name && (
                 <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">
                   by {project.author_name}

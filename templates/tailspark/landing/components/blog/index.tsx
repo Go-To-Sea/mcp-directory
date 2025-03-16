@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:06:33
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-11 23:01:49
+ * @LastEditTime: 2025-03-16 16:50:01
  */
 "use client"
 
@@ -11,31 +11,51 @@ import { motion } from "framer-motion"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
-export default function Blog() {
+export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
   return (
     <div className="relative pb-16 pt-6">
-      {/* 背景装饰 */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50/50 dark:to-gray-900/50" />
       
       <div className="relative container mx-auto px-4">
-        {/* 标题区域 */}
+        {/* 标题区域 - 根据 isHomePage 调整标题级别 */}
         <div className="text-center mb-16">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 py-2 leading-relaxed"
-          >
-            MCP Blog
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-          >
-            {/* 探索 MCP 的最新动态、技术文章和使用指南 */}
-            Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP
-          </motion.p>
+          {isHomePage ? (
+            <>
+              <motion.h3 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 py-2 leading-relaxed"
+              >
+                MCP Blog
+              </motion.h3>
+              <motion.h4 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+              >
+                Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP Server
+              </motion.h4>
+            </>
+          ) : (
+            <>
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 py-2 leading-relaxed"
+              >
+                MCP Blog
+              </motion.h1>
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+              >
+                Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP Server
+              </motion.h2>
+            </>
+          )}
         </div>
 
         {/* 博客卡片列表 */}
@@ -69,9 +89,9 @@ export default function Blog() {
                       3 min read
                     </span>
                   </div>
-                  <h2 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">
                     Introducing the Model Context Protocol
-                  </h2>
+                  </h3>
                   
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 text-sm">
                     We are pleased to announce the launch of a range of new features on the MCP tool site, including more powerful search capabilities, an optimized user interface, and brand-new developer tool integrations...
@@ -107,9 +127,9 @@ export default function Blog() {
                       5 min read
                     </span>
                   </div>
-                  <h2 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">
                     How to Get Started Using MCP
-                  </h2>
+                  </h3>
                   
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 text-sm">
                     The Model Context Protocol (MCP) is revolutionizing how AI assistants access and interact with your data. This guide will walk you through the basics of setting up your first MCP server and connecting it to your favorite AI tools...
@@ -150,9 +170,9 @@ export default function Blog() {
                   </div>
                   
                   {/* 其余内容保持不变 */}
-                  <h2 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">
                     AI is Making Websites Obsolete with MCP
-                  </h2>
+                  </h3>
                   
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 text-sm">
                     Traditional websites are facing a paradigm shift as AI-powered interfaces using the Model Context Protocol (MCP) offer more intuitive, personalized, and efficient ways to access information and services...

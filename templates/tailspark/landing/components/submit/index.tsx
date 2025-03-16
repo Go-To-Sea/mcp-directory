@@ -86,7 +86,7 @@ type FormValues = z.infer<typeof formSchema>;
 export default function SubmitForm({
   projects,
 }: {
-  projects: any
+  projects?: any
 }){
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toastInfo, setToastInfo] = useState<ToastProps | null>(null);

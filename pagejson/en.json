@@ -78,7 +78,31 @@
     },
     "nav": {
       "items": [
-        
+        {
+          "title": "MCP Links",
+          "children": [
+            {
+              "title": "MCP Servers",
+              "url": "https://mcp.ad/servers",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP Clients",
+              "url": "https://mcp.ad/clients",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP Blog",
+              "url": "https://mcp.ad/blog",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP categories",
+              "url": "https://mcp.ad/categories",
+              "target": "_blank"
+            }
+          ]
+        },
         {
           "title": "Resources",
           "children": [

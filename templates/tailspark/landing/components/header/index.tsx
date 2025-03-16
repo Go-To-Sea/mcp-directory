@@ -56,7 +56,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
               <div className="flex-shrink-0">
                 <a 
                   className="flex items-center py-3 px-2 text-primary font-bold hover:opacity-80 transition-opacity"
-                  href="https://mcp.ad"
+                  href="/"
                 >
                   <img
                     src={header?.brand?.avatar?.src || "/logo.png"}

@@ -18,7 +18,7 @@ export async function generateMetadata({
 
   let title = "Awesome MCP Servers";
   let description = "Find Awesome MCP Servers for category";
-
+  let keywords = "MCP Servers, Model Context Protocol, Claude Integration, AI Tools";
   if (cate) {
     const category = await findCategoryByName(cate);
     title = `Awesome MCP Servers for ${category?.title || "-"} | ${
@@ -27,10 +27,12 @@ export async function generateMetadata({
     description = `Find Awesome MCP Servers for category: ${
       category?.title || "-"
     }`;
+    keywords = `${category?.title || ""} MCP Servers, ${category?.title || ""} Integration, Model Context Protocol Tools, Claude ${category?.title || ""} Integration, AI ${category?.title || ""} Solutions`;
   }
 
   return {
     title,
+    keywords,
     description,
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/category/${cate}`,
