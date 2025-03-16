@@ -10,9 +10,7 @@
     "lint": "next lint",
     "pages:build": "npx @cloudflare/next-on-pages",
     "preview": "pnpm pages:build && wrangler pages dev",
-    "deploy": "pnpm pages:build && wrangler pages deploy",
-    "postbuild": "next-sitemap",
-    "sitemap": "next-sitemap --config next-sitemap.config.js"
+    "deploy": "pnpm pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.12.4",
