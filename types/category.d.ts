@@ -1,4 +1,5 @@
 export interface Category {
+  type: string,
   name: string;
   title: string;
   status: string;
