@@ -40,7 +40,7 @@ export async function insertProject(project: Project) {
       status: processedProject.status,
       updated_at: processedProject.updated_at,
       user_submit:true,
-      submit_time:Date.now()
+      submit_time: new Date().toISOString()
     };
 
     const { data, error } = await supabase
@@ -190,18 +190,22 @@ export async function getProjectsCountByCategory(
 export async function getProjectsByCategory(
   category: string,
   page: number,
-  limit: number
+  limit: number,
+  type?: 'server' | 'client'
 ): Promise<Project[]> {
   const supabase = getSupabaseClient();
-
-  const { data, error } = await supabase
+  let query = supabase
     .from("projects")
     .select("*")
     .eq("category", category)
-    // .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: true })
-    // .order("created_at", { ascending: true })
-    // .range((page - 1) * limit, page * limit - 1);
+    .order("sort", { ascending: true });
+
+  // 如果指定了 type，添加类型筛选
+  if (type) {
+    query = query.eq('type', type);
+  }
+
+  const { data, error } = await query.range((page - 1) * limit, page * limit - 1);
 
   if (error) return [];
 
@@ -224,6 +228,23 @@ export async function getFeaturedProjects(
     .range((page - 1) * limit, page * limit - 1);
   if (error) return [];
   console.log('getFeaturedProjects.data====',data);
+  return data;
+}
+
+export async function getUsersNewSubmitList(
+  page: number,
+  limit: number
+): Promise<Project[]> {
+  const supabase = getSupabaseClient();
+
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .eq("user_submit", true)
+    .order("submit_time", { ascending: false })
+    .range((page - 1) * limit, page * limit - 1);
+
+  if (error) return [];
   return data;
 }
 
@@ -275,32 +296,22 @@ export async function getProjectsWithTag(
   type?: 'server' | 'client'
 ): Promise<Project[]> {
   const supabase = getSupabaseClient();
-
-  const { data, error } = await supabase
+  let query = supabase
     .from("projects")
     .select("*")
-    .eq("type", type)
     .ilike("tags", `%${tag}%`)
-    // .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: true })
-    // .order("created_at", { ascending: true })
-    // .range((page - 1) * limit, page * limit - 1);
+    .order("sort", { ascending: true });
+
+  // 只有当传入 type 参数时才添加类型筛选
+  if (type) {
+    query = query.eq("type", type);
+  }
+
+  const { data, error } = await query;
 
   if (error) return [];
   
-  // 修改过滤逻辑，添加类型声明
-  return data.filter((project: Project) => {
-    if (!project.tags) return false;
-    
-    const projectTags: string[] = (typeof project.tags === 'string' ? project.tags.split(',') : project.tags || [])
-      typeof project.tags === 'string' ? project.tags.split(',') : project.tags || []
-      .map((t: string) => t.trim().toLowerCase())
-      .flatMap((t: string) => t.split(',').map((st: string) => st.trim()));
-
-    const searchTag: string = tag.toLowerCase();
-    
-    return projectTags.some((t: string) => t === searchTag || t.includes(searchTag));
-  });
+  return data;
 }
 export async function getProjectsWithoutSummary(
   page: number,

@@ -3,10 +3,10 @@
  * @Author: rendc
  * @Date: 2025-03-03 22:45:57
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 18:07:19
+ * @LastEditTime: 2025-03-16 22:10:07
  */
 import Clients from "@/templates/tailspark/landing/components/clients";
-import { getCategories } from "@/models/category";
+import { getCategories } from "@/models/category";  // 确保这个导入存在
 import pageJson from "@/pagejson/en.json";
 import { Project } from "@/types/project";
 import { ClassMenus } from "@/types/project";
@@ -16,7 +16,7 @@ import {
     getProjectsCount,
     getProjectsWithKeyword,
     getProjectsWithTag,
-    getAllProjectTags, 
+    getProjectsByCategory, 
   } from "@/models/project";
 export const runtime = "edge";
 
@@ -35,35 +35,27 @@ export default async function ({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const { q,tag } = await searchParams;
-  let projects: Project[] = [];
+  const { q,category } = await searchParams;
+  let projects: Project[] | any[] = [];
   
-  // 获取所有项目的标签统计
-  const allTags = await getAllProjectTags('client');
-  console.log('allTags raw data:', allTags);
+  // 获取所有分类
+  const categories = await getCategories(1, 100,'client');
   
-  if (tag) {
-    projects = await getProjectsWithTag(tag as string, 1, 500,'client');
-  } else if (q) {
+   if (category) {
+    projects = await getProjectsByCategory(category as string,1, 500,'client');
+  }else if (q) {
     projects = await getProjectsWithKeyword(q as string, 1, 500);
   } else {
     projects = await getFeaturedProjects(1, 500);
   }
   const projectsCount = await getProjectsCount('client');
-  // 转换为 ClassMenus 组件需要的格式，只处理 client 类型的标签
-  const classMenus: ClassMenus[] = allTags ? 
-    Object.entries(allTags)
-      .filter(([_, tagData]) => {
-        console.log('filtering tagData:', tagData);
-        return tagData && tagData.type === 'client' && tagData.name;
-      })
-      .map(([_, tagData]) => ({
-        name: tagData.name,
-        count: tagData.count,
-        href: `/clients?tag=${encodeURIComponent(tagData.name)}`
-      }))
-    : [];
-  console.log('final classMenus:', classMenus);
+
+  // 转换为 ClassMenus 组件需要的格式，使用 category
+  const classMenus: ClassMenus[] = categories.map(category => ({
+    name: category.name,
+    href: `/clients?category=${encodeURIComponent(category.name)}`
+  }));
+
   return (
     <Clients 
       page={pageJson} 

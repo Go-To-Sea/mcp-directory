@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 17:41:16
+ * @LastEditTime: 2025-03-16 19:54:46
  */
 "use client"
 
@@ -17,6 +17,15 @@ import FooterInfo from "../components/footer";
 import Link from 'next/link'
 // 在顶部导入 Blog 组件
 import Blog from "../components/blog"
+// 在顶部导入 React
+import React from 'react'
+// 修改 navItems 的定义方式
+const navItems = [
+  { id: 'hero', label: 'Home', icon: <Home size={16} /> },
+  { id: 'projects', label: 'Projects', icon: <Grid size={16} /> },
+  { id: 'blog', label: 'Blog', icon: <BookOpen size={16} /> },
+  { id: 'faq', label: 'FAQ', icon: <HelpCircle size={16} /> },
+]
 type Page = {
   hero?: {
     title: string
@@ -108,30 +117,30 @@ export default function ({
 
   return (
     <div className="relative overflow-hidden">
-      {/* 移动端触发按钮 */}
+      {/* 移动端触发按钮 - 调整大小和透明度 */}
       <button
         onClick={() => setShowSidebar(!showSidebar)}
-        className="fixed top-20 left-4 z-50 p-2 bg-primary/10 rounded-full lg:hidden hover:bg-primary/20 transition-colors"
+        className="fixed top-20 left-4 z-50 p-1.5 bg-primary/5 rounded-full lg:hidden hover:bg-primary/10 transition-colors"
       >
-        {showSidebar ? <X size={24} /> : <Menu size={24} />}
+        {showSidebar ? <X size={20} /> : <Menu size={20} />}
       </button>
 
-      {/* 优化后的侧边栏导航 */}
+      {/* 优化后的侧边栏导航 - 减小尺寸和调整透明度 */}
       <nav className={`fixed top-1/2 -translate-y-1/2 left-0 z-40 transition-all duration-300 
         lg:translate-x-0 ${showSidebar ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
-        <div className="bg-background/80 backdrop-blur-lg rounded-r-2xl p-3 shadow-xl">
-          <ul className="space-y-4">
+        <div className="bg-background/60 backdrop-blur-sm rounded-r-xl p-2 shadow-sm">
+          <ul className="space-y-3">
             {navItems.map((item) => (
               <li key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`group flex items-center gap-2 p-2 rounded-lg transition-all duration-300 w-full
-                    hover:bg-primary/10 text-muted-foreground hover:text-primary`}
+                  className={`group flex items-center gap-1.5 p-1.5 rounded-lg transition-all duration-300 w-full
+                    hover:bg-primary/5 text-muted-foreground/70 hover:text-primary/80`}
                 >
-                  <span className="transition-transform duration-300 group-hover:scale-110">
+                  <span className="transition-transform duration-300 group-hover:scale-105">
                     {item.icon}
                   </span>
-                  <span className="text-sm font-medium hidden lg:block origin-left transition-all duration-300">
+                  <span className="text-xs font-medium hidden lg:block origin-left transition-all duration-300">
                     {item.label}
                   </span>
                 </button>
@@ -199,7 +208,7 @@ export default function ({
             </p>
             <button
               onClick={() => {
-                const searchSection = document.getElementById("home");
+                const searchSection = document.getElementById("hero");
                 if (searchSection) {
                   searchSection.scrollIntoView({ behavior: "smooth" });
                 }

@@ -15,7 +15,7 @@ export default (props: {
 }) => {
   const categories = props.classMenus || [];
   const searchParams = useSearchParams();
-  const currentTag = searchParams.get('tag');
+  const currentTag = searchParams.get('category');
   const [isExpanded, setIsExpanded] = useState(true);
   
   const handleExpandToggle = () => {
@@ -30,9 +30,9 @@ export default (props: {
   };
 
   return (
-    <div className="max-w-full md:max-w-7xl mx-auto px-4 py-4 md:px-8 md:py-4 lg:py-4">
+    <div className="max-w-full  md:max-w-7xl mx-auto px-4 py-4 md:px-8 md:py-4 lg:py-4">
       <div className="flex items-center gap-4 mb-2">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-between w-full">
           <button
             onClick={handleExpandToggle}
             className="flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
@@ -40,22 +40,22 @@ export default (props: {
             {isExpanded ? (
               <>
                 <ChevronUp size={16} />
-                <span>Collapse Tags</span>
+                <span>Collapse categorys</span>
               </>
             ) : (
               <>
                 <ChevronDown size={16} />
-                <span>Expand Tags</span>
+                <span>Expand categorys</span>
               </>
             )}
           </button>
-          <span className="text-xs text-gray-500 ml-8">
+          <span className="text-xs text-gray-500 bg-gray-100 p-2 rounded-full">
             Current Category: <span className="text-primary font-medium">{currentTag || 'All'}</span>
           </span>
         </div>
       </div>
       
-      <div id="tags-container" className={`flex flex-wrap gap-2 transition-all duration-300 ${
+      <div id="tags-container" className={`flex pt-1 flex-wrap gap-2 transition-all duration-300 ${
         isExpanded 
           ? 'max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent' 
           : 'max-h-[126px] overflow-hidden'
@@ -64,7 +64,7 @@ export default (props: {
           <Link 
             href={category.href} 
             key={index} 
-            className={`flex-shrink-0 border-2 rounded-full py-2 px-4 shadow-sm hover:shadow-md transition-all duration-200 
+            className={`flex-shrink-0  border-2 rounded-full py-2 px-4 shadow-sm hover:shadow-md transition-all duration-200 
               ${currentTag === category.name 
                 ? 'border-primary bg-primary/10 text-primary' 
                 : 'border-gray-100 dark:border-gray-800 bg-slate-50 dark:bg-slate-900'

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"  // 添加 Link 导入
-import { ExternalLink, Github, ChevronRight, Home, ArrowLeft } from "lucide-react"  // 添加图标
+import { ExternalLink, Github, ChevronRight, Home, ArrowLeft, Twitter, Facebook, Mail } from "lucide-react"  // 添加图标
 import type { Project } from "@/types/project"
 import Header from "../header";
 // 导入 ProjectItem 组件
@@ -24,9 +24,28 @@ interface ProjectContentProps {
 // 添加 useEffect 来处理客户端渲染
 import { useEffect, useState } from 'react'
 
+// 将 handleShare 函数移到组件函数内部的最前面
 export default function ProjectContent({ project, tags, similarProjects = [],pathPrefix}: ProjectContentProps) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+
+  // 添加分享处理函数
+  const handleShare = (type: 'twitter' | 'facebook' | 'email') => {
+    const url = window.location.href;
+    const text = `Check out ${project.name} - ${project.description}`;
+    
+    switch (type) {
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+        break;
+      case 'facebook':
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+        break;
+      case 'email':
+        window.open(`mailto:?subject=${encodeURIComponent(`Check out ${project.name}`)}&body=${encodeURIComponent(`${text}\n\n${url}`)}`);
+        break;
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -63,30 +82,39 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
   }
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden ">
       <BackToTop/>
       {/* 修改面包屑导航 */}
-      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-        <Link href="/" className="flex items-center hover:text-primary transition-colors">
-          <Home size={16} className="mr-1" />
-          <span>Home</span>
+      <nav className="flex items-center mb-2 text-sm">
+        <Link 
+          href="/" 
+          className="flex items-center px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors group"
+        >
+          <Home size={16} className="mr-1.5 text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors" />
+          <span className="text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">Home</span>
         </Link>
-        <ChevronRight size={14} />
+        
+        <ChevronRight size={14} className="mx-2 text-gray-400 dark:text-gray-500" />
+        
         <Link 
           href={pathPrefix}
-          className="hover:text-primary transition-colors"
+          className="flex items-center px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors group"
           onClick={(e) => {
             e.preventDefault();
             router.back();
           }}
         >
-          {project.type+'s'}
+          <span className="text-gray-600 dark:text-gray-300 group-hover:text-primary transition-colors">
+            {project.type+'s'}
+          </span>
         </Link>
-        <ChevronRight size={14} />
-        <span className="text-gray-900 dark:text-gray-200 truncate max-w-[200px]">
+        
+        <ChevronRight size={14} className="mx-2 text-gray-400 dark:text-gray-500" />
+        
+        <span className="px-3 py-1.5 bg-gray-50 dark:bg-gray-700/50 rounded-lg text-gray-900 dark:text-gray-200 truncate max-w-[200px]">
           {project.name}
         </span>
-      </div>
+      </nav>
 
       
       {/* <Header header={{}}></Header> */}
@@ -176,7 +204,8 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
               
               {/* 链接部分 */}
               {(project.url || project.github_url) && (
-                <div className="flex flex-wrap gap-3 ml-auto">
+                <div className="flex flex-wrap items-center gap-3 ml-auto">
+                  {/* 原有的网站和 GitHub 链接 */}
                   {project.url && (
                     <a
                       href={project.url}
@@ -214,6 +243,33 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
                       <span>GitHub</span>
                     </a>
                   )}
+                  
+                  {/* 添加分隔线 */}
+                  <div className="h-4 w-px bg-gray-200 dark:bg-gray-700 mx-1"></div>
+                  
+                  {/* 添加社交分享按钮 */}
+                  <div className="flex items-center gap-2">
+                    {(['twitter', 'facebook', 'email'] as const).map((type) => (
+                      <motion.button
+                        key={type}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => handleShare(type)}
+                        className="inline-flex items-center justify-center w-8 h-8 rounded-full transition-all"
+                        style={{
+                          background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
+                          border: "1px solid transparent",
+                          backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05)), linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))",
+                          backgroundOrigin: "border-box",
+                          backgroundClip: "padding-box, border-box"
+                        }}
+                      >
+                        {type === 'twitter' && <Twitter size={14} className="text-[#1DA1F2]" />}
+                        {type === 'facebook' && <Facebook size={14} className="text-[#4267B2]" />}
+                        {type === 'email' && <Mail size={14} className="text-gray-600 dark:text-gray-400" />}
+                      </motion.button>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

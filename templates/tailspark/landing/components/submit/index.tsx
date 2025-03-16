@@ -127,7 +127,7 @@ export default function SubmitForm({
           projectData.sort = await findMaxSort();
         }
         projectData.user_submit = true
-        projectData.submit_time = Date.now()
+        projectData.submit_time = new Date().toISOString();
 
         // Insert project data
         const result = await insertProject(projectData);
@@ -141,7 +141,7 @@ export default function SubmitForm({
         
         // Redirect to detail page after a short delay
         setTimeout(() => {
-          const detailPath = `/project/${encodeURIComponent(projectData.name)}`;
+          const detailPath = `/${projectData.type}s/${encodeURIComponent(projectData.name)}`;
           router.push(detailPath);
         }, 500);
     } catch (error) {

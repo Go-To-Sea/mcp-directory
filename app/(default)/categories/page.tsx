@@ -3,14 +3,22 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 18:36:06
+ * @LastEditTime: 2025-03-16 23:17:20
  */
 import Categories from "@/templates/tailspark/landing/components/categories";
 import { getCategories } from "@/models/category";
-import { getFeaturedProjects } from "@/models/project";
 import pageJson from "@/pagejson/en.json";
-
+import { ClassMenus } from "@/types/project";
+import {
+    getFeaturedProjects,
+    getProjectsCount,
+    getProjectsWithKeyword,
+    getProjectsWithTag,
+    getAllProjectTags,
+    getProjectsByCategory
+} from "@/models/project";
 export const runtime = "edge";
+import { Project } from "@/types/project";
 
 export async function generateMetadata() {
   return {
@@ -23,9 +31,22 @@ export async function generateMetadata() {
   };
 }
 
-export default async function () {
-  const categories = await getCategories(1, 100);
-  const projects = await getFeaturedProjects(1, 60);
-
-  return <Categories categories={categories} showSearch={true} projects={projects} />;
+export default async function ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}){
+  const { q,tag } = await searchParams;
+  let projects: Project[] | any[] = [];
+  if (tag) {
+    projects = await getProjectsWithTag(tag as string, 1, 500);
+  }
+  const projectsCount = await getProjectsCount('server');
+  console.log('projects========',projects)
+  return <Categories 
+    page={pageJson} 
+    projectsCount={projectsCount}  
+    projects={projects}
+    tag={tag as string}
+  />;
 }

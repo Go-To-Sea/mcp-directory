@@ -26,7 +26,7 @@ export interface Project {
 
 export interface ClassMenus {
   name: string;
-  count: number;
+  count?: number;
   description?: string;
   href: string;      // 添加 href 属性用于导航链接
 }

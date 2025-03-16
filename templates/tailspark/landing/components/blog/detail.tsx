@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:19:54
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-11 23:26:50
+ * @LastEditTime: 2025-03-16 20:57:39
  */
 "use client"
 
@@ -310,7 +310,7 @@ const blogPosts = [
         While traditional websites won't disappear overnight, the rise of MCP and AI-powered interfaces represents a significant evolution in how we interact with digital information. Organizations that embrace this shift early will be well-positioned to deliver more intuitive, efficient, and personalized digital experiences.
       </p>
     `
-  }
+  },
 ]
 export default function BlogPost() {
   const params = useParams()

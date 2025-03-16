@@ -3,13 +3,14 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 16:28:28
+ * @LastEditTime: 2025-03-16 22:51:55
  */
 "use client"
 
 import type React from "react"
 
-import { Star, ExternalLink } from "lucide-react"
+// 修改这行，添加 ArrowRight
+import { Star, ArrowRight } from "lucide-react"
 import type { Project } from "@/types/project"
 import { useState } from "react"
 import { motion } from "framer-motion"
@@ -55,7 +56,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
     const basePath = pathname.split('?')[0];
     
     return (
-      <div className="flex items-center gap-1 overflow-hidden whitespace-nowrap">
+      <div className="flex relative z-10  items-center gap-1 overflow-hidden whitespace-nowrap">
         {/* 第一个标签 */}
         {tagArray.length > 0 && (
           <motion.span
@@ -63,7 +64,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
             className="inline-flex items-center transition-all"
           >
             <Link
-              href={`${basePath}?tag=${encodeURIComponent(tagArray[0].trim())}`}
+              href={`/categories/?tag=${encodeURIComponent(tagArray[0].trim())}`}
               onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap"
               style={{
@@ -95,7 +96,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
               className="inline-flex items-center transition-all overflow-hidden"
             >
               <Link
-                href={`${basePath}?tag=${encodeURIComponent(tag.trim())}`}
+                href={`/categories/?tag=${encodeURIComponent(tag.trim())}`}
                 onClick={(e) => e.stopPropagation()}
                 className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap"
                 style={{
@@ -201,7 +202,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
             className="flex items-center text-[10px] sm:text-xs text-primary gap-1 flex-shrink-0 ml-2"
           >
             <span className="hidden sm:inline">View Details</span>
-            <ExternalLink size={12} className="sm:w-4 sm:h-4" />
+            <ArrowRight size={12} className="sm:w-4 sm:h-4" />
           </motion.div>
         </div>
       </motion.div>

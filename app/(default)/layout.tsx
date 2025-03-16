@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: rendc
+ * @Date: 2025-02-25 22:43:42
+ * @LastEditors: rendc
+ * @LastEditTime: 2025-03-16 20:29:41
+ */
 import LandingLayout from "@/templates/tailspark/landing/layout";
 import { Metadata } from "next";
 import pagejson from "@/pagejson/en.json";
@@ -21,6 +28,6 @@ export default function ({
   children: React.ReactNode;
 }>) {
   return <>
-    <LandingLayout page={pagejson}>{children}</LandingLayout>;
+    <LandingLayout page={pagejson}>{children}</LandingLayout>
   </> 
 }

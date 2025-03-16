@@ -1,7 +1,7 @@
 /*
  * @Author: YourName
  * @Date: 2025-03-07 10:00:55
- * @LastEditTime: 2025-03-16 18:39:52
+ * @LastEditTime: 2025-03-16 19:52:36
  * @LastEditors: rendc
  * @Description: 
  * @FilePath: \mcp-directory\app\project\[name]\page.tsx
@@ -106,7 +106,7 @@ export default async function ProjectDetail({ params, searchParams }: Props) {
   project.content = `<div>${project.content}</div>`;
   
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <ProjectContent 
           project={project} 
