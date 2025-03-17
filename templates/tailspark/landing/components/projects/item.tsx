@@ -148,7 +148,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
         </div>
         
   
-        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent h-[32px] sm:h-[40px]">
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-4 overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent h-[32px] sm:h-[40px]">
           {project.description}
         </p>
   

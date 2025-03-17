@@ -64,14 +64,14 @@ export default (props: {
           <Link 
             href={category.href} 
             key={index} 
-            className={`flex-shrink-0  border-2 rounded-full py-2 px-4 shadow-sm hover:shadow-md transition-all duration-200 
+            className={`flex-shrink-0   border-2 rounded-full py-2 px-4 shadow-sm hover:shadow-md transition-all duration-200 
               ${currentTag === category.name 
                 ? 'border-primary bg-primary/10 text-primary' 
                 : 'border-gray-100 dark:border-gray-800 bg-slate-50 dark:bg-slate-900'
               }`}
           >
             <div className="flex justify-center items-center gap-1">
-              <span className={`text-xs md:text-xs font-medium whitespace-nowrap ${
+              <span className={`text-xs text-[#565454] md:text-xs font-medium whitespace-nowrap ${
                 currentTag === category.name ? 'text-primary' : ''
               }`}>{category.name}</span>
               <span className="text-primary text-xs whitespace-nowrap">{category.count}</span>
