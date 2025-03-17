@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 19:54:46
+ * @LastEditTime: 2025-03-17 22:46:57
  */
 "use client"
 
@@ -183,9 +183,9 @@ export default function ({
                   </a>
                 </div>
             </div>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-pink-500 to-blue-500 mb-4 animate-gradient-x bg-[length:400%_auto]">
+            <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-pink-500 to-blue-500 mb-4 animate-gradient-x bg-[length:400%_auto]">
               Welcome to the MCP Tools Station!
-            </h3>
+            </p>
             
             {/* 添加工具站数量展示 */}
             <div className="mb-4 sm:mb-6">
@@ -224,25 +224,25 @@ export default function ({
       )}
 
       <div className={`relative z-10 ${!showIntro ? "pt-20" : ""}`}>
-        <h4 id="hero">
+        <p id="hero">
           {page.hero && <Hero hero={page.hero} count={projectsCount} />}
-        </h4>
-        <h4 id="search">
+        </p>
+        <p id="search">
           <Search />
-        </h4>
-        <h4 id="projects">
+        </p>
+        <p id="projects">
           <Projects viewType={'class'} projects={projects} />
-        </h4>
-        <h4 id="blog">
+        </p>
+        <p id="blog">
           <Blog isHomePage={true} />
-        </h4>
+        </p>
         {/* 添加评论展示组件 */}
-        <h4 id="testimonials">
+        <p id="testimonials">
           <Testimonials />
-        </h4>
-        <h4 id="faq">
+        </p>
+        <p id="faq">
           {page.faq && <Faq section={page.faq} />}
-        </h4>
+        </p>
       </div>
     </div>
   )

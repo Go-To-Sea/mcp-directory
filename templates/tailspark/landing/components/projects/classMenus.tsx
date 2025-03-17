@@ -55,26 +55,32 @@ export default (props: {
         </div>
       </div>
       
-      <div id="tags-container" className={`flex pt-1 flex-wrap gap-2 transition-all duration-300 ${
+      <div id="tags-container" className={`flex flex-wrap gap-2 transition-all duration-300 ease-in-out ${
         isExpanded 
-          ? 'max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent' 
-          : 'max-h-[126px] overflow-hidden'
+          ? 'opacity-100 max-h-[800px] pt-1' 
+          : 'opacity-0 max-h-0 pt-0'
       }`}>
         {categories.map((category, index) => (
           <Link 
             href={category.href} 
             key={index} 
-            className={`flex-shrink-0   border-2 rounded-full py-2 px-4 shadow-sm hover:shadow-md transition-all duration-200 
+            className={`flex-shrink-0 border rounded-[4px] py-1.5 px-4 transition-all duration-200 
               ${currentTag === category.name 
-                ? 'border-primary bg-primary/10 text-primary' 
-                : 'border-gray-100 dark:border-gray-800 bg-slate-50 dark:bg-slate-900'
+                ? 'border-primary bg-primary/5 text-primary shadow-sm hover:shadow' 
+                : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 shadow-xs hover:shadow-sm'
               }`}
           >
-            <div className="flex justify-center items-center gap-1">
-              <span className={`text-xs text-[#565454] dark:text-[#fff] md:text-xs font-medium whitespace-nowrap ${
-                currentTag === category.name ? 'text-primary' : ''
+            <div className="flex justify-center items-center gap-1.5">
+              <span className={`text-xs font-medium whitespace-nowrap ${
+                currentTag === category.name 
+                ? 'text-primary' 
+                : 'text-gray-700 dark:text-gray-200'
               }`}>{category.name}</span>
-              <span className="text-primary text-xs whitespace-nowrap">{category.count}</span>
+              <span className={`text-[10px] whitespace-nowrap ${
+                currentTag === category.name 
+                ? 'text-primary/80' 
+                : 'text-gray-500 dark:text-gray-400'
+              }`}>{category.count}</span>
             </div>
           </Link>
         ))}

@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 23:30:04
+ * @LastEditTime: 2025-03-17 23:36:08
  */
 import Faq from "../../components/faq";
 import Hero from "../../components/hero";
@@ -35,14 +35,13 @@ export default function ({
       {/* 添加欢迎标题部分 */}
       <div className="mx-auto max-w-7xl w-full flex flex-col items-center justify-center px-4 pt-24 pb-12">
         <div className="text-center">
-          <h3 className="text-3xl  sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 animate-gradient-x">
+          <h1 className="text-3xl  sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 animate-gradient-x">
             MCP Server Categories
-          </h3>
-          
+          </h1>
           <div className="mb-4 sm:mb-6">
-            <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 inline-block">
+            <h2 className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 inline-block">
               Current Categories: <span className="text-primary font-medium">{tag || 'All'}</span>
-            </span>
+            </h2>
           </div>
          
         </div>

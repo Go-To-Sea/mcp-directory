@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 16:57:17
+ * @LastEditTime: 2025-03-17 22:56:49
  */
 /*
  * @Description: 
@@ -49,9 +49,9 @@ export default ({ footer }: { footer?: Footer }) => {
           <div className="grid grid-cols-2 md:grid-cols-3 col-span-2 gap-8">
             {footer?.nav?.items?.map((item: Item, idx: number) => (
               <div key={idx} className="mt-8 md:mt-0">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
+                <h2 className="font-semibold text-gray-900 dark:text-white mb-4">
                   {item?.title || ''}
-                </h3>
+                </h2>
                 <ul className="space-y-3">
                   {item?.children?.map((child: Item, iidx: number) => (
                     <li key={iidx}>
@@ -75,7 +75,7 @@ export default ({ footer }: { footer?: Footer }) => {
 
         {/* 版权信息 */}
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <h3 className="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()}{" "}
             <a
               className="text-primary hover:text-[#9333ea] transition-colors"
@@ -85,13 +85,13 @@ export default ({ footer }: { footer?: Footer }) => {
               {footer?.copyright?.owner || "MCP.ad"}
             </a>{" "}
             {footer?.copyright?.text || "All rights reserved."}
-          </h3>
+          </p>
           <div className="flex space-x-6">
             <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 text-sm hover:text-[#9333ea] transition-colors">
-              <h3>Privacy Policy</h3>
+              <p>Privacy Policy</p>
             </Link>
             <Link href="/terms-of-service" className="text-gray-500 dark:text-gray-400 text-sm hover:text-[#9333ea] transition-colors">
-              <h3>Terms of Service</h3>
+              <p>Terms of Service</p>
             </Link>
           </div>
         </div>

@@ -58,9 +58,55 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
       }
     };
   
-    // 处理富文本中的 h1 标签
-    if (project.content) {
-      project.content = project.content.replace(/<h1/g, '<h3').replace(/<\/h1>/g, '</h3>');
+    // 处理富文本中的 h1 标签 - 删除第一个 h1
+    const checkAndReplaceH1 = () => {
+      const contentElement = document.querySelector('.prose');
+      if (contentElement) {
+        // 查找所有 h1 元素
+        const h1Elements = contentElement.querySelectorAll('h1');
+        if (h1Elements.length > 0) {
+          // 只删除第一个 h1 标签
+          const firstH1 = h1Elements[0];
+          firstH1.parentNode?.removeChild(firstH1);
+          console.log('删除了第一个 h1 标签');
+          
+          // 其余的 h1 标签替换为 h2
+          for (let i = 1; i < h1Elements.length; i++) {
+            const h1 = h1Elements[i];
+            const h2 = document.createElement('h2');
+            h2.innerHTML = h1.innerHTML;
+            h2.className = h1.className;
+            h1.parentNode?.replaceChild(h2, h1);
+          }
+          
+          if (h1Elements.length > 1) {
+            console.log(`替换了 ${h1Elements.length - 1} 个其他 h1 标签`);
+          }
+        }
+      }
+    };
+
+    // 初次检查
+    checkAndReplaceH1();
+    
+    // 多次检查以确保捕获动态加载的内容
+    const intervals = [100, 500, 1000, 2000];
+    intervals.forEach(delay => {
+      setTimeout(checkAndReplaceH1, delay);
+    });
+    
+    // 创建 MutationObserver 监听 DOM 变化
+    const observer = new MutationObserver(() => {
+      checkAndReplaceH1();
+    });
+    
+    // 开始观察
+    const contentElement = document.querySelector('.prose');
+    if (contentElement) {
+      observer.observe(contentElement, { 
+        childList: true,
+        subtree: true 
+      });
     }
   
     // 为所有富文本中的图片添加错误处理
@@ -74,6 +120,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
       images.forEach(img => {
         img.removeEventListener('error', handleImageError);
       });
+      observer.disconnect();
     };
   }, [project.content]); // 当内容变化时重新添加监听器
 
@@ -111,9 +158,9 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
         
         <ChevronRight size={14} className="mx-2 text-gray-400 dark:text-gray-500" />
         
-        <span className="px-3 py-1.5 bg-gray-50 dark:bg-gray-700/50 rounded-lg text-gray-900 dark:text-gray-200 truncate max-w-[200px]">
+        <p className="px-3 py-1.5 bg-gray-50 dark:bg-gray-700/50 rounded-lg text-gray-900 dark:text-gray-200 truncate max-w-[200px]">
           {project.name}
-        </span>
+        </p>
       </nav>
 
       
@@ -284,10 +331,10 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
         >
           {/* 主要内容区保持不变 */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300 flex-1 flex flex-col overflow-hidden">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white hover:text-primary transition-colors duration-200 flex items-center">
+            <p className="text-xl font-semibold mb-4 text-gray-900 dark:text-white hover:text-primary transition-colors duration-200 flex items-center">
               <span className="w-1.5 h-6 bg-gradient-to-b from-blue-500 to-purple-600 rounded-full mr-2.5 inline-block"></span>
               About
-            </h2>
+            </p>
             <div 
               className="prose dark:prose-invert max-w-none flex-1 overflow-auto"
               dangerouslySetInnerHTML={{ __html: project.content || 'Continuous updates...' }} 
@@ -304,11 +351,11 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
           className="h-full flex flex-col"
         >
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow duration-300 flex-1 flex flex-col">
-            <h2 className="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200 flex items-center flex-shrink-0">
+            <p className="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200 flex items-center flex-shrink-0">
               <span className="w-1.5 h-6 bg-gradient-to-b from-purple-500 to-blue-600 rounded-full mr-2.5 inline-block"></span>
               recommend MCP 
               {/* {project.type === 'server' ? 'Servers' : 'Clients'} */}
-            </h2>
+            </p>
             
             {similarProjects.length > 0 ? (
               <div className="flex-1 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">

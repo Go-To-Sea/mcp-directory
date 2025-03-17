@@ -9,42 +9,42 @@ const testimonials = [
     author: "Alex Chen",
     title: "AI Solution Architect",
     rating: 5,
-    time: "March 15, 2024"
+    time: "March 2, 2025"
   },
   {
     content: "As a Claude integration developer, MCP.ad's resource navigation helped me find the most suitable MCP server. The documentation is clear, examples are rich, it's an excellent platform.",
     author: "Sarah Miller",
     title: "Full Stack Engineer",
     rating: 5,
-    time: "March 12, 2024"
+    time: "February 28, 2025"
   },
   {
     content: "The plug-and-play feature of MCP servers is impressive. Through MCP.ad, we quickly found and deployed suitable servers, significantly enhancing the practicality of AI assistants.",
     author: "Michael Zhang",
     title: "Technical Director",
     rating: 5,
-    time: "March 8, 2024"
+    time: "February 25, 2025"
   },
   {
     content: "MCP.ad has revolutionized how we integrate AI into our workflow. The comprehensive server options and seamless integration capabilities have made it our go-to platform.",
     author: "Emma Wilson",
     title: "DevOps Engineer",
     rating: 5,
-    time: "March 5, 2024"
+    time: "February 20, 2025"
   },
   {
     content: "The Model Context Protocol implementation through MCP.ad has significantly improved our data processing capabilities. It's a game-changer for AI development.",
     author: "David Park",
     title: "Senior Software Engineer",
     rating: 5,
-    time: "March 1, 2024"
+    time: "February 15, 2025"
   },
   {
     content: "Finding the right MCP server used to be challenging until we discovered MCP.ad. The platform's curation and documentation are outstanding.",
     author: "Lisa Johnson",
     title: "AI Research Lead",
     rating: 5,
-    time: "February 28, 2024"
+    time: "February 10, 2025"
   }
 ]
 
@@ -53,9 +53,9 @@ export default function Testimonials() {
     <div className="py-16 bg-gradient-to-b from-transparent to-gray-50 dark:to-gray-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h3 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500">
+          <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500">
             What Our Users Are Saying
-          </h3>
+          </h2>
         </div>
         
         <div className="mt-12">
@@ -72,9 +72,9 @@ export default function Testimonials() {
                     </span>
                   </div>
                   <div className="ml-3 flex-1">
-                    <h4 className="text-base font-semibold text-gray-900 dark:text-white">
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-white">
                       {testimonial.author}
-                    </h4>
+                    </h3>
                     <div className="flex items-center gap-2">
                       <p className="text-xs text-gray-500 dark:text-gray-400">
                         {testimonial.title}

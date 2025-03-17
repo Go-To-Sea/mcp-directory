@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 22:51:55
+ * @LastEditTime: 2025-03-17 23:03:54
  */
 "use client"
 
@@ -30,6 +30,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
 
   // 获取基础路径
   const basePath = pathPrefix || '/'+project.type+'s';
+  
+  // 判断是否在首页
+  const isHomePage = pathname === '/';
+  // 判断是否在分类页面
+  const isCategoriesPage = pathname.startsWith('/categories');
 
   const handleStarClick = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -124,9 +129,19 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
               />
             </div>
             <div className="overflow-hidden">
-              <h4 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
-                {project.name}
-              </h4>
+              {isHomePage ? (
+                <h4 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
+                  {project.name}
+                </h4>
+              ) : isCategoriesPage ? (
+                <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
+                  {project.name}
+                </h3>
+              ) : (
+                <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
+                  {project.name}
+                </h3>
+              )}
               {project.author_name && (
                 <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">
                   by {project.author_name}
