@@ -183,7 +183,7 @@ export default function ({
                   </a>
                 </div>
             </div>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 via-pink-500  to-blue-500 mb-4 animate-gradient-x bg-[length:400%_auto]">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-pink-500 to-blue-500 mb-4 animate-gradient-x bg-[length:400%_auto]">
               Welcome to the MCP Tools Station!
             </h3>
             

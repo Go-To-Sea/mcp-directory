@@ -176,9 +176,10 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
             <div className="flex flex-wrap items-center gap-4 mt-2">
               <div className="flex flex-wrap gap-1.5">
                 {tags?.map((tag, index) => (
-                  <motion.span
+                  <Link
                     key={index}
-                    className="inline-flex items-center px-2.5 py-0.5 text-xs border transition-all"
+                    href={`/categories/?tag=${encodeURIComponent(tag.trim())}`}
+                    className="inline-flex items-center px-2.5 py-0.5 text-xs border transition-all cursor-pointer hover:bg-gradient-to-r hover:from-blue-500/5 hover:to-purple-500/5"
                     style={{
                       background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
                       borderWidth: "1px",
@@ -186,19 +187,15 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
                       borderImageSlice: 1,
                       borderImageSource: "linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))"
                     }}
-                    whileHover={{
-                      background: "linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1))",
-                      borderImageSource: "linear-gradient(to right, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3))"
-                    }}
                   >
                     <span className="bg-clip-text text-transparent" 
                       style={{
                         backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
                       }}
                     >
-                      {tag.trim()}
+                      #{tag.trim()}
                     </span>
-                  </motion.span>
+                  </Link>
                 ))}
               </div>
               

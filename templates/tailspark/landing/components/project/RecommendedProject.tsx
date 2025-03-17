@@ -12,6 +12,7 @@
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import type { Project } from "@/types/project"
+import Link from 'next/link'
 
 export default function RecommendedProject({ 
   project 
@@ -21,9 +22,9 @@ export default function RecommendedProject({
   const router = useRouter()
 
   return (
-    <div
+    <Link
       className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow cursor-pointer"
-      onClick={() => router.push(`/project/${encodeURIComponent(project.name || '')}`)}
+      href={`/project/${encodeURIComponent(project.name || '')}`}
     >
       <div className="flex items-center space-x-3 mb-3">
         <Image
@@ -54,6 +55,6 @@ export default function RecommendedProject({
             ))}
         </div>
       )}
-    </div>
+    </Link>
   )
 }
