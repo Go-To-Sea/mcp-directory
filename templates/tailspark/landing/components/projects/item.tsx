@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-17 23:03:54
+ * @LastEditTime: 2025-03-18 00:53:37
  */
 "use client"
 
@@ -130,9 +130,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
             </div>
             <div className="overflow-hidden">
               {isHomePage ? (
-                <h4 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
+                <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
                   {project.name}
-                </h4>
+                </h3>
               ) : isCategoriesPage ? (
                 <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
                   {project.name}
