@@ -47,13 +47,13 @@ export default ({
           <div className="mb-16">
             <div className="flex items-center justify-between mb-8">
               <div className="flex flex-col">
-                <motion.h4
+                <motion.h3
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white"
                 >
                   MCP Servers
-                </motion.h4>
+                </motion.h3>
                 <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
               </div>
               <Link 
@@ -75,13 +75,13 @@ export default ({
           <div className="mb-8">
             <div className="flex items-center justify-between mb-8">
               <div className="flex flex-col">
-                <motion.h4
+                <motion.h3
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white"
                 >
                   MCP Clients
-                </motion.h4>
+                </motion.h3>
                 <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
               </div>
               <Link 
