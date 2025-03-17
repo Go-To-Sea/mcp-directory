@@ -71,7 +71,7 @@ export default (props: {
               }`}
           >
             <div className="flex justify-center items-center gap-1">
-              <span className={`text-xs text-[#565454] md:text-xs font-medium whitespace-nowrap ${
+              <span className={`text-xs text-[#565454] dark:text-[#fff] md:text-xs font-medium whitespace-nowrap ${
                 currentTag === category.name ? 'text-primary' : ''
               }`}>{category.name}</span>
               <span className="text-primary text-xs whitespace-nowrap">{category.count}</span>
