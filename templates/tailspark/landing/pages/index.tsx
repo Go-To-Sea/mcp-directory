@@ -51,8 +51,10 @@ type Project = {
   type?: string;  // 使 type 可选
 }
 
+// 在顶部导入 Testimonials 组件
+import Testimonials from "../components/testimonials"
 // 在顶部导入所需的图标
-import { Menu, X, Home, Search as SearchIcon, Grid, BookOpen, HelpCircle } from 'lucide-react'
+import { Menu, X, Home, Search as SearchIcon, MessageSquare,Grid, BookOpen, HelpCircle } from 'lucide-react'
 
 export default function ({
   page,
@@ -70,10 +72,10 @@ export default function ({
 
   // 更新导航菜单配置
   const navItems = [
-    { id: 'hero', label: 'Home', icon: <Home size={20} /> },
     { id: 'projects', label: 'Projects', icon: <Grid size={20} /> },
     { id: 'blog', label: 'Blog', icon: <BookOpen size={20} /> },
     { id: 'faq', label: 'FAQ', icon: <HelpCircle size={20} /> },
+    { id: 'testimonials', label: 'Reviews', icon: <MessageSquare size={20} /> },
   ]
 
   // 监听滚动更新当前激活的部分
@@ -181,7 +183,7 @@ export default function ({
                   </a>
                 </div>
             </div>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 animate-gradient-x">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 via-pink-500  to-blue-500 mb-4 animate-gradient-x bg-[length:400%_auto]">
               Welcome to the MCP Tools Station!
             </h3>
             
@@ -194,7 +196,7 @@ export default function ({
                 <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block animate-bounce [animation-delay:200ms]">
                   MCP Tools Available
                 </span>
-                <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block ">
+                <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block animate-bounce [animation-delay:300ms]">
                 -
                 </span>
                 <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block animate-bounce [animation-delay:400ms]">
@@ -221,7 +223,6 @@ export default function ({
         </div>
       )}
 
-      {/* 现有页面内容 */}
       <div className={`relative z-10 ${!showIntro ? "pt-20" : ""}`}>
         <h4 id="hero">
           {page.hero && <Hero hero={page.hero} count={projectsCount} />}
@@ -234,6 +235,10 @@ export default function ({
         </h4>
         <h4 id="blog">
           <Blog isHomePage={true} />
+        </h4>
+        {/* 添加评论展示组件 */}
+        <h4 id="testimonials">
+          <Testimonials />
         </h4>
         <h4 id="faq">
           {page.faq && <Faq section={page.faq} />}

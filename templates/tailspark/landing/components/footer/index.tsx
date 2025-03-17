@@ -57,7 +57,7 @@ export default ({ footer }: { footer?: Footer }) => {
                     <li key={iidx}>
                       <Link 
                         href={child?.url || "#"} 
-                        className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                        className="text-gray-600 text-[14px] dark:text-gray-400 hover:text-[#9333ea] transition-colors dark:hover:text-primary "
                         target={child?.target || '_blank'}
                       >
                         {child?.title || ''}
@@ -78,7 +78,7 @@ export default ({ footer }: { footer?: Footer }) => {
           <h3 className="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()}{" "}
             <a
-              className="text-primary hover:underline"
+              className="text-primary hover:text-[#9333ea] transition-colors"
               href={footer?.copyright?.url}
               target={footer?.copyright?.target}
             >
@@ -87,10 +87,10 @@ export default ({ footer }: { footer?: Footer }) => {
             {footer?.copyright?.text || "All rights reserved."}
           </h3>
           <div className="flex space-x-6">
-            <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 text-sm hover:text-primary transition-colors">
+            <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 text-sm hover:text-[#9333ea] transition-colors">
               <h3>Privacy Policy</h3>
             </Link>
-            <Link href="/terms-of-service" className="text-gray-500 dark:text-gray-400 text-sm hover:text-primary transition-colors">
+            <Link href="/terms-of-service" className="text-gray-500 dark:text-gray-400 text-sm hover:text-[#9333ea] transition-colors">
               <h3>Terms of Service</h3>
             </Link>
           </div>

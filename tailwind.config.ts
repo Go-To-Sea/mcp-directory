@@ -21,6 +21,7 @@ export default {
 		  },
 		  animation: {
 			'fade-out': 'fade-out 2s ease-in-out',
+			'gradient-x': 'gradient-x 8s ease infinite',
 		  },
   		colors: {
 			background: {

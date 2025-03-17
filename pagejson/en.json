@@ -97,8 +97,13 @@
               "target": "_blank"
             },
             {
-              "title": "MCP categories",
-              "url": "https://mcp.ad/categories",
+              "title": "MCP Feed",
+              "url": "https://mcp.ad/feed",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP About",
+              "url": "https://mcp.ad/about",
               "target": "_blank"
             }
           ]

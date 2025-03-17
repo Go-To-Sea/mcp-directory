@@ -1,7 +1,7 @@
 "use client";
 
 // 首先在顶部导入新的图标
-import { BsSun, BsMoon, BsList, BsCloudSleet, BsRss, BsGear } from "react-icons/bs";
+import { BsSun, BsMoon, BsList, BsCloudSleet, BsRss, BsGear, BsInfoCircle } from "react-icons/bs";
 import { GrAction ,GrCloudComputer} from "react-icons/gr"
 import type { Header, Item } from "@/types/landing";
 import { Button } from "@/components/ui/button";
@@ -53,7 +53,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
   
   return (
     <ClerkProvider>
-        <header className="sticky top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200/80 dark:border-gray-800/80 backdrop-blur-sm">
+        <header className="sticky top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-sm backdrop-blur-sm">
           <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
@@ -122,6 +122,16 @@ export default function HeaderComponent({ header }: { header: Header }) {
                   >
                     <BsRss className="mr-2 h-4 w-4" />
                     Feed
+                  </a>
+
+                  <a
+                    href="/about"
+                    className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
+                      pathname === "/about" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
+                    }`}
+                  >
+                    <BsInfoCircle className="mr-2 h-4 w-4" />
+                    About
                   </a>
                 </div>
                 
@@ -219,6 +229,17 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     >
                       <BsRss className="mr-3 h-4 w-4" />
                       Feed
+                    </a>
+
+                    <a
+                      href="/about"
+                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
+                        pathname === "/about" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <BsInfoCircle className="mr-3 h-4 w-4" />
+                      About
                     </a>
                   
                     {/* Submit 按钮 */}
