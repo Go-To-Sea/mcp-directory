@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-18 00:52:19
+ * @LastEditTime: 2025-03-18 00:55:15
  */
 "use client"
 
@@ -88,7 +88,7 @@ export default ({
                 href="/clients"
                 className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
               >
-                <h4>View All Clients</h4>
+                <p>View All Clients</p>
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={14} />
               </Link>
             </div>

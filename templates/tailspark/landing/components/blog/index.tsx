@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:06:33
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-18 00:01:46
+ * @LastEditTime: 2025-03-18 00:55:48
  */
 "use client"
 
@@ -28,14 +28,14 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               >
                 MCP Blog
               </motion.h2>
-              <motion.h3 
+              <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
               >
                 Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP Server
-              </motion.h3>
+              </motion.p>
             </>
           ) : (
             <>
@@ -71,9 +71,9 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               {/* 第一篇博客卡片 */}
               <Link href="/blog/1" className="group flex-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     Introducing the Model Context Protocol
-                  </h4>
+                  </h3>
                   <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                     <span className="flex items-center gap-1">
                       <Calendar size={16} />
@@ -98,9 +98,9 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               {/* 第二篇博客卡片 */}
               <Link href="/blog/2" className="group flex-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     How to Get Started Using MCP
-                  </h4>
+                  </h3>
                   <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                     <span className="flex items-center gap-1">
                       <Calendar size={16} />
@@ -124,9 +124,9 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               {/* 第三篇博客卡片 */}
               <Link href="/blog/3" className="group flex-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     AI is Making Websites Obsolete with MCP
-                  </h4>
+                  </h3>
                   <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                     <span className="flex items-center gap-1">
                       <Calendar size={16} />

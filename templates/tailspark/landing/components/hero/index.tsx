@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-18 00:53:08
+ * @LastEditTime: 2025-03-18 00:58:34
  */
 "use client";
 
@@ -37,9 +37,9 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
                 MCP Servers
               </span>
             </h1>
-            <p className="text-muted-foreground text-base sm:text-lg lg:text-xl">
+            <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
               Find the best MCP servers for your needs.
-            </p>
+            </h2>
           </div>
         );
       case '/clients':
@@ -51,9 +51,9 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
                 MCP Clients
               </span>
             </h1>
-            <p className="text-muted-foreground text-base sm:text-lg lg:text-xl">
+            <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
               Find the best MCP clients for your needs.
-            </p>
+            </h2>
           </div>
         );
       default:
