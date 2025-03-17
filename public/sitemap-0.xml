@@ -19,31 +19,43 @@
 </url>
 <url>
     <loc>https://mcp.ad</loc>
-    <lastmod>2025-03-15T02:50:49.944Z</lastmod>
+    <lastmod>2025-03-16T02:50:49.944Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
 </url>
 <url>
     <loc>https://mcp.ad/blog</loc>
-    <lastmod>2025-03-15T02:50:49.944Z</lastmod>
+    <lastmod>2025-03-16T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/categories</loc>
-    <lastmod>2025-03-15T02:50:49.944Z</lastmod>
+    <lastmod>2025-03-16T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/clients</loc>
-    <lastmod>2025-03-15T02:50:49.944Z</lastmod>
+    <lastmod>2025-03-16T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/servers</loc>
-    <lastmod>2025-03-15T02:50:49.944Z</lastmod>
+    <lastmod>2025-03-16T02:50:49.944Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>https://mcp.ad/feed</loc>
+    <lastmod>2025-03-16T02:50:49.944Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>https://mcp.ad/about</loc>
+    <lastmod>2025-03-16T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
