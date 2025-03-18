@@ -72,12 +72,12 @@ export default (props: {
           >
             <div className="flex justify-center items-center gap-1.5">
               <span className={`text-xs font-medium whitespace-nowrap ${
-                currentTag === category.name 
+                currentTag === category.title 
                 ? 'text-primary' 
                 : 'text-gray-700 dark:text-gray-200'
-              }`}>{category.name}</span>
+              }`}>{category.title}</span>
               <span className={`text-[10px] whitespace-nowrap ${
-                currentTag === category.name 
+                currentTag === category.title 
                 ? 'text-primary/80' 
                 : 'text-gray-500 dark:text-gray-400'
               }`}>{category.count}</span>

@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 22:01:03
+ * @LastEditTime: 2025-03-18 22:48:47
  */
 import { Category } from "@/types/category";
 import { getProjectsCountByCategory } from "./project";
@@ -44,10 +44,9 @@ export async function getCategories(
     .from("categories")
     .select("*");
 
-  // 如果指定了 type，添加类型筛选条件
-  if (type) {
-    query = query.eq("type", type);
-  }
+  // if (type) {
+  //   query = query.eq("type", type);
+  // }
 
   const { data, error } = await query
     .range((page - 1) * limit, page * limit - 1);

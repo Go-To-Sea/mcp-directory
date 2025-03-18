@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-03 23:28:13
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 22:16:05
+ * @LastEditTime: 2025-03-18 22:54:07
  */
 import Servers from "@/templates/tailspark/landing/components/servers";
 import { getCategories } from "@/models/category";
@@ -54,6 +54,7 @@ export default async function ({
 
   // 转换为 ClassMenus 组件需要的格式，使用 category
   const classMenus: ClassMenus[] = categories.map(category => ({
+    ...category,
     name: category.name,
     href: `/servers?category=${encodeURIComponent(category.name)}`
   }));

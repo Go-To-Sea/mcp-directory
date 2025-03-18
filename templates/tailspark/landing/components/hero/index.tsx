@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-18 00:58:34
+ * @LastEditTime: 2025-03-18 23:01:28
  */
 "use client";
 
@@ -32,7 +32,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         return (
           <div className="flex flex-col items-center w-full">
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Discover
+              <span className="">Discover  </span>
               <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
                 MCP Servers
               </span>
@@ -46,7 +46,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         return (
           <div className="flex flex-col items-center w-full">
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Discover
+              <span className="">Discover  </span>
               <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
                 MCP Clients
               </span>
@@ -60,7 +60,7 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         return (
           <div className="flex flex-col items-center w-full">
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Find Awesome
+              <span> Find Awesome </span>
               <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
                 MCP Servers and Clients
               </span>
