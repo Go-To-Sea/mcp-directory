@@ -113,7 +113,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
         y: -5,
         transition: { duration: 0.2 },
       }}
-      className="mb-2 h-[160px] sm:h-[180px] cursor-pointer rounded-xl border border-gray-200/50 dark:border-gray-800 p-3 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm"
+      className="mb-2 h-[180px] sm:h-[200px] cursor-pointer rounded-xl border border-gray-200/50 dark:border-gray-800 p-3 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -163,7 +163,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
         </div>
         
   
-        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-4 overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent h-[32px] sm:h-[40px]">
+        <p className="text-xs sm:text-sm h-[50px] sm:h-[50px] text-gray-600 dark:text-gray-400 mb-2 sm:mb-4 overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent ">
           {project.description}
         </p>
   
