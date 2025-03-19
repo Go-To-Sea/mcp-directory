@@ -44,9 +44,9 @@ export async function getCategories(
     .from("categories")
     .select("*");
 
-  // if (type) {
-  //   query = query.eq("type", type);
-  // }
+  if (type) {
+    query = query.eq("type", type);
+  }
 
   const { data, error } = await query
     .range((page - 1) * limit, page * limit - 1);
