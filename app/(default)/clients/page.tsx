@@ -35,15 +35,16 @@ export default async function ({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const { q,category } = await searchParams;
+  const resolvedSearchParams = await searchParams;
+  const { q, category } = resolvedSearchParams;
   let projects: Project[] | any[] = [];
   
   // 获取所有分类
   const categories = await getCategories(1, 100,'client');
   
-   if (category) {
-    projects = await getProjectsByCategory(category as string,1, 500,'client');
-  }else if (q) {
+  if (category) {
+    projects = await getProjectsByCategory(category as string, 1, 500, 'client');
+  } else if (q) {
     projects = await getProjectsWithKeyword(q as string, 1, 500);
   } else {
     projects = await getFeaturedProjects(1, 500);

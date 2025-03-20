@@ -7,16 +7,24 @@
  */
 import BlogDetail from "@/templates/tailspark/landing/components/blog/detail";
 import pageJson from "@/pagejson/en.json";
+import type { Metadata, ResolvingMetadata } from 'next';
+interface Props {
+  params: Promise<{ id: Number }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
 
 export const runtime = "edge";
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  console.log('generateMetadata',params.id)
+export async function generateMetadata(
+  { params, searchParams }: Props,
+): Promise<Metadata>{
+  const resolvedParams = await params;
+  // 使用 resolvedParams.id 获取博客文章信息
   return {
-    title: `MCP Server Correlation Blog | ${pageJson?.metadata?.title}`,
-    description: `Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP`,
+    title: `博客标题 | ${pageJson?.metadata?.title}`,
+    description: `博客描述`,
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/blog/${params.id}`,
+      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/blog/${resolvedParams.id}`,
     },
   };
 }
