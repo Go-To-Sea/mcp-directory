@@ -372,6 +372,7 @@ export default function BlogPost() {
               <Calendar size={16} className="text-primary" />
               {blogPost.date}
             </span>
+            <span className="tags"></span>
             <span className="flex items-center gap-2">
               <Clock size={16} className="text-primary" />
               {blogPost.readTime}

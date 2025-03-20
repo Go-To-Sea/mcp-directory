@@ -11,6 +11,7 @@ export default ({
 }) => {
   return (
     <nav className="flex" aria-label="Breadcrumb">
+      <span className="tags"></span>
       <ol role="list" className="flex items-center space-x-2">
         <li>
           <div>

@@ -183,6 +183,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
             />
           </div>
           <div className="flex-1 min-w-0">
+          <span className="tags"></span>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="relative">
                 <motion.h1 

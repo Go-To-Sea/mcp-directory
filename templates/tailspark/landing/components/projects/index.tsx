@@ -105,6 +105,7 @@ export default ({
   // 默认视图
   return (
     <section className="relative">
+      <span className="tags"></span>
       {(pathname === '/servers' || pathname === '/clients') && <ClassMenusComponent classMenus={classMenus} />}
       <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
         {!loading ? (
