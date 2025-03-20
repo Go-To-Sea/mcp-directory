@@ -10,17 +10,17 @@ import pageJson from "@/pagejson/en.json";
 
 export const runtime = "edge";
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  console.log('generateMetadata',params.id)
   return {
     title: `MCP Server Correlation Blog | ${pageJson?.metadata?.title}`,
     description: `Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP`,
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/blog`,
+      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/blog/${params.id}`,
     },
   };
 }
 
 export default async function () {
-
-  return <BlogDetail  />;
+  return <BlogDetail />;
 }

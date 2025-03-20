@@ -15,7 +15,7 @@ export async function generateMetadata() {
     description: `Share your MCP Server or Client with the global developer community. Join the largest Model Context Protocol ecosystem and help shape the future of AI integration.`,
     keywords: "MCP Server, MCP Client, Model Context Protocol, Claude Integration, AI Tools, Developer Community, Submit MCP, MCP Ecosystem",
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/categories`,
+      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/submit`,
     },
   };
 }

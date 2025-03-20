@@ -113,37 +113,27 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
         y: -5,
         transition: { duration: 0.2 },
       }}
-      className="mb-2 h-[180px] sm:h-[200px] cursor-pointer rounded-xl border border-gray-200/50 dark:border-gray-800 p-3 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm"
+      className="mb-2 h-[180px] sm:h-[200px] cursor-pointer rounded-xl border border-gray-200/50 dark:border-gray-800 p-3 sm:p-3.5 md:p-4 shadow-md hover:shadow-xl transition-all duration-300 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm flex flex-col"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-        <div className="flex justify-between items-start mb-2 sm:mb-3">
+        <div className="flex justify-between items-start mb-1.5 sm:mb-2">
           <div className="flex items-start overflow-hidden max-w-[85%]">
-            <div className="rounded-md flex items-center justify-center mr-2 sm:mr-3 min-w-[24px] sm:min-w-[32px]">
+            <div className="rounded-md flex items-center justify-center mr-2 sm:mr-2 min-w-[28px] sm:min-w-[32px]">
               <motion.img
                 src={project.author_avatar_url || "/logo.png"}
                 alt={project.name}
-                className="w-6 h-6 sm:w-8 sm:h-8 rounded-md object-cover"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-md object-cover"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
               />
             </div>
             <div className="overflow-hidden">
-              {isHomePage ? (
-                <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
-                  {project.name}
-                </h3>
-              ) : isCategoriesPage ? (
-                <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
-                  {project.name}
-                </h3>
-              ) : (
-                <h3 className="font-medium text-sm sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
-                  {project.name}
-                </h3>
-              )}
+              <h3 className="font-medium text-base sm:text-base line-clamp-1 hover:text-primary transition-colors duration-200">
+                {project.name}
+              </h3>
               {project.author_name && (
-                <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">
+                <p className="text-xs sm:text-xs text-gray-500 mt-0.5 sm:mt-1">
                   by {project.author_name}
                 </p>
               )}
@@ -153,17 +143,16 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
             onClick={handleStarClick}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
-            className="min-w-[24px] flex items-center justify-center p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="min-w-[28px] flex items-center justify-center p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             <Star
               className="fill-yellow-400 text-yellow-400 transition-colors duration-200"
-              size={18}
+              size={20}
             />
           </motion.button>
         </div>
         
-  
-        <p className="text-xs sm:text-sm h-[50px] sm:h-[50px] text-gray-600 dark:text-gray-400 mb-2 sm:mb-4 overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent ">
+        <p className="text-sm sm:text-sm max-h-[76px] sm:max-h-[76px] text-gray-600 dark:text-gray-400 mb-2 sm:mb-4 overflow-x-hidden overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent flex-grow">
           {project.description}
         </p>
   
@@ -178,10 +167,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
               opacity: isHovered ? 1 : 0.7,
             }}
             transition={{ duration: 0.2 }}
-            className="flex items-center text-[10px] sm:text-xs text-primary gap-1 flex-shrink-0"
+            className="flex items-center text-xs sm:text-xs text-primary gap-1 flex-shrink-0 p-1 mr-1"
           >
-            <span className="hidden sm:inline">View Details</span>
-            <ArrowRight size={12} className="sm:w-4 sm:h-4" />
+            {/* <span className="hidden sm:inline">View Details</span> */}
+            <ArrowRight size={16} className="sm:w-4 sm:h-4" />
           </motion.div>
         </div>
       </motion.div>

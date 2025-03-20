@@ -30,8 +30,8 @@ export default (props: {
   };
 
   return (
-    <div className="max-w-full  md:max-w-7xl mx-auto px-4 py-4 md:px-8 md:py-4 lg:py-4">
-      <div className="flex items-center gap-4 mb-2">
+    <div className="max-w-full md:max-w-7xl mx-auto px-4 py-4 md:px-8 md:py-4 lg:py-4">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
         <div className="flex items-center justify-between w-full">
           <button
             onClick={handleExpandToggle}
@@ -40,18 +40,18 @@ export default (props: {
             {isExpanded ? (
               <>
                 <ChevronUp size={16} />
-                <span>Collapse categorys</span>
+                <span>Collapse categories</span>
               </>
             ) : (
               <>
                 <ChevronDown size={16} />
-                <span>Expand categorys</span>
+                <span>Expand categories</span>
               </>
             )}
           </button>
-          <span className="text-xs text-gray-500 bg-gray-100 p-2 rounded-full">
+          <div className="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 p-2 rounded-full whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] sm:max-w-none">
             Current Category: <span className="text-primary font-medium">{currentTag || 'All'}</span>
-          </span>
+          </div>
         </div>
       </div>
       
