@@ -1,8 +1,8 @@
 /*
  * @Author: YourName
  * @Date: 2025-03-07 10:38:35
- * @LastEditTime: 2025-03-07 11:16:58
- * @LastEditors: YourName
+ * @LastEditTime: 2025-03-21 23:07:45
+ * @LastEditors: rendc
  * @Description: 
  * @FilePath: \mcp-directory\app\project\components\RecommendedProject.tsx
  * 版权声明
@@ -27,7 +27,7 @@ export default function RecommendedProject({
       href={`/project/${encodeURIComponent(project.name || '')}`}
     >
       <div className="flex items-center space-x-3 mb-3">
-        <Image
+        <img
           src={project.author_avatar_url || "/logo.png"}
           alt={''}
           width={40}

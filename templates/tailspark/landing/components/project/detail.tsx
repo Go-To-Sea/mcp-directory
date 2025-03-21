@@ -174,7 +174,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
       >
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex-shrink-0">
-            <Image
+            <img
               src={project.author_avatar_url || "/logo.png"}
               alt={''}
               width={80}

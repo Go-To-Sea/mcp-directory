@@ -61,7 +61,7 @@ export default function Feeds({submitList}:{
               >
                 <div className="flex items-start gap-2 sm:gap-3 md:gap-4 w-full">
                   <div className="flex-shrink-0">
-                    <Image
+                    <img
                       src={project.author_avatar_url || project.avatar_url || "/logo.png"}
                       alt={project.name}
                       width={32}

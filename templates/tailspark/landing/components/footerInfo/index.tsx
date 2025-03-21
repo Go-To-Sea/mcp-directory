@@ -17,7 +17,7 @@ const HeroSection = () => {
                 <AccordionContent>
                   <div className="grid grid-cols-1 gap-6">
                     <div className="h-64 w-44 overflow-hidden rounded-lg">
-                      <Image
+                      <img
                         src="https://tailwindui.com/plus-assets/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
                         alt="Summer style 1"
                         width={176}
@@ -34,7 +34,7 @@ const HeroSection = () => {
                 <AccordionContent>
                   <div className="grid grid-cols-1 gap-6">
                     <div className="h-64 w-44 overflow-hidden rounded-lg">
-                      <Image
+                      <img
                         src="https://tailwindui.com/plus-assets/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
                         alt="Summer style 2"
                         width={176}

@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react'
 // 博客数据 - 第一篇文章
 const blogPosts = [
   {
-    id: "1",
+    id: "Model Context Protocol",
     title: "Introducing the Model Context Protocol",
     date: "November 25, 2024",
     readTime: "3 min read",
@@ -86,7 +86,7 @@ const blogPosts = [
     `
   },
   {
-    id: "2",
+    id: "How Using MCP",
     title: "How to Get Started Using MCP",
     date: "December 10, 2024",
     readTime: "5 min read",
@@ -200,7 +200,7 @@ const blogPosts = [
     `
   },
   {
-    id: "3",
+    id: "AI With MCP",
     title: "AI is Making Websites Obsolete with MCP",
     date: "January 15, 2025",
     readTime: "4 min read",
