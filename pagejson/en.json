@@ -13,7 +13,8 @@
       "clients": "Clients",
       "blog": "Blog",
       "feed": "Feed",
-      "about": "About"
+      "about": "About",
+      "usercases": "Use Cases"
     },
     "actions": {
       "submit": "Submit",
@@ -74,39 +75,40 @@
     "by": "by",
     "visitWebsite": "Visit Website"
   },
-  "about": {
-    "nav": {
-      "home": "Home",
-      "about": "About"
-    },
-    "title": "About MCP.ad",
+    "usercases": {
+    "title": "MCP Use Cases",
+    "subtitle": "Discover how organizations are leveraging Model Context Protocol to enhance their AI capabilities and streamline workflows.",
+    "readMore": "Read more",
     "contact": {
-      "question": "Have any questions? Feel free to reach out at"
+      "title": "Ready to implement MCP in your project?",
+      "description": "Contact us to learn more about how MCP can help your organization leverage AI capabilities.",
+      "button": "Get in touch"
     },
-    "welcome": {
-      "title": "Welcome to MCP.ad",
-      "content": "At MCP.ad, we're dedicated to building the most comprehensive platform for Model Context Protocol (MCP) resources. Our mission is to connect developers, AI enthusiasts, and businesses with the tools they need to leverage the power of AI through MCP integration."
-    },
-    "vision": {
-      "title": "Our Vision",
-      "content": "We envision a future where AI integration is seamless and accessible to everyone. Through MCP.ad, we aim to create a vibrant ecosystem where developers can share their MCP servers and clients, making AI capabilities more accessible and powerful for all users."
-    },
-    "whatWeDo": {
-      "title": "What We Do",
-      "content": "MCP.ad serves as a central hub for the Model Context Protocol community. We provide:",
-      "items": "A curated directory of MCP servers and clients|Resources for implementing MCP in your projects|Community-driven documentation and guides|Platform for sharing and discovering new MCP integrations"
-    },
-    "forEveryone": {
-      "title": "For Everyone",
-      "content": "Whether you're a developer looking to share your MCP server, a business seeking to integrate AI capabilities, or an enthusiast exploring the possibilities of AI integration, MCP.ad is your go-to resource. We welcome contributions from all members of the community."
-    },
-    "journey": {
-      "title": "Our Journey",
-      "content": "Founded by a team passionate about AI integration and open-source development, MCP.ad started as a project to organize and share MCP resources. Today, we've grown into a thriving platform that serves developers and organizations worldwide, facilitating the adoption of Model Context Protocol technology."
-    },
-    "getInTouch": {
-      "title": "Get in Touch",
-      "content": "Have questions or suggestions? We'd love to hear from you. Reach out to us anytime at:"
+    "cases": {
+      "case1": {
+        "title": "Document Analysis & Retrieval",
+        "description": "See how companies are using MCP to build intelligent document analysis systems that can process, understand, and retrieve information from large document collections."
+      },
+      "case2": {
+        "title": "Customer Support Automation",
+        "description": "Learn how MCP enables businesses to create AI assistants that can access customer data, product information, and support documentation to provide accurate and personalized support."
+      },
+      "case3": {
+        "title": "Research & Development",
+        "description": "Discover how research teams are using MCP to build AI systems that can access and analyze scientific papers, experimental data, and research notes."
+      },
+      "case4": {
+        "title": "Content Creation & Management",
+        "description": "Explore how content creators and marketers are using MCP to build AI assistants that can access brand guidelines, content libraries, and analytics data."
+      },
+      "case5": {
+        "title": "Education & Training",
+        "description": "See how educational institutions are using MCP to create AI tutors that can access course materials, student data, and educational resources."
+      },
+      "case6": {
+        "title": "Healthcare & Medical Research",
+        "description": "Learn how healthcare providers are using MCP to build AI systems that can access medical records, research papers, and clinical guidelines while maintaining privacy and security."
+      }
     }
   },
   "about": {
@@ -350,3 +352,4 @@
     }
   }
 }
+

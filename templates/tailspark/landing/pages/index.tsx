@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-17 22:46:57
+ * @LastEditTime: 2025-03-23 22:12:11
  */
 "use client"
 
@@ -242,7 +242,7 @@ export default function ({
           <Testimonials />
         </p>
         <p id="faq">
-          {page.faq && <Faq section={page.faq} />}
+          {page.faq && <Faq {...page.faq} />}
         </p>
       </div>
     </div>

@@ -13,7 +13,8 @@
       "clients": "クライアント",
       "blog": "ブログ",
       "feed": "フィード",
-      "about": "概要"
+      "about": "概要",
+       "usercases": "活用事例"
     },
     "actions": {
       "submit": "提出",
@@ -194,6 +195,42 @@
       "url": "https://mcp.ad",
       "target": "_blank"
     },
+      "usercases": {
+    "title": "MCP 活用事例",
+    "subtitle": "組織がモデルコンテキストプロトコルを活用してAI機能を強化し、ワークフローを効率化する方法をご覧ください。",
+    "readMore": "詳細を見る",
+    "contact": {
+      "title": "プロジェクトにMCPを実装する準備はできていますか？",
+      "description": "Contact us to learn more about how MCP can help your organization leverage AI capabilities.",
+      "button": "お問い合わせ"
+    },
+    "cases": {
+      "case1": {
+        "title": "文書分析と検索",
+        "description": "See how companies are using MCP to build intelligent document analysis systems that can process, understand, and retrieve information from large document collections."
+      },
+      "case2": {
+        "title": "カスタマーサポートの自動化",
+        "description": "Learn how MCP enables businesses to create AI assistants that can access customer data, product information, and support documentation to provide accurate and personalized support."
+      },
+      "case3": {
+        "title": "研究開発",
+        "description": "Discover how research teams are using MCP to build AI systems that can access and analyze scientific papers, experimental data, and research notes."
+      },
+      "case4": {
+        "title": "コンテンツ作成と管理",
+        "description": "Explore how content creators and marketers are using MCP to build AI assistants that can access brand guidelines, content libraries, and analytics data."
+      },
+      "case5": {
+        "title": "教育とトレーニング",
+        "description": "See how educational institutions are using MCP to create AI tutors that can access course materials, student data, and educational resources."
+      },
+      "case6": {
+        "title": "医療と医学研究",
+        "description": "Learn how healthcare providers are using MCP to build AI systems that can access medical records, research papers, and clinical guidelines while maintaining privacy and security."
+      }
+    }
+  },
     "nav": {
       "items": [
         {

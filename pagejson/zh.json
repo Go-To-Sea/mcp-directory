@@ -23,7 +23,8 @@
       "clients": "Client",
       "blog": "博客",
       "feed": "动态",
-      "about": "关于"
+      "about": "关于",
+      "usercases": "用户案例"
     },
     "actions": {
       "submit": "提交",
@@ -34,6 +35,42 @@
     "dialog": {
       "title": "需要登录",
       "description": "请登录后提交您的项目"
+    }
+  },
+  "usercases": {
+    "title": "MCP 使用案例",
+    "subtitle": "探索如何利用 MCP Server 模型上下文协议来增强 AI 能力并简化工作流程。",
+    "readMore": "了解更多",
+    "contact": {
+      "title": "准备在您的项目中实施 MCP？",
+      "description": "Contact us to learn more about how MCP can help your organization leverage AI capabilities.",
+      "button": "联系我们"
+    },
+    "cases": {
+      "case1": {
+        "title": "文档分析与检索",
+        "description": "See how companies are using MCP to build intelligent document analysis systems that can process, understand, and retrieve information from large document collections."
+      },
+      "case2": {
+        "title": "客户支持自动化",
+        "description": "Learn how MCP enables businesses to create AI assistants that can access customer data, product information, and support documentation to provide accurate and personalized support."
+      },
+      "case3": {
+        "title": "研究与开发",
+        "description": "Discover how research teams are using MCP to build AI systems that can access and analyze scientific papers, experimental data, and research notes."
+      },
+      "case4": {
+        "title": "内容创建与管理",
+        "description": "Explore how content creators and marketers are using MCP to build AI assistants that can access brand guidelines, content libraries, and analytics data."
+      },
+      "case5": {
+        "title": "教育与培训",
+        "description": "See how educational institutions are using MCP to create AI tutors that can access course materials, student data, and educational resources."
+      },
+      "case6": {
+        "title": "医疗保健与医学研究",
+        "description": "Learn how healthcare providers are using MCP to build AI systems that can access medical records, research papers, and clinical guidelines while maintaining privacy and security."
+      }
     }
   },
   "hero": {

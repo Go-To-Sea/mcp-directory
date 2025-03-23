@@ -1,7 +1,7 @@
 "use client";
 
 // 首先在顶部导入新的图标
-import { BsSun, BsMoon, BsList, BsCloudSleet, BsRss, BsGear, BsInfoCircle } from "react-icons/bs";
+import { BsSun, BsMoon, BsList, BsCloudSleet, BsRss, BsGear, BsInfoCircle, BsLightningCharge } from "react-icons/bs";
 import { GrAction ,GrCloudComputer} from "react-icons/gr"
 import type { Header, Item } from "@/types/landing";
 import { Button } from "@/components/ui/button";
@@ -104,6 +104,16 @@ export default function HeaderComponent({ header }: { header: Header }) {
                   <GrAction className="mr-2 h-4 w-4" />
                   {t('nav.clients')}
                 </a>
+                {/* 添加 usercases 菜单项 */}
+                <a
+                  href="/usercases"
+                  className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
+                    pathname === "/usercases" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
+                  }`}
+                >
+                  <BsLightningCharge className="mr-2 h-4 w-4" />
+                  {t('nav.usercases')}
+                </a>
                 <div className="flex items-center space-x-2">
                   {/* ... 其他导航链接 ... */}
                   <a
@@ -199,7 +209,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <GrCloudComputer className="mr-3 h-4 w-4" />
-                      Servers
+                      {t('nav.servers')}
                     </a>
                     <a
                       href="/clients"
@@ -209,7 +219,18 @@ export default function HeaderComponent({ header }: { header: Header }) {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <GrAction className="mr-3 h-4 w-4" />
-                      Clients
+                      {t('nav.clients')}
+                    </a>
+                    {/* 添加 usercases 菜单项到移动端菜单 */}
+                    <a
+                      href="/usercases"
+                      className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
+                        pathname === "/usercases" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <BsLightningCharge className="mr-3 h-4 w-4" />
+                      {t('nav.usercases')}
                     </a>
                     <a
                       href="/blog"
@@ -219,7 +240,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <BsList className="mr-3 h-4 w-4" />
-                      Blog
+                      {t('nav.blog')}
                     </a>
                     
                     <a

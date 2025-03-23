@@ -13,7 +13,8 @@
       "clients": "클라이언트",
       "blog": "블로그",
       "feed": "피드",
-      "about": "소개"
+      "about": "소개",
+       "usercases": "활용 사례"
     },
     "actions": {
       "submit": "제출",
@@ -116,6 +117,42 @@
     "title": "MCP 서버 카테고리",
     "currentCategory": "현재 카테고리",
     "all": "전체"
+  },
+    "usercases": {
+    "title": "MCP 활용 사례",
+    "subtitle": "조직이 모델 컨텍스트 프로토콜을 활용하여 AI 기능을 향상시키고 워크플로우를 간소화하는 방법을 확인해보세요.",
+    "readMore": "자세히 보기",
+    "contact": {
+      "title": "프로젝트에 MCP를 구현할 준비가 되셨나요?",
+      "description": "Contact us to learn more about how MCP can help your organization leverage AI capabilities.",
+      "button": "문의하기"
+    },
+    "cases": {
+      "case1": {
+        "title": "문서 분석 및 검색",
+        "description": "See how companies are using MCP to build intelligent document analysis systems that can process, understand, and retrieve information from large document collections."
+      },
+      "case2": {
+        "title": "고객 지원 자동화",
+        "description": "Learn how MCP enables businesses to create AI assistants that can access customer data, product information, and support documentation to provide accurate and personalized support."
+      },
+      "case3": {
+        "title": "연구 개발",
+        "description": "Discover how research teams are using MCP to build AI systems that can access and analyze scientific papers, experimental data, and research notes."
+      },
+      "case4": {
+        "title": "콘텐츠 제작 및 관리",
+        "description": "Explore how content creators and marketers are using MCP to build AI assistants that can access brand guidelines, content libraries, and analytics data."
+      },
+      "case5": {
+        "title": "교육 및 훈련",
+        "description": "See how educational institutions are using MCP to create AI tutors that can access course materials, student data, and educational resources."
+      },
+      "case6": {
+        "title": "의료 및 의학 연구",
+        "description": "Learn how healthcare providers are using MCP to build AI systems that can access medical records, research papers, and clinical guidelines while maintaining privacy and security."
+      }
+    }
   },
   "blog": {
     "title": "MCP 블로그",
