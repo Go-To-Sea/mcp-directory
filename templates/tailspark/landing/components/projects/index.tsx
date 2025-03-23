@@ -3,18 +3,18 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-18 00:55:15
+ * @LastEditTime: 2025-03-23 11:55:00
  */
 "use client"
 
-
-import { Project, ClassMenus } from "@/types/project"  // 添加 ClassMenus 导入
-import ClassMenusComponent from "./classMenus"  // 保持导入名称
+import { Project, ClassMenus } from "@/types/project"
+import ClassMenusComponent from "./classMenus"
 import ProjectItem from "./item"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 export default ({
   projects,
@@ -30,6 +30,8 @@ export default ({
   classMenus?: ClassMenus[]
 }) => {
     const pathname = usePathname()
+    const t = useTranslations('projects')
+    
     let filterProjects: Project[] = []
     if(projectType) {
       filterProjects = projects.filter(p => p.type === projectType )
@@ -50,9 +52,9 @@ export default ({
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white"
+                  className="text-xl sm:text-2xl md:text-2xl font-bold text-gray-900 dark:text-white"
                 >
-                  MCP Servers
+                  {t('servers.title')}
                 </motion.h2>
                 <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
               </div>
@@ -60,7 +62,7 @@ export default ({
                 href="/servers"
                 className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
               >
-                View All Servers
+                {t('servers.viewAll')}
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={14} />
               </Link>
             </div>
@@ -78,9 +80,9 @@ export default ({
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white"
+                  className="text-xl sm:text-2xl md:text-2xl font-bold text-gray-900 dark:text-white"
                 >
-                  MCP Clients
+                  {t('clients.title')}
                 </motion.h2>
                 <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
               </div>
@@ -88,7 +90,7 @@ export default ({
                 href="/clients"
                 className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
               >
-                <p>View All Clients</p>
+                {t('clients.viewAll')}
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={14} />
               </Link>
             </div>
@@ -115,7 +117,7 @@ export default ({
             ))}
           </div>
         ) : (
-          <div className="mx-auto text-center">Loading data...</div>
+          <div className="mx-auto text-center">{t('loading')}</div>
         )}
       </div>
     </section>

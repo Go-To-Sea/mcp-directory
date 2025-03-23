@@ -8,12 +8,17 @@ import Link from "next/link"
 import { formatDistanceToNow } from 'date-fns'
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { useTranslations } from 'next-intl'
+import { zhCN, enUS } from 'date-fns/locale'
+import { useLocale } from 'next-intl'
 
 export default function Feeds({submitList}:{
   submitList: Project[]
 }) {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
+  const t = useTranslations('feeds')
+  const locale = useLocale()
 
   const handleSubmitClick = (e: React.MouseEvent) => {
     router.push('/submit');
@@ -31,17 +36,17 @@ export default function Feeds({submitList}:{
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0">
             <div>
               <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4">
-                Feed
+                {t('title')}
               </h1>
               <h2 className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-                MCP Servers and MCP Clients submitted by users recently.
+                {t('subtitle')}
               </h2>
             </div>
             <Link 
               href="/submit"
               className="text-primary underline underline-offset-2 transition-colors text-sm sm:text-base"
             >
-              Submit
+              {t('submit')}
             </Link>
           </div>
         </motion.div>
@@ -89,10 +94,24 @@ export default function Feeds({submitList}:{
                           <Link 
                             key={i}
                             href={`/categories/?tag=${tag || ''}`}
-                            className="text-xs text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary underline-offset-2 hover:underline transition-colors"
+                            className="inline-flex items-center px-2.5 py-0.5 text-xs border transition-all cursor-pointer hover:bg-gradient-to-r hover:from-blue-500/5 hover:to-purple-500/5"
+                            style={{
+                              background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",
+                              borderWidth: "1px",
+                              borderStyle: "solid",
+                              borderImageSlice: 1,
+                              borderImageSource: "linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2))"
+                            }}
                             onClick={(e) => e.stopPropagation()}
                           >
-                            {tag.trim()}
+                            <span 
+                              className="bg-clip-text text-transparent" 
+                              style={{
+                                backgroundImage: "linear-gradient(to right, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.8))"
+                              }}
+                            >
+                              #{tag.trim()}
+                            </span>
                           </Link>
                         ))}
                       </div>
@@ -101,14 +120,20 @@ export default function Feeds({submitList}:{
                     <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                       {project.author_name && (
                         <>
-                          <span>{project.author_name}</span>
+                          <span>{t('by')} {project.author_name}</span>
                           <span>•</span>
                         </>
                       )}
                       <span>
                         {project.submit_time ? 
-                          formatDistanceToNow(new Date(project.submit_time), { addSuffix: true }) :
-                          formatDistanceToNow(new Date(project.created_at || ''), { addSuffix: true })}
+                          formatDistanceToNow(new Date(project.submit_time), { 
+                            addSuffix: true,
+                            locale: locale === 'zh' ? zhCN : enUS 
+                          }) :
+                          formatDistanceToNow(new Date(project.created_at || ''), { 
+                            addSuffix: true,
+                            locale: locale === 'zh' ? zhCN : enUS 
+                          })}
                       </span>
                       {project.url && (
                         <>
@@ -117,8 +142,9 @@ export default function Feeds({submitList}:{
                             href={project.url}
                             target="_blank"
                             className="text-primary hover:text-primary/80 transition-colors"
+                            onClick={(e) => e.stopPropagation()}  // 添加阻止冒泡
                           >
-                            Visit Website
+                            {t('visitWebsite')}
                           </Link>
                         </>
                       )}

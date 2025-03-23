@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:19:54
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-16 20:57:39
+ * @LastEditTime: 2025-03-23 13:45:54
  */
 "use client"
 
@@ -12,6 +12,7 @@ import { motion } from 'framer-motion'
 import { Calendar, Clock, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 // 博客数据 - 第一篇文章
 const blogPosts = [
@@ -313,6 +314,7 @@ const blogPosts = [
   },
 ]
 export default function BlogPost() {
+  const t = useTranslations('blogDetail')
   const params = useParams()
   const id = params.id
   
@@ -347,7 +349,7 @@ export default function BlogPost() {
             className="inline-flex items-center text-primary hover:text-primary/80 mb-12 group"
           >
             <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-            Back to Blog
+            {t('backToBlog')}
           </Link>
         </motion.div>
 
@@ -370,12 +372,12 @@ export default function BlogPost() {
           <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400 mb-8 border-b border-gray-200 dark:border-gray-800 pb-8">
             <span className="flex items-center gap-2">
               <Calendar size={16} className="text-primary" />
-              {blogPost.date}
+              {t('date', { date: new Date(blogPost.date) })}
             </span>
             <span className="tags"></span>
             <span className="flex items-center gap-2">
               <Clock size={16} className="text-primary" />
-              {blogPost.readTime}
+              {t('readTime', { minutes: parseInt(blogPost.readTime) })}
             </span>
           </div>
 

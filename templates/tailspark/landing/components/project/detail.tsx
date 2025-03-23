@@ -11,6 +11,7 @@ import ProjectItem from "../projects/item";
 import { useRouter } from "next/navigation"
 import Markdown from "@/components/markdown"
 import BackToTop from "../backToTop/backToTop";
+import { useTranslations } from 'next-intl'
 
 // 在文件顶部添加 Tailwind 样式导入
 import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
@@ -28,6 +29,7 @@ import { useEffect, useState } from 'react'
 export default function ProjectContent({ project, tags, similarProjects = [],pathPrefix}: ProjectContentProps) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations('projectDetail')
 
   // 添加分享处理函数
   const handleShare = (type: 'twitter' | 'facebook' | 'email') => {
@@ -68,7 +70,6 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
           // 只删除第一个 h1 标签
           const firstH1 = h1Elements[0];
           firstH1.parentNode?.removeChild(firstH1);
-          console.log('删除了第一个 h1 标签');
           
           // 其余的 h1 标签替换为 h2
           for (let i = 1; i < h1Elements.length; i++) {
@@ -210,7 +211,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
                 <div className="flex items-center gap-3">
                   <div>
                     <p className="font-medium text-gray-700 dark:text-gray-300 text-sm">
-                      by {project.author_name}
+                      {t('by')} {project.author_name}
                     </p>
                   </div>
                 </div>
@@ -259,7 +260,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
                       className="flex items-center gap-1.5 text-primary hover:text-primary/80 transition-colors text-sm"
                     >
                       <ExternalLink size={14} />
-                      <span>Website</span>
+                      <span>{t('website')}</span>
                       <motion.div 
                         className="w-2 h-2 rounded-full"
                         style={{
@@ -334,7 +335,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow duration-300 flex-1 flex flex-col overflow-hidden">
             <p className="text-xl font-semibold mb-4 text-gray-900 dark:text-white hover:text-primary transition-colors duration-200 flex items-center">
               <span className="w-1.5 h-6 bg-gradient-to-b from-blue-500 to-purple-600 rounded-full mr-2.5 inline-block"></span>
-              About
+              {t('about')}
             </p>
             <div 
               className="prose dark:prose-invert max-w-none flex-1 overflow-auto"
@@ -354,7 +355,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 hover:shadow-md transition-shadow duration-300 flex-1 flex flex-col">
             <p className="text-lg sm:text-xl font-semibold mb-4 text-gray-700 dark:text-white hover:text-primary transition-colors duration-200 flex items-center flex-shrink-0">
               <span className="w-1.5 h-6 bg-gradient-to-b from-purple-500 to-blue-600 rounded-full mr-2.5 inline-block"></span>
-              recommend MCP 
+              {t('recTitle')}
               {/* {project.type === 'server' ? 'Servers' : 'Clients'} */}
             </p>
             

@@ -1,0 +1,317 @@
+{
+  "Common": {
+    "selectLanguage": "Select Language"
+  },
+  "home": {
+    "welcome": "欢迎来到 MCP Server工具站！",
+    "toolsCount": {
+      "available": "个 MCP servers工具可用",
+      "separator": "-",
+      "description": "最全面的工具集合"
+    },
+    "introduction": "MCP Servers（模型上下文协议）工具导航站 —— 网络中最全面的工具库，一站式聚合，按场景/功能智能分类，精准获取所需工具，即点即用，高效开启 MCP 使用之旅。",
+    "exploreButton": "立即探索"
+  },
+  "metadata": {
+    "title": "MCP Servers",
+    "description": "在 MCP.ad 探索丰富的 MCP Servers 和 MCP Clients 集合，这是您的终极 Model Context Protocol 集成资源！",
+    "keywords": "MCP Servers, MCP Clients, Model Context Protocol, Claude 集成, MCP AI Servers, MCP 资源"
+  },
+ "header": {
+    "nav": {
+      "servers": "服务器",
+      "clients": "Client",
+      "blog": "博客",
+      "feed": "动态",
+      "about": "关于"
+    },
+    "actions": {
+      "submit": "提交",
+      "login": "登录",
+      "cancel": "取消",
+      "signIn": "登录"
+    },
+    "dialog": {
+      "title": "需要登录",
+      "description": "请登录后提交您的项目"
+    }
+  },
+  "hero": {
+    "stored": {
+      "servers": "已收录 MCP Server",
+      "clients": "已收录 MCP Client",
+      "default": "已收录 MCP Server"
+    },
+    "discover": "发现",
+    "servers": {
+      "title": "MCP Server",
+      "subtitle": "寻找最适合您需求的 MCP Server"
+    },
+    "clients": {
+      "title": "MCP Client",
+      "subtitle": "寻找最适合您需求的 MCP Client"
+    },
+    "home": {
+      "find": "发现优秀的",
+      "title": "MCP Server和Client",
+      "subtitle": "最大的 MCP Server收录平台"
+    }
+  },
+    "projectDetail": {
+      "by": "作者",
+      "about": "关于",
+      "recTitle": "推荐 MCP 服务器",
+      "website":"访问链接"
+    },
+  "faq": {
+    "title": "常见问题",
+    "description": "关于 MCP Servers 的常见问题解答",
+    "items": [
+      {
+        "title": "什么是 MCP（模型上下文协议）？",
+        "description": "MCP 是由 Anthropic 开发的开源协议，使 Claude 等 AI 系统能够安全地连接各种数据源。它为 AI 助手通过 Client-Server 架构访问外部数据、工具和提示提供了统一标准。"
+      },
+      {
+        "title": "什么是 MCP Servers？",
+        "description": "MCP Servers 是为 AI Clients 提供上下文、工具和提示的系统。它们可以公开文件、文档、数据库和 API 集成等数据源，使 AI 助手能够安全地访问实时信息。"
+      },
+      {
+        "title": "MCP 服务器是如何工作的？",
+        "description": "MCP 服务器通过简单的Client-服务器架构工作。它们通过标准化协议公开数据和工具，在 Claude Desktop 等主机应用程序中与Client保持安全的一对一连接。"
+      },
+      {
+        "title": "MCP 服务器能提供什么？",
+        "description": "MCP 服务器可以共享资源【文件、文档、数据】，公开工具【API 集成、操作】，并提供提示【模板化交互】。它们控制自己的资源并维护清晰的系统边界以确保安全。"
+      },
+      {
+        "title": "Claude 如何使用 MCP？",
+        "description": "Claude 可以连接到 MCP 服务器以访问外部数据源和工具，通过实时信息增强其功能。目前，这适用于本地 MCP 服务器，企业远程服务器支持即将推出。"
+      },
+      {
+        "title": "MCP 服务器安全吗？",
+        "description": "是的，安全性已内置于 MCP 协议中。服务器控制自己的资源，无需与 LLM 提供商共享 API 密钥，系统保持明确的边界。每个服务器管理自己的身份验证和访问控制。"
+      },
+      {
+        "title": "什么是 mcp.ad？",
+        "description": "mcp.ad 是一个社区驱动的平台，收集和组织第三方 MCP 服务器。它作为一个中央目录，用户可以在这里发现、分享和了解适用于 AI 应用程序的各种 MCP 服务器。"
+      },
+      {
+        "title": "如何将我的 MCP 服务器提交到 mcp.ad？",
+        "description": "您可以通过在我们的 GitHub 仓库中创建新的 issue 来提交您的 MCP 服务器。点击导航栏中的'提交'按钮或直接访问我们的 GitHub issues 页面。请提供您的服务器详细信息，包括类型和连接信息。"
+      }
+    ]
+  },
+  "footer": {
+    "brand": {
+      "title": "MCP Servers",
+      "description": "在 MCP.ad 探索丰富的 MCP Servers 和 MCP Clients 集合，这是您的终极 Model Context Protocol 集成资源！",
+      "domain": "https://mcp.ad"
+    },
+    "copyright": {
+      "owner": "mcp.ad",
+      "text": "MCP 服务器。保留所有权利",
+      "url": "https://mcp.ad",
+      "target": "_blank"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "MCP 链接",
+          "children": [
+            {
+              "title": "MCP Servers",
+              "url": "https://mcp.ad/servers",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP Clients",
+              "url": "https://mcp.ad/clients",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP 博客",
+              "url": "https://mcp.ad/blog",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP 动态",
+              "url": "https://mcp.ad/feed",
+              "target": "_blank"
+            },
+            {
+              "title": "关于 MCP",
+              "url": "https://mcp.ad/about",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "资源",
+          "children": [
+            {
+              "title": "Model Context Protocol",
+              "url": "https://www.anthropic.com/news/model-context-protocol",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP 入门指南",
+              "url": "https://modelcontextprotocol.io/introduction",
+              "target": "_blank"
+            },
+            {
+              "title": "Claude MCP 服务器",
+              "url": "https://github.com/modelcontextprotocol/servers",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "链接",
+          "children": [
+            {
+              "title": "NameFuture",
+              "url": "https://naming.mcp.ad",
+              "target": "_blank"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": {
+        "email": {
+          "title": "support@mcp.ad",
+          "url": "mailto:support@mcp.ad"
+        }
+      }
+    }
+  },
+  "about": {
+    "nav": {
+      "home": "首页",
+      "about": "关于"
+    },
+    "title": "关于 MCP.ad",
+    "contact": {
+      "question": "有任何问题？随时联系我们："
+    },
+    "welcome": {
+      "title": "欢迎来到 MCP.ad",
+      "content": "在 MCP.ad，我们致力于构建最全面的模型上下文协议（MCP）资源平台。我们的使命是将开发者、AI 爱好者和企业与他们通过 MCP 集成所需的工具连接起来。"
+    },
+    "vision": {
+      "title": "我们的愿景",
+      "content": "我们展望一个 AI 集成无缝且人人可及的未来。通过 MCP.ad，我们旨在创建一个充满活力的生态系统，开发者可以在这里分享他们的 MCP 服务器和Client，使 AI 功能更易获取且更强大。"
+    },
+    "whatWeDo": {
+      "title": "我们的工作",
+      "content": "MCP.ad 作为模型上下文协议社区的中心枢纽。我们提供：",
+      "item1": "精心策划的 MCP 服务器和Client目录",
+      "item2": "MCP 项目实施资源",
+      "item3": "社区驱动的文档和指南",
+      "item4": "分享和发现新 MCP 集成的平台"
+    },
+    "forEveryone": {
+      "title": "面向所有人",
+      "content": "无论您是想分享 MCP 服务器的开发者，还是寻求集成 AI 功能的企业，或是探索 AI 集成可能性的爱好者，MCP.ad 都是您的首选资源。我们欢迎社区所有成员的贡献。"
+    },
+    "journey": {
+      "title": "我们的历程",
+      "content": "由一群热衷于 AI 集成和开源开发的团队创立，MCP.ad 最初是一个组织和分享 MCP 资源的项目。如今，我们已发展成为一个蓬勃发展的平台，为全球的开发者和组织提供服务，推动模型上下文协议技术的采用。"
+    },
+    "getInTouch": {
+      "title": "联系我们",
+      "content": "有问题或建议？我们很乐意听取您的意见。随时通过以下方式联系我们："
+    }
+  },
+  "categories": {
+    "title": "MCP 服务器分类",
+    "currentCategory": "当前分类",
+    "all": "全部"
+  },
+  "projects": {
+    "servers": {
+      "title": "MCP Server（MCP服务器）",
+      "viewAll": "查看全部"
+    },
+    "clients": {
+      "title": "MCP Client（MCPClient）",
+      "viewAll": "查看全部"
+    },
+    "loading": "数据加载中..."
+  },
+  "submitPage": {
+    "title": "提交您的 MCP 项目",
+    "subtitle": "加入我们不断壮大的 MCP 工具社区。与全球开发者分享您的项目，共同塑造 MCP 生态系统的未来。"
+  },
+  "feeds": {
+    "title": "动态",
+    "subtitle": "用户最近提交的 MCP Server 和 MCP Client",
+    "submit": "提交",
+    "by": "作者",
+    "visitWebsite": "github地址"
+  },
+  "blogDetail": {
+    "backToBlog": "返回博客列表",
+    "date": "{date, date, medium}",
+    "readTime": "{minutes} 分钟阅读"
+  },
+  "blog": {
+    "title": "MCP 博客",
+    "subtitle": "探索 MCP 服务器的最新动态、技术文章和使用指南",
+    "readMore": "阅读更多",
+    "readTime": "{minutes} 分钟阅读",
+     "date": "{date, date, medium}",
+    "posts": {
+      "intro": {
+        "title": "模型上下文协议简介",
+        "description": "我们很高兴地宣布 MCP 工具网站推出了一系列新功能..."
+      },
+      "getStarted": {
+        "title": "如何开始使用 MCP",
+        "description": "模型上下文协议（MCP）正在彻底改变 AI 助手访问和交互数据的方式..."
+      },
+      "aiWebsites": {
+        "title": "AI 正在使用 MCP 让传统网站过时",
+        "description": "随着使用模型上下文协议的 AI 驱动界面的出现，传统网站正面临着范式转变..."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "用户评价",
+    "date": "{date, date, medium}"
+  },
+  "submit": {
+    "form": {
+      "projectType": "项目类型",
+      "server": "MCP Server",
+      "client": "MCP Client",
+      "githubUrl": "GitHub 地址",
+      "githubUrlPlaceholder": "https://github.com/username/repo",
+      "submitButton": "提交项目",
+      "submitting": "提交中..."
+    },
+    "toast": {
+      "success": {
+        "title": "提交成功",
+        "description": "您的 MCP {type} 已成功提交！"
+      },
+      "error": {
+        "exists": {
+          "title": "提交失败",
+          "description": "项目已存在，请使用其他 GitHub 地址"
+        },
+        "default": {
+          "title": "提交失败",
+          "description": "提交失败，请稍后重试"
+        }
+      }
+    },
+    "validation": {
+      "githubUrl": {
+        "invalid": "请输入有效的 URL",
+        "format": "GitHub URL 必须以 https://github.com/ 开头"
+      }
+    }
+  }
+}

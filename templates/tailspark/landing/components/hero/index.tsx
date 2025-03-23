@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-18 23:01:28
+ * @LastEditTime: 2025-03-23 11:54:06
  */
 "use client";
 
@@ -11,18 +11,20 @@ import BgStar from "../../assets/imgs/bgstar.svg";
 import Buttons from "./buttons";
 import { Hero } from "@/types/landing";
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export default ({ hero, count }: { hero: Hero; count?: number }) => {
   const pathname = usePathname();
+  const t = useTranslations('hero');
 
   const getStoredText = () => {
     switch (pathname) {
       case '/servers':
-        return "mcp servers stored";
+        return t('stored.servers');
       case '/clients':
-        return "mcp clients stored";
+        return t('stored.clients');
       default:
-        return "MCP Servers in list";
+        return t('stored.default');
     }
   };
 
@@ -32,13 +34,13 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         return (
           <div className="flex flex-col items-center w-full">
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              <span className="">Discover  </span>
+              <span className="">{t('discover')} </span>
               <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                MCP Servers
+                {t('servers.title')}
               </span>
             </h1>
             <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
-              Find the best MCP servers for your needs.
+              {t('servers.subtitle')}
             </h2>
           </div>
         );
@@ -46,13 +48,13 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         return (
           <div className="flex flex-col items-center w-full">
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              <span className="">Discover  </span>
+              <span className="">{t('discover')} </span>
               <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                MCP Clients
+                {t('clients.title')}
               </span>
             </h1>
             <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
-              Find the best MCP clients for your needs.
+              {t('clients.subtitle')}
             </h2>
           </div>
         );
@@ -60,13 +62,13 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
         return (
           <div className="flex flex-col items-center w-full">
             <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              <span> Find Awesome </span>
+              <span>{t('home.find')} </span>
               <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                MCP Servers and Clients
+                {t('home.title')}
               </span>
             </h1>
             <p className="text-muted-foreground text-base sm:text-lg lg:text-xl">
-              The largest collection of MCP Servers.
+              {t('home.subtitle')}
             </p>
           </div>
         );

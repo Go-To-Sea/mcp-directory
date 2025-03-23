@@ -1,14 +1,19 @@
+"use client"
 import { HiOutlineMail } from "react-icons/hi";
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 export default function About() {
+  const t = useTranslations('about');
+  
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12">
       {/* Breadcrumb */}
       <div className="flex items-center mb-8">
         <div className="text-sm text-gray-500">
-          <a href="/" className="hover:text-primary">Home</a>
+          <Link href="/" className="hover:text-primary">{t('nav.home')}</Link>
           <span className="mx-2">›</span>
-          <span>About</span>
+          <span>{t('nav.about')}</span>
         </div>
       </div>
 
@@ -19,10 +24,10 @@ export default function About() {
         <div className="relative">
           {/* Main Title and Contact */}
           <h1 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
-            About MCP.ad
+            {t('title')}
           </h1>
           <h2 className="text-sm text-gray-600 dark:text-gray-400 mb-8 flex items-center gap-1">
-            Have any questions? Feel free to reach out at{' '}
+            {t('contact.question')}{' '}
             <a href="mailto:support@mcp.ad" className="text-primary font-medium inline-flex items-center gap-1 transition-transform hover:scale-105">
               <HiOutlineMail className="w-4 h-4" />
               support@mcp.ad
@@ -31,55 +36,55 @@ export default function About() {
 
           {/* Welcome Section */}
           <section className="mb-12">
-            <h3 className="text-2xl font-semibold mb-4">Welcome to MCP.ad</h3>
+            <h3 className="text-2xl font-semibold mb-4">{t('welcome.title')}</h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              At MCP.ad, we're dedicated to building the most comprehensive platform for Model Context Protocol (MCP) resources. Our mission is to connect developers, AI enthusiasts, and businesses with the tools they need to leverage the power of AI through MCP integration.
+              {t('welcome.content')}
             </p>
           </section>
 
           {/* Vision Section */}
           <section className="mb-12">
-            <h3 className="text-2xl font-semibold mb-4">Our Vision</h3>
+            <h3 className="text-2xl font-semibold mb-4">{t('vision.title')}</h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              We envision a future where AI integration is seamless and accessible to everyone. Through MCP.ad, we aim to create a vibrant ecosystem where developers can share their MCP servers and clients, making AI capabilities more accessible and powerful for all users.
+              {t('vision.content')}
             </p>
           </section>
 
           {/* What We Do Section */}
           <section className="mb-12">
-            <h3 className="text-2xl font-semibold mb-4">What We Do</h3>
+            <h3 className="text-2xl font-semibold mb-4">{t('whatWeDo.title')}</h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-              MCP.ad serves as a central hub for the Model Context Protocol community. We provide:
+              {t('whatWeDo.content')}
             </p>
             <ul className="list-disc list-inside space-y-3 text-gray-600 dark:text-gray-300">
-              <li>A curated directory of MCP servers and clients</li>
-              <li>Resources for implementing MCP in your projects</li>
-              <li>Community-driven documentation and guides</li>
-              <li>Platform for sharing and discovering new MCP integrations</li>
+              <li>{t('whatWeDo.item1')}</li>
+              <li>{t('whatWeDo.item2')}</li>
+              <li>{t('whatWeDo.item3')}</li>
+              <li>{t('whatWeDo.item4')}</li>
             </ul>
           </section>
 
           {/* For Everyone Section */}
           <section className="mb-12">
-            <h3 className="text-2xl font-semibold mb-4">For Everyone</h3>
+            <h3 className="text-2xl font-semibold mb-4">{t('forEveryone.title')}</h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              Whether you're a developer looking to share your MCP server, a business seeking to integrate AI capabilities, or an enthusiast exploring the possibilities of AI integration, MCP.ad is your go-to resource. We welcome contributions from all members of the community.
+              {t('forEveryone.content')}
             </p>
           </section>
 
           {/* Journey Section */}
           <section className="mb-12">
-            <h3 className="text-2xl font-semibold mb-4">Our Journey</h3>
+            <h3 className="text-2xl font-semibold mb-4">{t('journey.title')}</h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              Founded by a team passionate about AI integration and open-source development, MCP.ad started as a project to organize and share MCP resources. Today, we've grown into a thriving platform that serves developers and organizations worldwide, facilitating the adoption of Model Context Protocol technology.
+              {t('journey.content')}
             </p>
           </section>
 
-          {/* Contact Section - 调整样式以适应新的背景 */}
+          {/* Contact Section */}
           <section className="bg-primary/5 dark:bg-primary/10 p-6 rounded-xl text-center backdrop-blur-sm">
-            <h3 className="text-2xl font-semibold mb-4">Get in Touch</h3>
+            <h3 className="text-2xl font-semibold mb-4">{t('getInTouch.title')}</h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-              Have questions or suggestions? We'd love to hear from you. Reach out to us anytime at:
+              {t('getInTouch.content')}
             </p>
             <a 
               href="mailto:support@mcp.ad" 

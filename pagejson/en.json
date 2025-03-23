@@ -1,30 +1,183 @@
 {
+  "Common": {
+    "selectLanguage": "Select Language"
+  },
   "metadata": {
     "title": "MCP Servers",
     "description": "Explore a vast collection of MCP servers and MCP clients at MCP.ad, your ultimate resource for Model Context Protocol integrations! ",
     "keywords": "MCP Servers, MCP Clients, Model Context Protocol, Claude integration, MCP AI Servers, MCP resources"
   },
   "header": {
-    "brand": {
-      "title": "MCP.ad",
-      "url": "/",
-      "avatar": {
-        "src": "/logo.png"
-      }
-    },
     "nav": {
-      "items": [
-        
-      ]
+      "servers": "Servers",
+      "clients": "Clients",
+      "blog": "Blog",
+      "feed": "Feed",
+      "about": "About"
+    },
+    "actions": {
+      "submit": "Submit",
+      "login": "Login",
+      "cancel": "Cancel",
+      "signIn": "Sign In"
+    },
+    "dialog": {
+      "title": "Sign In Required",
+      "description": "Please sign in to submit your project"
     }
   },
   "hero": {
-    "title": "Find Awesome ",
-    "title2": "MCP Servers",
-    "title3": "and Clients",
-    "title4": "MCP Clients",
-    "description": " Find the best MCP servers for your needs.",
-    "image": "Hero Image URL" 
+    "stored": {
+      "servers": "mcp servers stored",
+      "clients": "mcp clients stored",
+      "default": "MCP Servers in list"
+    },
+    "discover": "Discover",
+    "servers": {
+      "title": "MCP Servers",
+      "subtitle": "Find the best MCP servers for your needs."
+    },
+    "clients": {
+      "title": "MCP Clients",
+      "subtitle": "Find the best MCP clients for your needs."
+    },
+    "home": {
+      "find": "Find Awesome",
+      "title": "MCP Servers and Clients",
+      "subtitle": "The largest collection of MCP Servers."
+    }
+  },
+  "projects": {
+    "servers": {
+      "title": "MCP Servers",
+      "viewAll": "View All Servers"
+    },
+    "clients": {
+      "title": "MCP Clients",
+      "viewAll": "View All Clients"
+    },
+    "loading": "Loading data..."
+  },
+  "testimonials": {
+    "title": "用户评价",
+    "date": "{date, date, medium}"
+  },
+  "blogDetail": {
+    "backToBlog": "Back to Blog",
+    "date": "{date, date, medium}",
+    "readTime": "{minutes} min read"
+  },
+  "feeds": {
+    "title": "Feed",
+    "subtitle": "MCP Servers and MCP Clients submitted by users recently.",
+    "submit": "Submit",
+    "by": "by",
+    "visitWebsite": "Visit Website"
+  },
+  "about": {
+    "nav": {
+      "home": "Home",
+      "about": "About"
+    },
+    "title": "About MCP.ad",
+    "contact": {
+      "question": "Have any questions? Feel free to reach out at"
+    },
+    "welcome": {
+      "title": "Welcome to MCP.ad",
+      "content": "At MCP.ad, we're dedicated to building the most comprehensive platform for Model Context Protocol (MCP) resources. Our mission is to connect developers, AI enthusiasts, and businesses with the tools they need to leverage the power of AI through MCP integration."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "We envision a future where AI integration is seamless and accessible to everyone. Through MCP.ad, we aim to create a vibrant ecosystem where developers can share their MCP servers and clients, making AI capabilities more accessible and powerful for all users."
+    },
+    "whatWeDo": {
+      "title": "What We Do",
+      "content": "MCP.ad serves as a central hub for the Model Context Protocol community. We provide:",
+      "items": "A curated directory of MCP servers and clients|Resources for implementing MCP in your projects|Community-driven documentation and guides|Platform for sharing and discovering new MCP integrations"
+    },
+    "forEveryone": {
+      "title": "For Everyone",
+      "content": "Whether you're a developer looking to share your MCP server, a business seeking to integrate AI capabilities, or an enthusiast exploring the possibilities of AI integration, MCP.ad is your go-to resource. We welcome contributions from all members of the community."
+    },
+    "journey": {
+      "title": "Our Journey",
+      "content": "Founded by a team passionate about AI integration and open-source development, MCP.ad started as a project to organize and share MCP resources. Today, we've grown into a thriving platform that serves developers and organizations worldwide, facilitating the adoption of Model Context Protocol technology."
+    },
+    "getInTouch": {
+      "title": "Get in Touch",
+      "content": "Have questions or suggestions? We'd love to hear from you. Reach out to us anytime at:"
+    }
+  },
+  "about": {
+    "nav": {
+      "home": "Home",
+      "about": "About"
+    },
+    "title": "About MCP.ad",
+    "contact": {
+      "question": "Have any questions? Feel free to reach out at"
+    },
+    "welcome": {
+      "title": "Welcome to MCP.ad",
+      "content": "At MCP.ad, we're dedicated to building the most comprehensive platform for Model Context Protocol (MCP) resources. Our mission is to connect developers, AI enthusiasts, and businesses with the tools they need to leverage the power of AI through MCP integration."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "We envision a future where AI integration is seamless and accessible to everyone. Through MCP.ad, we aim to create a vibrant ecosystem where developers can share their MCP servers and clients, making AI capabilities more accessible and powerful for all users."
+    },
+    "whatWeDo": {
+      "title": "What We Do",
+      "content": "MCP.ad serves as a central hub for the Model Context Protocol community. We provide:",
+      "item1": "A curated directory of MCP servers and clients",
+      "item2": "Resources for implementing MCP in your projects",
+      "item3": "Community-driven documentation and guides",
+      "item4": "Platform for sharing and discovering new MCP integrations"
+    },
+    "forEveryone": {
+      "title": "For Everyone",
+      "content": "Whether you're a developer looking to share your MCP server, a business seeking to integrate AI capabilities, or an enthusiast exploring the possibilities of AI integration, MCP.ad is your go-to resource. We welcome contributions from all members of the community."
+    },
+    "journey": {
+      "title": "Our Journey",
+      "content": "Founded by a team passionate about AI integration and open-source development, MCP.ad started as a project to organize and share MCP resources. Today, we've grown into a thriving platform that serves developers and organizations worldwide, facilitating the adoption of Model Context Protocol technology."
+    },
+    "getInTouch": {
+      "title": "Get in Touch",
+      "content": "Have questions or suggestions? We'd love to hear from you. Reach out to us anytime at:"
+    }
+  },
+  "categories": {
+    "title": "MCP Server Categories",
+    "currentCategory": "Current Categories",
+    "all": "All"
+  },
+  "blog": {
+    "title": "MCP Blog",
+    "subtitle": "Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP Server",
+    "readMore": "Read more",
+    "readTime": "{minutes} min read",
+    "date": "{date, date, medium}",
+    "posts": {
+      "intro": {
+        "title": "Introducing the Model Context Protocol",
+        "description": "We are pleased to announce the launch of a range of new features on the MCP tool site..."
+      },
+      "getStarted": {
+        "title": "How to Get Started Using MCP",
+        "description": "The Model Context Protocol (MCP) is revolutionizing how AI assistants access and interact with your data..."
+      },
+      "aiWebsites": {
+        "title": "AI is Making Websites Obsolete with MCP",
+        "description": "Traditional websites are facing a paradigm shift as AI-powered interfaces using the Model Context Protocol..."
+      }
+    }
+  },
+  "projectDetail": {
+    "by": "by",
+    "about": "About",
+    "recTitle": "Recommend MCP",
+    "website":"Website"
   },
   "faq": {
     "title": "FAQ",
@@ -147,6 +300,53 @@
           "url": "mailto:support@mcp.ad"
         }
       }
+    }
+  },
+  "home": {
+    "welcome": "Welcome to the MCP Tools Station!",
+    "toolsCount": {
+      "available": "MCP Tools Available",
+      "separator": "-",
+      "description": "The Most Comprehensive Collection"
+    },
+    "introduction": "MCP（Model Context Protocol）Tool Navigation Station —— the most comprehensive tool library in the network, one-stop aggregation, intelligent classification by scenario/function, accurate access to the required tools, point and use, efficient opening of MCP usage journey.",
+    "exploreButton": "Explore Now"
+  },
+  "submitPage": {
+    "title": "Submit Your MCP Project",
+    "subtitle": "Join our growing community of MCP tools. Share your project with developers worldwide and help shape the future of MCP ecosystem."
+  },
+  "submit": {
+    "title": "Submit Your MCP Project",
+    "subtitle": "Join our growing community of MCP tools. Share your project with developers worldwide and help shape the future of MCP ecosystem.",
+    "form": {
+      "projectType": "Project Type",
+      "server": "MCP Server",
+      "client": "MCP Client",
+      "githubUrl": "GitHub URL",
+      "githubUrlPlaceholder": "Enter GitHub repository URL",
+      "submitButton": "Submit Project",
+      "submitting": "Submitting..."
+    },
+    "validation": {
+      "githubUrl": {
+        "invalid": "Please enter a valid URL",
+        "format": "URL must be a GitHub repository"
+      }
+    },
+    "toast": {
+      "success": {
+        "title": "Success",
+        "description": "Your MCP {type} has been submitted!"
+      },
+      "error": {
+        "title": "Failed",
+        "projectExists": "Project already exists, please use a different GitHub URL",
+        "generic": "Submission failed, please try again later"
+      }
+    },
+    "errors": {
+      "fetchFailed": "Failed to fetch project information"
     }
   }
 }

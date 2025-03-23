@@ -1,0 +1,317 @@
+{
+  "Common": {
+    "selectLanguage": "言語を選択"
+  },
+  "metadata": {
+    "title": "MCP サーバー",
+    "description": "MCP.adで、MCPサーバーとMCPクライアントの膨大なコレクションを探索しましょう。モデルコンテキストプロトコル統合のための究極のリソースです！",
+    "keywords": "MCPサーバー, MCPクライアント, モデルコンテキストプロトコル, Claude統合, MCP AIサーバー, MCPリソース"
+  },
+  "header": {
+    "nav": {
+      "servers": "サーバー",
+      "clients": "クライアント",
+      "blog": "ブログ",
+      "feed": "フィード",
+      "about": "概要"
+    },
+    "actions": {
+      "submit": "提出",
+      "login": "ログイン",
+      "cancel": "キャンセル",
+      "signIn": "サインイン"
+    },
+    "dialog": {
+      "title": "サインインが必要",
+      "description": "プロジェクトを提出するにはサインインしてください"
+    }
+  },
+  "hero": {
+    "stored": {
+      "servers": "保存されたMCPサーバー",
+      "clients": "保存されたMCPクライアント",
+      "default": "リスト内のMCPサーバー"
+    },
+    "discover": "発見",
+    "servers": {
+      "title": "MCPサーバー",
+      "subtitle": "あなたのニーズに最適なMCPサーバーを見つけましょう。"
+    },
+    "clients": {
+      "title": "MCPクライアント",
+      "subtitle": "あなたのニーズに最適なMCPクライアントを見つけましょう。"
+    },
+    "home": {
+      "find": "素晴らしい",
+      "title": "MCPサーバーとクライアント",
+      "subtitle": "MCPサーバーの最大のコレクション。"
+    }
+  },
+  "projects": {
+    "servers": {
+      "title": "MCPサーバー",
+      "viewAll": "すべてのサーバーを表示"
+    },
+    "clients": {
+      "title": "MCPクライアント",
+      "viewAll": "すべてのクライアントを表示"
+    },
+    "loading": "データを読み込み中..."
+  },
+  "testimonials": {
+    "title": "ユーザーレビュー",
+    "date": "{date, date, medium}"
+  },
+  "blogDetail": {
+    "backToBlog": "ブログに戻る",
+    "date": "{date, date, medium}",
+    "readTime": "{minutes}分で読める"
+  },
+  "feeds": {
+    "title": "フィード",
+    "subtitle": "最近ユーザーによって提出されたMCPサーバーとMCPクライアント。",
+    "submit": "提出",
+    "by": "投稿者",
+    "visitWebsite": "ウェブサイトを訪問"
+  },
+  "about": {
+    "nav": {
+      "home": "ホーム",
+      "about": "概要"
+    },
+    "title": "MCP.adについて",
+    "contact": {
+      "question": "質問がありますか？お気軽にお問い合わせください："
+    },
+    "welcome": {
+      "title": "MCP.adへようこそ",
+      "content": "MCP.adでは、モデルコンテキストプロトコル（MCP）リソースのための最も包括的なプラットフォームの構築に取り組んでいます。私たちの使命は、開発者、AIエンスージアスト、そして企業をMCP統合を通じてAIの力を活用するために必要なツールと結びつけることです。"
+    },
+    "vision": {
+      "title": "私たちのビジョン",
+      "content": "私たちは、AI統合がシームレスで誰もがアクセスできる未来を描いています。MCP.adを通じて、開発者がMCPサーバーとクライアントを共有できる活気あるエコシステムを作り、すべてのユーザーにとってAI機能をより身近で強力なものにすることを目指しています。"
+    },
+    "whatWeDo": {
+      "title": "私たちの活動",
+      "content": "MCP.adはモデルコンテキストプロトコルコミュニティの中心的なハブとして機能しています。私たちが提供するもの：",
+      "item1": "厳選されたMCPサーバーとクライアントのディレクトリ",
+      "item2": "プロジェクトにMCPを実装するためのリソース",
+      "item3": "コミュニティ主導のドキュメントとガイド",
+      "item4": "新しいMCP統合を共有し発見するためのプラットフォーム"
+    },
+    "forEveryone": {
+      "title": "すべての人のために",
+      "content": "あなたがMCPサーバーを共有したい開発者であれ、AI機能を統合したい企業であれ、AI統合の可能性を探求する愛好家であれ、MCP.adはあなたの頼りになるリソースです。私たちはコミュニティのすべてのメンバーからの貢献を歓迎します。"
+    },
+    "journey": {
+      "title": "私たちの旅",
+      "content": "AI統合とオープンソース開発に情熱を持つチームによって設立されたMCP.adは、MCPリソースを整理し共有するプロジェクトとして始まりました。今日、私たちは世界中の開発者や組織にサービスを提供し、モデルコンテキストプロトコル技術の採用を促進する繁栄するプラットフォームに成長しました。"
+    },
+    "getInTouch": {
+      "title": "お問い合わせ",
+      "content": "質問や提案がありますか？私たちはあなたからのご意見をお待ちしています。いつでもお問い合わせください："
+    }
+  },
+  "categories": {
+    "title": "MCPサーバーカテゴリー",
+    "currentCategory": "現在のカテゴリー",
+    "all": "すべて"
+  },
+  "blog": {
+    "title": "MCPブログ",
+    "subtitle": "MCPサーバーの最新動向、技術記事、使用ガイドを探索",
+    "readMore": "続きを読む",
+    "readTime": "{minutes}分で読める",
+    "date": "{date, date, medium}",
+    "posts": {
+      "intro": {
+        "title": "モデルコンテキストプロトコルの紹介",
+        "description": "MCPツールサイトに新機能が多数追加されたことをお知らせします..."
+      },
+      "getStarted": {
+        "title": "MCPの使い方入門",
+        "description": "モデルコンテキストプロトコル（MCP）は、AIアシスタントがデータにアクセスし相互作用する方法を革新しています..."
+      },
+      "aiWebsites": {
+        "title": "MCPでAIがウェブサイトを時代遅れにする",
+        "description": "モデルコンテキストプロトコルを使用したAI駆動のインターフェースにより、従来のウェブサイトはパラダイムシフトに直面しています..."
+      }
+    }
+  },
+  "projectDetail": {
+    "by": "投稿者",
+    "about": "概要",
+    "recTitle": "おすすめMCP",
+    "website":"ウェブサイト"
+  },
+  "faq": {
+    "title": "よくある質問",
+    "description": "MCPサーバーに関するよくある質問",
+    "items": [
+      {
+        "title": "MCP（モデルコンテキストプロトコル）とは何ですか？",
+        "description": "MCPは、AnthropicによってClaudeのようなAIシステムが様々なデータソースに安全に接続できるように開発されたオープンソースプロトコルです。クライアント-サーバーアーキテクチャを通じて、AIアシスタントが外部データ、ツール、プロンプトにアクセスするための普遍的な標準を提供します。"
+      },
+      {
+        "title": "MCPサーバーとは何ですか？",
+        "description": "MCPサーバーは、AIクライアントにコンテキスト、ツール、プロンプトを提供するシステムです。ファイル、ドキュメント、データベース、API統合などのデータソースを公開し、AIアシスタントが安全な方法でリアルタイム情報にアクセスできるようにします。"
+      },
+      {
+        "title": "MCPサーバーはどのように機能しますか？",
+        "description": "MCPサーバーは、シンプルなクライアント-サーバーアーキテクチャを通じて機能します。標準化されたプロトコルを通じてデータとツールを公開し、Claude Desktopなどのホストアプリケーション内のクライアントとの安全な1:1接続を維持します。"
+      },
+      {
+        "title": "MCPサーバーは何を提供できますか？",
+        "description": "MCPサーバーはリソース（ファイル、ドキュメント、データ）を共有し、ツール（API統合、アクション）を公開し、プロンプト（テンプレート化された相互作用）を提供できます。自身のリソースを制御し、セキュリティのための明確なシステム境界を維持します。"
+      },
+      {
+        "title": "ClaudeはMCPをどのように使用しますか？",
+        "description": "Claudeは外部データソースとツールにアクセスするためにMCPサーバーに接続し、リアルタイム情報で機能を強化できます。現在、これはローカルMCPサーバーで機能し、エンタープライズリモートサーバーのサポートが近日中に提供される予定です。"
+      },
+      {
+        "title": "MCPサーバーは安全ですか？",
+        "description": "はい、セキュリティはMCPプロトコルに組み込まれています。サーバーは自身のリソースを制御し、LLMプロバイダーとAPIキーを共有する必要はなく、システムは明確な境界を維持します。各サーバーは独自の認証とアクセス制御を管理します。"
+      },
+      {
+        "title": "mcp.adとは何ですか？",
+        "description": "mcp.adは、サードパーティのMCPサーバーを収集し整理するコミュニティ主導のプラットフォームです。ユーザーがAIアプリケーション用の様々なMCPサーバーを発見、共有、学習できる中央ディレクトリとして機能します。"
+      },
+      {
+        "title": "自分のMCPサーバーをmcp.adに提出するにはどうすればよいですか？",
+        "description": "GitHubリポジトリで新しい問題を作成することで、MCPサーバーを提出できます。ナビゲーションバーの「提出」ボタンをクリックするか、GitHubの問題ページに直接アクセスしてください。サーバーの名前、説明、機能、接続情報など、詳細を提供してください。"
+      }
+    ]
+  },
+  "footer": {
+    "brand": {
+      "title": "MCPサーバー",
+      "description": "MCP.adで、MCPサーバーとクライアントの膨大なコレクションを探索しましょう。モデルコンテキストプロトコル統合のための究極のリソースです！",
+      "domain": "https://mcp.ad"
+    },
+    "copyright": {
+      "owner": "mcp.ad",
+      "text": "MCPサーバー。全著作権所有",
+      "url": "https://mcp.ad",
+      "target": "_blank"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "MCPリンク",
+          "children": [
+            {
+              "title": "MCPサーバー",
+              "url": "https://mcp.ad/servers",
+              "target": "_blank"
+            },
+            {
+              "title": "MCPクライアント",
+              "url": "https://mcp.ad/clients",
+              "target": "_blank"
+            },
+            {
+              "title": "MCPブログ",
+              "url": "https://mcp.ad/blog",
+              "target": "_blank"
+            },
+            {
+              "title": "MCPフィード",
+              "url": "https://mcp.ad/feed",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP概要",
+              "url": "https://mcp.ad/about",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+                    "title": "リソース",
+          "children": [
+            {
+              "title": "モデルコンテキストプロトコル",
+              "url": "https://www.anthropic.com/news/model-context-protocol",
+              "target": "_blank"
+            },
+            {
+              "title": "MCP入門ガイド",
+              "url": "https://modelcontextprotocol.io/introduction",
+              "target": "_blank"
+            },
+            {
+              "title": "Claude MCPサーバー",
+              "url": "https://github.com/modelcontextprotocol/servers",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "法的情報",
+          "children": [
+            {
+              "title": "プライバシーポリシー",
+              "url": "https://mcp.ad/privacy",
+              "target": "_blank"
+            },
+            {
+              "title": "利用規約",
+              "url": "https://mcp.ad/terms",
+              "target": "_blank"
+            },
+            {
+              "title": "クッキーポリシー",
+              "url": "https://mcp.ad/cookies",
+              "target": "_blank"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "title": "ソーシャルメディア",
+      "items": [
+        {
+          "title": "Twitter",
+          "url": "https://twitter.com/mcpad",
+          "target": "_blank"
+        },
+        {
+          "title": "GitHub",
+          "url": "https://github.com/mcpad",
+          "target": "_blank"
+        },
+        {
+          "title": "Discord",
+          "url": "https://discord.gg/mcpad",
+          "target": "_blank"
+        }
+      ]
+    }
+  },
+  "search": {
+    "placeholder": "MCPサーバーを検索...",
+    "button": "検索",
+    "results": "検索結果",
+    "noResults": "結果が見つかりませんでした",
+    "loading": "検索中..."
+  },
+  "submit": {
+    "title": "MCPサーバーを提出",
+    "description": "あなたのMCPサーバーをディレクトリに追加しましょう",
+    "form": {
+      "name": "名前",
+      "description": "説明",
+      "url": "URL",
+      "submit": "提出",
+      "cancel": "キャンセル"
+    },
+    "success": "提出が成功しました",
+    "error": "提出中にエラーが発生しました"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しないか、移動された可能性があります",
+    "button": "ホームに戻る"
+  }
+}

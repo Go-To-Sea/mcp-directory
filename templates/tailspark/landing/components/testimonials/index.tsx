@@ -2,14 +2,15 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import { useTranslations } from 'next-intl'
 
 const testimonials = [
   {
-    content: "The server integration solution provided by MCP.ad has made our AI applications more powerful. Through the Model Context Protocol, we can easily access various data sources, which greatly improves our work efficiency.",
+    content: "The server integration solution provided by MCP.ad has made our AI applications more powerful...",
     author: "Alex Chen",
     title: "AI Solution Architect",
     rating: 5,
-    time: "March 2, 2025"
+    time: "2025-03-02"  // 修改为标准日期格式
   },
   {
     content: "As a Claude integration developer, MCP.ad's resource navigation helped me find the most suitable MCP server. The documentation is clear, examples are rich, it's an excellent platform.",
@@ -49,12 +50,14 @@ const testimonials = [
 ]
 
 export default function Testimonials() {
+  const t = useTranslations('testimonials')
+  
   return (
     <div className="py-16 bg-gradient-to-b from-transparent to-gray-50 dark:to-gray-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500">
-            What Our Users Are Saying
+            {t('title')}
           </h2>
         </div>
         
@@ -82,7 +85,7 @@ export default function Testimonials() {
                       </p>
                       <span className="text-xs text-gray-400 dark:text-gray-500">•</span>
                       <p className="text-xs text-gray-400 dark:text-gray-500">
-                        {testimonial.time}
+                        {t('date', { date: new Date(testimonial.time) })}
                       </p>
                     </div>
                   </div>

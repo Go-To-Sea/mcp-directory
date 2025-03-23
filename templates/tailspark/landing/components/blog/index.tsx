@@ -3,15 +3,18 @@
  * @Author: rendc
  * @Date: 2025-03-05 01:06:33
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-21 23:02:12
+ * @LastEditTime: 2025-03-23 13:43:13
  */
 "use client"
 
 import { motion } from "framer-motion"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { useTranslations } from 'next-intl'
 
 export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
+  const t = useTranslations('blog')
+
   return (
     <div className="relative pb-16 pt-6">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50/50 dark:to-gray-900/50" />
@@ -26,7 +29,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 py-2 leading-relaxed"
               >
-                MCP Blog
+                {t('title')}
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -34,7 +37,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                 transition={{ delay: 0.2 }}
                 className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
               >
-                Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP Server
+                {t('subtitle')}
               </motion.p>
             </>
           ) : (
@@ -44,7 +47,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 py-2 leading-relaxed"
               >
-                MCP Blog
+                {t('title')}
               </motion.h1>
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
@@ -52,7 +55,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                 transition={{ delay: 0.2 }}
                 className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
               >
-                Exploring the Latest Dynamics, Technical Articles, and Usage Guides of MCP Server
+                {t('subtitle')}
               </motion.h2>
             </>
           )}
@@ -69,7 +72,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
             // 首页样式：flex 布局
             <div className="flex flex-wrap justify-center gap-4">
               {/* 第一篇博客卡片 */}
-              <Link href="/blog/Model Context Protocol" className="group flex-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+              <Link href="/blog/Model Context Protocol" className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     Introducing the Model Context Protocol
@@ -81,14 +84,14 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                     </span>
                     <span className="flex items-center gap-1">
                       <Clock size={16} />
-                      3 min read
+                      {t('readTime', { minutes: 3 })}
                     </span>
                   </div>
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 text-sm">
                     We are pleased to announce the launch of a range of new features on the MCP tool site...
                   </p>
                   <div className="flex items-center text-primary font-medium">
-                    Read more
+                    {t('readMore')}
                     <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-2 transition-transform" />
                   </div>
                 </div>
@@ -96,7 +99,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               
               {/* 其他两篇博客卡片使用相同结构 */}
               {/* 第二篇博客卡片 */}
-              <Link href="/blog/How Using MCP" className="group flex-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+              <Link href="/blog/How Using MCP" className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     How to Get Started Using MCP
@@ -104,25 +107,25 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                   <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                     <span className="flex items-center gap-1">
                       <Calendar size={16} />
-                      March 10, 2025
+                      {t('date', { date: new Date('2025-03-02') })}
                     </span>
                     <span className="flex items-center gap-1">
                       <Clock size={16} />
-                      5 min read
+                      {t('readTime', { minutes: 3 })}
                     </span>
                   </div>
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 text-sm">
                     The Model Context Protocol (MCP) is revolutionizing how AI assistants access and interact with your data...
                   </p>
                   <div className="flex items-center text-primary font-medium">
-                    Read more
+                    {t('readMore')}
                     <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-2 transition-transform" />
                   </div>
                 </div>
               </Link>
               
               {/* 第三篇博客卡片 */}
-              <Link href="/blog/AI With MCP" className="group flex-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+              <Link href="/blog/AI With MCP" className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     AI is Making Websites Obsolete with MCP
@@ -134,14 +137,14 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                     </span>
                     <span className="flex items-center gap-1">
                       <Clock size={16} />
-                      4 min read
+                      {t('readTime', { minutes: 4 })}
                     </span>
                   </div>
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 text-sm">
                     Traditional websites are facing a paradigm shift as AI-powered interfaces using the Model Context Protocol...
                   </p>
                   <div className="flex items-center text-primary font-medium">
-                    Read more
+                    {t('readMore')}
                     <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-2 transition-transform" />
                   </div>
                 </div>
@@ -165,11 +168,11 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                     <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                       <span className="flex items-center gap-1">
                         <Calendar size={16} />
-                        March 2, 2025
+                        {t('date', { date: new Date('2025-03-02') })}
                       </span>
                       <span className="flex items-center gap-1">
                         <Clock size={16} />
-                        3 min read
+                          {t('readTime', { minutes: 3 })}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">
@@ -198,11 +201,11 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                     <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                       <span className="flex items-center gap-1">
                         <Calendar size={16} />
-                        March 10, 2025
+                          {t('date', { date: new Date('2025-03-10') })}
                       </span>
                       <span className="flex items-center gap-1">
                         <Clock size={16} />
-                        5 min read
+                          {t('readTime', { minutes: 5 })}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">
@@ -230,11 +233,11 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
                     <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                       <span className="flex items-center gap-1">
                         <Calendar size={16} />
-                        March 15, 2025
+                          {t('date', { date: new Date('2025-03-15') })}
                       </span>
                       <span className="flex items-center gap-1">
                         <Clock size={16} />
-                        4 min read
+                          {t('readTime', { minutes: 4 })}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-gray-600 dark:text-white mb-3 group-hover:text-primary transition-colors">

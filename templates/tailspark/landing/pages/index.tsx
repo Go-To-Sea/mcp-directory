@@ -56,6 +56,9 @@ import Testimonials from "../components/testimonials"
 // 在顶部导入所需的图标
 import { Menu, X, Home, Search as SearchIcon, MessageSquare,Grid, BookOpen, HelpCircle } from 'lucide-react'
 
+// 添加 next-intl 的导入
+import { useTranslations } from 'next-intl'
+
 export default function ({
   page,
   projects,
@@ -65,6 +68,8 @@ export default function ({
   projects: any
   projectsCount: any
 }) {
+  // 添加翻译 hook
+  const t = useTranslations('home')
   const [showIntro, setShowIntro] = useState(true)
   const [showSidebar, setShowSidebar] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
@@ -167,47 +172,43 @@ export default function ({
         <div className="mx-auto max-w-7xl animate-fade-out delay-3000 duration-2000 w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-transparent to-[#732befe6]/50 px-4 rounded-b-[50px]">
           <div className="text-center">
             <div className="flex justify-center mb-6">
-                   {/* 使用正确的Product Hunt徽章链接 */}
-                <div className="relative z-20 ">
-                  <a 
-                    target="_blank" 
-                    href="https://www.producthunt.com/posts/mcp-servers-2"
-                    className="hover:opacity-80 transition-opacity"
-                  >
-                    <img 
-                      src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=940368&theme=light" 
-                      alt="MCP Servers - A MCP Servers resource navigation station" 
-                      width="250" 
-                      height="54" 
-                    />
-                  </a>
-                </div>
+              <a 
+                target="_blank" 
+                href="https://www.producthunt.com/posts/mcp-servers-2"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=940368&theme=light" 
+                  alt="MCP Servers" 
+                  className="w-[250px] h-[54px]"
+                />
+              </a>
             </div>
             <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-pink-500 to-blue-500 mb-4 animate-gradient-x bg-[length:400%_auto]">
-              Welcome to the MCP Tools Station!
+              {t('welcome')}
             </p>
             
-            {/* 添加工具站数量展示 */}
             <div className="mb-4 sm:mb-6">
               <div>
                 <span className="text-xl sm:text-2xl font-bold text-primary inline-block animate-bounce">
                   {projectsCount}
                 </span>
                 <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block animate-bounce [animation-delay:200ms]">
-                  MCP Tools Available
+                  {t('toolsCount.available')}
                 </span>
                 <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block animate-bounce [animation-delay:300ms]">
-                -
+                  {t('toolsCount.separator')}
                 </span>
                 <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 ml-2 inline-block animate-bounce [animation-delay:400ms]">
-                  The Most Comprehensive Collection
+                  {t('toolsCount.description')}
                 </span>
               </div>
             </div>
 
             <p className="text-sm sm:text-base md:text-lg text-[#898989] dark:text-white mb-6 sm:mb-8 px-2 sm:px-8 md:px-20 mt-4 sm:mt-6">
-              MCP（Model Context Protocol）Tool Navigation Station —— the most comprehensive tool library in the network, one-stop aggregation, intelligent classification by scenario/function, accurate access to the required tools, point and use, efficient opening of MCP usage journey. 
+              {t('introduction')}
             </p>
+            
             <button
               onClick={() => {
                 const searchSection = document.getElementById("hero");
@@ -217,7 +218,7 @@ export default function ({
               }}
               className="px-4 sm:px-6 py-2 sm:py-3 mt-4 sm:mt-6 bg-[#ab80f5e6] text-[#e5e5e5] hover:bg-[#8d54f0e6] rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-sm sm:text-base"
             >
-              Explore Now
+              {t('exploreButton')}
             </button>
           </div>
         </div>

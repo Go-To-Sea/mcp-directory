@@ -20,8 +20,10 @@ import {
   ClerkProvider,
   useAuth  // 添加这行
 } from '@clerk/nextjs'
-// 添加导入
+import { useTranslations } from 'next-intl';
+
 export default function HeaderComponent({ header }: { header: Header }) {
+  const t = useTranslations('header');
   const pathname = usePathname();
   const router = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -91,7 +93,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                   }`}
                 >
                   <GrCloudComputer className="mr-2 h-4 w-4" />
-                  Servers
+                  {t('nav.servers')}
                 </a>
                 <a
                   href="/clients"
@@ -100,7 +102,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                   }`}
                 >
                   <GrAction className="mr-2 h-4 w-4" />
-                  Clients
+                  {t('nav.clients')}
                 </a>
                 <div className="flex items-center space-x-2">
                   {/* ... 其他导航链接 ... */}
@@ -111,7 +113,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     }`}
                   >
                     <BsList className="mr-2 h-4 w-4" />
-                    Blog
+                    {t('nav.blog')}
                   </a>
               
                   <a
@@ -121,7 +123,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     }`}
                   >
                     <BsRss className="mr-2 h-4 w-4" />
-                    Feed
+                    {t('nav.feed')}
                   </a>
 
                   <a
@@ -131,7 +133,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     }`}
                   >
                     <BsInfoCircle className="mr-2 h-4 w-4" />
-                    About
+                    {t('nav.about')}
                   </a>
                 </div>
                 
@@ -147,7 +149,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     variant="default"
                     className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg rounded-full px-6"
                   >
-                    Submit
+                     {t('actions.submit')}
                   </Button>
                 </a>
 
@@ -170,8 +172,8 @@ export default function HeaderComponent({ header }: { header: Header }) {
                 </Button>
                 
                 {/* 启用语言切换下拉菜单 */}
-                {/* <Dropdown /> */}
-                
+                <Dropdown />
+
                 <SignedIn>
                   <UserButton />
                 </SignedIn>

@@ -3,8 +3,9 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-17 23:36:08
+ * @LastEditTime: 2025-03-23 14:30:31
  */
+"use client"
 import Faq from "../../components/faq";
 import Hero from "../../components/hero";
 import { Page } from "@/types/landing";
@@ -12,6 +13,7 @@ import { Project } from "@/types/project";
 import Projects from "../../components/projects";
 import Search from "../../components/search";
 import { ClassMenus } from "@/types/project";
+import { useTranslations } from 'next-intl';
 
 export default function ({
   page,
@@ -24,6 +26,8 @@ export default function ({
   projectsCount: number;
   tag: string
 }) {
+  const t = useTranslations('categories');
+  
   return (
     <div className="relative">
       <div className="fixed inset-0 w-full flex justify-center">
@@ -36,11 +40,11 @@ export default function ({
       <div className="mx-auto max-w-7xl w-full flex flex-col items-center justify-center px-4 pt-24 pb-12">
         <div className="text-center">
           <h1 className="text-3xl  sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 animate-gradient-x">
-            MCP Server Categories
+            {t('title')}
           </h1>
           <div className="mb-4 sm:mb-6">
             <h2 className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 inline-block">
-              Current Categories: <span className="text-primary font-medium">{tag || 'All'}</span>
+              {t('currentCategory')}: <span className="text-primary font-medium">{tag || t('all')}</span>
             </h2>
           </div>
          
