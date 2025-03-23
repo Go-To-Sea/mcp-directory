@@ -91,9 +91,9 @@ Powered by Perplexity, Claude can now search the web and deliver real-time and a
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-4 animate-gradient-x">
             {t('title')}
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <h2 className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t('subtitle')}
-          </p>
+          </h2>
         </div>
       </div>
 
