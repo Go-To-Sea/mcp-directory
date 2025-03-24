@@ -2,6 +2,7 @@ import { parseProject, saveProject } from "@/services/project";
 import { respData, respErr } from "@/utils/resp";
 import { NextResponse } from 'next/server';
 import { Project } from "@/types/project";
+import {findProjectByUrl} from "@/models/project";
 
 export const runtime = "edge";
 
@@ -11,6 +12,12 @@ export async function POST(req: Request) {
     const gitHubUrl = project.url;
     if (!gitHubUrl) {
       return respErr("invalid gitHubUrl");
+    }
+
+    const existProject = await findProjectByUrl(project.url);
+
+    if (existProject && existProject.uuid) {
+      return respData(existProject);
     }
     // 调用get-project接口获取project信息
     const type = project.type || 'server'; // 默认为server类型
