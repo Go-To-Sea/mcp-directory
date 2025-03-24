@@ -1,6 +1,7 @@
 import {
   ProjectStatus,
   findProjectByName,
+  findProjectByUrl,
   insertProject,
   updateProject,
   findMaxSort,
@@ -15,6 +16,7 @@ import { getIsoTimestr } from "@/utils/time";
 import { getOpenAIClient } from "@/services/llms/openai";
 import { readUrl } from "./reader/jina";
 import { summarizeProjectPrompt } from "./prompts/summarize_project";
+import { categorizeProject } from "./categorize";
 
 
 export function parseProject(project: Project): Project | undefined {
@@ -51,6 +53,11 @@ export function parseProject(project: Project): Project | undefined {
         .split("-")
         .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
+    }
+    
+    // 如果没有分类，自动根据项目特征进行分类
+    if (!project.category || project.category === "other_projects_alphabetical_order") {
+          project.category = categorizeProject(project);
     }
 
     return project;
@@ -180,11 +187,11 @@ export async function saveProject(
   project: Project
 ): Promise<Project | undefined> {
   try {
-    if (!project.name) {
+    if (!project.url) {
       throw new Error("invalid project");
     }
 
-    const existProject = await findProjectByName(project.name);
+    const existProject = await findProjectByUrl(project.url);
 
     if (existProject && existProject.uuid) {
       project.uuid = existProject.uuid;
