@@ -2,6 +2,16 @@
   "Common": {
     "selectLanguage": "言語を選択"
   },
+  "home": {
+    "welcome": "MCP Server ツールステーションへようこそ！",
+    "toolsCount": {
+      "available": "利用可能な MCP サーバー",
+      "separator": "-",
+      "description": "最も包括的なコレクション"
+    },
+    "introduction": "MCP（Model Context Protocol）ツールナビゲーションステーション — ネットワーク上で最も包括的なツールライブラリ。シナリオ/機能別のスマートな分類、必要なツールへの正確なアクセス、即座の利用、効率的なMCP利用の開始を提供します。",
+    "exploreButton": "今すぐ探索"
+  },
   "metadata": {
     "title": "MCP サーバー",
     "description": "MCP.adで、MCPサーバーとMCPクライアントの膨大なコレクションを探索しましょう。モデルコンテキストプロトコル統合のための究極のリソースです！",

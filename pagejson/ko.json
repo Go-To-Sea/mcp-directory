@@ -2,6 +2,16 @@
   "Common": {
     "selectLanguage": "언어 선택"
   },
+  "home": {
+    "welcome": "MCP Server 도구 스테이션에 오신 것을 환영합니다!",
+    "toolsCount": {
+      "available": "사용 가능한 MCP 서버",
+      "separator": "-",
+      "description": "가장 포괄적인 컬렉션"
+    },
+    "introduction": "MCP(Model Context Protocol) 도구 내비게이션 스테이션 — 네트워크에서 가장 포괄적인 도구 라이브러리로, 시나리오/기능별 스마트 분류, 필요한 도구에 대한 정확한 접근, 즉시 사용, MCP 사용 여정의 효율적인 시작을 제공합니다.",
+    "exploreButton": "지금 탐색하기"
+  },
   "metadata": {
     "title": "MCP 서버",
     "description": "MCP.ad에서 MCP 서버와 MCP 클라이언트의 방대한 컬렉션을 탐색하세요. 모델 컨텍스트 프로토콜 통합을 위한 최고의 리소스입니다!",
