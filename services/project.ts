@@ -56,7 +56,7 @@ export function parseProject(project: Project): Project | undefined {
     }
     
     // 如果没有分类，自动根据项目特征进行分类
-    if (!project.category || project.category === "other_projects_alphabetical_order") {
+    if (!project.category || project.category === "other_projects_alphabetical_order" || project.category === "mcp_clients_other") {
           project.category = categorizeProject(project);
     }
 
