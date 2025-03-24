@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-
+import { useTranslations } from 'next-intl';
 export default (props: {
     classMenus?: ClassMenus[];
 }) => {
@@ -17,7 +17,7 @@ export default (props: {
   const searchParams = useSearchParams();
   const currentTag = searchParams.get('category');
   const [isExpanded, setIsExpanded] = useState(true);
-  
+  const t = useTranslations('categories');
   const handleExpandToggle = () => {
     if (isExpanded) {
       // 收起时，将标签区域滚动到顶部
@@ -40,17 +40,17 @@ export default (props: {
             {isExpanded ? (
               <>
                 <ChevronUp size={16} />
-                <span>Collapse categories</span>
+                <span>{t('collapse')}</span>
               </>
             ) : (
               <>
                 <ChevronDown size={16} />
-                <span>Expand categories</span>
+                <span>{t('expand')}</span>
               </>
             )}
           </button>
           <div className="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 p-2 rounded-full whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] sm:max-w-none">
-            Current Category: <span className="text-primary font-medium">{currentTag || 'All'}</span>
+          {t('currentCategory')}: <span className="text-primary font-medium">{currentTag || 'All'}</span>
           </div>
         </div>
       </div>

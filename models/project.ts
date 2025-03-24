@@ -221,7 +221,7 @@ export async function getFeaturedProjects(
   const { data, error } = await supabase
     .from("projects")
     .select("*")
-    // .eq("is_featured", true) //TODO
+    // .eq("is_featured", true) 
     // .eq("status", ProjectStatus.Created)
     .order("sort", { ascending: true })
     // .order("created_at", { ascending: true })

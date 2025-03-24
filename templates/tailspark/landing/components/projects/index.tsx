@@ -31,12 +31,10 @@ export default ({
 }) => {
     const pathname = usePathname()
     const t = useTranslations('projects')
-    
     let filterProjects: Project[] = []
     if(projectType) {
       filterProjects = projects.filter(p => p.type === projectType )
     }
-    console.log('classMenus========',classMenus)
   if (viewType === 'class') {
     const servers = projects.filter(p => p.type === 'server')
     const clients = projects.filter(p => p.type === 'client')
@@ -108,7 +106,10 @@ export default ({
   return (
     <section className="relative">
       <span className="tags"></span>
-      {(pathname === '/servers' || pathname === '/clients') && <ClassMenusComponent classMenus={classMenus} />}
+      <span className="tags"></span>
+      {pathname.includes('/servers') || pathname.includes('/clients') ? (
+        <ClassMenusComponent classMenus={classMenus} />
+      ) : null}
       <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
         {!loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

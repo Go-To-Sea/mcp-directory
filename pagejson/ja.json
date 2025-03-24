@@ -58,13 +58,19 @@
       "subtitle": "MCPサーバーの最大のコレクション。"
     }
   },
+  "categories": {
+    "currentCategory": "現在のカテゴリー",
+    "collapse": "カテゴリーを折りたたむ",
+    "expand": "カテゴリーを展開",
+    "all": "すべて"
+  },
   "projects": {
     "servers": {
-      "title": "MCPサーバー",
+      "title": "MCP Servers(MCPサーバー)",
       "viewAll": "すべてのサーバーを表示"
     },
     "clients": {
-      "title": "MCPクライアント",
+      "title": "MCP Clients(MCPクライアント)",
       "viewAll": "すべてのクライアントを表示"
     },
     "loading": "データを読み込み中..."
@@ -122,11 +128,6 @@
       "title": "お問い合わせ",
       "content": "質問や提案がありますか？私たちはあなたからのご意見をお待ちしています。いつでもお問い合わせください："
     }
-  },
-  "categories": {
-    "title": "MCPサーバーカテゴリー",
-    "currentCategory": "現在のカテゴリー",
-    "all": "すべて"
   },
   "blog": {
     "title": "MCPブログ",

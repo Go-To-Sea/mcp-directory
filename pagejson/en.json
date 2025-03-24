@@ -7,6 +7,17 @@
     "description": "Explore a vast collection of MCP servers and MCP clients at MCP.ad, your ultimate resource for Model Context Protocol integrations! ",
     "keywords": "MCP Servers, MCP Clients, Model Context Protocol, Claude integration, MCP AI Servers, MCP resources"
   },
+  "projects": {
+    "servers": {
+      "title": "MCP Servers",
+      "viewAll": "View All "
+    },
+    "clients": {
+      "title": "MCP Clients",
+      "viewAll": "View All "
+    },
+    "loading": "Loading data..."
+  },
   "header": {
     "nav": {
       "servers": "Servers",
@@ -47,17 +58,6 @@
       "title": "MCP Servers and Clients",
       "subtitle": "The largest collection of MCP Servers."
     }
-  },
-  "projects": {
-    "servers": {
-      "title": "MCP Servers",
-      "viewAll": "View All Servers"
-    },
-    "clients": {
-      "title": "MCP Clients",
-      "viewAll": "View All Clients"
-    },
-    "loading": "Loading data..."
   },
   "testimonials": {
     "title": "用户评价",
@@ -150,8 +150,9 @@
     }
   },
   "categories": {
-    "title": "MCP Server Categories",
-    "currentCategory": "Current Categories",
+    "currentCategory": "Current Category",
+    "collapse": "Collapse categories",
+    "expand": "Expand categories",
     "all": "All"
   },
   "blog": {

@@ -58,13 +58,19 @@
       "subtitle": "MCP 서버의 가장 큰 컬렉션."
     }
   },
+  "categories": {
+    "currentCategory": "현재 카테고리",
+    "collapse": "카테고리 접기",
+    "expand": "카테고리 펼치기",
+    "all": "전체"
+  },
   "projects": {
     "servers": {
-      "title": "MCP 서버",
+      "title": "MCP Servers(MCP 서버)",
       "viewAll": "모든 서버 보기"
     },
     "clients": {
-      "title": "MCP 클라이언트",
+      "title": "MCP Clients(MCP 클라이언트)",
       "viewAll": "모든 클라이언트 보기"
     },
     "loading": "데이터 로딩 중..."
@@ -122,11 +128,6 @@
   "getInTouch": {
     "title": "연락하기",
     "content": "질문이나 제안이 있으신가요? 언제든지 연락해 주세요:"
-  },
-  "categories": {
-    "title": "MCP 서버 카테고리",
-    "currentCategory": "현재 카테고리",
-    "all": "전체"
   },
     "usercases": {
     "title": "MCP 활용 사례",
