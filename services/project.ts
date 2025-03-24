@@ -3,6 +3,7 @@ import {
   findProjectByName,
   insertProject,
   updateProject,
+  findMaxSort,
   getProjectById as getProjectByIdFromDB,
 } from "@/models/project";
 
@@ -14,6 +15,7 @@ import { getIsoTimestr } from "@/utils/time";
 import { getOpenAIClient } from "@/services/llms/openai";
 import { readUrl } from "./reader/jina";
 import { summarizeProjectPrompt } from "./prompts/summarize_project";
+
 
 export function parseProject(project: Project): Project | undefined {
   try {
@@ -199,7 +201,10 @@ export async function saveProject(
     project.status = ProjectStatus.Active;
     project.target = "_self";
     project.is_featured = true;
-    //project.sort = 1;
+    // 从数据库中获取指定类型项目的最大排序值
+    // 确保 project.type 不为 undefined 后再传入
+    const maxSort = await findMaxSort(project.type || '');
+    project.sort = maxSort;
 
     await insertProject(project);
 

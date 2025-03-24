@@ -79,11 +79,12 @@ export async function findProjectByUuid(
   return data;
 }
 
-export async function findMaxSort(): Promise<number> {
+export async function findMaxSort(type:string): Promise<number> {
   const supabase = getSupabaseClient();
   const { data, error } = await supabase
     .from("projects")
     .select("sort")
+    .eq("type", type)
     .order("sort", { ascending: true })
     .limit(1)
     .single();
