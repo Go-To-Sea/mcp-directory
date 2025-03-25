@@ -12,7 +12,6 @@ module.exports = {
       { loc: '/terms-of-service' },
       { loc: '/privacy-policy' },
       { loc: '/submit' },
-      
       // app 目录下的路由
       { loc: '/blog' },
       { loc: '/categories' },

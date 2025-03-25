@@ -18,6 +18,13 @@
     "keywords": "MCPサーバー, MCPクライアント, モデルコンテキストプロトコル, Claude統合, MCP AIサーバー, MCPリソース"
   },
   "header": {
+    "auth": {
+      "login": "ログイン",
+      "signIn": "ログイン",
+      "cancel": "キャンセル",
+      "signInRequired": "ログインが必要です",
+      "signInMessage": "プロジェクトを提出するにはログインしてください"
+    },
     "nav": {
       "servers": "サーバー",
       "clients": "クライアント",
@@ -59,6 +66,7 @@
     }
   },
   "categories": {
+    "title": "カテゴリー",
     "currentCategory": "現在のカテゴリー",
     "collapse": "カテゴリーを折りたたむ",
     "expand": "カテゴリーを展開",
@@ -311,6 +319,7 @@
     "loading": "検索中..."
   },
   "usercases": {
+    "viewMore": "もっと見る",
     "title": "MCP 活用事例",
     "subtitle": "組織がモデルコンテキストプロトコルを活用してAI機能を強化し、ワークフローを効率化する方法をご覧ください。",
     "readMore": "詳細を見る",

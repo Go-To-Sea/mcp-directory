@@ -1,12 +1,17 @@
 import createMiddleware from 'next-intl/middleware';
- 
-// next-intl 4.x 版本的正确配置
+import { pathnames } from './config/pathnames';
+
 export default createMiddleware({
-  locales: ['en', 'zh', 'ja', 'ko'],
+  locales: ['en', 'zh', 'ja', 'ko', 'pt', 'ru'],
   defaultLocale: 'en',
-  localeDetection: false
+  localeDetection: true,
+  localePrefix: 'always',
+  pathnames, // 添加路径配置
 });
- 
+
 export const config = {
-  matcher: ['/((?!api|_next|.*\\..*).*)']
+  matcher: [
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+    '/(zh|en|ja|ko|pt|ru)/:path*'  // 修改匹配规则
+  ]
 };

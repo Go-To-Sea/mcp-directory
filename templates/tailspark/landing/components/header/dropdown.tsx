@@ -36,6 +36,16 @@ const languages = [
     name: "Korean",
     nativeName: "한국어",
   },
+  {
+    code: "ru",
+    name: "Russian",
+    nativeName: "Русский",
+  },
+  {
+    code: "pt",
+    name: "Portuguese",
+    nativeName: "Português",
+  }
 ] as const
 
 export default function LanguageSelector() {

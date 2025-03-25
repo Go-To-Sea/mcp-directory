@@ -18,6 +18,13 @@
     "keywords": "MCP Servers, MCP Clients, Model Context Protocol, Claude 集成, MCP AI Servers, MCP 资源"
   },
  "header": {
+    "auth": {
+      "login": "登录",
+      "signIn": "登录",
+      "cancel": "取消",
+      "signInRequired": "需要登录",
+      "signInMessage": "请登录后提交您的项目"
+    },
     "nav": {
       "servers": "服务器",
       "clients": "Client",
@@ -38,6 +45,7 @@
     }
   },
   "usercases": {
+    "viewMore": "查看更多",
     "title": "MCP 使用案例",
     "subtitle": "探索如何利用 MCP Server 模型上下文协议来增强 AI 能力并简化工作流程。",
     "readMore": "了解更多",
@@ -262,6 +270,7 @@
     }
   },
   "categories": {
+    "title": "分类",
     "currentCategory": "当前分类",
     "collapse": "收起分类",
     "expand": "展开分类",

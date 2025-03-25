@@ -169,7 +169,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                       variant="outline"
                       className="text-slate-700 dark:text-white border-none shadow-sm hover:shadow-md transition-shadow"
                     >
-                      Login
+                      {t('auth.login')}
                     </Button>
                   </SignInButton>
                 </SignedOut>
@@ -317,10 +317,10 @@ export default function HeaderComponent({ header }: { header: Header }) {
           <DialogContent className="sm:max-w-[400px] !rounded-2xl border-0 shadow-xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
             <DialogHeader>
               <DialogTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
-                Sign In Required
+                {t('auth.signInRequired')}
               </DialogTitle>
               <p className="text-gray-600 dark:text-gray-400 mt-2">
-                Please sign in to submit your project
+                {t('auth.signInMessage')}
               </p>
             </DialogHeader>
             <motion.div
@@ -354,7 +354,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     type="button"
                     className="!rounded border-gray-300 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800 transition-all"
                   >
-                    Cancel
+                    {t('auth.cancel')}
                   </Button>
                   <SignInButton mode="modal">
                     <Button 
@@ -362,7 +362,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                       className="!rounded bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all"
                       onClick={() => setIsLoginDialogOpen(false)}
                     >
-                      Sign In
+                      {t('auth.signIn')}
                     </Button>
                   </SignInButton>
                 </motion.div>

@@ -1,0 +1,364 @@
+{
+  "Common": {
+    "selectLanguage": "Selecionar Idioma"
+  },
+  "metadata": {
+    "title": "Servidores MCP",
+    "description": "Explore uma vasta coleção de servidores e clientes MCP no MCP.ad, seu recurso definitivo para integrações do Protocolo de Contexto de Modelo!",
+    "keywords": "Servidores MCP, Clientes MCP, Protocolo de Contexto de Modelo, integração Claude, Servidores AI MCP, recursos MCP"
+  },
+  "projects": {
+    "servers": {
+      "title": "Servidores MCP",
+      "viewAll": "Ver Todos"
+    },
+    "clients": {
+      "title": "Clientes MCP",
+      "viewAll": "Ver Todos"
+    },
+    "loading": "Carregando dados..."
+  },
+  "header": {
+    "auth": {
+      "login": "Entrar",
+      "signIn": "Entrar",
+      "cancel": "Cancelar",
+      "signInRequired": "Login Necessário",
+      "signInMessage": "Por favor, faça login para enviar seu projeto"
+    },
+    "nav": {
+      "servers": "Servidores",
+      "clients": "Clientes",
+      "blog": "Blog",
+      "feed": "Feed",
+      "about": "Sobre",
+      "usercases": "Casos de Uso"
+    },
+    "actions": {
+      "submit": "Enviar",
+      "login": "Entrar",
+      "cancel": "Cancelar",
+      "signIn": "Fazer Login"
+    },
+    "dialog": {
+      "title": "Login Necessário",
+      "description": "Por favor, faça login para enviar seu projeto"
+    }
+  },
+  "hero": {
+    "stored": {
+      "servers": "servidores mcp armazenados",
+      "clients": "clientes mcp armazenados",
+      "default": "Servidores MCP na lista"
+    },
+    "discover": "Descobrir",
+    "servers": {
+      "title": "Servidores MCP",
+      "subtitle": "Encontre os melhores servidores MCP para suas necessidades."
+    },
+    "clients": {
+      "title": "Clientes MCP",
+      "subtitle": "Encontre os melhores clientes MCP para suas necessidades."
+    },
+    "home": {
+      "find": "Encontre Incríveis",
+      "title": "Servidores e Clientes MCP",
+      "subtitle": "A maior coleção de Servidores MCP."
+    }
+  },
+  "testimonials": {
+    "title": "Avaliações dos Usuários",
+    "date": "{date, date, medium}"
+  },
+  "blogDetail": {
+    "backToBlog": "Voltar ao Blog",
+    "date": "{date, date, medium}",
+    "readTime": "{minutes} min de leitura"
+  },
+  "feeds": {
+    "title": "Feed",
+    "subtitle": "Servidores e Clientes MCP enviados recentemente pelos usuários.",
+    "submit": "Enviar",
+    "by": "por",
+    "visitWebsite": "Visitar Website"
+  },
+  "usercases": {
+    "title": "Casos de Uso MCP",
+    "viewMore": "Ver Mais",
+    "subtitle": "Descubra como as organizações estão aproveitando o Protocolo de Contexto de Modelo para aprimorar suas capacidades de IA e otimizar fluxos de trabalho.",
+    "readMore": "Leia mais",
+    "contact": {
+      "title": "Pronto para implementar MCP em seu projeto?",
+      "description": "Entre em contato para saber mais sobre como o MCP pode ajudar sua organização a aproveitar as capacidades de IA.",
+      "button": "Entre em contato"
+    },
+    "cases": {
+      "case1": {
+        "title": "Análise e Recuperação de Documentos",
+        "description": "Veja como as empresas estão usando MCP para construir sistemas inteligentes de análise de documentos que podem processar, entender e recuperar informações de grandes coleções de documentos."
+      },
+      "case2": {
+        "title": "Automação de Suporte ao Cliente",
+        "description": "Aprenda como o MCP permite que as empresas criem assistentes de IA que podem acessar dados de clientes, informações de produtos e documentação de suporte para fornecer suporte preciso e personalizado."
+      },
+      "case3": {
+        "title": "Pesquisa e Desenvolvimento",
+        "description": "Descubra como as equipes de pesquisa estão usando MCP para construir sistemas de IA que podem acessar e analisar artigos científicos, dados experimentais e notas de pesquisa."
+      },
+      "case4": {
+        "title": "Criação e Gestão de Conteúdo",
+        "description": "Explore como criadores de conteúdo e profissionais de marketing estão usando MCP para construir assistentes de IA que podem acessar diretrizes de marca, bibliotecas de conteúdo e dados analíticos."
+      },
+      "case5": {
+        "title": "Educação e Treinamento",
+        "description": "Veja como instituições educacionais estão usando MCP para criar tutores de IA que podem acessar materiais do curso, dados dos alunos e recursos educacionais."
+      },
+      "case6": {
+        "title": "Saúde e Pesquisa Médica",
+        "description": "Aprenda como os provedores de saúde estão usando MCP para construir sistemas de IA que podem acessar registros médicos, artigos de pesquisa e diretrizes clínicas, mantendo a privacidade e segurança."
+      }
+    }
+  },
+  "about": {
+    "nav": {
+      "home": "Início",
+      "about": "Sobre"
+    },
+    "title": "Sobre MCP.ad",
+    "contact": {
+      "question": "Tem alguma pergunta? Sinta-se à vontade para entrar em contato em"
+    },
+    "welcome": {
+      "title": "Bem-vindo ao MCP.ad",
+      "content": "No MCP.ad, somos dedicados a construir a plataforma mais abrangente para recursos do Protocolo de Contexto de Modelo (MCP). Nossa missão é conectar desenvolvedores, entusiastas de IA e empresas com as ferramentas necessárias para aproveitar o poder da IA através da integração MCP."
+    },
+    "vision": {
+      "title": "Nossa Visão",
+      "content": "Visualizamos um futuro onde a integração de IA é perfeita e acessível a todos. Através do MCP.ad, nosso objetivo é criar um ecossistema vibrante onde desenvolvedores podem compartilhar seus servidores e clientes MCP, tornando as capacidades de IA mais acessíveis e poderosas para todos os usuários."
+    },
+    "whatWeDo": {
+      "title": "O Que Fazemos",
+      "content": "MCP.ad serve como um hub central para a comunidade do Protocolo de Contexto de Modelo. Nós fornecemos:",
+      "item1": "Um diretório curado de servidores e clientes MCP",
+      "item2": "Recursos para implementar MCP em seus projetos",
+      "item3": "Documentação e guias orientados pela comunidade",
+      "item4": "Plataforma para compartilhar e descobrir novas integrações MCP"
+    },
+    "forEveryone": {
+      "title": "Para Todos",
+      "content": "Seja você um desenvolvedor que deseja compartilhar seu servidor MCP, uma empresa que busca integrar recursos de IA ou um entusiasta explorando as possibilidades de integração de IA, o MCP.ad é seu recurso principal. Aceitamos contribuições de todos os membros da comunidade."
+    },
+    "journey": {
+      "title": "Nossa Jornada",
+      "content": "Fundado por uma equipe apaixonada por integração de IA e desenvolvimento de código aberto, o MCP.ad começou como um projeto para organizar e compartilhar recursos MCP. Hoje, crescemos para uma plataforma próspera que atende desenvolvedores e organizações em todo o mundo, facilitando a adoção da tecnologia do Protocolo de Contexto de Modelo."
+    },
+    "getInTouch": {
+      "title": "Entre em Contato",
+      "content": "Tem perguntas ou sugestões? Adoraríamos ouvir você. Entre em contato conosco a qualquer momento em:"
+    }
+  },
+  "categories": {
+    "title": "Categorias",
+    "currentCategory": "Categoria Atual",
+    "collapse": "Recolher categorias",
+    "expand": "Expandir categorias",
+    "all": "Todos"
+  },
+  "blog": {
+    "title": "Blog MCP",
+    "subtitle": "Explorando as Últimas Dinâmicas, Artigos Técnicos e Guias de Uso do Servidor MCP",
+    "readMore": "Leia mais",
+    "readTime": "{minutes} min de leitura",
+    "date": "{date, date, medium}",
+    "posts": {
+      "intro": {
+        "title": "Apresentando o Protocolo de Contexto de Modelo",
+        "description": "Temos o prazer de anunciar o lançamento de uma série de novos recursos no site de ferramentas MCP..."
+      },
+      "getStarted": {
+        "title": "Como Começar a Usar MCP",
+        "description": "O Protocolo de Contexto de Modelo (MCP) está revolucionando como os assistentes de IA acessam e interagem com seus dados..."
+      },
+      "aiWebsites": {
+        "title": "IA está Tornando Websites Obsoletos com MCP",
+        "description": "Websites tradicionais estão enfrentando uma mudança de paradigma com interfaces alimentadas por IA usando o Protocolo de Contexto de Modelo..."
+      }
+    }
+  },
+  "projectDetail": {
+    "by": "por",
+    "about": "Sobre",
+    "recTitle": "Recomendar MCP",
+    "website": "Website"
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "description": "Perguntas Frequentes sobre Servidores MCP",
+    "items": [
+      {
+        "title": "O que é MCP (Protocolo de Contexto de Modelo)?",
+        "description": "MCP é um protocolo de código aberto desenvolvido pela Anthropic que permite que sistemas de IA como o Claude se conectem de forma segura com várias fontes de dados. Ele fornece um padrão universal para assistentes de IA acessarem dados externos, ferramentas e prompts através de uma arquitetura cliente-servidor."
+      },
+      {
+        "title": "O que são Servidores MCP?",
+        "description": "Servidores MCP são sistemas que fornecem contexto, ferramentas e prompts para clientes de IA. Eles podem expor fontes de dados como arquivos, documentos, bancos de dados e integrações de API, permitindo que assistentes de IA acessem informações em tempo real de forma segura."
+      },
+      {
+        "title": "Como funcionam os Servidores MCP?",
+        "description": "Servidores MCP funcionam através de uma arquitetura cliente-servidor simples. Eles expõem dados e ferramentas através de um protocolo padronizado, mantendo conexões seguras 1:1 com clientes dentro de aplicativos host como o Claude Desktop."
+      },
+      {
+        "title": "O que os Servidores MCP podem fornecer?",
+        "description": "Servidores MCP podem compartilhar recursos (arquivos, documentos, dados), expor ferramentas (integrações de API, ações) e fornecer prompts (interações modeladas). Eles controlam seus próprios recursos e mantêm limites claros do sistema para segurança."
+      },
+      {
+        "title": "Como o Claude usa MCP?",
+        "description": "Claude pode se conectar a servidores MCP para acessar fontes de dados externos e ferramentas, aprimorando suas capacidades com informações em tempo real. Atualmente, isso funciona com servidores MCP locais, com suporte a servidor remoto empresarial chegando em breve."
+      },
+      {
+        "title": "Os Servidores MCP são seguros?",
+        "description": "Sim, a segurança é incorporada ao protocolo MCP. Os servidores controlam seus próprios recursos, não há necessidade de compartilhar chaves de API com provedores LLM, e o sistema mantém limites claros. Cada servidor gerencia sua própria autenticação e controle de acesso."
+      },
+      {
+        "title": "O que é mcp.ad?",
+        "description": "mcp.ad é uma plataforma orientada pela comunidade que coleta e organiza Servidores MCP de terceiros. Serve como um diretório central onde os usuários podem descobrir, compartilhar e aprender sobre vários Servidores MCP disponíveis para aplicações de IA."
+      },
+      {
+        "title": "Como posso enviar meu Servidor MCP para o mcp.ad?",
+        "description": "Você pode enviar seu Servidor MCP criando uma nova issue em nosso repositório GitHub. Clique no botão 'Enviar' na barra de navegação ou visite diretamente nossa página de issues do GitHub. Por favor, forneça detalhes sobre seu servidor incluindo seu nome, descrição, recursos e informações de conexão."
+      }
+    ]
+  },
+  "footer": {
+    "brand": {
+      "title": "Servidores MCP",
+      "description": "Explore uma vasta coleção de servidores e clientes MCP no MCP.ad, seu recurso definitivo para integrações do Protocolo de Contexto de Modelo!",
+      "domain": "https://mcp.ad"
+    },
+    "copyright": {
+      "owner": "mcp.ad",
+      "text": "Servidor MCP. Todos os direitos reservados",
+      "url": "https://mcp.ad",
+      "target": "_blank"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Links MCP",
+          "children": [
+            {
+              "title": "Servidores MCP",
+              "url": "https://mcp.ad/servers",
+              "target": "_blank"
+            },
+            {
+              "title": "Clientes MCP",
+              "url": "https://mcp.ad/clients",
+              "target": "_blank"
+            },
+            {
+              "title": "Blog MCP",
+              "url": "https://mcp.ad/blog",
+              "target": "_blank"
+            },
+            {
+              "title": "Feed MCP",
+              "url": "https://mcp.ad/feed",
+              "target": "_blank"
+            },
+            {
+              "title": "Sobre MCP",
+              "url": "https://mcp.ad/about",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "Recursos",
+          "children": [
+            {
+              "title": "Protocolo de Contexto de Modelo",
+              "url": "https://www.anthropic.com/news/model-context-protocol",
+              "target": "_blank"
+            },
+            {
+              "title": "Guia Inicial MCP",
+              "url": "https://modelcontextprotocol.io/introduction",
+              "target": "_blank"
+            },
+            {
+              "title": "Servidores MCP Claude",
+              "url": "https://github.com/modelcontextprotocol/servers",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "Links",
+          "children": [
+            {
+              "title": "NameFuture",
+              "url": "https://naming.mcp.ad",
+              "target": "_blank"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": {
+        "email": {
+          "title": "support@mcp.ad",
+          "url": "mailto:support@mcp.ad"
+        }
+      }
+    }
+  },
+  "home": {
+    "welcome": "Bem-vindo à Estação de Ferramentas MCP!",
+    "toolsCount": {
+      "available": "Ferramentas MCP Disponíveis",
+      "separator": "-",
+      "description": "A Coleção Mais Abrangente"
+    },
+    "introduction": "Estação de Navegação de Ferramentas MCP (Model Context Protocol) —— a biblioteca de ferramentas mais abrangente da rede, agregação one-stop, classificação inteligente por cenário/função, acesso preciso às ferramentas necessárias, use com um clique, inicie eficientemente sua jornada MCP.",
+    "exploreButton": "Explorar Agora"
+  },
+  "submitPage": {
+    "title": "Envie Seu Projeto MCP",
+    "subtitle": "Junte-se à nossa crescente comunidade de ferramentas MCP. Compartilhe seu projeto com desenvolvedores em todo o mundo e ajude a moldar o futuro do ecossistema MCP."
+  },
+  "submit": {
+    "title": "Envie Seu Projeto MCP",
+    "subtitle": "Junte-se à nossa crescente comunidade de ferramentas MCP. Compartilhe seu projeto com desenvolvedores em todo o mundo e ajude a moldar o futuro do ecossistema MCP.",
+    "form": {
+      "projectType": "Tipo de Projeto",
+      "server": "Servidor MCP",
+      "client": "Cliente MCP",
+      "githubUrl": "URL do GitHub",
+      "githubUrlPlaceholder": "Digite a URL do repositório GitHub",
+      "submitButton": "Enviar Projeto",
+      "submitting": "Enviando..."
+    },
+    "validation": {
+      "githubUrl": {
+        "invalid": "Por favor, insira uma URL válida",
+        "format": "A URL deve ser um repositório GitHub"
+      }
+    },
+    "toast": {
+      "success": {
+        "title": "Sucesso",
+        "description": "Seu {type} MCP foi enviado!"
+      },
+      "error": {
+        "title": "Falha",
+        "projectExists": "Projeto já existe, por favor use uma URL GitHub diferente",
+        "generic": "Envio falhou, por favor tente novamente mais tarde"
+      }
+    },
+    "errors": {
+      "fetchFailed": "Falha ao buscar informações do projeto"
+    }
+  }
+}

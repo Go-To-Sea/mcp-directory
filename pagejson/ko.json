@@ -18,6 +18,13 @@
     "keywords": "MCP 서버, MCP 클라이언트, 모델 컨텍스트 프로토콜, Claude 통합, MCP AI 서버, MCP 리소스"
   },
   "header": {
+    "auth": {
+      "login": "로그인",
+      "signIn": "로그인",
+      "cancel": "취소",
+      "signInRequired": "로그인 필요",
+      "signInMessage": "프로젝트를 제출하려면 로그인하세요"
+    },
     "nav": {
       "servers": "서버",
       "clients": "클라이언트",
@@ -59,6 +66,7 @@
     }
   },
   "categories": {
+    "title": "카테고리",
     "currentCategory": "현재 카테고리",
     "collapse": "카테고리 접기",
     "expand": "카테고리 펼치기",
@@ -129,7 +137,8 @@
     "title": "연락하기",
     "content": "질문이나 제안이 있으신가요? 언제든지 연락해 주세요:"
   },
-    "usercases": {
+  "usercases": {
+    "viewMore": "더 보기",
     "title": "MCP 활용 사례",
     "subtitle": "조직이 모델 컨텍스트 프로토콜을 활용하여 AI 기능을 향상시키고 워크플로우를 간소화하는 방법을 확인해보세요.",
     "readMore": "자세히 보기",
