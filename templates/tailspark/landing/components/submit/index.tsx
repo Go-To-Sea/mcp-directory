@@ -130,7 +130,7 @@ export default function SubmitForm() {
         if(projectData.url){
           delete projectData.sort
         }else {
-          projectData.sort = await findMaxSort();
+          projectData.sort = await findMaxSort(projectData.type);
         }
         projectData.user_submit = true
         projectData.submit_time = new Date().toISOString();

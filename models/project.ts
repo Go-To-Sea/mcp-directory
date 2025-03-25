@@ -79,17 +79,33 @@ export async function findProjectByUuid(
   return data;
 }
 
-export async function findMaxSort(): Promise<number> {
+export async function findMaxSort(type:string): Promise<number> {
   const supabase = getSupabaseClient();
   const { data, error } = await supabase
     .from("projects")
     .select("sort")
+    .eq("type", type)
     .order("sort", { ascending: true })
     .limit(1)
     .single();
 
   if (!data || !data.sort) return 0;
   return data.sort + 1;
+}
+
+export async function findProjectByUrl(
+  url: string
+): Promise<Project | undefined> {
+  const supabase = getSupabaseClient();
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .eq("url", url)
+    // .eq("status", ProjectStatus.Created)
+    .single();
+
+  if (!data) return undefined;
+  return data;
 }
 
 export async function findProjectByName(

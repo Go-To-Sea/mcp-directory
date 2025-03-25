@@ -8,7 +8,7 @@ Please analyze the given project information and output a JSON object with the f
 }
 
 category should be one of the following:
-browser-automation, cloud-platforms, communication, customer-data-platforms, databases, developer-tools, file-systems, knowledge-and-memory, location-services, monitoring, search, travel-and-transportation, version-control, virtualization, finance, research-and-data, os-automation, note-taking, cloud-storage, calendar-management, entertainment-and-media, speech-processing, image-and-video-processing, security
+big_companies_and_well_known_organizations, well_known_developers_and_high_impact_projects, enterprise_tools_and_integrations, e_commerce_and_cms, documentation_and_knowledge_management, databases_and_storage, ai_ml_infrastructure, development_toolchains, community_and_frameworks, other_projects_alphabetical_order
 
 the summary should contain the following information:
 - what is the project about?
