@@ -329,36 +329,36 @@
     "date": "{date, date, medium}"
   },
   "submit": {
+    "title": "提交您的 MCP 项目",
+    "subtitle": "加入我们不断壮大的 MCP 工具社区。与全球开发者分享您的项目，共同塑造 MCP 生态系统的未来。",
     "form": {
       "projectType": "项目类型",
-      "server": "MCP Server",
-      "client": "MCP Client",
+      "server": "MCP 服务器",
+      "client": "MCP 客户端",
       "githubUrl": "GitHub 地址",
-      "githubUrlPlaceholder": "https://github.com/username/repo",
+      "githubUrlPlaceholder": "输入 GitHub 仓库地址",
       "submitButton": "提交项目",
       "submitting": "提交中..."
-    },
-    "toast": {
-      "success": {
-        "title": "提交成功",
-        "description": "您的 MCP {type} 已成功提交！"
-      },
-      "error": {
-        "exists": {
-          "title": "提交失败",
-          "description": "项目已存在，请使用其他 GitHub 地址"
-        },
-        "default": {
-          "title": "提交失败",
-          "description": "提交失败，请稍后重试"
-        }
-      }
     },
     "validation": {
       "githubUrl": {
         "invalid": "请输入有效的 URL",
-        "format": "GitHub URL 必须以 https://github.com/ 开头"
+        "format": "URL 必须是 GitHub 仓库地址"
       }
+    },
+    "toast": {
+      "success": {
+        "title": "成功",
+        "description": "您的 MCP {type} 已提交！"
+      },
+      "error": {
+        "title": "失败",
+        "projectExists": "项目已存在，请使用其他 GitHub 地址",
+        "generic": "提交失败，请稍后重试"
+      }
+    },
+    "errors": {
+      "fetchFailed": "获取项目信息失败"
     }
   }
 }

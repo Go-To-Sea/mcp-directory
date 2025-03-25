@@ -355,18 +355,42 @@
       }
     }
   },
+  "submitPage": {
+    "title": "MCP プロジェクトを提出",
+    "subtitle": "成長中の MCP ツールコミュニティに参加しましょう。世界中の開発者とプロジェクトを共有し、MCP エコシステムの未来を形作りましょう。"
+  },
   "submit": {
-    "title": "MCPサーバーを提出",
-    "description": "あなたのMCPサーバーをディレクトリに追加しましょう",
+    "title": "MCP プロジェクトを提出",
+    "subtitle": "成長中の MCP ツールコミュニティに参加しましょう。世界中の開発者とプロジェクトを共有し、MCP エコシステムの未来を形作りましょう。",
     "form": {
-      "name": "名前",
-      "description": "説明",
-      "url": "URL",
-      "submit": "提出",
-      "cancel": "キャンセル"
+      "projectType": "プロジェクトタイプ",
+      "server": "MCP サーバー",
+      "client": "MCP クライアント",
+      "githubUrl": "GitHub URL",
+      "githubUrlPlaceholder": "GitHub リポジトリの URL を入力",
+      "submitButton": "プロジェクトを提出",
+      "submitting": "提出中..."
     },
-    "success": "提出が成功しました",
-    "error": "提出中にエラーが発生しました"
+    "validation": {
+      "githubUrl": {
+        "invalid": "有効な URL を入力してください",
+        "format": "URL は GitHub リポジトリである必要があります"
+      }
+    },
+    "toast": {
+      "success": {
+        "title": "成功",
+        "description": "MCP {type} が提出されました！"
+      },
+      "error": {
+        "title": "失敗",
+        "projectExists": "プロジェクトは既に存在します。別の GitHub URL を使用してください",
+        "generic": "提出に失敗しました。後でもう一度お試しください"
+      }
+    },
+    "errors": {
+      "fetchFailed": "プロジェクト情報の取得に失敗しました"
+    }
   },
   "notFound": {
     "title": "ページが見つかりません",

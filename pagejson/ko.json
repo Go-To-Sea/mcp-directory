@@ -353,18 +353,42 @@
     "noResults": "결과를 찾을 수 없습니다",
     "loading": "검색 중..."
   },
+  "submitPage": {
+    "title": "MCP 프로젝트 제출",
+    "subtitle": "성장하는 MCP 도구 커뮤니티에 참여하세요. 전 세계 개발자와 프로젝트를 공유하고 MCP 생태계의 미래를 함께 만들어가세요."
+  },
   "submit": {
-    "title": "MCP 서버 제출",
-    "description": "당신의 MCP 서버를 디렉토리에 추가하세요",
+    "title": "MCP 프로젝트 제출",
+    "subtitle": "성장하는 MCP 도구 커뮤니티에 참여하세요. 전 세계 개발자와 프로젝트를 공유하고 MCP 생태계의 미래를 함께 만들어가세요.",
     "form": {
-      "name": "이름",
-      "description": "설명",
-      "url": "URL",
-      "submit": "제출",
-      "cancel": "취소"
+      "projectType": "프로젝트 유형",
+      "server": "MCP 서버",
+      "client": "MCP 클라이언트",
+      "githubUrl": "GitHub URL",
+      "githubUrlPlaceholder": "GitHub 저장소 URL 입력",
+      "submitButton": "프로젝트 제출",
+      "submitting": "제출 중..."
     },
-    "success": "제출 성공",
-    "error": "제출 중 오류 발생"
+    "validation": {
+      "githubUrl": {
+        "invalid": "유효한 URL을 입력해주세요",
+        "format": "URL은 GitHub 저장소여야 합니다"
+      }
+    },
+    "toast": {
+      "success": {
+        "title": "성공",
+        "description": "MCP {type}이(가) 제출되었습니다!"
+      },
+      "error": {
+        "title": "실패",
+        "projectExists": "프로젝트가 이미 존재합니다. 다른 GitHub URL을 사용해주세요",
+        "generic": "제출에 실패했습니다. 나중에 다시 시도해주세요"
+      }
+    },
+    "errors": {
+      "fetchFailed": "프로젝트 정보를 가져오는데 실패했습니다"
+    }
   },
   "notFound": {
     "title": "페이지를 찾을 수 없습니다",

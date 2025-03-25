@@ -353,8 +353,8 @@
       },
       "error": {
         "title": "Falha",
-        "projectExists": "Projeto já existe, por favor use uma URL GitHub diferente",
-        "generic": "Envio falhou, por favor tente novamente mais tarde"
+        "projectExists": "Projeto já existe, use uma URL GitHub diferente",
+        "generic": "Falha no envio, tente novamente mais tarde"
       }
     },
     "errors": {
