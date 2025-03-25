@@ -36,8 +36,8 @@ export async function POST(req: Request) {
     }
     
     const result = await response.json();
-    console.log(result);
     if (!result.success || !result.data) {
+      console.log(result);
       return respErr("获取项目信息失败");
     }
     
