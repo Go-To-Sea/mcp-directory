@@ -20,6 +20,7 @@ import Link from 'next/link'
 import Blog from "../components/blog"
 // 在顶部导入 React
 import React from 'react'
+import { motion } from "framer-motion"
 // 修改 navItems 的定义方式
 // const navItems = [
 //   { id: 'hero', label: 'Home', icon: <Home size={16} /> },
@@ -70,6 +71,18 @@ export default function ({
   projects: any
   projectsCount: any
 }) {
+   // 添加动画配置
+   const fadeInUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  }
   // 添加翻译 hook
   const t = useTranslations('home')
   const [showIntro, setShowIntro] = useState(true)
@@ -228,29 +241,76 @@ export default function ({
         </div>
       )}
 
-      <div className={`relative z-10 ${!showIntro ? "pt-20" : ""}`}>
-        <p id="hero">
+<div className={`relative z-10 ${!showIntro ? "pt-20" : ""}`}>
+        <motion.div
+          id="hero"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUpVariants}
+        >
           {page.hero && <Hero hero={page.hero} count={projectsCount} />}
-        </p>
-        <p id="search">
+        </motion.div>
+
+        <motion.div
+          id="search"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUpVariants}
+        >
           <Search />
-        </p>
-        <p id="projects">
+        </motion.div>
+
+        <motion.div
+          id="projects"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUpVariants}
+        >
           <Projects viewType={'class'} projects={projects} />
-        </p>
-        <p id="blog">
+        </motion.div>
+
+        <motion.div
+          id="blog"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUpVariants}
+        >
           <Blog isHomePage={true} />
-        </p>
-        <p id="usercases">
+        </motion.div>
+
+        <motion.div
+          id="usercases"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUpVariants}
+        >
           <UserCases isHomePage={true} />
-        </p>
-        {/* 添加评论展示组件 */}
-        <p id="testimonials">
+        </motion.div>
+
+        <motion.div
+          id="testimonials"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUpVariants}
+        >
           <Testimonials />
-        </p>
-        <p id="faq">
+        </motion.div>
+
+        <motion.div
+          id="faq"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUpVariants}
+        >
           {page.faq && <Faq {...page.faq} />}
-        </p>
+        </motion.div>
       </div>
     </div>
   )
