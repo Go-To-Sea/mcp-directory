@@ -17,73 +17,73 @@ export default ({ hero, count }: { hero: Hero; count?: number }) => {
   const pathname = usePathname();
   const t = useTranslations('hero');
 
+  // 修改路径判断逻辑
+  const isServersPage = pathname.includes('/servers');
+  const isClientsPage = pathname.includes('/clients');
+
   const getStoredText = () => {
-    switch (pathname) {
-      case '/servers':
-        return t('stored.servers');
-      case '/clients':
-        return t('stored.clients');
-      default:
-        return t('stored.default');
+    if (isServersPage) {
+      return t('stored.servers');
+    } else if (isClientsPage) {
+      return t('stored.clients');
     }
+    return t('stored.default');
   };
 
   const renderTitles = () => {
-    switch (pathname) {
-      case '/servers':
-        return (
-          <div className="flex flex-col items-center w-full">
-            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              <span className="">{t('discover')} </span>
-              <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                {t('servers.title')}
-              </span>
-            </h1>
-            <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
-              {t('servers.subtitle')}
-            </h2>
-          </div>
-        );
-      case '/clients':
-        return (
-          <div className="flex flex-col items-center w-full">
-            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              <span className="">{t('discover')} </span>
-              <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                {t('clients.title')}
-              </span>
-            </h1>
-            <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
-              {t('clients.subtitle')}
-            </h2>
-          </div>
-        );
-      default:
-        return (
-          <div className="flex flex-col items-center w-full">
-            <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              <span>{t('home.find')} </span>
-              <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                {t('home.title')}
-              </span>
-            </h1>
-            <p className="text-muted-foreground text-base sm:text-lg lg:text-xl">
-              {t('home.subtitle')}
-            </p>
-          </div>
-        );
+    if (isServersPage) {
+      return (
+        <div className="flex flex-col items-center w-full">
+          <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <span className="">{t('discover')} </span>
+            <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
+              {t('servers.title')}
+            </span>
+          </h1>
+          <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
+            {t('servers.subtitle')}
+          </h2>
+        </div>
+      );
+    } else if (isClientsPage) {
+      return (
+        <div className="flex flex-col items-center w-full">
+          <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <span className="">{t('discover')} </span>
+            <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
+              {t('clients.title')}
+            </span>
+          </h1>
+          <h2 className="text-muted-foreground text-base sm:text-lg lg:text-xl">
+            {t('clients.subtitle')}
+          </h2>
+        </div>
+      );
+    }else {
+      return (
+        <div className="flex flex-col items-center w-full">
+          <h1 className="text-foreground dark:text-[#fff] leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <span>{t('home.find')} </span>
+            <span className="bg-gradient-to-r ml-3 from-blue-500 to-purple-600 bg-clip-text text-transparent">
+              {t('home.title')}
+            </span>
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg lg:text-xl">
+            {t('home.subtitle')}
+          </p>
+        </div>
+      );
+      
     }
   };
 
   const getStoredLink = () => {
-    switch (pathname) {
-      case '/servers':
-        return "/servers";
-      case '/clients':
-        return "/clients";
-      default:
-        return "/";
+    if (isServersPage) {
+      return pathname; // 返回当前完整路径，保留语言前缀
+    } else if (isClientsPage) {
+      return pathname;
     }
+    return pathname;
   };
 
   return (

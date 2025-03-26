@@ -26,8 +26,8 @@
       "signInMessage": "请登录后提交您的项目"
     },
     "nav": {
-      "servers": "服务器",
-      "clients": "Client",
+      "servers": "Servers",
+      "clients": "Clients",
       "blog": "博客",
       "feed": "动态",
       "about": "关于",
