@@ -79,7 +79,11 @@ export default function Feeds({submitList}:{
                       <span className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors truncate">
                         {project.name}
                       </span>
-                      <span className="px-1.5 py-0.5 text-xs rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
+                      <span className={`px-1.5 py-0.5 text-xs rounded-full ${
+                        project.type === 'client' 
+                          ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
+                          : 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300'
+                      }`}>
                         {project.type}
                       </span>
                     </div>
