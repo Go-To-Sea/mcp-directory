@@ -4,7 +4,7 @@ import { pathnames } from './config/pathnames';
 export default createMiddleware({
   locales: ['en', 'zh', 'ja', 'ko', 'pt', 'ru'],
   defaultLocale: 'en',
-  localeDetection: true,
+  localeDetection: false,
   localePrefix: 'always',
   pathnames, // 添加路径配置
 });
