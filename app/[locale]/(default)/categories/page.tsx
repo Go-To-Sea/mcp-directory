@@ -37,10 +37,14 @@ export default async function ({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }){
   const { q,tag } = await searchParams;
-  let projects: Project[] | any[] = [];
+  // 修改类型声明
+  let projects: Project[] = [];
   if (tag) {
-    projects = await getProjectsWithTag(tag as string, 1, 500);
+    const result = await getProjectsWithTag(tag as string, 1, 500);
+    // 确保返回的是数组
+    projects = Array.isArray(result) ? result : result.data;
   }
+  
   const projectsCount = await getProjectsCount('server');
   console.log('projects========',projects)
   return <Categories 

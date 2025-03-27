@@ -17,12 +17,18 @@ export default function ({
   page,
   projects,
   projectsCount,
-  classMenus
+  classMenus,
+  currentPage,
+  totalPages,
+  onPageChange
 }: {
   page: any;
   projects: Project[];
   projectsCount: number;
-  classMenus: ClassMenus[]
+  classMenus: ClassMenus[];
+  currentPage?: number;
+  totalPages?: number;
+  onPageChange?: (page: number) => void;
 }) {
   return (
     <div>
@@ -35,7 +41,13 @@ export default function ({
       <div className="mb-10">
         <Search />
       </div>
-      <Projects projects={projects} projectType={'client'} classMenus={classMenus}/>
+      <Projects 
+        projects={projects} 
+        projectType={'client'} 
+        classMenus={classMenus}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
     </div>
   );
 }

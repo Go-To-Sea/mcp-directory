@@ -37,26 +37,35 @@ export default async function ({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const { q,category } = await searchParams;
+  const resolvedSearchParams = await searchParams;
+  const { q, category, page = '1' } = resolvedSearchParams;
+  const currentPage = Math.max(1, parseInt(page as string, 10) || 1);
+  const pageSize = 40;
   let projects: Project[] | any[] = [];
+  let totalPages = 1;
   
   // 获取所有分类
-  const categories = await getCategories(1, 100,'server');
+  const categories = await getCategories(1, 100, 'server');
   
-   if (category) {
-    projects = await getProjectsByCategory(category as string,1, 500,'server');
-  }else if (q) {
-    projects = await getProjectsWithKeyword(q as string, 1, 500);
+  if (category) {
+    const result = await getProjectsByCategory(category as string, currentPage, pageSize, 'server', true) as { data: Project[], total: number };
+    projects = result.data;
+    totalPages = Math.ceil(result.total / pageSize);
+  } else if (q) {
+    const result = await getProjectsWithKeyword(q as string, currentPage, pageSize, true, 'server') as { data: Project[], total: number };
+    projects = result.data;
+    totalPages = Math.ceil(result.total / pageSize);
   } else {
-    projects = await getFeaturedProjects(1, 500);
+    const result = await getFeaturedProjects(currentPage, pageSize, true, 'server') as { data: Project[], total: number };
+    projects = result.data;
+    totalPages = Math.ceil(result.total / pageSize);
   }
-  const projectsCount = await getProjectsCount('server');
 
-  // 转换为 ClassMenus 组件需要的格式，使用 category
+  const projectsCount = await getProjectsCount('server');
   const classMenus: ClassMenus[] = categories.map(category => ({
     ...category,
     name: category.name,
-    href: `/servers?category=${encodeURIComponent(category.name)}`
+    href: `/servers?category=${category.name}`
   }));
 
   return (
@@ -65,6 +74,8 @@ export default async function ({
       projectsCount={projectsCount}  
       projects={projects}
       classMenus={classMenus}
+      currentPage={currentPage}
+      totalPages={totalPages}
     />
   );
 }

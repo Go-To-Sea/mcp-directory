@@ -13,33 +13,49 @@ import ProjectItem from "./item"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'  // 添加 useSearchParams
 import { useTranslations } from 'next-intl'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
 export default ({
   projects,
   loading,
   viewType,
   projectType,
-  classMenus
+  classMenus,
+  currentPage = 1,
+  totalPages = 1,
+  onPageChange
 }: {
   projects: Project[]
   loading?: boolean
   viewType?: 'default' | 'class',
   projectType?: 'server' | 'client',
   classMenus?: ClassMenus[]
+  currentPage?: number
+  totalPages?: number
+  onPageChange?: (page: number) => void
 }) => {
+  console.log('currentPage',currentPage)
+  console.log('totalPages',totalPages)
     const pathname = usePathname()
+    const searchParams = useSearchParams()  // 添加这行
     const t = useTranslations('projects')
     let filterProjects: Project[] = []
     if(projectType) {
-      filterProjects = projects.filter(p => p.type === projectType )
+      filterProjects = projects
     }
   if (viewType === 'class') {
     const servers = projects.filter(p => p.type === 'server')
     const clients = projects.filter(p => p.type === 'client')
-    
-
     return (
       <section className="relative space-y-12 " >
         <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
@@ -65,7 +81,7 @@ export default ({
               </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {servers.slice(0, 8).map((item: Project, idx: number) => (
+              {servers.slice(0,8).map((item: Project, idx: number) => (
                 <ProjectItem key={idx} project={item} pathPrefix={'/servers'}/>
               ))}
             </div>
@@ -89,11 +105,11 @@ export default ({
                 className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
               >
                 {t('clients.viewAll')}
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={14} />
+                <ArrowRight className="group-hover:projectstranslate-x-1 transition-transform" size={14} />
               </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {clients.slice(0, 8).map((item: Project, idx: number) => (
+              {clients.slice(0,8).map((item: Project, idx: number) => (
                 <ProjectItem key={idx} project={item} pathPrefix={'/clients'}/>
               ))}
             </div>
@@ -112,11 +128,75 @@ export default ({
       ) : null}
       <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
         {!loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {(projectType ? filterProjects : projects).map((item: Project, idx: number) => (
-              <ProjectItem key={idx} project={item} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {/* 添加数据分页切片 */}
+              {(projectType ? filterProjects : projects)
+                .map((item: Project, idx: number) => (
+                  <ProjectItem key={idx} project={item} />
+              ))}
+            </div>
+            
+            {/* 分页组件部分保持不变 */}
+            <div className="mt-8 flex justify-center">
+              <Pagination>
+                <PaginationContent>
+                  <PaginationItem>
+                    <PaginationPrevious 
+                      href={`${pathname}?${new URLSearchParams({
+                        ...Object.fromEntries(searchParams.entries()),
+                        page: (currentPage - 1).toString()
+                      })}`}
+                      className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
+                    />
+                  </PaginationItem>
+                  
+                  {/* 修改分页逻辑 */}
+                  {(() => {
+                    const pages = [];
+                    for (let i = 1; i <= totalPages; i++) {
+                      if (
+                        i === 1 ||
+                        i === totalPages ||
+                        (i >= currentPage - 1 && i <= currentPage + 1)
+                      ) {
+                        pages.push(
+                          <PaginationItem key={i}>
+                            <PaginationLink
+                              href={`${pathname}?${new URLSearchParams({
+                                ...Object.fromEntries(searchParams.entries()),
+                                page: i.toString()
+                              })}`}
+                              isActive={currentPage === i}
+                            >
+                              {i}
+                            </PaginationLink>
+                          </PaginationItem>
+                        );
+                      } else if (i === currentPage - 2 || i === currentPage + 2) {
+                        pages.push(
+                          <PaginationItem key={i}>
+                            <PaginationEllipsis />
+                          </PaginationItem>
+                        );
+                      }
+                    }
+                    return pages;
+                  })()}
+                  
+                  <PaginationItem>
+                    <PaginationNext 
+                      href={`${pathname}?${new URLSearchParams({
+                        ...Object.fromEntries(searchParams.entries()),
+                        page: (currentPage + 1).toString()
+                      })}`}
+                      className={currentPage >= totalPages ? 'pointer-events-none opacity-50' : ''}
+                    />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+            </div>
+          </>
         ) : (
           <div className="mx-auto text-center">{t('loading')}</div>
         )}

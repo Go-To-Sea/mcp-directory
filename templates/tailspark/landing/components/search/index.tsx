@@ -25,28 +25,30 @@ export default function Search({ query }: Props) {
     setContent(e.target.value)
   }, [])
 
-  const handleInputKeydown = useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault()
-        handleSubmit(content)
-      }
-    },
-    [content],
-  )
-
   const handleSubmit = useCallback(
     async (question: string) => {
-      if (!question.trim()) return
       try {
-        const url = `?q=${encodeURIComponent(question)}`
-        console.log("query url", url)
-        await router.push(url)
+        // 移除 trim 检查，允许空字符串搜索
+        const url = question.trim() 
+          ? `?q=${encodeURIComponent(question.trim())}` 
+          : window.location.pathname; // 空字符串时返回基础路径
+        console.log("query url", url);
+        await router.push(url);
       } catch (e) {
-        console.error("search failed: ", e)
+        console.error("search failed: ", e);
       }
     },
     [router],
+  )
+
+  const handleInputKeydown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        handleSubmit(content); // 直接传入 content，不需要额外检查
+      }
+    },
+    [content, handleSubmit],
   )
 
   useEffect(() => {

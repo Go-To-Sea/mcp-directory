@@ -203,47 +203,171 @@ export async function getProjectsCountByCategory(
   return data?.[0]?.count || 0;
 }
 
+// export async function getProjectsByCategory(
+//   category: string,
+//   page: number,
+//   limit: number,
+//   type?: 'server' | 'client'
+// ): Promise<Project[]> {
+//   const supabase = getSupabaseClient();
+//   let query = supabase
+//     .from("projects")
+//     .select("*")
+//     .eq("category", category)
+//     .order("sort", { ascending: true });
+
+//   // 如果指定了 type，添加类型筛选
+//   if (type) {
+//     query = query.eq('type', type);
+//   }
+
+//   const { data, error } = await query.range((page - 1) * limit, page * limit - 1);
+
+//   if (error) return [];
+
+//   return data;
+// }
+
+// 首先在 types/project.ts 中添加分页响应类型
+export interface PaginatedResponse<T> {
+  data: T[];
+  total: number;
+  currentPage: number;
+  pageSize: number;
+}
+
+// 然后修改 getFeaturedProjects 方法
+export async function getFeaturedProjects(
+  page: number,
+  limit: number,
+  withPagination: boolean = false,
+  type?: 'server' | 'client'
+): Promise<Project[] | { data: Project[], total: number }> {
+  const supabase = getSupabaseClient();
+  
+  // 计算分页范围
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  console.log('Debug getFeaturedProjects:', { page, limit, from, to });
+
+  // 构建基础查询
+  let baseQuery = supabase.from("projects").select("*", { count: "exact" });
+  
+  if (type) {
+    baseQuery = baseQuery.eq('type', type);
+  }
+
+  const { count } = await baseQuery;
+  console.log('Total count:', count);
+
+  const { data, error } = await baseQuery
+    .order("sort", { ascending: true })
+    .range(from, to);
+
+  console.log('Query result:', {
+    dataLength: data?.length,
+    hasError: !!error,
+    errorMessage: error?.message
+  });
+
+  if (error) return withPagination ? { data: [], total: 0 } : [];
+
+  if (withPagination) {
+    return {
+      data: data || [],
+      total: count || 0
+    };
+  }
+  
+  return data || [];
+}
+
+
 export async function getProjectsByCategory(
   category: string,
   page: number,
   limit: number,
-  type?: 'server' | 'client'
-): Promise<Project[]> {
+  type?: 'server' | 'client',
+  withPagination: boolean = false
+): Promise<Project[] | PaginatedResponse<Project>> {
   const supabase = getSupabaseClient();
-  let query = supabase
+  
+  // 构建基础查询
+  let baseQuery = supabase
     .from("projects")
-    .select("*")
-    .eq("category", category)
-    .order("sort", { ascending: true });
+    .select("*", { count: "exact" })
+    .eq("category", category);
 
   // 如果指定了 type，添加类型筛选
   if (type) {
-    query = query.eq('type', type);
+    baseQuery = baseQuery.eq('type', type);
   }
+  
+  // 获取总数
+  const { count } = await baseQuery;
 
-  const { data, error } = await query.range((page - 1) * limit, page * limit - 1);
+  // 获取分页数据
+  const { data, error } = await baseQuery
+    .order("sort", { ascending: true })
+    .range((page - 1) * limit, page * limit - 1);
 
-  if (error) return [];
+  if (error) return withPagination ? { data: [], total: 0, currentPage: page, pageSize: limit } : [];
 
+  // 根据 withPagination 参数决定返回格式
+  if (withPagination) {
+    return {
+      data: data || [],
+      total: count || 0,
+      currentPage: page,
+      pageSize: limit
+    };
+  }
+  
   return data;
 }
 
-export async function getFeaturedProjects(
+// 同样修改 getProjectsWithKeyword 方法
+export async function getProjectsWithKeyword(
+  keyword: string,
   page: number,
-  limit: number
-): Promise<Project[]> {
+  limit: number,
+  withPagination: boolean = false,
+  type?: 'server' | 'client'
+): Promise<Project[] | PaginatedResponse<Project>> {
   const supabase = getSupabaseClient();
 
-  const { data, error } = await supabase
+  // 构建基础查询
+  let baseQuery = supabase
     .from("projects")
-    .select("*")
-    // .eq("is_featured", true) 
-    // .eq("status", ProjectStatus.Created)
+    .select("*", { count: "exact" })
+    .or(`name.ilike.%${keyword}%,title.ilike.%${keyword}%,description.ilike.%${keyword}%`);
+
+  // 如果指定了类型，添加类型筛选
+  if (type) {
+    baseQuery = baseQuery.eq('type', type);
+  }
+
+  // 获取总数
+  const { count } = await baseQuery;
+
+  // 获取分页数据
+  const { data, error } = await baseQuery
     .order("sort", { ascending: true })
-    // .order("created_at", { ascending: true })
     .range((page - 1) * limit, page * limit - 1);
-  if (error) return [];
-  console.log('getFeaturedProjects.data====',data);
+
+  if (error) return withPagination ? { data: [], total: 0, currentPage: page, pageSize: limit } : [];
+
+  // 根据 withPagination 参数决定返回格式
+  if (withPagination) {
+    return {
+      data: data || [],
+      total: count || 0,
+      currentPage: page,
+      pageSize: limit
+    };
+  }
+  
   return data;
 }
 
@@ -282,52 +406,46 @@ export async function getRandomProjects(
   return data.sort(() => Math.random() - 0.5);
 }
 
-export async function getProjectsWithKeyword(
-  keyword: string,
-  page: number,
-  limit: number
-): Promise<Project[]> {
-  const supabase = getSupabaseClient();
-
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*")
-    .or(
-      `name.ilike.%${keyword}%,title.ilike.%${keyword}%,description.ilike.%${keyword}%`
-    )
-    // .eq("status", ProjectStatus.Created)
-    .order("sort", { ascending: true })
-    // .order("created_at", { ascending: true })
-    // .range((page - 1) * limit, page * limit - 1);
-
-  if (error) return [];
-
-  return data;
-}
-
 export async function getProjectsWithTag(
   tag: string,
   page: number,
   limit: number,
-  type?: 'server' | 'client'
-): Promise<Project[]> {
+  type?: 'server' | 'client',
+  withPagination: boolean = false
+): Promise<Project[] | PaginatedResponse<Project>> {
   const supabase = getSupabaseClient();
-  let query = supabase
+  
+  // 构建基础查询
+  let baseQuery = supabase
     .from("projects")
-    .select("*")
-    .ilike("tags", `%${tag}%`)
-    .order("sort", { ascending: true });
+    .select("*", { count: "exact" })
+    .ilike("tags", `%${tag}%`);
 
-  // 只有当传入 type 参数时才添加类型筛选
+  // 添加类型筛选
   if (type) {
-    query = query.eq("type", type);
+    baseQuery = baseQuery.eq("type", type);
   }
 
-  const { data, error } = await query;
+  // 获取总数
+  const { count } = await baseQuery;
 
-  if (error) return [];
+  // 获取分页数据
+  const { data, error } = await baseQuery
+    .order("sort", { ascending: true })
+    .range((page - 1) * limit, page * limit - 1);
+
+  if (error) return withPagination ? { data: [], total: 0, currentPage: page, pageSize: limit } : [];
+
+  if (withPagination) {
+    return {
+      data: data || [],
+      total: count || 0,
+      currentPage: page,
+      pageSize: limit
+    };
+  }
   
-  return data;
+  return data || [];
 }
 export async function getProjectsWithoutSummary(
   page: number,

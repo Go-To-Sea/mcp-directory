@@ -36,26 +36,35 @@ export default async function ({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const resolvedSearchParams = await searchParams;
-  const { q, category } = resolvedSearchParams;
+  const { q, category, page = '1' } = resolvedSearchParams;
+  const currentPage = parseInt(page as string, 10);
+  const pageSize = 40; // 每页显示数量
   let projects: Project[] | any[] = [];
-  
+  let totalPages = 1;
   // 获取所有分类
   const categories = await getCategories(1, 100,'client');
-  
+  console.log('resolvedSearchParams:', resolvedSearchParams); // 添加这行日志
+  // 在 page.tsx 中使用
   if (category) {
-    projects = await getProjectsByCategory(category as string, 1, 500, 'client');
+    const result = await getProjectsByCategory(category as string, currentPage, pageSize, 'client', true) as { data: Project[], total: number };
+    projects = result.data;
+    totalPages = Math.ceil(result.total / pageSize);
   } else if (q) {
-    projects = await getProjectsWithKeyword(q as string, 1, 500);
+    const result = await getProjectsWithKeyword(q as string, currentPage, pageSize, true,'client') as { data: Project[], total: number };
+    projects = result.data;
+    totalPages = Math.ceil(result.total / pageSize);
   } else {
-    projects = await getFeaturedProjects(1, 500);
+    const result = await getFeaturedProjects(currentPage, pageSize, true,'client') as { data: Project[], total: number };
+    projects = result.data;
+    console.log('total count:', result.total); // 添加这行日志
+    totalPages = Math.ceil(result.total / pageSize);
+    console.log('totalPages:', result.data); // 添加这行日志
   }
   const projectsCount = await getProjectsCount('client');
-
-  // 转换为 ClassMenus 组件需要的格式，使用 category
   const classMenus: ClassMenus[] = categories.map(category => ({
     ...category,
     name: category.name,
-    href: `/clients?category=${encodeURIComponent(category.name)}`
+    href: `/clients?category=${category.name}`,
   }));
 
   return (
@@ -64,6 +73,14 @@ export default async function ({
       projectsCount={projectsCount}  
       projects={projects}
       classMenus={classMenus}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      // 移除这个客户端函数，因为它在服务端组件中不能工作
+      // onPageChange={(page) => {
+      //   const url = new URL(window.location.href);
+      //   url.searchParams.set('page', page.toString());
+      //   window.location.href = url.toString();
+      // }}
     />
   );
 }

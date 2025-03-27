@@ -61,6 +61,7 @@ export default (props: {
           : 'opacity-0 max-h-0 pt-0'
       }`}>
         {categories.map((category, index) => (
+          
           <Link 
             href={category.href} 
             key={index} 
