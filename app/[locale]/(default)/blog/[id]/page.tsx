@@ -26,6 +26,15 @@ export async function generateMetadata(
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/blog/${resolvedParams.id}`,
     },
+    keywords: [
+      'MCP Server',
+      'MCP Client',
+      'Model Context Protocol',
+      'AI Development Tools',
+      'MCP Resources',
+      'MCP.ad',
+      'MCP Blog',
+    ],
   };
 }
 

@@ -16,6 +16,7 @@ export async function generateMetadata() {
     description: `Learn more about MCP.ad - The most comprehensive MCP server resource navigation platform. We provide a rich collection of Model Context Protocol tools to help developers integrate and use AI models more efficiently.`,
     keywords: [
       'MCP Server',
+      'MCP Client',
       'Model Context Protocol',
       'AI Development Tools',
       'MCP Resources',

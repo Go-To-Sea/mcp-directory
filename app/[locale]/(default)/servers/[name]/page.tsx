@@ -49,6 +49,14 @@ export async function generateMetadata(
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/servers/${canonicalName}`,
     },
+    keywords: [
+      'MCP Server',
+      'Model Context Protocol',
+      'MCP Resources',
+      'MCP.ad',
+      'Discover MCP Servers',
+      'MCP Server Detail'
+    ],
   };
 }
 

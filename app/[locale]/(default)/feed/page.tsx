@@ -18,7 +18,7 @@ export async function generateMetadata() {
   return {
     title: `MCP Feed | Latest Community Submissions & Updates`,
     description: `Stay updated with the latest MCP tools and projects submitted by our community. Discover new Model Context Protocol servers, clients, and integrations in real-time.`,
-    keywords: "MCP, Model Context Protocol, AI tools, community submissions, feed, updates, servers, clients",
+    keywords: "MCP, Model Context Protocol, AI tools,MCP Server,MCP Client, community submissions, feed, updates",
     openGraph: {
       title: "MCP Feed | Latest Community Submissions & Updates",
       description: "Stay updated with the latest MCP tools and projects submitted by our community.",

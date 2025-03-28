@@ -278,11 +278,11 @@
   },
   "projects": {
     "servers": {
-      "title": "MCP Servers（MCP服务器）",
+      "title": "MCP Servers（MCP 服务器）",
       "viewAll": "查看全部"
     },
     "clients": {
-      "title": "MCP Clients（MCP服务器）",
+      "title": "MCP Clients（MCP 客户端）",
       "viewAll": "查看全部"
     },
     "loading": "数据加载中..."
