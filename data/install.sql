@@ -77,8 +77,6 @@ CREATE TABLE replies (
     created_at timestamptz DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamptz DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(50) DEFAULT 'active',
-    user_nickname VARCHAR(255),
-    user_avatar_url VARCHAR(255),
     FOREIGN KEY (comment_id) REFERENCES comments(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
