@@ -55,3 +55,22 @@ export function formatUser(row: any): User {
 
   return user;
 }
+
+/**
+ * 插入或更新用户信息
+ * 如果用户已存在（基于email和signin_provider），则更新用户信息
+ * 如果用户不存在，则创建新用户
+ */
+export async function upsertUser(user: User) {
+  const supabase = getSupabaseClient();
+  const { data, error } = await supabase
+    .from("users")
+    .upsert(user, { 
+      onConflict: 'email,signin_provider',
+      ignoreDuplicates: false
+    })
+    .select();
+
+  if (error) throw error;
+  return data;
+}

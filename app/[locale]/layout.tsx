@@ -5,6 +5,7 @@ import NextTopLoader from 'nextjs-toploader';
 import { ClerkProvider } from '@clerk/nextjs';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/providers/theme';  // 修正 ThemeProvider 的导入路径
+import ClientLayout from './client-layout';  // 导入客户端布局组件
 
 export default async function LocaleLayout({
   children,
@@ -29,7 +30,9 @@ export default async function LocaleLayout({
         <div className="overflow-x-hidden antialiased bg-background text-foreground dark:bg-[#1c1817] dark:text-[#e7e5e4]">
           <NextTopLoader />
           <ThemeProvider>
-            {children}
+            <ClientLayout>
+              {children}
+            </ClientLayout>
           </ThemeProvider>
           <FooterInfo footer={messages.footer} />
         </div>
