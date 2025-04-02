@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation"
 import Markdown from "@/components/markdown"
 import BackToTop from "../backToTop/backToTop";
 import { useTranslations } from 'next-intl'
+import Comments from '../comments'
 
 // 在文件顶部添加 Tailwind 样式导入
 import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
@@ -377,6 +378,11 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
           </div>
         </motion.div>
       </div>
+      {/* 在项目详情下方添加评论区 */}
+      <div className="mt-8">
+        <Comments projectId={project.id} />
+      </div>
     </div>
+    
   )
 }

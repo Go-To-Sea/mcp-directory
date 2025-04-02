@@ -328,6 +328,12 @@
     "title": "Envie Seu Projeto MCP",
     "subtitle": "Junte-se à nossa crescente comunidade de ferramentas MCP. Compartilhe seu projeto com desenvolvedores em todo o mundo e ajude a moldar o futuro do ecossistema MCP."
   },
+  "comments": {
+    "title": "Comentários",
+    "placeholder": "Escreva seu comentário aqui...",
+    "submit": "Enviar",
+    "pleaseLogin": "Faça login para deixar um comentário"
+  },
   "submit": {
     "title": "Envie Seu Projeto MCP",
     "subtitle": "Junte-se à nossa crescente comunidade de ferramentas MCP. Compartilhe seu projeto com desenvolvedores em todo o mundo e ajude a moldar o futuro do ecossistema MCP.",

@@ -7,6 +7,12 @@
     "description": "Explore a vast collection of MCP servers and MCP clients at MCP.ad, your ultimate resource for Model Context Protocol integrations! ",
     "keywords": "MCP Servers, MCP Clients, Model Context Protocol, Claude integration, MCP AI Servers, MCP resources"
   },
+  "comments": {
+    "title": "Comments",
+    "placeholder": "Write your comment here...",
+    "submit": "Submit",
+    "pleaseLogin": "Please sign in to leave a comment"
+  },
   "projects": {
     "servers": {
       "title": "MCP Servers",

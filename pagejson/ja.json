@@ -87,6 +87,12 @@
     "title": "ユーザーレビュー",
     "date": "{date, date, medium}"
   },
+  "comments": {
+    "title": "コメント",
+    "placeholder": "コメントを書く...",
+    "submit": "送信",
+    "pleaseLogin": "コメントを投稿するにはログインしてください"
+  },
   "blogDetail": {
     "backToBlog": "ブログに戻る",
     "date": "{date, date, medium}",

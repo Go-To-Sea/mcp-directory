@@ -1,4 +1,5 @@
 export interface Project {
+  id: number;
   name: string;
   uuid: string;
   title?: string;
