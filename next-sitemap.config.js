@@ -14,10 +14,14 @@ module.exports = {
       { loc: '/submit' },
       // app 目录下的路由
       { loc: '/blog' },
+      { loc: '/blog/[id]' },
       { loc: '/categories' },
       { loc: '/category' },
       { loc: '/clients' },
-      { loc: '/servers' }
+      { loc: '/servers' },
+      // 添加动态路由
+      { loc: '/servers/[name]' },
+      { loc: '/clients/[name]' }
     ]
     
     return paths
@@ -25,6 +29,11 @@ module.exports = {
   
   // 确保正确处理动态路由
   transform: async (config, path) => {
+    // 处理动态路由参数
+    if (path.includes('[id]')) {
+      return null; // 跳过动态路由的 sitemap 生成
+    }
+    
     return {
       loc: path,
       changefreq: 'daily',
