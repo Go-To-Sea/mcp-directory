@@ -52,16 +52,14 @@ CREATE INDEX idx_projects_featured_query ON projects(is_featured, status, sort D
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     uuid VARCHAR(255) UNIQUE NOT NULL,
-    user_id INTEGER NOT NULL,
+    user_id VARCHAR(255) NOT NULL,
     user_nickname VARCHAR(255),
     user_avatar_url VARCHAR(255),
-    project_id INTEGER NOT NULL,
+    project_id VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     created_at timestamptz DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamptz DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
+    status VARCHAR(50) DEFAULT 'active'
 );
 
 CREATE INDEX idx_comments_user_query ON comments(user_id, created_at DESC);
@@ -69,16 +67,14 @@ CREATE INDEX idx_comments_user_query ON comments(user_id, created_at DESC);
 CREATE TABLE replies (
     id SERIAL PRIMARY KEY,
     uuid VARCHAR(255) UNIQUE NOT NULL,
-    comment_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
+    comment_id VARCHAR(255) NOT NULL,
+    user_id VARCHAR(255) NOT NULL,
     user_nickname VARCHAR(255),
     user_avatar_url VARCHAR(255),
     content TEXT NOT NULL,
     created_at timestamptz DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamptz DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (comment_id) REFERENCES comments(id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    status VARCHAR(50) DEFAULT 'active'
 );
 
 CREATE INDEX idx_replies_user_query ON replies(user_id, created_at DESC);

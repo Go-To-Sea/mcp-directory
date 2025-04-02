@@ -1,8 +1,8 @@
 export interface Reply {
   id: number;
   uuid: string;
-  comment_id: number;
-  user_id: number;
+  comment_id: string;
+  user_id: string;
   user_nickname?: string;
   user_avatar_url?: string;
   content: string;
