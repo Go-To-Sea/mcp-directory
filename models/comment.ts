@@ -11,6 +11,7 @@ export async function createComment(comment: Omit<Comment, 'id' | 'created_at' |
       .from("comments")
       .insert({
         ...comment,
+        project_id: comment.project_id, 
         uuid,
         status: 'active'
       })
@@ -31,16 +32,40 @@ export async function createComment(comment: Omit<Comment, 'id' | 'created_at' |
 
 export async function getProjectComments(projectId: number): Promise<Comment[]> {
   const supabase = getSupabaseClient();
-  const { data, error } = await supabase
-    .from("comments")
-    .select(`
-      *,
-      replies (*)
-    `)
-    .eq("project_id", projectId)
-    .eq("status", "active")
-    .order("created_at", { ascending: false });
+  try {
+    // 先获取评论
+    const { data: comments, error: commentsError } = await supabase
+      .from("comments")
+      .select("*")
+      .eq("project_id", projectId)
+      .eq("status", "active")
+      .order("created_at", { ascending: false });
 
-  if (error) return [];
-  return data;
+    if (commentsError) {
+      console.error('获取评论列表失败:', commentsError);
+      return [];
+    }
+
+    // 再获取回复
+    if (comments && comments.length > 0) {
+      const { data: replies, error: repliesError } = await supabase
+        .from("replies")
+        .select("*")
+        .in("comment_id", comments.map(c => c.id))
+        .eq("status", "active");
+
+      if (!repliesError && replies) {
+        // 将回复数据添加到对应的评论中
+        return comments.map(comment => ({
+          ...comment,
+          replies: replies.filter(reply => reply.comment_id === comment.id)
+        }));
+      }
+    }
+    
+    return comments || [];
+  } catch (err) {
+    console.error('获取评论列表错误:', err);
+    return [];
+  }
 }

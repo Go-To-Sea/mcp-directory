@@ -53,6 +53,15 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
   //   }
   // }
  
+  // 获取基础路径
+const getBasePath = () => {
+if (typeof window === 'undefined') {
+  // 服务端渲染时
+  return pathPrefix || `/${project.type}s`
+}
+// 客户端渲染时
+return pathPrefix || `/${project.type}s`
+}
   
   // Move renderTags function inside the component
   // 修改 renderTags 函数
@@ -60,7 +69,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
     const tagArray = typeof tags === 'string' ? tags.split(',') : tags;
     const basePath = pathname.split('?')[0];
     const displayTags = tagArray.slice(0, 2); // 只取前两个标签
-    
+
+
     return (
       <div className="flex relative z-10 items-center gap-1">
         {displayTags.map((tag, index) => (
@@ -102,7 +112,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
   return (
       // ... existing code ...
     <Link 
-      href={`${basePath}/${encodeURIComponent(project.name || '')}`}
+      href={`${getBasePath()}/${encodeURIComponent(project.name || '')}`}
       className="block"
     >
     <motion.div
