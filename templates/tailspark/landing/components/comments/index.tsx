@@ -44,9 +44,9 @@ export default function Comments({ projectId }: CommentsProps) {
     try {
       const newComment = await createComment({
         content: content.trim(),
-        project_id: projectId + "", // 直接传入 number 类型
+        project_id: projectId + "",
         user_id: userId,
-        user_nickname: user.firstName || user.username || "",
+        user_nickname: user.firstName || user.username || user.emailAddresses[0]?.emailAddress || "匿名用户",
         user_avatar_url: user.imageUrl || "",
         uuid: uuidv4(),
       });
@@ -109,18 +109,21 @@ export default function Comments({ projectId }: CommentsProps) {
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-2"> {/* 增加评论之间的间距 */}
         {comments.map((comment) => (
-          <div key={comment.uuid} className="flex gap-4">
+          <div 
+            key={comment.uuid} 
+            className="flex gap-4 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/70 transition-colors"
+          > {/* 添加背景色、内边距和悬停效果 */}
             <img
               src={comment.user_avatar_url || "/avatar-placeholder.png"}
               alt={comment.user_nickname}
               className="w-10 h-10 rounded-full"
             />
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-2"> {/* 增加用户信息与内容的间距 */}
                 <span className="font-medium text-gray-900 dark:text-white">
-                  {comment.user_nickname}
+                  {comment.user_nickname||'匿名用户'}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400">
                   {new Date(comment.created_at!).toLocaleDateString()}

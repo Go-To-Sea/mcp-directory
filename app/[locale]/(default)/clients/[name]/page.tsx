@@ -49,7 +49,7 @@ export async function generateMetadata(
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/clients/${canonicalName}`,
     },
-    keywords: `${project.name} MCP Client, Model Context Protocol Integration,MCP Server, ${project.name} AI Tools, Claude Integration, MCP Client Solutions, ${project.type || ''} Tools`,
+    keywords: `${project.name} MCP Client,'MCP Servers', 'MCP Clients', Model Context Protocol Integration,MCP Server, ${project.name} AI Tools, Claude Integration, MCP Client Solutions, ${project.type || ''} Tools`,
   };
 }
 

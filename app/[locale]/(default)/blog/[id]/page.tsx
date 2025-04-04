@@ -29,6 +29,8 @@ export async function generateMetadata(
     keywords: [
       'MCP Server',
       'MCP Client',
+      'MCP Servers',
+      'MCP Clients',
       'Model Context Protocol',
       'AI Development Tools',
       'MCP Resources',

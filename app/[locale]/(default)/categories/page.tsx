@@ -24,7 +24,7 @@ export async function generateMetadata() {
   return {
     title: `MCP Server Categories | ${pageJson?.metadata?.title}`,
     description: `Explore diverse MCP Server categories including data integration, API tools, document processing, and more. Find the perfect Model Context Protocol solution for your needs.`,
-    keywords: "MCP Categories, MCP Server Types, Model Context Protocol Categories, Claude Integration Solutions, AI Tool Categories, MCP Toolkit, Data Integration Tools, API Integration Tools",
+    keywords: "MCP Categories,'MCP Servers', 'MCP Clients', MCP Server Types, Model Context Protocol Categories, Claude Integration Solutions, AI Tool Categories, MCP Toolkit, Data Integration Tools, API Integration Tools",
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/categories`,
     },

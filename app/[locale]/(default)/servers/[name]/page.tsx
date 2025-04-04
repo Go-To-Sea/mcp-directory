@@ -51,6 +51,7 @@ export async function generateMetadata(
     },
     keywords: [
       'MCP Server',
+      'MCP Servers',
       'Model Context Protocol',
       'MCP Resources',
       'MCP.ad',

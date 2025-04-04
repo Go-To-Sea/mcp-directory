@@ -8,6 +8,16 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/terms-of-service`,
     },
+    keywords: [
+      'MCP Server',
+      'MCP Client',
+      'MCP Servers',
+      'MCP Clients',
+      'Model Context Protocol',
+      'AI Development Tools',
+      'MCP Resources',
+      'MCP.ad',
+    ],
   };
 }
 
