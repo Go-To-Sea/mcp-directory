@@ -5,7 +5,7 @@ export default createMiddleware({
   locales: ['en', 'zh', 'ja', 'ko', 'pt', 'ru'],
   defaultLocale: 'en',
   localeDetection: false,
-  localePrefix: 'always',
+  localePrefix: 'as-needed',
   pathnames, // 添加路径配置
 });
 
