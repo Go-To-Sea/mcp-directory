@@ -2,66 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url>
     <loc>https://mcp.ad/terms-of-service</loc>
-    <lastmod>2025-03-24T02:50:49.943Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.943Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority></url>
 <url>
     <loc>https://mcp.ad/privacy-policy</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
 </url>
 <url>
     <loc>https://mcp.ad/submit</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
 </url>
 <url>
     <loc>https://mcp.ad</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
 </url>
 <url>
     <loc>https://mcp.ad/blog</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/categories</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/clients</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/servers</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/usercases</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/feed</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://mcp.ad/about</loc>
-    <lastmod>2025-03-24T02:50:49.944Z</lastmod>
+    <lastmod>2025-04-06T02:50:49.944Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
