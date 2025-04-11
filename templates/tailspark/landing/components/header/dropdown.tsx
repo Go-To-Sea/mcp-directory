@@ -14,7 +14,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { cn } from "@/lib/utils"
 import { useLocale } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
-
 const languages = [
   {
     code: "en",
@@ -56,12 +55,28 @@ export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  const handleLanguageChange = (languageCode: string) => {
-    setIsOpen(false)
-    // 构建新的URL路径
-    const newPath = pathname.replace(new RegExp(`^/(${languages.map(l => l.code).join('|')})`), `/${languageCode}`)
-    router.push(newPath)
-  }
+  const handleLanguageChange = async (languageCode: string) => {
+    try {
+      setIsOpen(false);
+      
+      // 检查当前路径是否已经包含语言前缀
+      const hasLocalePrefix = languages.map(l => l.code).some(code => pathname.startsWith(`/${code}/`));
+      
+      let newPath;
+      if (hasLocalePrefix) {
+        newPath = `/${languageCode}${pathname.substring(pathname.indexOf('/', 1))}`;
+      } else {
+        newPath = `/${languageCode}${pathname === '/' ? '' : pathname}`;
+      }
+  
+      // 使用 replace 而不是 push，并添加错误处理
+      await router.replace(newPath);
+    } catch (error) {
+      console.error('Navigation failed:', error);
+      // 降级方案：使用传统导航
+      // window.location.href = newPath;
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
