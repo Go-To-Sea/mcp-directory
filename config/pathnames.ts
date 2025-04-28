@@ -4,6 +4,7 @@ export const pathnames = {
   '/blog': '/blog',
   '/usercases': '/usercases',
   '/faq': '/faq',
+  '/official/[name]': '/official/[name]',
   '/servers': '/servers',
   '/clients': '/clients',
   '/projects/[id]': '/projects/[id]',

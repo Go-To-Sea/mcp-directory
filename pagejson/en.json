@@ -22,6 +22,10 @@
       "title": "MCP Clients",
       "viewAll": "View All "
     },
+    "officials":{
+      "title": "MCP Officials",
+      "viewAll": "View All "
+    },
     "loading": "Loading data..."
   },
   "header": {

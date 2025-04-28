@@ -18,11 +18,12 @@ import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'  // 添加这行导入
 
 interface ProjectItemProps {
-  project: Project;
+  project: any;
   pathPrefix?: string; // 添加可选的路径前缀参数
+  custUrl?: string; // 添加可选的路径前缀参数
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
+const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix,custUrl }) => {
   const pathname = usePathname()
   const router = useRouter()
   const [isHovered, setIsHovered] = useState(false)
@@ -54,7 +55,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix }) => {
   // }
  
   // 获取基础路径
-const getBasePath = () => {
+const getBasePath  = () => {
 if (typeof window === 'undefined') {
   // 服务端渲染时
   return pathPrefix || `/${project.type}s`
@@ -112,7 +113,7 @@ return pathPrefix || `/${project.type}s`
   return (
       // ... existing code ...
     <Link 
-      href={`${getBasePath()}/${encodeURIComponent(project.name || '')}`}
+      href={custUrl? custUrl :` ${getBasePath()}/${encodeURIComponent(project.name || '')}`}
       className="block"
     >
     <motion.div

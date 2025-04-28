@@ -1,29 +1,11 @@
-/*
- * @Description: 
- * @Author: rendc
- * @Date: 2025-02-25 22:43:42
- * @LastEditors: rendc
- * @LastEditTime: 2025-03-23 11:55:00
- */
-"use client"
+import type { Metadata, ResolvingMetadata } from 'next';
+interface Props {
+  params: Promise<{ name: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+import { getProjectById, getProjectByName, getProjects } from "@/models/project";
 
-import { Project, ClassMenus } from "@/types/project"
-import ClassMenusComponent from "./classMenus"
-import ProjectItem from "./item"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import { usePathname, useSearchParams } from 'next/navigation'  // 添加 useSearchParams
-import { useTranslations } from 'next-intl'
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
+import ProjectContent from "@/templates/tailspark/landing/components/project/detail";
 export const officials = [
   {
     author_avatar_url: "https://mcp.so/_next/image?url=https%3A%2F%2Fr2.trys.ai%2Fimgs%2F206yyoqjn-1733449547133.png&w=48&q=75",
@@ -1551,216 +1533,78 @@ Navigate to "OAuth &amp; Permissions" and add these scopes:</p>
     type: "official",
   },
 ]
-export default ({
-  projects,
-  loading,
-  viewType,
-  projectType,
-  classMenus,
-  currentPage = 1,
-  totalPages = 1,
-  onPageChange
-}: {
-  projects: Project[]
-  loading?: boolean
-  viewType?: 'default' | 'class',
-  projectType?: 'server' | 'client',
-  classMenus?: ClassMenus[]
-  currentPage?: number
-  totalPages?: number
-  onPageChange?: (page: number) => void
-}) => {
-  console.log('currentPage',currentPage)
-  console.log('totalPages',totalPages)
-    const pathname = usePathname()
-    const searchParams = useSearchParams()  // 添加这行
-    const t = useTranslations('projects')
-    let filterProjects: Project[] = []
-    if(projectType) {
-      filterProjects = projects
-    }
-  if (viewType === 'class') {
-    const servers = projects.filter(p => p.type === 'server')
-    const clients = projects.filter(p => p.type === 'client')
-    console.log('servers',servers)
+import pageJson from "@/pagejson/en.json";
 
-
-    return (
-      <section className="relative space-y-12 " >
-        <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
-
-          {/* Official Section */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex flex-col">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-xl sm:text-2xl md:text-2xl font-bold text-gray-900 dark:text-white"
-                >
-                  {t('officials.title')}
-                </motion.h2>
-                <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
-              </div>
-              {/* <Link 
-                href="/clients"
-                className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
-              >
-                {t('clients.viewAll')}
-                <ArrowRight className="group-hover:projectstranslate-x-1 transition-transform" size={14} />
-              </Link> */}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {officials.slice(0,8).map((item: any, idx: number) => (
-                <ProjectItem key={idx} project={item} custUrl={'/official/'+encodeURIComponent(item.name)}/>
-              ))}
-            </div>
-          </div>
-
-          {/* Servers Section */}
-          <div className="mb-16">
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex flex-col">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-xl sm:text-2xl md:text-2xl font-bold text-gray-900 dark:text-white"
-                >
-                  {t('servers.title')}
-                </motion.h2>
-                <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
-              </div>
-              <Link 
-                href="/servers"
-                className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
-              >
-                {t('servers.viewAll')}
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={14} />
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {servers.slice(0,8).map((item: Project, idx: number) => (
-                <ProjectItem key={idx} project={item} pathPrefix={'/servers'}/>
-              ))}
-            </div>
-          </div>
-
-          {/* Clients Section */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex flex-col">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-xl sm:text-2xl md:text-2xl font-bold text-gray-900 dark:text-white"
-                >
-                  {t('clients.title')}
-                </motion.h2>
-                <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
-              </div>
-              <Link 
-                href="/clients"
-                className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
-              >
-                {t('clients.viewAll')}
-                <ArrowRight className="group-hover:projectstranslate-x-1 transition-transform" size={14} />
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {clients.slice(0,8).map((item: Project, idx: number) => (
-                <ProjectItem key={idx} project={item} pathPrefix={'/clients'}/>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
-    )
-  }
-  // 默认视图
-  return (
-    <section className="relative">
-      <span className="tags"></span>
-      <span className="tags"></span>
-      {pathname.includes('/servers') || pathname.includes('/clients') ? (
-        <ClassMenusComponent classMenus={classMenus} />
-      ) : null}
-      <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
-        {!loading ? (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {/* 添加数据分页切片 */}
-              {(projectType ? filterProjects : projects)
-                .map((item: Project, idx: number) => (
-                  <ProjectItem key={idx} project={item} />
-              ))}
-            </div>
-            
-            {/* 分页组件部分保持不变 */}
-            <div className="mt-8 flex justify-center">
-              <Pagination>
-                <PaginationContent>
-                  <PaginationItem>
-                    <PaginationPrevious 
-                      href={`${pathname}?${new URLSearchParams({
-                        ...Object.fromEntries(searchParams.entries()),
-                        page: (currentPage - 1).toString()
-                      })}`}
-                      className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
-                    />
-                  </PaginationItem>
-                  
-                  {/* 修改分页逻辑 */}
-                  {(() => {
-                    const pages = [];
-                    for (let i = 1; i <= totalPages; i++) {
-                      if (
-                        i === 1 ||
-                        i === totalPages ||
-                        (i >= currentPage - 1 && i <= currentPage + 1)
-                      ) {
-                        pages.push(
-                          <PaginationItem key={i}>
-                            <PaginationLink
-                              href={`${pathname}?${new URLSearchParams({
-                                ...Object.fromEntries(searchParams.entries()),
-                                page: i.toString()
-                              })}`}
-                              isActive={currentPage === i}
-                            >
-                              {i}
-                            </PaginationLink>
-                          </PaginationItem>
-                        );
-                      } else if (i === currentPage - 2 || i === currentPage + 2) {
-                        pages.push(
-                          <PaginationItem key={i}>
-                            <PaginationEllipsis />
-                          </PaginationItem>
-                        );
-                      }
-                    }
-                    return pages;
-                  })()}
-                  
-                  <PaginationItem>
-                    <PaginationNext 
-                      href={`${pathname}?${new URLSearchParams({
-                        ...Object.fromEntries(searchParams.entries()),
-                        page: (currentPage + 1).toString()
-                      })}`}
-                      className={currentPage >= totalPages ? 'pointer-events-none opacity-50' : ''}
-                    />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
-            </div>
-          </>
-        ) : (
-          <div className="mx-auto text-center">{t('loading')}</div>
-        )}
-      </div>
-    </section>
-  )
+// 添加一个新函数来获取相同类型的项目
+async function getSimilarProjects(limit: number = 10) {
+  // 使用现有的getProjects方法，然后在客户端过滤
+  const allProjects = await getProjects(1, 50);
+  
+  // 过滤出与当前项目类型相同的项目，并排除当前项目自身
+  const similarProjects = allProjects
+    .slice(0, limit); // 只取前10条
+    console.log('similarProjects:',allProjects, similarProjects);
+  return similarProjects;
 }
+// 确保 officials 是一个数组
+const officialsList = Array.isArray(officials) ? officials : [];
+const similarProjects = await getSimilarProjects();
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+  const id = resolvedSearchParams?.id;
+  
+  let project = officialsList.find((p:any) => p.name.toLowerCase() === resolvedParams.name.toLowerCase());
+  if (!project) return {};
+  
+  // 生成 canonical URL 时进行编码
+  const canonicalName = encodeURIComponent(project.name);
+  return {
+    title: `Discover MCP Clients For ${project.name} | ${pageJson?.metadata?.title}`,
+    description: project.description,
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/servers/${canonicalName}`,
+    },
+    keywords: [
+      'MCP Server',
+      'MCP Servers',
+      'Model Context Protocol',
+      'MCP Resources',
+      'MCP.ad',
+      'Discover MCP Servers',
+      'MCP Server Detail'
+    ],
+  };
+}
+export default async function ProjectDetail({ params, searchParams }: Props) {
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+  
+  // 从缓存的 officials 数组中查找匹配的数据
+  const decodedName = decodeURIComponent(resolvedParams.name);
+  const project = officialsList.find((p:any) => p.name.toLowerCase() === decodedName.toLowerCase());
+  console.log('从缓存的 officials 数组中查找匹配的数据:',officialsList,project);
+  if (!project) return {};
 
+  const tags = typeof project.tags === 'string' ? project.tags.split(',') : project.tags;
+  
+
+  project.content = `<div>${project.content}</div>`;
+  
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          <ProjectContent 
+          project={project} 
+          tags={tags || []} 
+          similarProjects={similarProjects}
+          pathPrefix="/servers"
+          hideComments={true}
+        />
+      </div>
+    </div>
+  );
+}

@@ -300,6 +300,10 @@
       "title": "MCP Clients（MCP 客户端）",
       "viewAll": "查看全部"
     },
+    "officials":{
+      "title": "MCP Officials（MCP 官方）",
+      "viewAll": "查看全部"
+    },
     "loading": "数据加载中..."
   },
   "comments": {

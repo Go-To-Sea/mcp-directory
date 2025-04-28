@@ -16,6 +16,10 @@
       "title": "Clientes MCP",
       "viewAll": "Ver Todos"
     },
+    "officials":{
+      "title": " Officials MCP",
+      "viewAll": "Ver Todos"
+    },
     "loading": "Carregando dados..."
   },
   "header": {

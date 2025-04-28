@@ -18,20 +18,20 @@ import Comments from '../comments'
 import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
 
 interface ProjectContentProps {
-  project: Project;
+  project: any;
   tags: string[];
   pathPrefix: string;
+  hideComments?: boolean;
   similarProjects?: Project[]; // 添加相似项目参数
 }
 // 添加 useEffect 来处理客户端渲染
 import { useEffect, useState } from 'react'
 
 // 将 handleShare 函数移到组件函数内部的最前面
-export default function ProjectContent({ project, tags, similarProjects = [],pathPrefix}: ProjectContentProps) {
+export default function ProjectContent({ project, tags, similarProjects = [],pathPrefix,hideComments}: ProjectContentProps) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations('projectDetail')
-
   // 添加分享处理函数
   const handleShare = (type: 'twitter' | 'facebook' | 'email') => {
     const url = window.location.href;
@@ -379,8 +379,8 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
         </motion.div>
       </div>
       {/* 在项目详情下方添加评论区 */}
-      <div className="mt-8">
-        <Comments projectId={project.id} />
+      <div className="mt-8" >
+        {!hideComments && <Comments projectId={project.id} />}
       </div>
     </div>
     

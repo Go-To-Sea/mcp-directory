@@ -81,6 +81,10 @@
       "title": "MCP Clients(MCP 클라이언트)",
       "viewAll": "모든 클라이언트 보기"
     },
+    "officials":{
+      "title": "MCP Officials",
+      "viewAll": "모든 클라이언트 보기"
+    },
     "loading": "데이터 로딩 중..."
   },
   "testimonials": {

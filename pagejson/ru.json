@@ -26,6 +26,10 @@
       "title": "MCP Клиенты",
       "viewAll": "Показать все"
     },
+    "officials":{
+      "title": "MCP Officials",
+      "viewAll": "Показать все"
+    },
     "loading": "Загрузка данных..."
   },
   "header": {

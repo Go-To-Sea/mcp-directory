@@ -79,7 +79,11 @@
     },
     "clients": {
       "title": "MCP Clients(MCPクライアント)",
-      "viewAll": "すべてのクライアントを表示"
+      "viewAll": "すべてのサーバーを表示"
+    },
+    "officials":{
+      "title": "MCP Officials",
+      "viewAll": "すべてのサーバーを表示"
     },
     "loading": "データを読み込み中..."
   },
