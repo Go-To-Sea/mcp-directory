@@ -11,6 +11,7 @@ import type React from "react"
 
 import { type ChangeEvent, useEffect, useRef, useState, useCallback } from "react"
 import { useRouter } from "next/navigation"
+import { useLocale } from "next-intl";
 
 interface Props {
   query?: string
@@ -18,6 +19,7 @@ interface Props {
 
 export default function Search({ query }: Props) {
   const router = useRouter()
+  const locale = useLocale();
   const [content, setContent] = useState("")
   const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -30,15 +32,15 @@ export default function Search({ query }: Props) {
       try {
         // 移除 trim 检查，允许空字符串搜索
         const url = question.trim() 
-          ? `?q=${encodeURIComponent(question.trim())}` 
-          : window.location.pathname; // 空字符串时返回基础路径
+          ? `/${locale}?q=${encodeURIComponent(question.trim())}` 
+          : `/${locale}${window.location.pathname}`; // 空字符串时返回基础路径
         console.log("query url", url);
         await router.push(url);
       } catch (e) {
         console.error("search failed: ", e);
       }
     },
-    [router],
+    [router, locale],
   )
 
   const handleInputKeydown = useCallback(

@@ -10,6 +10,7 @@ import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 export default (props: {
     classMenus?: ClassMenus[];
 }) => {
@@ -18,6 +19,7 @@ export default (props: {
   const currentTag = searchParams.get('category');
   const [isExpanded, setIsExpanded] = useState(true);
   const t = useTranslations('categories');
+  const locale = useLocale();
   const handleExpandToggle = () => {
     if (isExpanded) {
       // 收起时，将标签区域滚动到顶部
@@ -63,7 +65,7 @@ export default (props: {
         {categories.map((category, index) => (
           
           <Link 
-            href={category.href} 
+            href={`/${locale}${category.href}`} 
             key={index} 
             className={`flex-shrink-0 border rounded-[4px] py-1.5 px-4 transition-all duration-200 
               ${currentTag === category.name 

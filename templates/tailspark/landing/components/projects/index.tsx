@@ -24,6 +24,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
+import { useLocale } from 'next-intl'
+
 export const officials = [
   {
     author_avatar_url: "https://mcp.so/_next/image?url=https%3A%2F%2Fr2.trys.ai%2Fimgs%2F206yyoqjn-1733449547133.png&w=48&q=75",
@@ -1570,6 +1572,8 @@ export default ({
   totalPages?: number
   onPageChange?: (page: number) => void
 }) => {
+  const locale = useLocale()
+
   console.log('currentPage',currentPage)
   console.log('totalPages',totalPages)
     const pathname = usePathname()
@@ -1612,7 +1616,7 @@ export default ({
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {officials.slice(0,8).map((item: any, idx: number) => (
-                <ProjectItem key={idx} project={item} custUrl={'/official/'+encodeURIComponent(item.name)}/>
+                <ProjectItem key={idx} project={item} custUrl={'/'+locale+'/official/'+encodeURIComponent(item.name)}/>
               ))}
             </div>
           </div>
@@ -1631,7 +1635,7 @@ export default ({
                 <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
               </div>
               <Link 
-                href="/servers"
+                href={`/${locale}/servers`}
                 className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
               >
                 {t('servers.viewAll')}
@@ -1659,7 +1663,7 @@ export default ({
                 <div className="h-1 w-16 sm:w-20 bg-primary mt-2 rounded-full"></div>
               </div>
               <Link 
-                href="/clients"
+                href={`/${locale}/clients`}
                 className="group flex items-center text-primary hover:text-primary/80 transition-colors gap-1 sm:gap-2 text-xs sm:text-sm font-medium"
               >
                 {t('clients.viewAll')}

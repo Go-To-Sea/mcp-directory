@@ -1,7 +1,11 @@
+"use client"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@radix-ui/react-accordion";
 import Image from "next/image";
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 const HeroSection = () => {
+  const locale = useLocale();
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
@@ -48,7 +52,7 @@ const HeroSection = () => {
               </AccordionItem>
               {/* Add more AccordionItems as needed */}
             </Accordion>
-            <a href="#" className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700">Shop Collection</a>
+            <Link href={`/${locale}/collection`} className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700">Shop Collection</Link>
           </div>
         </div>
       </div>

@@ -1,17 +1,19 @@
 "use client"
 import { HiOutlineMail } from "react-icons/hi";
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import Link from 'next/link';
 
 export default function About() {
   const t = useTranslations('about');
+  const locale = useLocale();
   
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12">
       {/* Breadcrumb */}
       <div className="flex items-center mb-8">
         <div className="text-sm text-gray-500">
-          <Link href="/" className="hover:text-primary">{t('nav.home')}</Link>
+          <Link href={`/${locale}`} className="hover:text-primary">{t('nav.home')}</Link>
           <span className="mx-2">›</span>
           <span>{t('nav.about')}</span>
         </div>

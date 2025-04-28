@@ -21,7 +21,7 @@ export default function Feeds({submitList}:{
   const locale = useLocale()
 
   const handleSubmitClick = (e: React.MouseEvent) => {
-    router.push('/submit');
+    router.push(`/${locale}/submit`);
   };
 
   return (
@@ -43,7 +43,7 @@ export default function Feeds({submitList}:{
               </h2>
             </div>
             <Link 
-              href="/submit"
+              href={`/${locale}/submit`}
               className="text-primary underline underline-offset-2 transition-colors text-sm sm:text-base"
             >
               {t('submit')}
@@ -55,7 +55,7 @@ export default function Feeds({submitList}:{
           {submitList.map((project, index) => (
             <Link 
               key={project.uuid}
-              href={`/${project.type}s/${project.name}`}
+              href={`/${locale}/${project.type}s/${project.name}`}
               className="block w-full"
             >
               <motion.div
@@ -97,7 +97,7 @@ export default function Feeds({submitList}:{
                         {(typeof project.tags === 'string' ? project.tags.split(',') : project.tags).map((tag, i) => (
                           <Link 
                             key={i}
-                            href={`/categories/?tag=${tag || ''}`}
+                            href={`/${locale}/categories/?tag=${tag || ''}`}
                             className="inline-flex items-center px-2.5 py-0.5 text-xs border transition-all cursor-pointer hover:bg-gradient-to-r hover:from-blue-500/5 hover:to-purple-500/5"
                             style={{
                               background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",

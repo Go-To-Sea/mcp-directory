@@ -8,14 +8,13 @@
 "use client"
 
 import type React from "react"
-
-// 修改这行，添加 ArrowRight
 import { Star, ArrowRight } from "lucide-react"
 import type { Project } from "@/types/project"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { usePathname, useRouter } from 'next/navigation'
-import Link from 'next/link'  // 添加这行导入
+import Link from 'next/link'
+import { useLocale } from 'next-intl';
 
 interface ProjectItemProps {
   project: any;
@@ -23,14 +22,15 @@ interface ProjectItemProps {
   custUrl?: string; // 添加可选的路径前缀参数
 }
 
-const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix,custUrl }) => {
+const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix, custUrl }) => {
   const pathname = usePathname()
   const router = useRouter()
+  const locale = useLocale();
   const [isHovered, setIsHovered] = useState(false)
   const [isStarred, setIsStarred] = useState(false)
 
-  // 获取基础路径
-  const basePath = pathPrefix || '/'+project.type+'s';
+  // 获取基础路径，包含语言前缀
+  const basePath = pathPrefix ? `/${locale}${pathPrefix}` : `/${locale}/${project.type}s`;
   
   // 判断是否在首页
   const isHomePage = pathname === '/';
@@ -42,9 +42,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix,custUrl }
     setIsStarred(!isStarred)
   }
   const handleProjectClick = () => {
-    // 修改为与路由结构匹配的路径
-    const detailPath = `/project/${encodeURIComponent(project.name || '')}`  // 添加空字符串作为默认值，处理 undefined 情况
-    router.push(detailPath)
+    // 修改为与路由结构匹配的路径，添加语言前缀
+    const detailPath = `/${locale}/project/${encodeURIComponent(project.name || '')}` 
+    router.push(`/${locale}${detailPath}`)
   }
   // 合并两个 handleLinkClick 函数的功能
   // const handleLinkClick = (e: React.MouseEvent) => {
@@ -55,13 +55,14 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, pathPrefix,custUrl }
   // }
  
   // 获取基础路径
-const getBasePath  = () => {
-if (typeof window === 'undefined') {
-  // 服务端渲染时
-  return pathPrefix || `/${project.type}s`
-}
-// 客户端渲染时
-return pathPrefix || `/${project.type}s`
+const getBasePath = () => {
+  const prefix = `/${locale}`
+  if (typeof window === 'undefined') {
+    // 服务端渲染时
+    return pathPrefix ? `${prefix}${pathPrefix}` : `${prefix}/${project.type}s`
+  }
+  // 客户端渲染时
+  return pathPrefix ? `${prefix}${pathPrefix}` : `${prefix}/${project.type}s`
 }
   
   // Move renderTags function inside the component
@@ -80,7 +81,7 @@ return pathPrefix || `/${project.type}s`
             className="inline-flex items-center transition-all flex-shrink-0"
           >
             <Link
-              href={`/categories/?tag=${encodeURIComponent(tag.trim())}`}
+              href={`/${locale}/categories/?tag=${encodeURIComponent(tag.trim())}`}
               onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center px-2 py-0.5 text-xs rounded whitespace-nowrap"
               style={{
@@ -113,7 +114,7 @@ return pathPrefix || `/${project.type}s`
   return (
       // ... existing code ...
     <Link 
-      href={custUrl? custUrl :` ${getBasePath()}/${encodeURIComponent(project.name || '')}`}
+      href={custUrl? custUrl :`/${locale}${getBasePath()}/${encodeURIComponent(project.name || '')}`}
       className="block"
     >
     <motion.div

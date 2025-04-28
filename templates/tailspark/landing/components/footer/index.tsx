@@ -1,3 +1,4 @@
+
 /*
  * @Description: 
  * @Author: rendc
@@ -17,8 +18,10 @@
 import { Footer, Item } from "@/types/landing";
 import { Mail, Github, Twitter } from "lucide-react";
 import Link from "next/link";
+import { useLocale } from 'next-intl'
 
 export default ({ footer }: { footer?: Footer }) => {
+  const locale = useLocale();
   return (
     <footer className="relative z-100 bg-gray-50 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-800">
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-20">
@@ -87,10 +90,10 @@ export default ({ footer }: { footer?: Footer }) => {
             {footer?.copyright?.text || "All rights reserved."}
           </p>
           <div className="flex space-x-6">
-            <Link href="/privacy-policy" className="text-gray-500 dark:text-gray-400 text-sm hover:text-[#9333ea] transition-colors">
+            <Link href={`/${locale}/privacy-policy`} className="text-gray-500 dark:text-gray-400 text-sm hover:text-[#9333ea] transition-colors">
               <p>Privacy Policy</p>
             </Link>
-            <Link href="/terms-of-service" className="text-gray-500 dark:text-gray-400 text-sm hover:text-[#9333ea] transition-colors">
+            <Link href={`/${locale}/terms-of-service`} className="text-gray-500 dark:text-gray-400 text-sm hover:text-[#9333ea] transition-colors">
               <p>Terms of Service</p>
             </Link>
           </div>

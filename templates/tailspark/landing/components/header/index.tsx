@@ -20,9 +20,10 @@ import {
   ClerkProvider,
   useAuth  // 添加这行
 } from '@clerk/nextjs'
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function HeaderComponent({ header }: { header: Header }) {
+  const locale = useLocale();
   const t = useTranslations('header');
   const pathname = usePathname();
   const router = useRouter();
@@ -62,7 +63,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
               <div className="flex-shrink-0">
                 <a 
                   className="flex items-center py-3 px-2 text-primary font-bold hover:opacity-80 transition-opacity"
-                  href="/"
+                  href={`/${locale}`}
                 >
                   <img
                     src={header?.brand?.avatar?.src || "/logo.png"}
@@ -87,7 +88,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
             <div className="hidden md:flex items-center justify-between flex-1 space-x-2">
               <div className="flex items-center space-x-2">
                 <a
-                  href="/servers"
+                  href={`/${locale}/servers`}
                   className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
                     pathname === "/servers" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                   }`}
@@ -96,7 +97,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                   {t('nav.servers')}
                 </a>
                 <a
-                  href="/clients"
+                  href={`/${locale}/clients`}
                   className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
                     pathname === "/clients" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                   }`}
@@ -106,7 +107,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                 </a>
                 {/* 添加 usercases 菜单项 */}
                 <a
-                  href="/usercases"
+                  href={`/${locale}/usercases`}
                   className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
                     pathname === "/usercases" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                   }`}
@@ -117,7 +118,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                 <div className="flex items-center space-x-2">
                   {/* ... 其他导航链接 ... */}
                   <a
-                    href="/blog"
+                    href={`/${locale}/blog`}
                     className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
                       pathname === "/blog" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                     }`}
@@ -127,7 +128,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                   </a>
               
                   <a
-                    href="/feed"
+                    href={`/${locale}/feed`}
                     className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
                       pathname === "/feed" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                     }`}
@@ -137,7 +138,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                   </a>
 
                   <a
-                    href="/about"
+                    href={`/${locale}/about`}
                     className={`px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors inline-flex items-center ${
                       pathname === "/about" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                     }`}
@@ -151,7 +152,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
               </div>
               <div className="flex items-center space-x-2">
                 <a 
-                  href="/submit"
+                  href={`/${locale}/submit`}
                   className="inline-block"
                   onClick={handleSubmitClick}
                 >
@@ -202,7 +203,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                   <div className="flex-1 py-4">
                     
                     <a
-                      href="/servers"
+                      href={`/${locale}/servers`}
                       className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/servers" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
@@ -212,7 +213,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                       {t('nav.servers')}
                     </a>
                     <a
-                      href="/clients"
+                      href={`/${locale}/clients`}
                       className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/clients" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
@@ -223,7 +224,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     </a>
                     {/* 添加 usercases 菜单项到移动端菜单 */}
                     <a
-                      href="/usercases"
+                      href={`/${locale}/usercases`}
                       className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/usercases" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
@@ -233,7 +234,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                       {t('nav.usercases')}
                     </a>
                     <a
-                      href="/blog"
+                      href={`/${locale}/blog`}
                       className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/blog" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
@@ -244,7 +245,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     </a>
                     
                     <a
-                      href="/feed"
+                      href={`/${locale}/feed`}
                       className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/feed" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
@@ -255,7 +256,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     </a>
 
                     <a
-                      href="/about"
+                      href={`/${locale}/about`}
                       className={`w-full justify-start px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 inline-flex items-center ${
                         pathname === "/about" ? "bg-gray-100 dark:bg-gray-800 text-primary" : ""
                       }`}
@@ -269,7 +270,7 @@ export default function HeaderComponent({ header }: { header: Header }) {
                     <div className="px-6 py-3">
                       <div className="w-full">
                         <a 
-                          href="/submit"
+                          href={`/${locale}/submit`}
                           className="block w-full"
                           onClick={(e) => {
                             e.preventDefault();
