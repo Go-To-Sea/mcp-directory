@@ -11,9 +11,11 @@ import { motion } from "framer-motion"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl';
 
 export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
   const t = useTranslations('blog')
+  const locale = useLocale();
 
   return (
     <div className="relative pb-16 pt-6">
@@ -72,7 +74,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
             // 首页样式：flex 布局
             <div className="flex flex-wrap justify-center gap-4">
               {/* 第一篇博客卡片 */}
-              <Link href="/blog/Model Context Protocol" className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+              <Link  href={`/${locale}/Model Context Protocol`} className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     Introducing the Model Context Protocol
@@ -99,7 +101,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               
               {/* 其他两篇博客卡片使用相同结构 */}
               {/* 第二篇博客卡片 */}
-              <Link href="/blog/How Using MCP" className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+              <Link  href={`/${locale}/blog/How Using MCP`} className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     How to Get Started Using MCP
@@ -125,7 +127,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               </Link>
               
               {/* 第三篇博客卡片 */}
-              <Link href="/blog/AI With MCP" className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+              <Link href={`/${locale}/blog/AI With MCP`} className="group-grow-0 min-w-[280px] max-w-[400px] w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full p-6">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     AI is Making Websites Obsolete with MCP
@@ -154,7 +156,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
             // 非首页保持原有的 grid 布局和样式
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
               {/* 第一篇博客卡片 */}
-              <Link href="/blog/Model Context Protocol" className="group">
+              <Link  href={`/${locale}/blog/Model Context Protocol`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
                   <div className="relative overflow-hidden">
                     <img 
@@ -187,7 +189,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               
               {/* 其他博客卡片使用相同结构 */}
               {/* 第二篇博客卡片 */}
-              <Link href="/blog/How Using MCP" className="group">
+              <Link  href={`/${locale}/blog/How Using MCP`} className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
                   <div className="relative overflow-hidden">
                     <img 
@@ -219,7 +221,7 @@ export default function Blog({ isHomePage = false }: { isHomePage?: boolean }) {
               </Link>
               
               {/* 第三篇博客卡片 */}
-              <Link href="/blog/AI With MCP" className="group">
+              <Link href={`/${locale}/AI With MCP`}  className="group">
                 <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
                   <div className="relative overflow-hidden">
                     <img 

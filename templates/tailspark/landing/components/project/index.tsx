@@ -8,6 +8,7 @@ import { Project } from "@/types/project";
 import Projects from "../projects";
 import Stars from "../stars";
 import moment from "moment";
+import { useTranslations, useLocale } from 'next-intl';
 
 export default ({
   category,
@@ -21,6 +22,7 @@ export default ({
   const tagsArr = project.tags 
     ? (typeof project.tags === 'string' ? project.tags.split(",") : project.tags)
     : [];
+  const locale = useLocale();
 
   return (
     <div className="mx-auto min-height-[200px] max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
@@ -79,7 +81,7 @@ export default ({
 
             <div className="flex flex-col gap-4 font-semibold sm:flex-row">
               <a
-                href={project.url}
+                href={`/${locale}`+project.url}
                 target="_blank"
                 className="flex items-center gap-2 rounded-md border border-solid bg-primary text-white px-6 py-3 truncate"
               >

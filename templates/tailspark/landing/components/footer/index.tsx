@@ -19,7 +19,7 @@ import { Footer, Item } from "@/types/landing";
 import { Mail, Github, Twitter } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from 'next-intl'
-
+ 
 export default ({ footer }: { footer?: Footer }) => {
   const locale = useLocale();
   return (
@@ -59,7 +59,7 @@ export default ({ footer }: { footer?: Footer }) => {
                   {item?.children?.map((child: Item, iidx: number) => (
                     <li key={iidx}>
                       <Link 
-                        href={child?.url || "#"} 
+                        href={`/${locale}${child?.url}` || "#"} 
                         className="text-gray-600 text-[14px] dark:text-gray-400 hover:text-[#9333ea] transition-colors dark:hover:text-primary "
                         target={child?.target || '_blank'}
                       >

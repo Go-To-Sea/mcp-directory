@@ -165,27 +165,27 @@
           "children": [
             {
               "title": "MCP Servers",
-              "url": "https://mcp.ad/servers",
+              "url": "/servers",
               "target": "_blank"
             },
             {
               "title": "MCP Clients",
-              "url": "https://mcp.ad/clients",
+              "url": "/clients",
               "target": "_blank"
             },
             {
               "title": "MCP 博客",
-              "url": "https://mcp.ad/blog",
+              "url": "/blog",
               "target": "_blank"
             },
             {
               "title": "MCP 动态",
-              "url": "https://mcp.ad/feed",
+              "url": "/feed",
               "target": "_blank"
             },
             {
               "title": "关于 MCP",
-              "url": "https://mcp.ad/about",
+              "url": "/about",
               "target": "_blank"
             }
           ]

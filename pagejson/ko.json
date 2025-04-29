@@ -262,27 +262,27 @@
           "children": [
             {
               "title": "MCP 서버",
-              "url": "https://mcp.ad/servers",
+              "url": "/servers",
               "target": "_blank"
             },
             {
               "title": "MCP 클라이언트",
-              "url": "https://mcp.ad/clients",
+              "url": "/clients",
               "target": "_blank"
             },
             {
               "title": "MCP 블로그",
-              "url": "https://mcp.ad/blog",
+              "url": "/blog",
               "target": "_blank"
             },
             {
               "title": "MCP 피드",
-              "url": "https://mcp.ad/feed",
+              "url": "/feed",
               "target": "_blank"
             },
             {
               "title": "MCP 소개",
-              "url": "https://mcp.ad/about",
+              "url": "/about",
               "target": "_blank"
             }
           ]
@@ -312,17 +312,17 @@
           "children": [
             {
               "title": "개인정보 보호정책",
-              "url": "https://mcp.ad/privacy",
+              "url": "/privacy",
               "target": "_blank"
             },
             {
               "title": "이용 약관",
-              "url": "https://mcp.ad/terms",
+              "url": "/terms",
               "target": "_blank"
             },
             {
               "title": "쿠키 정책",
-              "url": "https://mcp.ad/cookies",
+              "url": "/cookies",
               "target": "_blank"
             }
           ]

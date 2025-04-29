@@ -13,6 +13,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import type { Project } from "@/types/project"
 import Link from 'next/link'
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function RecommendedProject({ 
   project 
@@ -20,11 +21,12 @@ export default function RecommendedProject({
   project: Project  // 确保使用正确的 Project 类型
 }) {
   const router = useRouter()
+  const locale = useLocale();
 
   return (
     <Link
       className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow cursor-pointer"
-      href={`/project/${encodeURIComponent(project.name || '')}`}
+      href={`/${locale}/project/${encodeURIComponent(project.name || '')}`}
     >
       <div className="flex items-center space-x-3 mb-3">
         <img

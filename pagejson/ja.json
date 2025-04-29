@@ -233,27 +233,27 @@
           "children": [
             {
               "title": "MCPサーバー",
-              "url": "https://mcp.ad/servers",
+              "url": "/servers",
               "target": "_blank"
             },
             {
               "title": "MCPクライアント",
-              "url": "https://mcp.ad/clients",
+              "url": "/clients",
               "target": "_blank"
             },
             {
               "title": "MCPブログ",
-              "url": "https://mcp.ad/blog",
+              "url": "/blog",
               "target": "_blank"
             },
             {
               "title": "MCPフィード",
-              "url": "https://mcp.ad/feed",
+              "url": "/feed",
               "target": "_blank"
             },
             {
               "title": "MCP概要",
-              "url": "https://mcp.ad/about",
+              "url": "/about",
               "target": "_blank"
             }
           ]
@@ -283,17 +283,17 @@
           "children": [
             {
               "title": "プライバシーポリシー",
-              "url": "https://mcp.ad/privacy",
+              "url": "/privacy",
               "target": "_blank"
             },
             {
               "title": "利用規約",
-              "url": "https://mcp.ad/terms",
+              "url": "/terms",
               "target": "_blank"
             },
             {
               "title": "クッキーポリシー",
-              "url": "https://mcp.ad/cookies",
+              "url": "/cookies",
               "target": "_blank"
             }
           ]

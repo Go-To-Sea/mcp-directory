@@ -11,9 +11,8 @@ import ProjectItem from "../projects/item";
 import { useRouter } from "next/navigation"
 import Markdown from "@/components/markdown"
 import BackToTop from "../backToTop/backToTop";
-import { useTranslations } from 'next-intl'
 import Comments from '../comments'
-
+import { useTranslations, useLocale } from 'next-intl';
 // 在文件顶部添加 Tailwind 样式导入
 import '@/app/globals.css'  // 确保这个文件包含了所有需要的 Tailwind 样式
 
@@ -129,6 +128,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
   if (!mounted) {
     return null;
   }
+  const locale = useLocale();
 
   return (
     <div className="relative w-full overflow-hidden ">
@@ -136,7 +136,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
       {/* 修改面包屑导航 */}
       <nav className="flex items-center mb-2 text-sm">
         <Link 
-          href="/" 
+          href={`/${locale}/`} 
           className="flex items-center px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors group"
         >
           <Home size={16} className="mr-1.5 text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors" />
@@ -228,7 +228,7 @@ export default function ProjectContent({ project, tags, similarProjects = [],pat
                 {tags?.map((tag, index) => (
                   <Link
                     key={index}
-                    href={`/categories/?tag=${encodeURIComponent(tag.trim())}`}
+                    href={`/${locale}/categories/?tag=${encodeURIComponent(tag.trim())}`}
                     className="inline-flex items-center px-2.5 py-0.5 text-xs border transition-all cursor-pointer hover:bg-gradient-to-r hover:from-blue-500/5 hover:to-purple-500/5"
                     style={{
                       background: "linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05))",

@@ -252,27 +252,27 @@
           "children": [
             {
               "title": "Servidores MCP",
-              "url": "https://mcp.ad/servers",
+              "url": "/servers",
               "target": "_blank"
             },
             {
               "title": "Clientes MCP",
-              "url": "https://mcp.ad/clients",
+              "url": "/clients",
               "target": "_blank"
             },
             {
               "title": "Blog MCP",
-              "url": "https://mcp.ad/blog",
+              "url": "/blog",
               "target": "_blank"
             },
             {
               "title": "Feed MCP",
-              "url": "https://mcp.ad/feed",
+              "url": "/feed",
               "target": "_blank"
             },
             {
               "title": "Sobre MCP",
-              "url": "https://mcp.ad/about",
+              "url": "/about",
               "target": "_blank"
             }
           ]

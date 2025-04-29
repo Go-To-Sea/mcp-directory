@@ -13,6 +13,7 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl';
 
 // 博客数据 - 第一篇文章
 const blogPosts = [
@@ -317,6 +318,7 @@ export default function BlogPost() {
   const t = useTranslations('blogDetail')
   const params = useParams()
   const id = params.id
+  const locale = useLocale();
   
   // 根据ID查找对应的博客文章
   const blogPost = blogPosts.find(post => post.id === id) || blogPosts[0]
@@ -345,7 +347,7 @@ export default function BlogPost() {
           transition={{ duration: 0.5 }}
         >
           <Link 
-            href="/blog" 
+            href={`/${locale}/blog`}
             className="inline-flex items-center text-primary hover:text-primary/80 mb-12 group"
           >
             <ArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
