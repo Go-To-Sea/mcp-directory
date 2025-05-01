@@ -3,7 +3,7 @@
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
  * @LastEditors: rendc
- * @LastEditTime: 2025-03-23 11:55:00
+ * @LastEditTime: 2025-05-01 19:50:51
  */
 "use client"
 
@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/pagination"
 import { useLocale } from 'next-intl'
 
-export const officials = [
+ const officials = [
   {
     author_avatar_url: "https://mcp.so/_next/image?url=https%3A%2F%2Fr2.trys.ai%2Fimgs%2F206yyoqjn-1733449547133.png&w=48&q=75",
     author_name: "modelcontextprotocol",
