@@ -1,10 +1,9 @@
-
 /*
  * @Description: 
  * @Author: rendc
  * @Date: 2025-02-25 22:43:42
- * @LastEditors: rendc
- * @LastEditTime: 2025-03-17 22:56:49
+ * @LastEditors: YourName
+ * @LastEditTime: 2025-05-08 10:20:39
  */
 /*
  * @Description: 
@@ -59,7 +58,7 @@ export default ({ footer }: { footer?: Footer }) => {
                   {item?.children?.map((child: Item, iidx: number) => (
                     <li key={iidx}>
                       <Link 
-                        href={`/${locale}${child?.url}` || "#"} 
+                        href={child?.url?.startsWith('http') ? child.url : `/${locale}${child?.url}` || "#"} 
                         className="text-gray-600 text-[14px] dark:text-gray-400 hover:text-[#9333ea] transition-colors dark:hover:text-primary "
                         target={child?.target || '_blank'}
                       >
