@@ -6,7 +6,7 @@ interface Props {
 import { getProjectById, getProjectByName, getProjects } from "@/models/project";
 
 import ProjectContent from "@/templates/tailspark/landing/components/project/detail";
-export const officials = [
+ const officials = [
   {
     author_avatar_url: "https://mcp.so/_next/image?url=https%3A%2F%2Fr2.trys.ai%2Fimgs%2F206yyoqjn-1733449547133.png&w=48&q=75",
     author_name: "modelcontextprotocol",
